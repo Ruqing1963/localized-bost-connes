@@ -1,0 +1,973 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\hO}{\widehat{\cO}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\Vect}{\mathrm{Vec}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\Idl}{\mathbb{I}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Iso}{\operatorname{Iso}}
+\newcommand{\Lat}{\operatorname{Lat}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\Ent}{\mathrm{S}}
+\newcommand{\Msym}{M_{\mathrm{sym}}}
+\newcommand{\phisym}{\varphi_{\mathrm{sym}}}
+\newcommand{\spn}{\operatorname{span}}
+\newcommand{\id}{\mathrm{id}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[Ideals, boundary, and index]{Localized Bost--Connes systems II:\\ ideal structure, boundary quotient, and index}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{DOI: \href{https://doi.org/10.5281/zenodo.22177726}{10.5281/zenodo.22177726}.
+Sources, code and data:\newline\url{https://github.com/Ruqing1963/localized-bost-connes}
+(this paper: \texttt{papers/II-structure/}).}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We study the ideal structure, the boundary quotient, the $K$-theory and the index theory
+of the localized Bost--Connes system $\cA_{K,S}=C(Y_S)\rtimes J_S$, and show that all of it
+is governed by one structural feature: since $J_S$ is free abelian on $S$, each prime
+carries exactly \emph{one} isometry and the range projections
+$\mathbf 1_{\aaa Y_S}$ are \emph{nested} rather than orthogonal.
+
+From this we obtain: the groupoid is topologically principal, its isotropy on the finite
+closed orbit $\partial Y_S\cong\Cl^+_S$ is $I_S^0=\ker(I_S\to\Cl^+_S)$, and off
+$\partial Y_S$ it is trivial whenever $K$ has finitely many totally positive units; the ideal
+lattice is then the lattice of open invariant subsets of $\widetilde Y_S\setminus\partial Y_S$
+glued to the lattice of closed subsets of the torus $\widehat{I_S^0}$, the latter
+contributing ideals that neither the diagonal nor the gauge action sees. The tight quotient
+makes the isometries unitary rather than Cuntz, giving
+$\partial\cA_{K,S}\cong M_{h^+_S}(C^*(I_S^0))$, a type $\mathrm I$ algebra with a faithful
+trace whose only isomorphism invariant is the narrow class number $h^+_S$, recoverable as
+the divisibility of $[1]$ in $K_0=\Lambda^{\mathrm{ev}}(I_S^0)$. For a single prime,
+$K_1(\cA_{K,S})=0$ and $K_0(\cA_{K,S})\cong C(G_S,\Z)/\Z\oplus\Z$ is free; for several primes
+$K_*$ is the abutment of a collapsing Koszul spectral sequence which we do not evaluate.
+
+The same feature governs the index theory. At the symmetric $\mathrm{KMS}_\beta$ state, every
+prime inclusion $M_{S_1}\subset M_{S_2}$ has infinite index for \emph{every} conditional
+expectation, for the elementary reason that the valuation projections $\mathbf 1_{\{v_\pp=k\}}$
+lie in the relative commutant and are moved onto one another by partial isometries commuting
+with $M_{S_1}$; there is no index formula in $\Ns\pp$ and $[\Cl^+_{S_2}:\Cl^+_{S_1}]$, and no
+Galois correspondence with intermediate prime sets, there being a continuum of intermediate
+algebras where there are two intermediate prime sets. The finite index instead comes from
+symmetry breaking: $M_\varepsilon\cong\Msym^{\widehat{\Xi_\beta}}\subset\Msym$ is the trivial
+inclusion of a factor tensored with $\C\subset\ell^\infty(\widehat{\Xi_\beta})$, of index
+$|\Xi_\beta|$, its intermediate algebras are indexed by the partitions of
+$\widehat{\Xi_\beta}$, and $\log[\Msym:M_\varepsilon]=|A_\beta|\log2$ is also the relative
+entropy of an extremal phase against the symmetric one.
+
+Finally we run the control experiment. Restoring the additive part gives
+$\cA^{\mathrm{aff}}_{K,S}=C(\hO_S)\rtimes(\cO_K\rtimes J_S)$, whose additive cosets provide
+\emph{finite covers} and hence genuine Cuntz relations; it is a simple purely infinite
+Kirchberg algebra. Nested versus partitioning range projections is therefore
+exactly the dividing line. Even there, however, $[1]$ carries almost nothing: the Cuntz
+relation forces its order to divide $\gcd_{\pp\in S}(\Ns\pp-1)$, which is $1$ as soon as
+$S$ contains a prime of norm $2$.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+\section{The single-isometry phenomenon}
+
+We keep the notation of \cite{Main}: $K$ is a number field, $S$ a set of finite primes,
+$J_S=\bigoplus_{\pp\in S}\N$ the free abelian monoid of integral ideals supported on $S$
+with enveloping group $I_S$, $Y_S=\hO_S\times_{U_S}G_S$, and
+\[
+\cA_{K,S}=C(Y_S)\rtimes J_S=\overline{\spn}\bigl\{\mu_\aaa f\mu_\bb^*\bigr\},
+\qquad \mu_\aaa^*\mu_\aaa=1,\quad \mu_\aaa\mu_\aaa^*=\mathbf 1_{\aaa Y_S}.
+\]
+\emph{The series.} The foundational paper \cite{Main} classifies the $\mathrm{KMS}$ states
+of $\cA_{K,S}$ and introduces the obstruction group $\Xi_\beta$. Five papers build on it,
+numbered I--V:
+\[
+\begin{array}{ll}
+\text{I} & \text{factor type and the spectrum of transitions}\\
+\text{II} & \text{ideal structure, boundary quotient, and index\quad(this paper)}\\
+\text{III} & \text{invariants, entropy, and the measure class}\\
+\text{IV} & \text{noncommutative metric geometry}\\
+\text{V} & \text{the free variant and the free critical exponent}
+\end{array}
+\]
+Paper I has appeared; Papers III--V are in preparation. \emph{Nothing in this paper depends
+on them}: every statement below is proved here or cited from \cite{Main}, and the forward
+references are signposts only. We refer to them by numeral, without citation, for that
+reason.
+
+Recall the exact sequence \cite[(2.1)]{Main}
+\begin{equation}\label{eq:exact}
+1\to U_S/\overline{\cO^\times_{K,+}}\to G_S\to\Cl^+_S\to1,\qquad h^+_S:=|\Cl^+_S| .
+\end{equation}
+
+\begin{lemma}[Single isometry, nested projections]\label{lem:single}
+$J_S$ is free abelian on $S$. Hence:
+\begin{enumerate}
+\item for each $\pp\in S$ there is exactly one generating isometry $\mu_\pp$;
+\item the range projections are \emph{nested}:
+$\mathbf 1_{\aaa Y_S}\mathbf 1_{\bb Y_S}=\mathbf 1_{\mathrm{lcm}(\aaa,\bb)Y_S}$;
+\item there is no finite family of isometries in $\cA_{K,S}$ with mutually orthogonal ranges
+summing to $1$; indeed
+$Y_S\setminus\bigcup_{\pp\in S}\pp Y_S=\{[x,g]:x\in\hO_S^\times\}$ is nonempty and clopen.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Freeness is unique factorization of ideals. (2) is immediate from
+$\aaa Y_S\cap\bb Y_S=\mathrm{lcm}(\aaa,\bb)Y_S$. For (3), two of the range projections
+$\mathbf 1_{\aaa Y_S}$ are never orthogonal by (2); and if $x$ is a unit at every $\pp$ then
+$[x,g]\notin\pp Y_S$ for any $\pp$, which gives the last assertion. That no family of
+isometries whatever has orthogonal ranges summing to $1$ --- $\cA_{K,S}$ is not properly
+infinite --- follows from Theorem~\ref{thm:boundary} below: $\cA_{K,S}$ maps unitally onto
+an algebra with a faithful tracial state $\tau$, and $n$ isometries with orthogonal ranges
+summing to $1$ would give $n=\sum\tau(v_i^*v_i)=\sum\tau(v_iv_i^*)=1$.
+\end{proof}
+
+Lemma~\ref{lem:single} is the source of every structural statement below. We flag its use
+by referring to it explicitly. The contrast is with the $ax+b$ algebras of Cuntz--Li and
+Cuntz--Deninger--Laca, where each ideal $\aaa$ carries $\Ns\aaa$ isometries indexed by the
+additive cosets $a+\aaa$, whose ranges \emph{partition}; \S\ref{sec:affine} restores that
+ingredient and confirms that it is the cause.
+
+\section{Isotropy, topological principality, and the ideal lattice}
+
+Let $\cG_S=I_S\ltimes\widetilde Y_S$ be the dilated groupoid of \cite[Prop.~2.8]{Main},
+with points $[x,g]$ subject to $(wx,g)\sim(x,r(w)g)$ for $w\in U_S$.
+
+\begin{lemma}[Isotropy formula]\label{lem:iso}
+For $y=[x,g]$ put $T(y)=\{\pp\in S:x_\pp=0\}$. Then
+\begin{equation}\label{eq:iso}
+\Iso_{\cG_S}(y)=\bigl\{\aaa\in I_{T(y)}:\ \sigma_\aaa\in r(U_{T(y)})\bigr\}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$\aaa\cdot[x,g]=[x,g]$ means $\aaa x=wx$ and $g=r(w)^{-1}\sigma_\aaa g$ for some $w\in U_S$.
+Comparing $\pp$-components: if $x_\pp\ne0$ then $\pp^{a_\pp}x_\pp=w_\pp x_\pp$ forces
+$a_\pp=0$ and $w_\pp=1$; if $x_\pp=0$ both sides vanish. So $\aaa\in I_T$, $w\in U_T$, and
+the second equation is $\sigma_\aaa=r(w)$.
+\end{proof}
+
+\begin{proposition}[Isotropy off the boundary]\label{prop:nojump}
+Write $\Idl_T=\{u\in\Idl_S:\ u_{\pp'}=1\ \text{for all }\pp'\in S\setminus T\}$. Then for
+$y$ with $T(y)=T$,
+\begin{equation}\label{eq:isodiv}
+\Iso_{\cG_S}(y)\ =\ \mathrm{div}\Bigl(\overline{K^\times_{S,+}}\cap\Idl_T\Bigr).
+\end{equation}
+If $\cO^\times_{K,+}$ is finite --- in particular if $K=\Q$ or $K$ is imaginary quadratic
+--- then for every proper $T\subsetneq S$ the right-hand side is trivial, so
+$\Iso_{\cG_S}(y)=\{1\}$: the action of $I_S$ on $\widetilde Y_S\setminus\partial Y_S$ is free.
+
+At the bottom stratum the isotropy is nontrivial:
+\[
+\partial Y_S:=\bigcap_{\aaa\in J_S}\aaa Y_S=\bigl\{[0,g]\bigr\}\cong G_S/r(U_S)\cong\Cl^+_S,
+\]
+a set of $h^+_S$ points, on which $I_S$ acts transitively through the class map with
+isotropy $I_S^0:=\ker(I_S\to\Cl^+_S)$, of index $h^+_S$.
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:iso}, $\aaa\in I_T$ lies in the isotropy iff $\sigma_\aaa\in r(U_T)$, i.e.\
+iff some idele $s$ with $\mathrm{div}(s)=\aaa$ satisfies $s\in U_T\cdot\overline{K^\times_{S,+}}$.
+Writing $s=wu$ with $w\in U_T$ and $u\in\overline{K^\times_{S,+}}$, the element $u=w^{-1}s$
+is trivial at every $\pp'\notin T$ and has $\mathrm{div}(u)=\aaa$, which is \eqref{eq:isodiv};
+the converse is immediate.
+
+Suppose now $\cO^\times_{K,+}$ is finite. Then $K^\times_{S,+}$ is discrete in $\Idl_S$: an
+element of $K^\times_{S,+}$ lying in the neighbourhood $\prod_{\pp\in F}(1+\pp^k\cO_\pp)\times\prod_{\pp\notin F}\cO_\pp^\times$
+of $1$ has trivial divisor, hence is a totally positive unit, and is $1$ for $k$ large. So
+$\overline{K^\times_{S,+}}=K^\times_{S,+}$, and $u=\alpha\in K^\times_{S,+}$ is trivial at some
+$\pp'\in S\setminus T$. Under the diagonal embedding the $\pp'$-component of $\alpha$ is
+$\alpha$ itself, and $K\to K_{\pp'}$ is injective, so $\alpha=1$ and $\aaa=(1)$.
+
+For the bottom stratum, $\bigcap_\aaa\aaa Y_S$ forces $x_\pp=0$ for every $\pp$, so $x=0$;
+the fibre is $G_S/r(U_S)\cong\Cl^+_S$ by \eqref{eq:exact}, and \eqref{eq:iso} with $T=S$
+becomes $\{\aaa:[\aaa]=1\}=I_S^0$.
+\end{proof}
+
+\begin{remark}[The general case, and why it does not matter here]\label{rem:leopoldt}
+When $\cO^\times_{K,+}$ is infinite the right-hand side of \eqref{eq:isodiv} can in
+principle be nontrivial: one needs $\alpha^{-1}$ to lie in the closure of
+$\cO^\times_{K,+}$ inside $\prod_{\pp'\in S\setminus T}\cO^\times_{\pp'}$, a condition of
+Leopoldt type. We do not decide it. Nothing below depends on it:
+Theorem~\ref{thm:principal} needs only that the strata are nowhere dense, which holds
+whatever their isotropy, since for infinite $S$ every basic clopen set contains points with
+$x_\pp\ne0$ at any prescribed $\pp$.
+\end{remark}
+
+\begin{remark}\label{rem:whynojump}
+The natural expectation is that killing the coordinates in $T$ frees the corresponding
+translations, giving isotropy $I_T$. It frees them in the $\hO_S$-direction but not in the
+$G_S$-direction: multiplication by $\aaa$ translates $g$ by $\sigma_\aaa$, whose components
+at the primes \emph{outside} $T$ are nontrivial. Over $\Q$ with $T=\{2\}$ and $\aaa=(2)$,
+the components of $\sigma_\aaa$ at $3,5,7$ are $2,2,2$, none equal to $1$.
+\end{remark}
+
+\begin{theorem}[Topological principality, and the two halves of the ideal lattice]\label{thm:principal}
+Let $\partial I:=C^*(\cG_S|_{\widetilde Y_S\setminus\partial Y_S})\cap\cA_{K,S}$ be the ideal of
+$\cA_{K,S}$ corresponding to the open invariant set $\widetilde Y_S\setminus\partial Y_S$, so
+that $\cA_{K,S}/\partial I=\partial\cA_{K,S}$ is the boundary quotient of
+Theorem~\ref{thm:boundary}.
+\begin{enumerate}
+\item $\cG_S$ is topologically principal, for every $K$ and $S$; consequently $C(Y_S)$ is a
+Cartan subalgebra of $\cA_{K,S}$ \cite{Renault08}.
+\item The ideals of $\cA_{K,S}$ containing $\partial I$ correspond bijectively to the closed
+subsets of the torus $\widehat{I_S^0}$, via
+$\partial\cA_{K,S}\cong M_{h^+_S}(C(\widehat{I_S^0}))$. These ideals are not detected by the
+diagonal $C(Y_S)$: two of them have the same intersection $C_0(Y_S\setminus\partial Y_S)$
+with it. They are not all gauge-invariant either: the gauge action is the translation flow
+of $\widehat{I_S^0}$ by the characters $\aaa\mapsto\Ns\aaa^{it}$, which is nontrivial, so
+a closed subset that is not a union of flow orbits --- a point, for instance --- gives an
+ideal that the gauge action moves.
+\item If the action of $I_S$ on $\widetilde Y_S\setminus\partial Y_S$ is free --- by
+Proposition~\ref{prop:nojump}, whenever $\cO^\times_{K,+}$ is finite --- then the ideals of
+$\partial I$ correspond bijectively and order-isomorphically to the open $I_S$-invariant
+subsets of $\widetilde Y_S\setminus\partial Y_S$, and the diagonal detects them.
+\item Consequently, in that case,
+$\operatorname{Prim}(\cA_{K,S})=(\widetilde Y_S\setminus\partial Y_S)/I_S\ \sqcup\ \widehat{I_S^0}$
+as a set, the first piece open and the second closed.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) By \eqref{eq:iso} every unit with nontrivial isotropy lies in some stratum
+$\{x_\pp=0\ \forall\pp\in T\}$ with $T\ne\emptyset$, hence in some $\{x_\pp=0\}$, a closed set
+with empty interior since $\cO_\pp$ has no isolated points. A countable union of such sets
+is meagre, so the units with trivial isotropy are dense. (This does not use
+Proposition~\ref{prop:nojump}.) The restriction $\cG_S|_{Y_S}$ is then topologically
+principal as well, and $\cA_{K,S}=C^*(\cG_S|_{Y_S})$ with diagonal $C(Y_S)$, which is Cartan
+by Renault's theorem \cite{Renault08}.
+
+(2) Ideals containing $\partial I$ are ideals of the quotient, which is $M_h(C(X))$ with
+$X=\widehat{I_S^0}$ by Theorem~\ref{thm:boundary}; its ideals are the $M_h(C_0(X\setminus Z))$,
+$Z\subseteq X$ closed. The image of $C(Y_S)$ in $M_h(C(X))$ is the algebra
+$C(\partial Y_S)=\C^h$ of diagonal matrices with constant entries, which meets
+$M_h(C_0(X\setminus Z))$ trivially for every nonempty $Z$; so every ideal $J\supseteq\partial I$
+with $J\ne\cA_{K,S}$ has $J\cap C(Y_S)=\partial I\cap C(Y_S)=C_0(Y_S\setminus\partial Y_S)$.
+The gauge action $\sigma_t(\mu_\aaa)=\Ns\aaa^{it}\mu_\aaa$ descends to the unitaries
+$\mu_\aaa$, $\aaa\in I_S^0$, of $C^*(I_S^0)=C(X)$, where it is translation by the character
+$\chi_t:\aaa\mapsto\Ns\aaa^{it}$; $\chi_t\ne1$ for $t\ne0$ since $\log\Ns\aaa\ne0$ for
+$\aaa\ne(1)$, so the flow moves every point of $X$.
+
+(3) $\cG_S|_{\widetilde Y_S\setminus\partial Y_S}$ is second countable, \'etale, amenable and
+principal, so by Renault \cite{Renault} its $C^*$-algebra has ideals in bijection with the
+open invariant subsets, via $V\mapsto C^*(\cG_S|_V)$, and its diagonal is a Cartan
+subalgebra detecting them; $\partial I$ is the full corner $\mathbf 1_{Y_S}(\cdot)\mathbf 1_{Y_S}$,
+which preserves the lattice. (4) is (2) and (3) together with the exactness of
+$0\to C^*(\cG_S|_U)\to C^*(\cG_S)\to C^*(\cG_S|_{U^c})\to0$ for amenable \'etale groupoids.
+\end{proof}
+
+\begin{remark}\label{rem:lattice}
+Part (2) shows that ``the ideal lattice is the lattice of open invariant sets'' is false
+for $\cA_{K,S}$: the boundary orbit has isotropy $I_S^0$ of infinite rank, and its
+$C^*$-algebra $C(\widehat{I_S^0})$ contributes a torus of primitive ideals invisible to the
+diagonal. Topological principality of $\cG_S$ gives the correspondence only on the
+essentially principal part $\widetilde Y_S\setminus\partial Y_S$. When $\cO^\times_{K,+}$ is
+infinite, Remark~\ref{rem:leopoldt} leaves open whether some proper stratum has nontrivial
+isotropy; if it does, that stratum contributes further ideals of the same kind.
+\end{remark}
+
+\begin{proposition}[The lattice is not the power set of $S$]\label{prop:lattice}
+Let $K=\Q$, $S=\{\ell\}$, so $Y_S=\Z_\ell$ and $\cA=C(\Z_\ell)\rtimes\N$. Then $\cA$ is a
+full corner in $C_0(\Q_\ell)\rtimes\Z$ and there is an exact sequence
+\begin{equation}\label{eq:oneprime}
+0\longrightarrow C(\Z_\ell^\times)\otimes\cK\longrightarrow C_0(\Q_\ell)\rtimes\Z\longrightarrow C(\T)\longrightarrow0 .
+\end{equation}
+The ideal lattice of $\cA$ contains an order-isomorphic copy of the lattice of open subsets
+of the Cantor set $\Z_\ell^\times$, hence is uncountable.
+\end{proposition}
+
+\begin{proof}
+By Laca's dilation theorem $\cA$ is a full corner in $C_0(\Q_\ell)\rtimes\Z$, the dilation
+being the limit of $\Z_\ell\xleftarrow{\ell}\Z_\ell\xleftarrow{\ell}\cdots$. On
+$\Q_\ell\setminus\{0\}$ the action of $\Z$ by multiplication by $\ell$ is free and proper
+with quotient $\Z_\ell^\times$, giving the ideal in \eqref{eq:oneprime}; the fixed point
+$\{0\}$ gives the quotient $C^*(\Z)=C(\T)$. Ideals of $C(\Z_\ell^\times)\otimes\cK$
+correspond to open subsets of $\Z_\ell^\times$ and pass to $\cA$ by the corner
+correspondence.
+\end{proof}
+
+\begin{remark}
+The description ``hereditary subsets of $\mathcal P(S)$'' would be correct for a graph or
+Cuntz--Krieger algebra. Here the stratification by vanishing coordinates is present, but
+each stratum retains a Cantor set of unit orbits, each closed set of orbits contributes an
+ideal, and the quotient $C(\T)$ in \eqref{eq:oneprime} is the $h^+_S=1$, $I_S^0=\Z$ case of
+Theorem~\ref{thm:principal}(2).
+\end{remark}
+
+\section{The boundary quotient}
+
+\begin{theorem}[The tight quotient is abelian-by-finite]\label{thm:boundary}
+Let $\partial\cA_{K,S}$ be the quotient by the ideal corresponding to
+$\widetilde Y_S\setminus\partial Y_S$, equivalently the tight quotient in the sense of Exel
+\cite{Exel}, equivalently the universal quotient in which every $\mu_\pp$ becomes unitary.
+Then
+\[
+\partial\cA_{K,S}\ \cong\ C(\Cl^+_S)\rtimes I_S\ \cong\ M_{h^+_S}\bigl(C^*(I_S^0)\bigr)
+\ \cong\ M_{h^+_S}\bigl(C(\widehat{I_S^0})\bigr).
+\]
+It is unital, separable, nuclear, satisfies the UCT, is of type $\mathrm I$ and carries a
+faithful tracial state. It is not simple when $I_S^0\ne0$, and is never purely infinite; in
+particular it is not a Kirchberg algebra.
+\end{theorem}
+
+\begin{proof}
+Restricting the groupoid to the closed invariant set $\partial Y_S$ gives
+$C^*(I_S\ltimes\partial Y_S)=C(\Cl^+_S)\rtimes I_S$ by Proposition~\ref{prop:nojump}. In the
+quotient $\mathbf 1_{\pp Y_S}$ restricts to $1$ on $\partial Y_S\subseteq\pp Y_S$, so
+$\mu_\pp$ is unitary; conversely imposing unitarity kills exactly the functions vanishing on
+$\partial Y_S$. For a discrete group $\Gamma$ with a subgroup $\Gamma_0$ of finite index $h$,
+Green's imprimitivity theorem \cite{Green} gives $C(\Gamma/\Gamma_0)\rtimes\Gamma\cong M_h(C^*(\Gamma_0))$,
+and $I_S^0$ is free abelian so $C^*(I_S^0)$ is commutative. The remaining properties are
+those of $M_h(C(X))$; a unital algebra with a tracial state is never purely infinite.
+\end{proof}
+
+\begin{remark}[Why no Cuntz relation is available]\label{rem:nocuntz}
+By Lemma~\ref{lem:single}(2) the projections $\mathbf 1_{\aaa Y_S}$ are nested. Imposing
+$\sum_\aaa\mu_\aaa\mu_\aaa^*=1$ over any finite family would force all but one summand to
+vanish. The tight relation therefore degenerates to $\mathbf 1_{\pp Y_S}=1$, which is
+unitarity, and this is what Theorem~\ref{thm:boundary} implements. The Cuntz alternative
+requires a partition; see \S\ref{sec:affine}.
+\end{remark}
+
+\begin{theorem}[The class of the unit records $h^+_S$]\label{thm:Kboundary}
+$K_0(\partial\cA_{K,S})\cong\Lambda^{\mathrm{ev}}(I_S^0)$ and
+$K_1(\partial\cA_{K,S})\cong\Lambda^{\mathrm{odd}}(I_S^0)$, and under this identification
+\begin{equation}\label{eq:unit}
+\bigl[1_{\partial\cA_{K,S}}\bigr]=h^+_S\cdot e_0 ,
+\end{equation}
+$e_0$ the generator of $\Lambda^0=\Z$. Hence $h^+_S$ is the largest integer dividing $[1]$,
+and is an isomorphism invariant of the pair $(\partial\cA_{K,S},[1])$.
+\end{theorem}
+
+\begin{proof}
+$K$-theory is Morita invariant and $C^*(\Gamma)\cong C(\widehat\Gamma)$ for $\Gamma$ free
+abelian has $K_0=\Lambda^{\mathrm{ev}}(\Gamma)$, $K_1=\Lambda^{\mathrm{odd}}(\Gamma)$ with
+$[1]$ the generator of $\Lambda^0$. The isomorphism $K_0(M_h(B))\cong K_0(B)$ sends
+$[1_{M_h(B)}]$ to $h[1_B]$, since $1_{M_h(B)}$ is a sum of $h$ orthogonal projections each
+equivalent to $1_B$; and $\Lambda^{\mathrm{ev}}$ is free abelian, so $h\,e_0$ is divisible by
+exactly $h$.
+\end{proof}
+
+\begin{theorem}[Rigidity of the boundary]\label{thm:rigid}
+For infinite $S_1\subseteq P_{K_1}$ and $S_2\subseteq P_{K_2}$,
+\[
+\partial\cA_{K_1,S_1}\cong\partial\cA_{K_2,S_2}\iff h^+_{S_1}=h^+_{S_2} .
+\]
+The boundary determines the order of the subgroup of the narrow class group generated by
+$S$, and nothing else: not $K$, not $S$, not $\Cl^+_S$ as a group.
+\end{theorem}
+
+\begin{proof}
+($\Leftarrow$) For infinite $S$, $I_S$ is free abelian of countably infinite rank and
+$I_S^0$ has finite index, hence the same rank; so the two algebras are
+$M_h(C(X))$ with the same $h$ and homeomorphic $X$.
+($\Rightarrow$) Every irreducible representation of $M_h(C(X))$ has dimension exactly $h$,
+and isomorphisms preserve irreducible representations and their dimensions; alternatively
+apply Theorem~\ref{thm:Kboundary}. For the last statement, $C(\Cl^+_S)\rtimes I_S$ depends
+on $\Cl^+_S$ only through the index of $I_S^0$.
+\end{proof}
+
+\section{$K$-theory of $\cA_{K,S}$}
+
+The Stacey crossed product imposes the covariance relation $\mu_\pp\mu_\pp^*=\alpha_\pp(1)$,
+which is Katsura covariance; hence for a single prime $\cA_{K,S}$ is the Cuntz--Pimsner
+algebra $\cO_X$ of the associated correspondence, \emph{not} the Toeplitz algebra $\cT_X$.
+Pimsner's $KK$-equivalence $\iota:A\to\cT_X$ therefore does not apply, and one must use his
+exact sequence.
+
+\begin{lemma}\label{lem:cantorspace}
+$Y_S$ is compact, metrizable and totally disconnected without isolated points, hence a
+Cantor set. Consequently $K^0(Y_S)=C(Y_S,\Z)$ is free abelian of countably infinite rank and
+$K^1(Y_S)=0$.
+\end{lemma}
+
+\begin{proof}
+$\hO_S$ is profinite, $G_S$ is a quotient of the totally disconnected $\Idl_S$ by a closed
+subgroup hence profinite, and $Y_S$ is their quotient by the compact group $U_S$. A point
+$[x,g]$ is not isolated: every neighbourhood contains $[x',g]$ with $x'\ne x$, since no
+$\cO_\pp$ has isolated points.
+\end{proof}
+
+\begin{proposition}[One prime]\label{prop:K}
+Let $S=\{\pp\}$ and let $\alpha_*$ be the endomorphism $\mathbf 1_U\mapsto\mathbf 1_{\pp U}$
+of $K^0(Y_S)=C(Y_S,\Z)$. Then
+\begin{equation}\label{eq:K}
+K_1(\cA_{K,S})=\ker(1-\alpha_*)=0,
+\qquad
+K_0(\cA_{K,S})=\coker(1-\alpha_*)\ \cong\ C(G_S,\Z)\big/\Z\cdot1\ \oplus\ \Z ,
+\end{equation}
+a free abelian group. In particular $[1]=[\mathbf 1_{\pp Y_S}]$ in $K_0$, so
+$\iota_*:K^0(Y_S)\to K_0(\cA_{K,S})$ is \emph{not} injective.
+\end{proposition}
+
+\begin{proof}
+$\mu_\pp$ is an isometry with $\mu_\pp\mu_\pp^*=\mathbf 1_{\pp Y_S}$, so
+$1\sim\mathbf 1_{\pp Y_S}$ and $[1]=[\mathbf 1_{\pp Y_S}]$. The six-term sequence for the
+Cuntz--Pimsner algebra of a correspondence \cite[\S4]{Pimsner} (see \cite{Katsura} for the
+covariance condition) with $K_1(C(Y_S))=0$ collapses to
+$K_1(\cA)=\ker(1-\alpha_*)$, $K_0(\cA)=\coker(1-\alpha_*)$ on $C(Y_S,\Z)$.
+
+If $f=\alpha_*f=(f\circ\pp^{-1})\mathbf 1_{\pp Y_S}$ then $f$ is supported in $\pp^nY_S$
+for every $n$, i.e.\ in $\partial Y_S=\{[0,g]\}$, a closed set with empty interior; a
+locally constant function supported there vanishes. So $K_1=0$.
+
+For $K_0$ we use Laca's dilation \cite{Laca}: $\cA$ is a full corner in
+$C_0(\widetilde Y_S)\rtimes\Z$, and by Pimsner--Voiculescu \cite{PV}
+$K_0(C_0(\widetilde Y_S)\rtimes\Z)=H_0(\Z;C_c(\widetilde Y_S,\Z))$, the coinvariants,
+$K_1=H_1$, the invariants. Write $\widetilde Y_S=\widetilde Y_\emptyset\sqcup\partial Y_S$
+with $\widetilde Y_\emptyset=\{[x,g]:x\ne0\}$ open. The map
+$[\pi^nu,g]\mapsto(n,r(u)g)$ identifies $\widetilde Y_\emptyset$ with $\Z\times G_S$, on which
+$\pp$ acts by $(n,h)\mapsto(n+1,\sigma_\pp h)$, freely; hence
+$H_1(\Z;C_c(\widetilde Y_\emptyset,\Z))=0$ and $H_0=C(G_S,\Z)$, the class of $f$ being
+$\sum_n(\sigma_\pp^{-n})_*f(n,\cdot)$. On $\partial Y_S\cong\Cl^+_S$ the generator acts
+through the class map, so $H_1=H_0=\Z$ by Shapiro's lemma. The long exact sequence of
+$0\to C_c(\widetilde Y_\emptyset,\Z)\to C_c(\widetilde Y_S,\Z)\to C(\partial Y_S,\Z)\to0$
+reads
+\[
+0\to H_1(\widetilde Y_S)\to\Z\xrightarrow{\ \delta\ }C(G_S,\Z)\to H_0(\widetilde Y_S)\to\Z\to0,
+\]
+and $\delta(1)$ is the class of $(1-\alpha_*)\mathbf 1_{Y_S}=\mathbf 1_{Y_S\setminus\pp Y_S}
+=\mathbf 1_{\{0\}\times G_S}$, i.e.\ the constant function $1$; so $\delta$ is injective,
+$H_1(\widetilde Y_S)=0$ again, and $H_0(\widetilde Y_S)$ is an extension of $\Z$ by
+$C(G_S,\Z)/\Z\cdot1$, which splits. Both summands are free, $1$ being part of a basis of
+$C(G_S,\Z)$.
+\end{proof}
+
+For $S$ finite with $|S|\ge2$ the primes interact: by \cite[Lem.~2.10]{Main} the generator
+$\pp$ moves the $G_S$-coordinate by $\sigma_\pp$, whose components at the other primes are
+nontrivial, so the action of $\Z^S$ on $\widetilde Y_S$ is not a product of actions on
+the factors $K_\pp$. What survives is the following.
+
+\begin{proposition}[Finite $S$]\label{prop:Kfinite}
+For $S$ finite, $K_*(\cA_{K,S})=K_*(C_0(\widetilde Y_S)\rtimes\Z^S)$ is computed by the
+spectral sequence $E^2_{p,q}=H_p(\Z^S;K_q(C_0(\widetilde Y_S)))\Rightarrow K_{p+q}$ of
+Kasparov \cite[\S6]{Kasparov}. Since $K_1(C_0(\widetilde Y_S))=0$, only the row $q=0$ is
+nonzero, the sequence collapses, and $K_0(\cA_{K,S})$ (resp.\ $K_1$) carries a finite
+filtration whose subquotients are the even (resp.\ odd) Koszul homology groups
+$H_p(\Z^S;C_c(\widetilde Y_S,\Z))$ of the commuting automorphisms $\alpha_{\pp*}$, $\pp\in S$.
+The bottom piece $H_0(\Z^S;C_c(\widetilde Y_S,\Z))$, the coinvariants, is the image of
+$K^0(Y_S)\to K_0(\cA_{K,S})$. For general $S$, $K_*(\cA_{K,S})=\varinjlim K_*(\cA_{K,F})$
+over finite $F\subseteq S$, for any compatible system of embeddings as in
+\cite[Prop.~2.7]{Main} (see Remark~\ref{rem:embed} below).
+\end{proposition}
+
+\begin{proof}
+Laca's dilation, Kasparov's spectral sequence for actions of $\Z^n$, and the continuity of
+$K$-theory under direct limits.
+\end{proof}
+
+We have not computed the Koszul homology for $|S|\ge2$, and we make no claim about
+$K_*(\cA_{K,S})$ beyond Propositions \ref{prop:K} and \ref{prop:Kfinite}; the top group
+$H_{|S|}$ is the group of $\Z^S$-invariant compactly supported functions, which vanishes by
+the argument of Proposition~\ref{prop:K}, but the intermediate groups receive contributions
+from the strata $\{x_\pp=0,\ \pp\in T\}$, on which $\Z^T$ acts on $G_S$ by translations
+with nontrivial invariants.
+
+\begin{example}[$K=\Q$, $S=\{\ell\}$]\label{ex:oneprime}
+Here $G_S=\Z_\ell^\times$ and Proposition~\ref{prop:K} gives $K_1(\cA)=0$ and
+$K_0(\cA)\cong C(\Z_\ell^\times,\Z)/\Z\oplus\Z\cong\Z^{(\infty)}$, in agreement with
+\eqref{eq:oneprime}. A direct computation of the Smith normal form of $1-\alpha_*$ on
+level-$n$ functions, for $\ell=2,3,5$ and $n\le3$, gives kernel $0$ and free cokernel of
+rank $\ell^{n+1}-\ell^n$, with no torsion.
+\end{example}
+
+\begin{remark}[$K$-theory carries no arithmetic: the mechanism]\label{rem:noarith}
+For a single prime, $K_0(\cA_{K,S})$ is free abelian and depends on $(K,\pp)$ only through
+the profinite group $G_S$; for $K=\Q$ it is $\Z^{(\infty)}$ for every $\ell$. The reason
+is structural rather than accidental: by Propositions \ref{prop:K} and \ref{prop:Kfinite}
+the image of $K^0(Y_S)$ in $K_0(\cA_{K,S})$ is the group of coinvariants
+$C(Y_S,\Z)/\sum_\pp(1-\alpha_{\pp*})C(Y_S,\Z)$, and a functional on $C(Y_S,\Z)$ descends
+to it exactly when it is $\alpha_*$-invariant, whereas the arithmetically meaningful
+functionals --- the $\mathrm{KMS}_\beta$ measures --- satisfy
+$\omega\circ\alpha_{\pp*}=\Ns\pp^{-\beta}\omega$ with $\Ns\pp^{-\beta}\ne1$. The passage to
+$K_0$ annihilates precisely the data of interest. This is taken up in Paper III of the
+series.
+\end{remark}
+
+\section{Index theory}
+
+\begin{remark}[Nested prime sets]\label{rem:embed}
+For $S_1\subset S_2$ the embedding $\cA_{K,S_1}\hookrightarrow\cA_{K,S_2}$, $f\mapsto f\circ\mathrm{pr}$,
+$\mu_\aaa\mapsto\mu_\aaa$, of \cite[Prop.~2.7]{Main} requires an $I_{S_1}$-equivariant
+continuous surjection $\mathrm{pr}:Y_{S_2}\to Y_{S_1}$. By \eqref{eq:exact}, $Y_S$ is a
+disjoint union over $\Cl^+_S$ of copies of $\hO_S/\overline{\cO^\times_{K,+}}$, and
+$\Cl^+_{S_1}$ is a \emph{subgroup} of $\Cl^+_{S_2}$, not a quotient. The coordinate
+projection $\hO_{S_2}\to\hO_{S_1}$ therefore descends canonically exactly when
+$\Cl^+_{S_2}=\Cl^+_{S_1}$, i.e.\ when the primes of $S_2\setminus S_1$ have classes in
+$\Cl^+_{S_1}$; this holds for $K=\Q$, for every $S_1$ generating the narrow class group,
+and for all $S_1\subseteq S_2$ inside a fixed $S$ once $S_1$ is large enough. Otherwise
+$\mathrm{pr}$ exists but involves the choice of a $\Cl^+_{S_1}$-equivariant retraction
+$\Cl^+_{S_2}\to\Cl^+_{S_1}$, and the words ``$G_S=\varprojlim G_{S_k}$'' in
+\cite[Prop.~2.7]{Main} must be read with this qualification (the uses made of that
+proposition in \cite{Main} are over $\Q$). \emph{Throughout this section we assume
+$\Cl^+_{S_2}=\Cl^+_{S_1}$}, so that $\mathrm{pr}$ is canonical.
+\end{remark}
+
+Let $S_1\subset S_2$, let $\varphi_2$ be a $\mathrm{KMS}_\beta$ state of $\cA_{K,S_2}$ with
+$\zeta_{K,S_2}(\beta)=\infty$, and put $M_{S_i}=\pi_{\varphi_2}(\cA_{K,S_i})''$, where
+$\cA_{K,S_1}\subseteq\cA_{K,S_2}$ via Remark~\ref{rem:embed}.
+
+\begin{proposition}[The conditional expectation exists]\label{prop:E}
+$\sigma^{\varphi_2}_t=\sigma_{-\beta t}$ leaves $\cA_{K,S_1}$ globally invariant, so by
+Takesaki's theorem \cite{Takesaki} there is a unique faithful normal conditional expectation
+$E:M_{S_2}\to M_{S_1}$ with $\varphi_2\circ E=\varphi_2$. If $\varphi_2$ is extremal, its
+restriction to $\cA_{K,S_1}$ need not be, so $M_{S_1}$ need not be a factor.
+\end{proposition}
+
+\begin{proof}
+$\sigma_t$ fixes $C(Y_{S_2})\supseteq C(Y_{S_1})$ pointwise and scales each $\mu_\aaa$, so
+preserves $\cA_{K,S_1}$; the GNS vector of a KMS state is separating, so $\varphi_2$ is
+faithful on $M_{S_2}$ with modular group $\sigma_{-\beta t}$. Extremality is not preserved by
+restriction because the simplices are indexed by $\widehat{\Xi_\beta(S_2)}$ and
+$\widehat{\Xi_\beta(S_1)}$ respectively.
+\end{proof}
+
+We write $\Ind(F)\in[1,\infty]$ for the Pimsner--Popa index of a faithful normal conditional
+expectation $F:M_{S_2}\to M_{S_1}$, the inverse of the best constant $\lambda$ with
+$F(x)\ge\lambda x$ for all $x\ge0$ \cite{PP}, and $[M_{S_2}:M_{S_1}]_0=\inf_F\Ind(F)$ for
+the Kosaki--Longo index \cite{Kosaki,Longo}.
+
+\begin{theorem}[Prime inclusions have infinite index]\label{thm:infinite}
+Let $\pp\in S_2\setminus S_1$ and $e_k=\mathbf 1_{\{v_\pp=k\}}=\mathbf 1_{\pp^kY_{S_2}}-\mathbf 1_{\pp^{k+1}Y_{S_2}}$.
+\begin{enumerate}
+\item For every $\mathrm{KMS}_\beta$ state $\varphi_2$, the $e_k$ are pairwise orthogonal
+projections in $M_{S_1}'\cap M_{S_2}$ with $\sum_ke_k=1$ and
+$\varphi_2(e_k)=(1-\Ns\pp^{-\beta})\Ns\pp^{-k\beta}>0$; in particular $M_{S_1}'\cap M_{S_2}$
+contains a copy of $\ell^\infty(\N)$.
+\item Let $\varphi_2=\phisym$ be the symmetric $\mathrm{KMS}_\beta$ state, so that in the
+coordinates of \cite[Lem.~2.10]{Main} its measure is $\nu=\pi_\beta\otimes\mathrm{Haar}$.
+Then $\Ind(F)=\infty$ for every faithful normal conditional expectation
+$F:M_{S_2}\to M_{S_1}$, hence $[M_{S_2}:M_{S_1}]_0=\infty$, already when a single prime is
+added.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) For $\qq\in S_1$, multiplication by $\qq$ does not change $v_\pp$, so
+$\qq\{v_\pp\ge k\}=\{v_\pp\ge k\}\cap\qq Y_{S_2}$ and
+\[
+\mu_\qq\mathbf 1_{\{v_\pp\ge k\}}=\alpha_\qq\bigl(\mathbf 1_{\{v_\pp\ge k\}}\bigr)\mu_\qq
+=\mathbf 1_{\{v_\pp\ge k\}}\mathbf 1_{\qq Y_{S_2}}\mu_\qq=\mathbf 1_{\{v_\pp\ge k\}}\mu_\qq ,
+\]
+using $\mathbf 1_{\qq Y}\mu_\qq=\mu_\qq\mu_\qq^*\mu_\qq=\mu_\qq$; taking adjoints gives
+commutation with $\mu_\qq^*$, and commutation with $C(Y_{S_1})$ is automatic. The
+$\mathbf 1_{\{v_\pp\ge k\}}$ therefore commute with $\cA_{K,S_1}$, hence with $M_{S_1}$, and so
+do their differences $e_k$. The values $\varphi_2(e_k)$ come from
+$\varphi_2(\mathbf 1_{\pp^kY})=\Ns\pp^{-k\beta}$ \cite[Prop.~2.8]{Main}, and
+$\sum_ke_k=\mathbf 1_{\{v_\pp<\infty\}}=1$ in $M_{S_2}$ because $\varphi_2(v_\pp\ge k)\to0$.
+
+(2) Let $\varphi_2=\phisym$. The GNS space is $H=L^2(\cR,\tilde\nu)$, $\cR$ the orbit
+relation of $I_{S_2}$ on $(Y_{S_2},\nu)$ and $\tilde\nu$ its lift, $M_{S_2}=W^*(\cR,\nu)$,
+and $e_k$ acts by multiplication by $\mathbf 1_{\{v_\pp=k\}}$ in the first variable
+\cite[Prop.~6.1]{Main}. Fix $k,j\ge0$ and let $T:\{v_\pp=k\}\to\{v_\pp=j\}$,
+$T(v,h)=(v+(j-k)e_\pp,h)$, in the coordinates $(v,h)\in V\times G_{S_2}$: $T$ moves the
+$\pp$-valuation and nothing else. It is a homeomorphism between clopen sets with
+$\nu\circ T=\Ns\pp^{-(j-k)\beta}\nu$ on its domain, since $\nu$ is a product measure with
+geometric $\pp$-marginal and Haar $G_{S_2}$-marginal; and it commutes with the maps
+$(v,h)\mapsto(v+e_\qq,\sigma_\qq h)$, $\qq\in S_1$, generating the action of $I_{S_1}$. Hence
+$T$ maps $\cR$-classes to $\cR$-classes, and
+\[
+(W\xi)(y,y')=\Ns\pp^{(j-k)\beta/2}\,\xi(T^{-1}y,T^{-1}y'),\qquad y\in\{v_\pp=j\},
+\]
+is a partial isometry on $H$ with $W^*W=e_k$ and $WW^*=e_j$. Because $T$ commutes with the
+$I_{S_1}$-action, does not move the coordinates seen by $C(Y_{S_1})\circ\mathrm{pr}$, and
+has constant Radon--Nikodym derivative, $W$ commutes with $\pi(\cA_{K,S_1})$, hence
+$W\in M_{S_1}'$ (the commutant in $B(H)$; $W$ need not lie in $M_{S_2}$).
+
+Now let $F$ be a faithful normal conditional expectation with $\Ind(F)=\lambda^{-1}<\infty$,
+so $F(e_k)\ge\lambda e_k$. Since $e_k$ commutes with $M_{S_1}$, $F(e_k)$ lies in
+$Z(M_{S_1})$ and commutes with $e_k$; on the range of $e_k$ it is $\ge\lambda$, so
+$e_k\le q_k:=\mathbf 1_{[\lambda,1]}\bigl(F(e_k)\bigr)\in M_{S_1}$, and
+$\lambda q_k\le F(e_k)$ gives $\varphi_2(q_k)\le\lambda^{-1}\varphi_2(F(e_k))$. For $q\in M_{S_1}$
+with $qe_k=e_k$ we get, using $W\in M_{S_1}'$,
+\[
+qe_j=qWW^*=WqW^*=W(qe_k)W^*=We_kW^*=e_j\qquad\text{for every }j,
+\]
+so $q=\sum_je_jq=1$. Applied to $q=q_k$: $1=\varphi_2(q_k)\le\lambda^{-1}\varphi_2(F(e_k))$,
+i.e.\ $\varphi_2(F(e_k))\ge\lambda$ for every $k$. But $F(e_k)\in Z(M_{S_1})$ and
+$\sum_kF(e_k)=1$, so $\sum_k\varphi_2(F(e_k))=1$, and $\varphi_2(F(e_k))\ge\lambda>0$ for
+infinitely many $k$ is impossible.
+\end{proof}
+
+\begin{remark}[Scope]\label{rem:scope}
+Part (1) holds for every KMS state; part (2) uses the product form of $\nu$ only to build
+$W$. For a non-symmetric extremal state the fibre measure $\rho_v$ of \cite[Lem.~2.10]{Main}
+is Haar measure on a coset that moves by $\sigma_\pp$ when $v_\pp$ increases, so $T$ no
+longer preserves the measure class, and we have not decided whether every expectation has
+infinite index in that case; the symmetric state is extremal, and $M_{S_2}$ a factor,
+precisely when $\Xi_\beta(S_2)=\{1\}$, e.g.\ for $S_2=P_K$ and $\beta\le1$.
+\end{remark}
+
+\begin{remark}[Why no index formula can exist]\label{rem:noformula}
+An index formula in $\Ns\pp$, a local unit index and $[\Cl^+_{S_2}:\Cl^+_{S_1}]$ would
+combine finite quantities. It cannot exist because enlarging $S$ enlarges the \emph{base
+space}: $Y_{S_2}$ carries a new $\pp$-adic coordinate, and the valuation $v_\pp$ alone,
+before any unit or class-group data enters, already contributes an infinite-dimensional
+commuting algebra. Those finite invariants do appear in this theory --- in
+Theorem~\ref{thm:Kboundary} and in \eqref{eq:exact} --- but not in an index.
+\end{remark}
+
+\begin{proposition}[No Galois correspondence with prime sets]\label{prop:nogalois}
+In the situation of Theorem~\ref{thm:infinite}(2) let $S_2=S_1\cup\{\pp\}$, so there are
+exactly two intermediate prime sets. Then $\Lat(M_{S_1}\subset M_{S_2})$ has cardinality
+at least $2^{\aleph_0}$.
+\end{proposition}
+
+\begin{proof}
+For a partition $\mathcal P$ of $\N$ let $A_{\mathcal P}\subseteq W^*(e_k:k\ge0)\cong\ell^\infty(\N)$
+be the subalgebra of functions constant on the blocks; it lies in the relative commutant, so
+$N_{\mathcal P}=M_{S_1}\vee A_{\mathcal P}$ is intermediate. We recover $\mathcal P$ from
+$N_{\mathcal P}$: an element $x=\sum_kc_ke_k$ of $W^*(e_k)$ lies in $N_{\mathcal P}$ iff for
+every block $B$ the element $\sum_{k\in B}c_ke_k$ lies in $M_{S_1}\mathbf 1_B$, i.e.\ equals
+$m\mathbf 1_B$ for some $m\in M_{S_1}$; conjugating by the partial isometries $W$ of the proof
+of Theorem~\ref{thm:infinite} gives $c_je_j=me_j=W(me_k)W^*=c_ke_j$ for $j,k\in B$, so
+$W^*(e_k)\cap N_{\mathcal P}=A_{\mathcal P}$. There are $2^{\aleph_0}$ partitions.
+\end{proof}
+
+We now locate the finite index. Fix $S$ and $\beta$ with $\Xi_\beta$ finite, and write
+$G:=\widehat{\Xi_\beta}$, $\phisym$ for the $G_S$-invariant $\mathrm{KMS}_\beta$ state, and
+$\varphi_\varepsilon$, $\varepsilon\in G$, for the extreme points.
+
+\begin{lemma}[Central decomposition]\label{lem:central}
+\begin{equation}\label{eq:central}
+\Msym:=\pi_{\phisym}\bigl(\cA_{K,S}\bigr)''\ \cong\ \bigoplus_{\varepsilon\in G}M_\varepsilon,
+\qquad M_\varepsilon:=\pi_{\varphi_\varepsilon}\bigl(\cA_{K,S}\bigr)'' ,
+\end{equation}
+with centre $Z(\Msym)\cong\C^{G}$ spanned by projections $z_\varepsilon$, each
+$M_\varepsilon$ a factor, and $\omega_{\phisym}(z_\varepsilon)=|G|^{-1}$. The action
+$\theta$ of $G_S$ extends to $\Msym$, factors through
+$G_S/\Xi_\beta^\perp\cong G$, and permutes the $z_\varepsilon$ simply transitively.
+\end{lemma}
+
+\begin{proof}
+By \cite[Thm.~3.6]{Main} the $\mathrm{KMS}_\beta$ simplex is $\Prob(G_S/\Xi_\beta^\perp)$,
+so its extreme points are indexed by $G=\widehat{\Xi_\beta}$ and correspond to mutually
+singular measures $\nu_\varepsilon$; hence the GNS representations are pairwise disjoint and
+each $M_\varepsilon$ is a factor. The symmetric state is the uniform mixture
+$\phisym=|G|^{-1}\sum_\varepsilon\varphi_\varepsilon$, so
+$\pi_{\phisym}=\bigoplus_\varepsilon\pi_{\varphi_\varepsilon}$, giving \eqref{eq:central},
+the centre, and $\omega_{\phisym}(z_\varepsilon)=|G|^{-1}$. By \cite[Thm.~3.6(3)]{Main} the
+action of $G_S$ on the simplex factors through $G_S/\Xi_\beta^\perp$ and permutes the
+extreme points simply transitively; it therefore permutes the $z_\varepsilon$ the same way.
+\end{proof}
+
+\begin{theorem}[The finite-index inclusion]\label{thm:finite}
+Put $D:=M_{\varepsilon_0}$ for any $\varepsilon_0\in G$. The isomorphisms
+$\theta_g:M_{\varepsilon_0}\to M_{g\varepsilon_0}$ identify the inclusion
+$\Msym^{G}\subseteq\Msym$ with
+\begin{equation}\label{eq:trivialincl}
+D\otimes1\ \subseteq\ D\otimes\ell^\infty(G)=\bigoplus_{g\in G}D .
+\end{equation}
+Consequently $\Msym^G\cong D$ is a factor,
+\begin{equation}\label{eq:index}
+\bigl[\Msym:\Msym^{G}\bigr]_0=|G|=|\Xi_\beta|,
+\qquad
+\Msym^{G}{}'\cap\Msym=Z(\Msym)\cong\C^{|G|},
+\end{equation}
+the index being realized by $E(x)=|G|^{-1}\sum_{g}\theta_g(x)$; and the intermediate von
+Neumann algebras are exactly the $D\otimes\ell^\infty(G/\mathcal P)$, $\mathcal P$ a
+partition of $G$, so $\Lat(\Msym^G\subset\Msym)$ is the partition lattice of $G$. The
+subgroup lattice of $G$ embeds in it, order-reversingly, by $H\mapsto\Msym^H$, which
+corresponds to the partition of $G$ into cosets of $H$; for $|G|\ge3$ the embedding is
+proper.
+\end{theorem}
+
+\begin{proof}
+$G$ permutes the summands of \eqref{eq:central} simply transitively, so an invariant element
+is determined by one component and $\Msym^G\cong D$ embedded diagonally via the $\theta_g$,
+which is \eqref{eq:trivialincl}. In \eqref{eq:trivialincl} the averaging map is
+$D\otimes E_0$ with $E_0$ the uniform state on $\ell^\infty(G)$, whose Pimsner--Popa index
+is $|G|$; any other expectation is $D\otimes E_\mu$ with $\mu$ a faithful probability on
+$G$ and index $\max_g\mu(g)^{-1}\ge|G|$, so the Kosaki--Longo index is $|G|$. An element of
+$\Msym$ commuting with the diagonal copy of the factor $D$ is scalar in each summand, giving
+$\C^{|G|}$. By the Ge--Kadison splitting theorem \cite{GK}, every von Neumann algebra
+between $D\otimes1$ and $D\otimes\ell^\infty(G)$ is $D\otimes B$ for a von Neumann
+subalgebra $B\subseteq\ell^\infty(G)$, and the unital subalgebras of $\ell^\infty(G)$ are the
+$\ell^\infty(G/\mathcal P)$. The $H$-invariant elements are those constant on the
+$H$-orbits, i.e.\ on the cosets of $H$; the partition $\{1\},\ G\setminus\{1\}$ of a group of
+order $\ge3$ is not a coset partition.
+\end{proof}
+
+\begin{remark}[Not a subfactor invariant]\label{rem:nostandard}
+The inclusion \eqref{eq:trivialincl} is the trivial inclusion of the factor $D$ tensored
+with $\C\subseteq\ell^\infty(G)$: its Jones tower is $D\otimes(\C\subseteq\ell^\infty(G)\subseteq
+M_{|G|}(\C)\subseteq\cdots)$, and its intermediate algebras are governed by partitions rather
+than by subgroups. It is therefore \emph{not} of the form $M^G\subset M$ for an outer action
+on a factor, and it carries no fusion category of bimodules beyond the data of the finite set
+$G$. The arithmetic content of the symmetry breaking is entirely in the number $|\Xi_\beta|$
+and in the way $G_S$ permutes the summands; this is what Corollary~\ref{cor:staircase}
+quantifies. Along a cascade with $\Xi_\beta\cong(\Z/2\Z)^{A_\beta}$ \cite[Prop.~4.16]{Main},
+crossing a threshold $\beta_n$ doubles the number of summands and doubles the index.
+\end{remark}
+
+\begin{lemma}[Relative entropy of the phases]\label{lem:relent}
+With the notation of Lemma~\ref{lem:central}, and $\Ent$ the relative entropy,
+\[
+\Ent\bigl(\omega_{\varphi_\varepsilon}\,\big\|\,\omega_{\phisym}\bigr)=\log|G| ,
+\]
+and the whole value is carried by the centre: the contribution of each summand
+$M_\varepsilon$ vanishes. For $\varepsilon\ne\varepsilon'$ one has
+$\Ent(\omega_{\varphi_\varepsilon}\|\omega_{\varphi_{\varepsilon'}})=+\infty$.
+\end{lemma}
+
+\begin{proof}
+For a direct sum $M=\bigoplus_iM_i$ with normal states $\omega=\bigoplus\lambda_i\omega_i$
+and $\psi=\bigoplus\mu_i\psi_i$,
+\[
+\Ent(\omega\|\psi)=\sum_i\lambda_i\log\frac{\lambda_i}{\mu_i}+\sum_i\lambda_i\,\Ent(\omega_i\|\psi_i),
+\]
+with the conventions $0\log0=0$ and $\lambda\log(\lambda/0)=+\infty$ for $\lambda>0$. Apply
+this to \eqref{eq:central} with $\lambda=\delta_\varepsilon$ and $\mu_\delta=|G|^{-1}$ for
+every $\delta$, which is Lemma~\ref{lem:central}. On the summand $\varepsilon$ the two
+states induce the \emph{same} normal state of $M_\varepsilon$, so that term vanishes; on the
+others $\lambda_\delta=0$. Hence $\Ent=\log|G|$ and the second sum is identically zero,
+which is the assertion that the relative entropy is purely central. For
+$\varepsilon\ne\varepsilon'$ the two states are supported on orthogonal central projections
+and the first sum is $\log(1/0)=+\infty$.
+\end{proof}
+
+\begin{corollary}[Index staircase equals information staircase]\label{cor:staircase}
+\[
+\log\bigl[\Msym:\Msym^G\bigr]_0=|A_\beta|\log2=\Ent\bigl(\omega_{\varphi_\varepsilon}\big\|\,\omega_{\phisym}\bigr),
+\]
+by \eqref{eq:index} and Lemma~\ref{lem:relent}. The subfactor index and the relative
+entropy are the same staircase.
+
+The coincidence is not an accident, but neither is it deep: both sides count phases. The
+index of $\Msym^G\subset\Msym$ is the number $|G|$ of extremal $\mathrm{KMS}_\beta$ states,
+by \eqref{eq:trivialincl}; and the relative entropy of one extremal state against the
+uniform mixture of $|G|$ mutually singular states is $\log|G|$, the information needed to
+name which phase one is in. Each threshold $\beta_n$ doubles the number of phases, so each
+adds $\log2$ to both quantities. What the identity does say is that the operator-algebraic
+and the information-theoretic bookkeeping of the symmetry breaking agree exactly, with no
+correction term from the type $\mathrm{III}$ structure --- a point made independently in
+Lemma~\ref{lem:relent}, where the relative entropy is shown to be purely central.
+\end{corollary}
+
+\section{The control experiment: restoring the additive part}\label{sec:affine}
+
+To confirm that Lemma~\ref{lem:single} is the cause of \S\S2--5, we restore the missing
+ingredient.
+
+\begin{remark}[The additive group is $\cO_K$]\label{rem:additive}
+The ring of $S$-integers $\cO_{K,S}$ inverts the primes of $S$, so its elements have poles
+at $S$ and it is not contained in $\hO_S$. The correct additive part is $\cO_K$, dense in
+$\hO_S$ by the Chinese remainder theorem. We let $J_S$ act on $\hO_S$ through a fixed choice
+of uniformizers $\pi_\pp\in K_\pp$, $\aaa=\prod\pp^{a_\pp}$ acting by
+$x\mapsto\pi_\aaa x$ with $(\pi_\aaa x)_\pp=\pi_\pp^{a_\pp}x_\pp$, and set
+$\cA^{\mathrm{aff}}_{K,S}=C(\hO_S)\rtimes(\cO_K\rtimes J_S)$, the semigroup crossed product
+by the maps $x\mapsto\pi_\aaa x+b$. Over $\Q$ the choice $\pi_\ell=\ell$ is canonical; in
+general everything below holds for every choice. (Without the additive part, the choice is
+absorbed by the $G_S$-coordinate of $Y_S$; with it, the algebra is that of Cuntz--Li
+\cite{CL} and Cuntz--Deninger--Laca \cite{CDL} localized at $S$.)
+\end{remark}
+
+\begin{lemma}[Finite covers]\label{lem:cover}
+For every $\pp\in S$, $\hO_S=\bigsqcup_{a\in\cO_K/\pp}(a+\pp\hO_S)$, a partition into
+$\Ns\pp$ clopen sets. The isometries $\mu_{(a,\pp)}$ therefore have mutually orthogonal
+ranges and satisfy the Cuntz relation
+\begin{equation}\label{eq:cuntz}
+\sum_{a\in\cO_K/\pp}\mu_{(a,\pp)}\mu_{(a,\pp)}^*=1 ,
+\end{equation}
+and the tight spectrum is all of $\hO_S$: no collapse occurs, and
+$\cA^{\mathrm{aff}}_{K,S}$ is its own boundary quotient, $\partial\cA^{\mathrm{aff}}_{K,S}=\cA^{\mathrm{aff}}_{K,S}$.
+\end{lemma}
+
+\begin{proof}
+$\pp\hO_S$ is open of index $\Ns\pp$ and $\cO_K$ surjects onto $\hO_S/\pp\hO_S$ by density.
+The cover is finite, so the tight relations of Exel \cite{Exel} impose equality rather
+than the nested inequality of Lemma~\ref{lem:single}; and \eqref{eq:cuntz} already holds in
+$\cA^{\mathrm{aff}}_{K,S}$, since the Stacey covariance gives
+$\mu_{(a,\pp)}\mu_{(a,\pp)}^*=\mathbf 1_{a+\pp\hO_S}$.
+\end{proof}
+
+\begin{theorem}[Kirchberg boundary]\label{thm:kirchberg}
+The action of $\cO_K\rtimes J_S$ on $\hO_S$ is minimal and topologically free, and
+$\partial\cA^{\mathrm{aff}}_{K,S}$ is a unital separable nuclear simple purely infinite
+$C^*$-algebra satisfying the UCT.
+\end{theorem}
+
+\begin{proof}
+Minimality: $\cO_K$ is dense and acts by translations, so every orbit is dense.
+Topological freeness: a nontrivial $(b,\aaa)$ with $\aaa=1$ is a nontrivial translation of a
+group, hence fixed-point free. For $\aaa\ne1$ the fixed points satisfy $(1-\pi_\aaa)x=b$
+componentwise: at $\pp\in\operatorname{supp}\aaa$ the element $1-\pi_\pp^{a_\pp}$ is a unit,
+so $x_\pp$ is determined; at $\pp\notin\operatorname{supp}\aaa$ the equation reads $0=b$ in
+$\cO_\pp$, which forces $b=0$. So the fixed-point set is empty, or a single point, or (for
+$b=0$) the set $\{x:x_\pp=0\ \forall\pp\in\operatorname{supp}\aaa\}$; in every case it is closed
+with empty interior. The union over the countable semigroup is meagre, hence has empty
+interior. The groupoid of germs is \'etale, Hausdorff and amenable, being that of a partial
+action of the amenable group $K\rtimes I_S$; minimality and topological freeness give
+simplicity \cite{BCFS}. It is locally contracting: a basic clopen set
+$V=\{x:x_\qq\in a_\qq+\qq^{n_\qq}\cO_\qq,\ \qq\in F\}$ is mapped by $x\mapsto\pi_\pp x+c$,
+$\pp\in F$ and $c\in\cO_K$ chosen by the Chinese remainder theorem with
+$c\equiv(1-\pi_\pp)a_\pp\pmod{\pp^{n_\pp}}$ and $c\equiv0\pmod{\qq^{n_\qq}}$ for $\qq\ne\pp$,
+onto a clopen proper subset of $V$. Hence $\cA^{\mathrm{aff}}_{K,S}$ is purely infinite by
+Anantharaman-Delaroche \cite{AD}. Nuclearity and the UCT follow from amenability.
+\end{proof}
+
+\begin{theorem}[The unit class says little even here]\label{thm:unit}
+In $K_0(\partial\cA^{\mathrm{aff}}_{K,S})$ one has $(\Ns\pp-1)[1]=0$ for every $\pp\in S$,
+so the order of $[1]$ divides $d_S=\gcd_{\pp\in S}(\Ns\pp-1)$. In particular $[1]=0$ whenever
+$d_S=1$, which holds as soon as $S$ contains a prime of norm $2$, or two primes with
+$\gcd(\Ns\pp-1,\Ns\qq-1)=1$.
+\end{theorem}
+
+\begin{proof}
+Each $\mu_{(a,\pp)}$ is an isometry, so $[\mu\mu^*]=[1]$; applying $K_0$ to \eqref{eq:cuntz}
+gives $[1]=\Ns\pp[1]$.
+\end{proof}
+
+\begin{proposition}[The Cuntz relation pins the temperature]\label{prop:betaone}
+For the dynamics $\sigma_t(\mu_{(b,\aaa)})=\Ns\aaa^{it}\mu_{(b,\aaa)}$ on
+$\cA^{\mathrm{aff}}_{K,S}$, a $\mathrm{KMS}_\beta$ state exists only for $\beta=1$.
+\end{proposition}
+
+\begin{proof}
+For a $\mathrm{KMS}_\beta$ state $\varphi$ and any of the $\Ns\pp$ isometries in
+\eqref{eq:cuntz}, the KMS condition gives
+$\varphi(\mu\mu^*)=\varphi(\mu^*\sigma_{i\beta}(\mu))=\Ns\pp^{-\beta}\varphi(\mu^*\mu)=\Ns\pp^{-\beta}$;
+summing \eqref{eq:cuntz} gives $1=\Ns\pp^{1-\beta}$, so $\beta=1$.
+\end{proof}
+
+\begin{example}
+Over $\Q$: $S=\{3\}$ gives $d_S=2$; $S=\{3,5\}$ gives $\gcd(2,4)=2$; $S=\{7,13\}$ gives
+$\gcd(6,12)=6$; but any $S$ containing $2$ gives $d_S=1$ and $[1]=0$. A single small prime
+erases the invariant.
+\end{example}
+
+\begin{remark}[Two behaviours of the unit class]\label{rem:twounits}
+Theorems \ref{thm:Kboundary} and \ref{thm:unit} exhibit opposite behaviours of $[1]$, and
+the contrast is instructive.
+
+In the multiplicative boundary, $K_0=\Lambda^{\mathrm{ev}}(I_S^0)$ is torsion-free and
+$[1]=h^+_S\,e_0$ is a nonzero element of divisibility exactly $h^+_S$: the narrow class
+number is stored in \emph{how divisible} the unit is. In the affine boundary the Cuntz
+relation forces $[1]=\Ns\pp\,[1]$, so $[1]$ is a torsion element of order dividing
+$\gcd_\pp(\Ns\pp-1)$ and is usually zero. The mechanism is already visible for the Cuntz
+algebra $\cO_n$, where $K_0=\Z/(n-1)$ is generated by $[1]$; taking several primes replaces
+$n-1$ by a greatest common divisor, and a single prime of norm $2$ collapses it.
+
+So the two systems store arithmetic in $[1]$ in incompatible ways, and only the
+multiplicative one does so usefully. This is a rare instance in which the nested range
+projections of Lemma~\ref{lem:single} are an advantage: they leave $K_0$ torsion-free, and a
+torsion-free group can record an integer by divisibility, which a group killed by
+$\gcd_\pp(\Ns\pp-1)$ cannot. We have not computed the ambient groups
+$K_*(\partial\cA^{\mathrm{aff}}_{K,S})$ and make no claim about them beyond
+Theorem~\ref{thm:unit}.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Feature} & \cA_{K,S}\ (\text{multiplicative}) & \cA^{\mathrm{aff}}_{K,S}\ (\text{affine})\\\hline
+\text{isometries per }\pp & 1 & \Ns\pp\\
+\text{range projections} & \text{nested} & \text{partitioning}\\
+\text{tight relation} & \mu_\pp\ \text{unitary} & \text{Cuntz}\\
+\text{boundary space} & \Cl^+_S,\ \text{finite} & \hO_S,\ \text{a Cantor group}\\
+\text{boundary algebra} & M_{h^+_S}(C^*(I_S^0)),\ \text{type }\mathrm I & \text{Kirchberg (the algebra itself)}\\
+\text{trace on the boundary} & \text{faithful} & \text{none}\\
+{[1]}\ \text{records} & h^+_S & \text{order}\mid\gcd(\Ns\pp-1)
+\end{array}
+\]
+
+Everything in the left column follows from Lemma~\ref{lem:single}, and the right column
+confirms by contrast that the additive cosets are the cause. The same dichotomy governs the
+admissible inverse temperatures --- the Cuntz relation forces $\beta=1$ on the affine
+system (Proposition~\ref{prop:betaone}), whereas the multiplicative system has
+$\mathrm{KMS}_\beta$ states for every $\beta>0$ \cite[Thm.~3.6]{Main} --- and the free
+variant treated in Paper V of the series, where orthogonal ranges again restrict $\beta$.
+
+Four questions remain. We have computed $K_*(\cA_{K,S})$ only for a single prime, and
+$K_*(\cA^{\mathrm{aff}}_{K,S})$ not at all; by Theorem~\ref{thm:kirchberg} the triple
+$(K_0,[1],K_1)$ is a complete invariant of the affine algebra and by Theorem~\ref{thm:unit}
+the middle entry is usually trivial, so the content lies in the groups. When
+$\cO^\times_{K,+}$ is infinite, whether some proper stratum carries nontrivial isotropy
+(Remark~\ref{rem:leopoldt}) --- a Leopoldt-type closure question --- and hence contributes
+further ideals of the kind seen in Theorem~\ref{thm:principal}(2), is open. Whether the
+infinite index of Theorem~\ref{thm:infinite} persists at the non-symmetric extremal states
+(Remark~\ref{rem:scope}), and whether these inclusions are discrete in the sense of
+Izumi--Longo--Popa \cite{ILP} or admit a continuous decomposition matching the diffuse
+relative commutant, is open. Finally, the lattice of intermediate subfactors
+\cite{Watatani} of the symmetry-breaking inclusion is the partition lattice of
+$\widehat{\Xi_\beta}$ (Theorem~\ref{thm:finite}), which remembers $\Xi_\beta$ only as a finite
+set; it distinguishes neither $K$ nor $S$ nor the thresholds, and the question of which
+invariant does is taken up in Paper III of the series.
+
+It is worth saying plainly why the blindness recorded in Remark~\ref{rem:noarith} is not a
+computational accident. By Propositions \ref{prop:K} and \ref{prop:Kfinite} the passage
+from $C(Y_S)$ to $\cA_{K,S}$ is, on the image of $K^0(Y_S)$ in $K_0$, the passage to the
+coinvariants of $\alpha_*$, and a functional survives that quotient exactly when it is
+$\alpha_*$-invariant. The arithmetically
+meaningful functionals are the $\mathrm{KMS}_\beta$ measures, which by
+\cite[Prop.~2.8]{Main} are eigenvectors,
+$\omega\circ\alpha_{\pp*}=\Ns\pp^{-\beta}\omega$, with eigenvalue $\ne1$ for $\beta\ne0$.
+Passing to the coinvariants therefore \emph{annihilates precisely the covariant vectors that
+carry the arithmetic}, by construction rather than by accident. The same mechanism in its
+measure-theoretic form is, we expect, the reason $\Xi_\beta$ is an
+invariant of a measure class rather than of a $C^*$-algebra: any functor that forgets
+$\alpha_*$, or that forces it to act as the identity, loses it.
+
+\begin{thebibliography}{9}
+\bibitem{AD} C. Anantharaman-Delaroche, \emph{Purely infinite $C^*$-algebras arising from dynamical systems}, Bull. Soc. Math. France 125 (1997), 199--225.
+\bibitem{BCFS} J. Brown, L. O. Clark, C. Farthing, A. Sims, \emph{Simplicity of algebras associated to \'etale groupoids}, Semigroup Forum 88 (2014), 433--452.
+\bibitem{CDL} J. Cuntz, C. Deninger, M. Laca, \emph{$C^*$-algebras of Toeplitz type associated with algebraic number fields}, Math. Ann. 355 (2013), 1383--1423.
+\bibitem{CL} J. Cuntz, X. Li, \emph{The regular $C^*$-algebra of an integral domain}, in: Quanta of Maths, Clay Math. Proc. 11, AMS, 2010, 149--170.
+\bibitem{Exel} R. Exel, \emph{Inverse semigroups and combinatorial $C^*$-algebras}, Bull. Braz. Math. Soc. 39 (2008), 191--313.
+\bibitem{GK} L. Ge, R. Kadison, \emph{On tensor products of von Neumann algebras}, Invent. Math. 123 (1996), 453--466.
+\bibitem{Green} P. Green, \emph{The local structure of twisted covariance algebras}, Acta Math. 140 (1978), 191--250.
+\bibitem{ILP} M. Izumi, R. Longo, S. Popa, \emph{A Galois correspondence for compact groups of automorphisms of von Neumann algebras}, J. Funct. Anal. 155 (1998), 25--63.
+\bibitem{Kasparov} G. G. Kasparov, \emph{Equivariant $KK$-theory and the Novikov conjecture}, Invent. Math. 91 (1988), 147--201.
+\bibitem{Katsura} T. Katsura, \emph{On $C^*$-algebras associated with $C^*$-correspondences}, J. Funct. Anal. 217 (2004), 366--401.
+\bibitem{Kosaki} H. Kosaki, \emph{Extension of Jones' theory on index to arbitrary factors}, J. Funct. Anal. 66 (1986), 123--140.
+\bibitem{Laca} M. Laca, \emph{From endomorphisms to automorphisms and back: dilations and full corners}, J. London Math. Soc. (2) 61 (2000), 893--904.
+\bibitem{Longo} R. Longo, \emph{Index of subfactors and statistics of quantum fields I}, Comm. Math. Phys. 126 (1989), 217--247.
+\bibitem{Pimsner} M. V. Pimsner, \emph{A class of $C^*$-algebras generalizing both Cuntz--Krieger algebras and crossed products by $\Z$}, in: Free Probability Theory, Fields Inst. Commun. 12, AMS, 1997, 189--212.
+\bibitem{PV} M. Pimsner, D. Voiculescu, \emph{Exact sequences for $K$-groups and $\mathrm{Ext}$-groups of certain cross-product $C^*$-algebras}, J. Operator Theory 4 (1980), no.~1, 93--118.
+\bibitem{PP} M. Pimsner, S. Popa, \emph{Entropy and index for subfactors}, Ann. Sci. \'Ec. Norm. Sup. (4) 19 (1986), 57--106.
+\bibitem{Renault} J. Renault, \emph{The ideal structure of groupoid crossed product $C^*$-algebras}, J. Operator Theory 25 (1991), 3--36.
+\bibitem{Renault08} J. Renault, \emph{Cartan subalgebras in $C^*$-algebras}, Irish Math. Soc. Bull. 61 (2008), 29--63.
+\bibitem{Takesaki} M. Takesaki, \emph{Conditional expectations in von Neumann algebras}, J. Funct. Anal. 9 (1972), 306--321.
+\bibitem{Watatani} Y. Watatani, \emph{Lattices of intermediate subfactors}, J. Funct. Anal. 140 (1996), 312--334.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems: from Chebotarev density to the Hardy--Littlewood conjecture}, preprint, 2026, DOI \href{https://doi.org/10.5281/zenodo.22152101}{10.5281/zenodo.22152101}.
+\end{thebibliography}
+
+\end{document}
