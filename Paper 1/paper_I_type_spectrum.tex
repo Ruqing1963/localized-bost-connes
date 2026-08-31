@@ -1,0 +1,940 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\Ent}{\mathrm{S}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\mm}{\mathfrak{m}}
+\newcommand{\hZ}{\widehat{\mathbb{Z}}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\Xiext}{\Xi^{\mathrm{ext}}_\beta}
+\newcommand{\nusym}{\nu_{\mathrm{sym}}}
+\newcommand{\dw}{\mathfrak{d}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+\hypersetup{pdftitle={Localized Bost-Connes systems I: factor type and the spectrum of transitions},pdfauthor={Ruqing Chen}}
+
+\title[Factor type and the spectrum of transitions]{Localized Bost--Connes systems I:\\ factor type and the spectrum of transitions}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{DOI: \href{https://doi.org/10.5281/zenodo.22160827}{10.5281/zenodo.22160827}.
+Sources, code and data:\newline\url{https://github.com/Ruqing1963/localized-bost-connes}
+(this paper: \texttt{papers/I-type-spectrum/}).}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+The obstruction group $\Xi_\beta(K,S)$ of \cite{Main} classifies the $\mathrm{KMS}_\beta$
+simplex. We show that it is the $s=0$ slice of a single larger object, the \emph{extended
+obstruction group}
+\[
+\Xiext(K,S)=\Bigl\{(\chi,s)\in\widehat{G_S}\times\R:\ \sum_{\pp\in S}\Ns\pp^{-\beta}\bigl|1-\chi(\sigma_\pp)\Ns\pp^{\,i\beta s}\bigr|^2<\infty\Bigr\},
+\]
+whose slices $s\ne0$ control the Murray--von Neumann--Connes type of the associated
+factors from above: the essential values of the Radon--Nikodym cocycle annihilate
+$\Sigma_\beta=\mathrm{pr}_\R\Xiext$, so $\Sigma_\beta\ne\{0\}$ excludes type
+$\mathrm{III}_1$, a dense $\Sigma_\beta$ forces $\mathrm{III}_0$, and $\Sigma_\beta=c\Z$
+forces $\mathrm{III}_{\lambda^k}$ with $\lambda=e^{-2\pi/c}$ or $\mathrm{III}_0$; moreover
+$\Sigma_\beta$ lies in the point spectrum of the flow of weights. Matching lower bounds come
+from a direct construction of essential values in the manner of Araki and Woods. The phase
+classification and the type classification are thus two coordinate slices of one
+Dirichlet-series condition. For $S=P_K$ and $\beta=1$ both reduce to the non-vanishing of Hecke $L$-functions
+on $\operatorname{Re}=1$: the $s=0$ slice is $L(1,\chi)\ne0$ and the $s\ne0$ slices are
+$L(1-i\tau,\chi)\ne0$.
+
+Two consequences are perhaps unexpected. First, the natural sufficient condition for type
+$\mathrm{III}_1$ --- that two primes have irrationally related log-norms --- is false: two
+primes contribute a finite amount to a divergent series. We exhibit $S\subset P_\Q$ with
+$\zeta_S(1)=\infty$, a \emph{unique} $\mathrm{KMS}_1$ state, and factors of pure type
+$\mathrm{III}_{e^{-1}}$; uniqueness of the KMS state and type $\mathrm{III}_1$ are logically
+independent. Second, for infinite $S$ the log-norms are never pairwise commensurable, so any
+failure of $\mathrm{III}_1$ comes from \emph{approximate} commensurability along a set of
+divergent $\beta$-weight.
+
+In the horizontal direction we determine which chains $\{\Xi_\beta\}_{\beta>0}$ occur. For
+every sequence $(\beta_n)\subset(0,1)$ there is $S$ with $\beta_c(S)=1$, dense parameter
+subgroup, and $\Xi_\beta=\bigoplus_{n:\beta_n<\beta}\Z/2\Z$; taking $(\beta_n)$ dense in
+$(0,1)$ gives countably many dense transitions, and taking it dense in a Cantor set $\cC$
+makes the non-local-constancy locus exactly $\cC$. The continuous devil's staircase, however,
+is unattainable for a structural reason: $\widehat{G_S}$ is countable for every $S$, so the
+jump set is countable and every order parameter is a pure jump function. It is approachable
+in the uniform norm and not attained.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction: one group, two directions}
+
+We use the notation of \cite{Main}: $\cA_{K,S}=C(Y_S)\rtimes J_S$ with
+$\sigma_t(\mu_\aaa)=\Ns\aaa^{it}\mu_\aaa$, symmetry group $G_S$, parameter homomorphism
+$\sigma:I_S\to G_S$, and
+\begin{equation}\label{eq:Xi}
+\Xi_\beta(K,S)=\Bigl\{\chi\in\widehat{G_S}:\ \sum_{\pp\in S}\Ns\pp^{-\beta}\bigl|1-\chi(\sigma_\pp)\bigr|^2<\infty\Bigr\},
+\end{equation}
+the $\mathrm{KMS}_\beta$ simplex being $\Prob\bigl(G_S/\Xi_\beta^\perp\bigr)$. Write
+$\cR_S$ for the tail equivalence relation on $V=\Z_{\ge0}^S$ and $\pi_\beta$ for the forced
+product measure \cite[Lem.~2.10]{Main}.
+
+\emph{The series.} The foundational paper is \cite{Main}. The present paper is the first
+of a series continuing it; the later papers, in preparation, treat the ideal structure and
+boundary quotient, the invariants that see $\Xi_\beta$ and those that do not, the metric
+geometry, and the free variant. Nothing here depends on them.
+
+The phase diagram of $\cA_{K,S}$ has two directions. Horizontally one asks which
+$\beta$ are transition points, i.e.\ how the chain $\{\Xi_\beta\}$ grows; vertically one asks
+what the factors at a given $\beta$ are. Definition~\ref{def:Xiext} shows the two questions
+are slices of one object, and the rest of the paper answers both --- the second one
+partly: the object bounds the type from above, and the bound is matched by direct
+constructions in the cases treated.
+
+\begin{definition}\label{def:Xiext}
+The \emph{extended obstruction group} is
+\begin{equation}\label{eq:Xiext}
+\Xiext(K,S)=\Bigl\{(\chi,s)\in\widehat{G_S}\times\R:\
+\sum_{\pp\in S}\Ns\pp^{-\beta}\bigl|1-\chi(\sigma_\pp)\,\Ns\pp^{\,i\beta s}\bigr|^2<\infty\Bigr\},
+\end{equation}
+a subgroup of $\widehat{G_S}\times\R$, and $\Sigma_\beta:=\mathrm{pr}_\R(\Xiext)\le\R$.
+\end{definition}
+
+That $\Xiext$ is a subgroup follows as in \cite[Lem.~3.5]{Main} from
+$|1-z_1z_2|\le|1-z_1|+|1-z_2|$ for $|z_i|=1$; and $\Xi_\beta=\Xiext\cap(\widehat{G_S}\times\{0\})$.
+
+\section{The type criterion}\label{sec:type}
+
+Let $\beta>0$ with $\zeta_{K,S}(\beta)=\infty$, let $\varphi$ be an extremal
+$\mathrm{KMS}_\beta$ state and $M=\pi_\varphi(\cA_{K,S})''$. By \cite[Prop.~2.8 and
+Lem.~2.10]{Main}, $\varphi$ is given by a probability measure $\nu$ on $Y=V\times G_S$ whose
+$V$-marginal is $\pi_\beta$, and $M$ is the von Neumann algebra of the orbit equivalence
+relation $\cR$ on $(Y,\nu)$ generated by the maps $(v,h)\mapsto(v+e_\pp,\sigma_\pp h)$,
+$\pp\in S$. The Radon--Nikodym cocycle of $\cR$ is
+\begin{equation}\label{eq:rho}
+\rho\bigl(y,\aaa\bb^{-1}\cdot y\bigr)=\log\frac{d\nu\circ(\aaa\bb^{-1})}{d\nu}(y)
+=-\beta\log\frac{\Ns\aaa}{\Ns\bb},
+\end{equation}
+and we write $E\subseteq\R$ for its group of finite essential values in the sense of
+\cite{Schmidt}: $u\in E$ iff for every $B\subseteq Y$ with $\nu(B)>0$ and every
+$\varepsilon>0$ there is a partial transformation $T$ of $\cR$ with
+$\nu(B\cap T^{-1}B)>0$ and $|\rho(y,Ty)-u|<\varepsilon$ on its domain. $E$ is a closed
+subgroup of $\R$ \cite{Schmidt}, $M$ is a factor of type $\mathrm{III}$
+\cite[Prop.~6.1]{Main}, and by Krieger's theorem \cite{Krieger} the Connes invariant is
+\begin{equation}\label{eq:SM}
+S(M)=\{0\}\cup\exp(E),
+\end{equation}
+so that $M$ is of type $\mathrm{III}_1$, $\mathrm{III}_\lambda$ or $\mathrm{III}_0$
+according as $E=\R$, $E=(\log\lambda)\Z$ with $0<\lambda<1$, or $E=\{0\}$ \cite{Connes73}.
+Everything in this section is a computation of $E$.
+
+\begin{lemma}[Coboundary dictionary]\label{lem:dict}
+Let $(\chi,s)\in\widehat{G_S}\times\R$ and $c_\pp=\chi(\sigma_\pp)\Ns\pp^{\,i\beta s}$. The
+following are equivalent:
+\begin{enumerate}
+\item there is a measurable $g:V\to\T$ with $g(v+e_\pp)=c_\pp\,g(v)$ for $\pi_\beta$-a.e.\
+$v$, for every $\pp\in S$;
+\item $(\chi,s)\in\Xiext$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Propositions 3.3 and 3.4 of \cite{Main} prove exactly this equivalence for
+$c_\pp=\overline{\chi(\sigma_\pp)}$, and their proofs use only that $|c_\pp|=1$, that the
+coordinates $v_\pp$ are independent under $\pi_\beta$ with $\pi_\beta(v_\pp=k)=(1-t_\pp)t_\pp^k$,
+$t_\pp=\Ns\pp^{-\beta}$, and the estimate $1-|m_\pp|^2\asymp t_\pp|1-c_\pp|^2$ of
+\cite[Lem.~3.2]{Main} for $m_\pp=(1-t_\pp)/(1-c_\pp t_\pp)$, which holds for every unimodular
+$c_\pp$. (Conjugating $g$ replaces $c_\pp$ by $\overline{c_\pp}$, and
+$|1-c_\pp|=|1-\overline{c_\pp}|$.)
+\end{proof}
+
+\begin{proposition}[The extended group bounds the type]\label{prop:bound}
+Put $\Sigma_\beta^\vee=\{u\in\R:\ su\in2\pi\Z\ \text{for all}\ s\in\Sigma_\beta\}$. Then
+$E\subseteq\Sigma_\beta^\vee$. Consequently:
+\begin{enumerate}
+\item if $\Sigma_\beta\ne\{0\}$, then $M$ is not of type $\mathrm{III}_1$;
+\item if $\Sigma_\beta$ is dense in $\R$, then $M$ is of type $\mathrm{III}_0$;
+\item if $\Sigma_\beta=c\Z$ with $c>0$, then $M$ is of type $\mathrm{III}_{\lambda^k}$ for
+some integer $k\ge1$, where $\lambda=e^{-2\pi/c}$, or of type $\mathrm{III}_0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Let $(\chi,s)\in\Xiext$, let $g$ be as in Lemma~\ref{lem:dict}, and put
+$G(v,h)=g(v)\overline{\chi(h)}$, a unimodular measurable function on $Y$. For $\aaa\in J_S$,
+\[
+G(v+a,\sigma_\aaa h)=\chi(\sigma_\aaa)\Ns\aaa^{\,i\beta s}g(v)\,\overline{\chi(\sigma_\aaa)}\,\overline{\chi(h)}
+=\Ns\aaa^{\,i\beta s}\,G(v,h),
+\]
+so by \eqref{eq:rho} the $\T$-valued cocycle $e^{-is\rho}$ on $\cR$ is the coboundary
+$e^{-is\rho(y,y')}=G(y')/G(y)$. A coboundary has no essential value other than $1$: if
+$|G-\gamma|<\delta$ on a set $B_\delta$ of positive measure, every pair $y,y'\in B_\delta$
+has $|G(y')/G(y)-1|<2\delta$. On the other hand, if $u\in E$ then $e^{-isu}$ is an essential
+value of $e^{-is\rho}$, since $|e^{-is\rho}-e^{-isu}|\le|s|\,|\rho-u|$. Hence
+$e^{-isu}=1$ for all $u\in E$ and all $s\in\Sigma_\beta$, i.e.\ $E\subseteq\Sigma_\beta^\vee$.
+
+(1) If $\Sigma_\beta\ne\{0\}$ then $\Sigma_\beta^\vee\ne\R$, so $E\ne\R$. (2) If $\Sigma_\beta$
+is dense then $\Sigma_\beta^\vee=\{0\}$, so $E=\{0\}$ and $S(M)=\{0,1\}$. (3) If
+$\Sigma_\beta=c\Z$ then $\Sigma_\beta^\vee=\frac{2\pi}{c}\Z$, and the closed subgroups of
+$\frac{2\pi}{c}\Z$ are $\{0\}$ and $\frac{2\pi k}{c}\Z$, $k\ge1$; by \eqref{eq:SM} these give
+$S(M)=\{0,1\}$ and $S(M)=\{0\}\cup(e^{-2\pi k/c})^{\Z}$ respectively.
+\end{proof}
+
+\begin{remark}[$\Sigma_\beta$ and the flow of weights]\label{rem:flow}
+The proof shows more. With $G$ as above, $\Psi(y,u)=G(y)e^{isu}$ is invariant under the
+Maharam extension $(y,u)\mapsto(y',u+\rho(y,y'))$ of $\cR$ \cite{Maharam} and satisfies
+$\Psi(y,u+t)=e^{ist}\Psi(y,u)$; so every $s\in\Sigma_\beta$ is an eigenvalue of the flow of
+weights of $M$, i.e.\ $\Sigma_\beta$ is contained in the point spectrum of that flow, which by
+Connes--Takesaki \cite{CT} is Connes' invariant $T(M)$. We shall not need the converse
+inclusion and do not prove it; it holds when the flow of weights has pure point spectrum,
+and in that case $\Sigma_\beta$ alone determines the type. Whether the flow of weights of
+$M$ always has pure point spectrum is not known to us, and this is why
+Proposition~\ref{prop:bound} is only an upper bound. Lower bounds are obtained by exhibiting
+essential values directly, which is the purpose of the next lemma.
+\end{remark}
+
+\begin{lemma}[Asymptotic pairs]\label{lem:pairs}
+Suppose $\Xi_\beta=\{1\}$, so that $\nu=\pi_\beta\otimes\mathrm{Haar}$ \cite[Thm.~3.6]{Main}.
+Let $u\in\R$ and let $(\aaa_j,\bb_j)_{j\ge1}$ be pairs of primes of $S$, all the primes
+$\aaa_j,\bb_j$ distinct, such that
+\[
+\beta\log\frac{\Ns\aaa_j}{\Ns\bb_j}\to u,\qquad
+g_j:=\sigma_{\bb_j}\sigma_{\aaa_j}^{-1}\to1\ \text{in}\ G_S,\qquad
+\sum_j\Ns\aaa_j^{-\beta}=\infty .
+\]
+Then $u\in E$.
+\end{lemma}
+
+\begin{proof}
+Write $t_\pp=\Ns\pp^{-\beta}$ and, for each $j$,
+$P_j=\{v_{\aaa_j}=1,\,v_{\bb_j}=0\}$, $Q_j=\{v_{\aaa_j}=0,\,v_{\bb_j}=1\}$, events of
+$\pi_\beta$-probability $p_j=(1-t_{\aaa_j})(1-t_{\bb_j})t_{\aaa_j}$ and
+$q_j=(1-t_{\aaa_j})(1-t_{\bb_j})t_{\bb_j}$. The events $P_j\cup Q_j$ are independent and
+$\sum_jp_j=\infty$; since $t_{\bb_j}/t_{\aaa_j}\to e^{u}$, there is $\theta>0$ with
+$p_j\ge\theta(p_j+q_j)$ for all large $j$. Fix $\varepsilon>0$ and $j_0$, and let $D$ be the
+set of $(v,h)$ such that some $j\ge j_0$ has $v\in P_j\cup Q_j$ and the least such $j$,
+denoted $j(v)$, has $v\in P_j$. Define
+\[
+T(v,h)=\bigl(v-e_{\aaa_j}+e_{\bb_j},\ g_jh\bigr),\qquad j=j(v),
+\]
+on $D$. The move changes only the coordinates $\aaa_j,\bb_j$, turning $P_j$ into $Q_j$, so
+$T$ is injective with image the set where the least $j\ge j_0$ with $v\in P_j\cup Q_j$ has
+$v\in Q_j$; $T$ is a partial transformation of $\cR$, being the map $\bb_j\aaa_j^{-1}$ on
+each piece $D_j=\{j(v)=j\}$, and by \eqref{eq:rho}, $\rho(y,Ty)=\beta\log(\Ns\aaa_j/\Ns\bb_j)$
+lies in $(u-\varepsilon,u+\varepsilon)$ once $j_0$ is large. Since the $D_j$ are disjoint
+and $\sum_j(p_j+q_j)=\infty$,
+\[
+\nu(D)=\sum_{j\ge j_0}p_j\prod_{j_0\le i<j}(1-p_i-q_i)
+\ \ge\ \theta\sum_{j\ge j_0}(p_j+q_j)\prod_{j_0\le i<j}(1-p_i-q_i)=\theta .
+\]
+
+Now let $\nu(B)>0$ and $0<\eta<1$. The sets measurable with respect to finitely many
+coordinates of $V$ together with the $G_S$-coordinate generate the $\sigma$-algebra of $Y$,
+so there are a finite $F\subset S$ and $A\in\sigma(v_\pp:\pp\in F)\otimes\mathcal B(G_S)$ with
+$\nu(A\,\triangle\,B)<\eta\,\nu(B)$. Translation in the second coordinate preserves $\nu$
+and is continuous in $L^1(\nu)$, so $\nu(A\,\triangle\,(1\times g)^{-1}A)\to0$ as $g\to1$.
+Choose $j_0$ so large that $\aaa_j,\bb_j\notin F$, $|\rho-u|<\varepsilon$ on $D_j$, and
+$\nu(A\,\triangle\,(1\times g_j)^{-1}A)<\eta\,\nu(B)$ for all $j\ge j_0$. For
+$(v,h)\in D_j$ the point $T(v,h)$ agrees with $(v,g_jh)$ on the coordinates in $F$, hence
+$D_j\cap A\cap(1\times g_j)^{-1}A\subseteq A\cap T^{-1}A$; the set $D_j$ depends only on
+the coordinates $\aaa_i,\bb_i$, $i\ge j_0$, so it is independent of
+$A\cap(1\times g_j)^{-1}A$, and
+\[
+\nu(A\cap T^{-1}A)\ \ge\ \sum_{j\ge j_0}\nu(D_j)\,\nu\bigl(A\cap(1\times g_j)^{-1}A\bigr)
+\ \ge\ \nu(D)\,\bigl(\nu(A)-\eta\nu(B)\bigr)\ \ge\ \theta(1-2\eta)\,\nu(B).
+\]
+Finally $d(\nu\circ T^{-1})/d\nu=e^{-\rho\circ T^{-1}}\le e^{|u|+\varepsilon}$ on $T(D)$, so
+\[
+\nu(B\cap T^{-1}B)\ \ge\ \nu(A\cap T^{-1}A)-\nu(A\triangle B)-\nu\bigl(T^{-1}(A\triangle B)\bigr)
+\ \ge\ \bigl(\theta(1-2\eta)-\eta-e^{|u|+\varepsilon}\eta\bigr)\nu(B)>0
+\]
+for $\eta$ small. As $B$ and $\varepsilon$ were arbitrary, $u\in E$.
+\end{proof}
+
+The lemma is the asymptotic-ratio-set argument of Araki and Woods \cite{AW} with the
+$G_S$-coordinate carried along; the hypothesis $g_j\to1$ is what makes that coordinate
+harmless. The restriction to $\Xi_\beta=\{1\}$ is one of convenience: it is the case needed
+below, and it is the case in which $\nu$ has the product form used in the last display.
+
+\section{The classical systems}\label{sec:classical}
+
+\begin{proposition}[The slices for $S=P_K$]\label{prop:slices}
+Let $S=P_K$ and $0<\beta\le1$. Then $\Xiext(K,S)=\{(1,0)\}$; in particular
+$\Sigma_\beta=\{0\}$.
+\end{proposition}
+
+\begin{proof}
+For $(\chi,s)$ put $\tau=\beta s$; since $|1-z|^2=2-2\operatorname{Re}z$ for $|z|=1$,
+\begin{equation}\label{eq:twosums}
+\sum_{\Ns\pp\le x}\Ns\pp^{-\beta}\bigl|1-\chi(\sigma_\pp)\Ns\pp^{\,i\tau}\bigr|^2
+=2\sum_{\Ns\pp\le x}\Ns\pp^{-\beta}-2\operatorname{Re}\sum_{\Ns\pp\le x}\chi(\sigma_\pp)\Ns\pp^{-\beta+i\tau},
+\end{equation}
+and it suffices to show that for $(\chi,\tau)\ne(1,0)$ the second sum is $o$ of the first.
+A character of $G_{P_K}=\Gal(K^{ab}/K)$ is a ray class character, and by
+\cite[Lem.~3.8]{Main} $\chi(\sigma_\pp)=\overline{\chi(\Frob_\pp)}$ off the conductor. For
+$\beta=1$ the series $\sum_\pp\chi(\sigma_\pp)\Ns\pp^{-1+i\tau}$ differs from
+$\log L(1-i\tau,\bar\chi)$ by an absolutely convergent sum over prime powers, and
+$L(1-i\tau,\bar\chi)$ is finite --- the only pole of a Hecke $L$-function on
+$\operatorname{Re}=1$ being the simple pole of $\zeta_K$ at $s=1$, excluded --- and nonzero
+by the theorem of Hecke and Landau \cite{Hecke,Landau}. So the second sum is $O(1)$ while
+$\sum_{\Ns\pp\le x}\Ns\pp^{-1}\to\infty$. For $0<\beta<1$, partial summation from the prime
+ideal theorem in ray classes in the standard zero-free region \cite{Landau} gives
+$O_A\bigl(x^{1-\beta}\log^{-A}x\bigr)$ for the second sum against
+$\sum_{\Ns\pp\le x}\Ns\pp^{-\beta}\sim x^{1-\beta}/((1-\beta)\log x)$ for the first.
+\end{proof}
+
+\begin{theorem}[The classical systems are of type $\mathrm{III}_1$]\label{thm:classical}
+For $S=P_K$ and $0<\beta\le1$, $M$ is of type $\mathrm{III}_1$.
+\end{theorem}
+
+For $K=\Q$ this is due to Bost and Connes \cite{BC}, and in general to Laca, Larsen and
+Neshveyev \cite{LLN}; we include a proof because it is the model for the computation of
+\S\ref{sec:counter}.
+
+\begin{proof}
+$\Xi_\beta=\{1\}$ by \cite[Cor.~3.10]{Main}, so Lemma~\ref{lem:pairs} applies, and we must
+produce, for each $u\in\R$, pairs $(\aaa_j,\bb_j)$ with $\beta\log(\Ns\aaa_j/\Ns\bb_j)\to u$,
+$\sigma_{\bb_j}\sigma_{\aaa_j}^{-1}\to1$ in $\Gal(K^{ab}/K)$ and $\sum_j\Ns\aaa_j^{-\beta}=\infty$.
+Fix moduli $\mm_1\mid\mm_2\mid\cdots$ whose ray class fields exhaust $K^{ab}$
+\cite[Ch.~VI]{Neu}; for primes
+$\aaa,\bb$ in the same ray class modulo $\mm_k$ the element
+$\sigma_\bb\sigma_\aaa^{-1}=\Frob_\aaa\Frob_\bb^{-1}$ is trivial on the ray class field of
+$\mm_k$, so pairs chosen in a common class modulo $\mm_{k}$ with $k\to\infty$ satisfy
+$\sigma_{\bb_j}\sigma_{\aaa_j}^{-1}\to1$. By the prime ideal theorem in ray classes
+\cite{Landau}, for fixed $\mm$ and each class $\mathfrak c$ the number of primes
+$\pp\in\mathfrak c$ with $\Ns\pp\in(y,y(1+\delta)]$ is $\asymp_{\mm,\delta}y/\log y$ for
+$y\ge y_0(\mm,\delta)$. Let $r=e^{u/\beta}$. Use only every $N_0$-th $n$, with $N_0$ so large that the ranges
+$[2^n,2^{n+1})\cup r^{-1}[2^n,2^{n+1})$ of the blocks used are pairwise disjoint. Divide
+$[2^n,2^{n+1})$ into intervals $I=(y,y(1+\delta_n)]$ with $\delta_n\downarrow0$ slowly, and
+for each $I$ and each class
+$\mathfrak c$ modulo $\mm_{k_n}$, with $k_n\to\infty$ slowly enough that
+$2^n\ge y_0(\mm_{k_n},\delta_n)$, pair off primes of $\mathfrak c$ with norm in $I$ against
+primes of $\mathfrak c$ with norm in $r^{-1}I$, injectively and disjointly from earlier
+pairs; the pairs of different blocks are then disjoint. Each pair has
+$|\beta\log(\Ns\aaa/\Ns\bb)-u|\le2\beta\delta_n$, and the pairs with
+$\Ns\aaa\in[2^n,2^{n+1})$ number $\gg2^n/n$ (for large $n$, a positive proportion of the primes
+in $[2^n,2^{n+1})$ is used), so they contribute $\gg2^{n(1-\beta)}/n\ge1/n$ to
+$\sum_j\Ns\aaa_j^{-\beta}$, which diverges along the blocks used. Lemma~\ref{lem:pairs} gives $u\in E$
+for every $u$, so $E=\R$ and $M$ is of type $\mathrm{III}_1$ by \eqref{eq:SM}.
+\end{proof}
+
+\begin{remark}[Two slices of one analytic input]\label{rem:unify}
+At $\beta=1$ and $S=P_K$ the $s=0$ slice of $\Xiext$ is the uniqueness half of the classical
+theorem, equivalent by \cite[Rem.~3.11]{Main} to $L(1,\chi)\ne0$; the slices $s\ne0$ are
+governed, by Proposition~\ref{prop:slices}, by $L(1-i\tau,\chi)\ne0$, and their triviality
+is the necessary condition for type $\mathrm{III}_1$ of Proposition~\ref{prop:bound}(1).
+The classification of the phase and the type of the factor are thus the two coordinate
+slices of one obstruction group, and for the full prime set both are governed by the
+non-vanishing of Hecke $L$-functions on the line $\operatorname{Re}=1$. That the
+$s\ne0$ slices are trivial is, by Remark~\ref{rem:flow}, the statement that the flow of
+weights has no nonzero eigenvalue; that $M$ is $\mathrm{III}_1$, i.e.\ that the flow is
+trivial, needed the additional input of Lemma~\ref{lem:pairs}.
+\end{remark}
+
+\section{Two incommensurable norms do not suffice}\label{sec:counter}
+
+\begin{lemma}[No exact commensurability]\label{lem:noexact}
+Let $S$ be infinite. Then the numbers $\log\Ns\pp$, $\pp\in S$, are never pairwise
+commensurable.
+\end{lemma}
+
+\begin{proof}
+$\Ns\pp=p^{f_\pp}$ with $f_\pp\le[K:\Q]$, and only finitely many primes of $K$ lie above a
+given $p$, so an infinite $S$ meets infinitely many rational primes; and
+$\log p_1/\log p_2\notin\Q$ for distinct rational primes since $p_1^m=p_2^n$ forces $m=n=0$.
+\end{proof}
+
+So exact commensurability, which would put all the values of the Radon--Nikodym cocycle
+\eqref{eq:rho} in a lattice, never occurs for infinite $S$, and any failure of type
+$\mathrm{III}_1$ must come from \emph{approximate} commensurability. It does.
+
+\begin{theorem}[Exact determination of a $\mathrm{III}_{e^{-1}}$ system]\label{thm:counter}
+Let $K=\Q$, $\beta=1$, $\|\cdot\|$ the distance to the nearest integer, and
+\begin{equation}\label{eq:band}
+S=\{3\}\cup\bigl\{\ell\ \text{prime}:\ \ell\ge16,\ \|\log\ell\|\le\varepsilon(\ell)\bigr\},
+\qquad\varepsilon(\ell)=(\log\log\ell)^{-1/2}.
+\end{equation}
+Then $\zeta_S(1)=\infty$, $S$ contains primes with irrationally related logarithms, and
+\[
+\Xi^{\mathrm{ext}}_1(\Q,S)=\{1\}\times2\pi\Z,\qquad \Sigma_1=2\pi\Z .
+\]
+Hence $\Xi_1=\{1\}$ --- the $\mathrm{KMS}_1$ state is \emph{unique} --- while $M$ is of pure
+type $\mathrm{III}_{e^{-1}}$; both $\mathrm{III}_1$ and $\mathrm{III}_0$ are excluded.
+\end{theorem}
+
+The proof occupies the rest of this section. The mechanism is a band decomposition: because
+\eqref{eq:band} localizes $\log\ell$ near an \emph{integer}, the rounded logarithm is
+constant on each band and the exponential sums reduce to geometric series.
+
+\begin{lemma}[Bands]\label{lem:bands}
+Put $\varepsilon_n=(\log n)^{-1/2}$ and $n_0=55$, so $\varepsilon_n<\tfrac12$ for $n>n_0$.
+For $n>n_0$ let $B_n=\{\ell\in S:|\log\ell-n|\le\varepsilon(\ell)\}$ and
+$S_0=\{\ell\in S:\ell\le e^{n_0+1}\}$. Then:
+\begin{enumerate}
+\item $S=S_0\sqcup\bigsqcup_{n>n_0}B_n$ and $\sum_{\ell\in S_0}\ell^{-1}=O(1)$;
+\item for $\ell\in B_n$, $\log\ell=n+\delta_\ell$ with $|\delta_\ell|\le\varepsilon_n(1+O(n^{-1}))$,
+so $\mathrm{round}(\log\ell)=n$ is constant on $B_n$;
+\item $w_n:=\sum_{\ell\in B_n}\ell^{-1}=\frac{2\varepsilon_n}{n}(1+o(1))=\frac{2}{n\sqrt{\log n}}(1+o(1))$,
+eventually decreasing to $0$ up to an absolutely summable perturbation;
+\item $W(x):=\sum_{\ell\in S,\ \ell\le x}\ell^{-1}=4\sqrt{\log\log x}+O(1)\to\infty$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) For $n>n_0$ the bands lie in the pairwise disjoint intervals $[e^{n-1/2},e^{n+1/2}]$;
+for $\ell\le e^{n_0+1}$ one has $\varepsilon(\ell)>1/2$ and the condition may hold for every
+$\ell$, so $S_0$ can be all primes up to $e^{n_0+1}$, of Mertens sum $O(1)$.
+(2) $|\log\ell-n|<\tfrac12$ gives the rounding, and
+$\log\log\ell=\log n+O(\varepsilon_n/n)$ gives $\varepsilon(\ell)=\varepsilon_n(1+O(n^{-1}))$.
+(3) By (2), $B_n$ is the set of primes in $[e^{n-\varepsilon_n^-},e^{n+\varepsilon_n^+}]$;
+Mertens with error $O(e^{-c\sqrt{\log y}})$ gives
+$w_n=\log\frac{n+\varepsilon_n^+}{n-\varepsilon_n^-}+O(e^{-c\sqrt n})$, which is the stated
+asymptotic, with main term $2n^{-1}(\log n)^{-1/2}$ strictly decreasing and both errors
+absolutely summable.
+(4) $\sum_{n\le N}2n^{-1}(\log n)^{-1/2}=4\sqrt{\log N}+O(1)$ by comparison with the
+integral; put $N=\lfloor\log x\rfloor$.
+\end{proof}
+
+\begin{lemma}[Linearization]\label{lem:lin}
+Let $\chi$ factor through $(\Z/M\Z)^\times$ with Dirichlet character $\tilde\chi$, so that
+$\chi(\sigma_\ell)=\tilde\chi(\ell)$ for $\ell\nmid M$ by \cite[Lem.~2.10(1)]{Main}, and let
+$F$ be the set of primes dividing $M$. For $s\in\R$ and $N=\lfloor\log x\rfloor$,
+\begin{equation}\label{eq:linear}
+\sum_{\ell\in S,\ \ell\le x}\frac{\bigl|1-\chi(\sigma_\ell)\ell^{is}\bigr|^2}{\ell}
+=2W(x)-2\operatorname{Re}\Lambda(x)+O_M(1),
+\qquad
+\Lambda(x)=\sum_{n\le N}e^{isn}c_n+O\Bigl(|s|\sum_{n\le N}\varepsilon_nw_n\Bigr),
+\end{equation}
+where $c_n=\sum_{\ell\in B_n\setminus F}\tilde\chi(\ell)\,\ell^{-1}$. Moreover
+\begin{equation}\label{eq:err}
+|s|\sum_{n\le N}\varepsilon_nw_n=2|s|\log\log N+O(|s|)=o\bigl(W(x)\bigr).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$|1-z|^2=2-2\operatorname{Re}z$ for $|z|=1$ gives the first identity. For $\ell\in B_n$,
+$\ell^{is}=e^{is(n+\delta_\ell)}=e^{isn}+O(|s|\varepsilon_n)$ by $|e^{i\theta}-1|\le|\theta|$,
+and summing against $\ell^{-1}$ over $B_n$ gives the second. For \eqref{eq:err},
+$\varepsilon_nw_n=2\varepsilon_n^2/n\,(1+o(1))=2/(n\log n)(1+o(1))$ and
+$\sum_{n\le N}(n\log n)^{-1}=\log\log N+O(1)$; since $W(x)=4\sqrt{\log N}+O(1)$ and
+$\log\log N=o(\sqrt{\log N})$, the claim follows. In the variable $x$ this reads
+\begin{equation}\label{eq:absorb}
+|s|\sum_{n\le N}\varepsilon_nw_n\ \asymp\ 2|s|\log\log\log x
+\ =\ o\Bigl(\sqrt{\log\log x}\Bigr)\ =\ o\bigl(W(x)\bigr),
+\end{equation}
+the comparison being with $\sqrt{\log\log x}$ and not with $\log\log x$, since
+$W(x)=4\sqrt{\log\log x}+O(1)$ by Lemma~\ref{lem:bands}(4).
+\end{proof}
+
+\begin{remark}[The one delicate point]\label{rem:delicate}
+Estimate \eqref{eq:err} is where care is needed: the error from linearizing $\ell^{is}$
+across a band \emph{diverges}, at rate $\log\log\log x$, and is absorbed only because $W(x)$
+diverges faster, at rate $\sqrt{\log\log x}$. The exponent $-\tfrac12$ in
+$\varepsilon(\ell)=(\log\log\ell)^{-1/2}$ is exactly what makes the convergence in
+Proposition~\ref{prop:trivialchi} and this absorption hold simultaneously: an exponent
+$-\tfrac13$ would break the former and $-1$ the latter.
+\end{remark}
+
+\begin{lemma}[Cancellation in bands]\label{lem:SW}
+If $\tilde\chi$ is non-principal modulo $M$ then $|c_n|\ll_M e^{-c\sqrt n}$, so
+$\sum_n|c_n|<\infty$.
+\end{lemma}
+
+\begin{proof}
+Siegel--Walfisz gives
+$\sum_{p\le y,\ p\equiv a\,(M)}p^{-1}=\varphi(M)^{-1}\log\log y+C(M,a)+O_M(e^{-c\sqrt{\log y}})$.
+Applying this at the two endpoints of $B_n$, whose logarithms are $n+O(1)$, the constants
+$C(M,a)$ cancel and
+$\sum_{\ell\in B_n,\ \ell\equiv a}\ell^{-1}=w_n/\varphi(M)+O_M(e^{-c\sqrt n})$. Hence
+$c_n=\frac{w_n}{\varphi(M)}\sum_a^{*}\tilde\chi(a)+O_M(\varphi(M)e^{-c\sqrt n})$,
+and the character sum vanishes.
+\end{proof}
+
+\begin{proposition}[Non-trivial characters]\label{prop:chinontriv}
+If $\chi\ne1$ then $\sum_{\ell\in S}\ell^{-1}|1-\chi(\sigma_\ell)\ell^{is}|^2=\infty$ for
+\emph{every} $s\in\R$. In particular $\Xi^{\mathrm{ext}}_1\subseteq\{1\}\times\R$ and, taking
+$s=0$, $\Xi_1=\{1\}$.
+\end{proposition}
+
+\begin{proof}
+First, $\sigma(I_S)$ is dense in $G_S$: $S$ contains all primes up to $e^{n_0+1}$ by
+Lemma~\ref{lem:bands}(1) and, by Lemma~\ref{lem:SW} applied to the principal character, meets
+every reduced class modulo $M$ in every large band; so the classes of $S\setminus F$ generate
+$(\Z/M\Z)^\times$ and $\chi\mapsto\tilde\chi$ is injective, whence $\tilde\chi$ is
+non-principal. Now combine \eqref{eq:linear}, Lemma~\ref{lem:SW} and \eqref{eq:err}:
+$\Lambda(x)=O(\sum_n|c_n|)+o(W(x))=o(W(x))$, so the left side of \eqref{eq:linear} is
+$2W(x)(1+o(1))\to\infty$.
+\end{proof}
+
+\begin{proposition}[The trivial character]\label{prop:trivialchi}
+$\sum_{\ell\in S}\ell^{-1}|1-\ell^{is}|^2$ is finite for $s\in2\pi\Z$ and infinite for
+$s\notin2\pi\Z$.
+\end{proposition}
+
+\begin{proof}
+Let $s=2\pi m$. For $\ell\in B_n$, $\log\ell=n+\delta_\ell$ with $n\in\Z$, so
+$\ell^{is}=e^{2\pi im\delta_\ell}$ and
+$|1-\ell^{is}|^2=4\sin^2(\pi m\delta_\ell)\le16\pi^2m^2\varepsilon_n^2$; hence the sum is
+$\ll m^2\sum_n\varepsilon_n^2w_n\ll m^2\sum_n n^{-1}(\log n)^{-3/2}<\infty$.
+
+Let $s\notin2\pi\Z$. Here $\tilde\chi$ is principal, so $c_n=w_n+O_M(1)\mathbf 1_{n\le n_F}$.
+Since $w_n$ is monotone to $0$ up to an absolutely summable perturbation
+(Lemma~\ref{lem:bands}(3)) and
+$\bigl|\sum_{n\le N}e^{isn}\bigr|\le|\sin(s/2)|^{-1}<\infty$, Dirichlet's test gives
+convergence of $\sum_ne^{isn}w_n$. With \eqref{eq:err}, $\Lambda(x)=O_s(1)+o(W(x))=o(W(x))$
+and the sum diverges as before.
+\end{proof}
+
+\begin{lemma}[Matched pairs in consecutive bands]\label{lem:matched}
+There are pairs $(a_j,b_j)$ of primes of $S$ with $a_j\in B_{n_j+1}$, $b_j\in B_{n_j}$, all
+the $a_j,b_j$ distinct, such that $\log(a_j/b_j)\to1$, $\sigma_{b_j}\sigma_{a_j}^{-1}\to1$ in
+$G_S=\hZ_S^\times$, and $\sum_ja_j^{-1}=\infty$.
+\end{lemma}
+
+\begin{proof}
+For $\ell\in B_n$, $\log\ell=n+\delta_\ell$ with $|\delta_\ell|\le2\varepsilon_n$, so any
+$a\in B_{n+1}$, $b\in B_n$ satisfy $|\log(a/b)-1|\le4\varepsilon_n\to0$. Put
+$k_n=\lfloor\log\log n\rfloor$ and $M_n=\prod_{\ell'\le k_n}\ell'^{\,k_n}$, so that
+$\log M_n\le2k_n^2=o(\log n)$. By Siegel--Walfisz, uniformly for moduli
+$q\le(\log y)^{A}$ one has $\pi(y;q,a)=\mathrm{li}(y)/\varphi(q)+O_A(ye^{-c\sqrt{\log y}})$;
+applied at the endpoints $e^{n\pm\varepsilon_n^\pm}$ of $B_n$ with $q=M_n\le n$, and since
+$|B_n|\asymp\varepsilon_ne^n/n$ while the error is $O(e^{n-c\sqrt n})$, every reduced class
+$a$ modulo $M_n$ contains at least $\tfrac12|B_n|/\varphi(M_n)$ primes of $B_n$ and at least
+as many primes of $B_{n+1}$, for all large $n$. Pairing, injectively within each class,
+primes of $B_{n+1}$ with primes of $B_n$ in the same class gives at least $\tfrac12|B_n|$
+pairs $(a,b)\in B_{n+1}\times B_n$ with $a\equiv b\pmod{M_n}$; pairs from different $n$ are
+disjoint because the bands are.
+
+For a fixed prime $\ell'\in S$ and $k\ge1$ we have $\ell'^{\,k}\mid M_n$ for all large $n$,
+and then the $\ell'$-component of $\sigma_b\sigma_a^{-1}$, which is $b/a$ for
+$\ell'\notin\{a,b\}$ \cite[Lem.~2.10(1)]{Main}, is $\equiv1\pmod{\ell'^{\,k}}$; so every
+coordinate of $\sigma_{b_j}\sigma_{a_j}^{-1}$ tends to $1$, which is convergence to $1$ in
+the product topology of $\hZ_S^\times$. Finally, the pairs from band $n$ contribute
+\[
+\sum_{a}a^{-1}\ \ge\ \tfrac12|B_n|\,e^{-(n+2)}\ \ge\ \tfrac1{2e^{3}}\,w_n,
+\qquad\text{since } w_n=\sum_{\ell\in B_n}\ell^{-1}\le|B_n|e^{-(n-1)},
+\]
+and $\sum_nw_n=\infty$ by Lemma~\ref{lem:bands}(4).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:counter}]
+$\zeta_S(1)=\infty$ is Lemma~\ref{lem:bands}(4). $S$ is infinite, so
+Lemma~\ref{lem:noexact} supplies two primes with irrationally related logarithms.
+Propositions \ref{prop:chinontriv} and \ref{prop:trivialchi} give
+$\Xi^{\mathrm{ext}}_1=\{1\}\times2\pi\Z$, hence $\Xi_1=\{1\}$ and $\Sigma_1=2\pi\Z$.
+Proposition~\ref{prop:bound}(3) with $c=2\pi$ gives $E\subseteq\Z$: $M$ is of type
+$\mathrm{III}_{e^{-k}}$ for some $k\ge1$ or of type $\mathrm{III}_0$, and in particular not
+of type $\mathrm{III}_1$. Since $\Xi_1=\{1\}$, Lemma~\ref{lem:pairs} applies, and
+Lemma~\ref{lem:matched} supplies pairs with $\beta\log(a_j/b_j)\to1$ ($\beta=1$),
+$\sigma_{b_j}\sigma_{a_j}^{-1}\to1$ and $\sum a_j^{-1}=\infty$; hence $1\in E$, so $E=\Z$,
+$S(M)=\{0\}\cup e^{\Z}$ by \eqref{eq:SM}, and $M$ is of type $\mathrm{III}_{e^{-1}}$.
+\end{proof}
+
+\begin{remark}[What the proof does not use]\label{rem:tools}
+Only Mertens, Siegel--Walfisz at a \emph{fixed} modulus, Abel summation and Dirichlet's test
+are needed. Because $\mathrm{round}(\log\ell)$ is constant on each band, the exponential sum
+in \eqref{eq:linear} is over the \emph{integers} $n$, not over primes: its partial sums are
+geometric and bounded by $|\sin(s/2)|^{-1}$, so Dirichlet's test handles all $s\notin2\pi\Z$
+at once, with no distinction between rational and irrational $s/2\pi$ and no discrepancy
+estimate. No Erd\H{o}s--Tur\'an inequality, no Vinogradov-type bound for
+$\sum_\ell\ell^{-1+is}$, and no uniformity in the modulus is required. The bands are not
+short intervals in the difficult sense: $B_n$ has multiplicative length $e^{2\varepsilon_n}$
+with $\varepsilon_n\asymp(\log\log x)^{-1/2}$, so $|B_n|\gg x/(\log x)(\log\log x)^{1/2}$,
+far above any threshold at which primes in progressions become hard.
+\end{remark}
+
+\begin{remark}[Numerical check]\label{rem:numtype}
+The asymptotic regime of \eqref{eq:band} begins at $\varepsilon_n<\tfrac12$, i.e.\
+$\ell>e^{e^4}\approx10^{23}$, and is beyond direct computation. The mechanics of
+Lemmas~\ref{lem:bands}(3) and \ref{lem:SW} were instead verified with a fixed band
+half-width $\varepsilon=0.05$, for which the same computations apply verbatim: over primes
+up to $6\cdot10^7$ and bands $8\le n\le17$, the ratio
+$w_n\big/\log\frac{n+\varepsilon}{n-\varepsilon}$ lies in $[0.998,1.003]$ for $n\ge13$, and
+for the non-principal character modulo $4$ the ratio $|c_n|/w_n$ falls from
+$8.6\cdot10^{-2}$ at $n=9$ to $2.1\cdot10^{-4}$ at $n=17$, consistent with
+Lemma~\ref{lem:SW}.
+\end{remark}
+
+\begin{corollary}[Independence of the two classifications]\label{cor:indep}
+Uniqueness of the $\mathrm{KMS}_\beta$ state and type $\mathrm{III}_1$ are logically
+independent: Theorem~\ref{thm:counter} has the first and fails the second, while
+Theorem~\ref{thm:classical} together with \cite[Cor.~3.10]{Main} has both. Equivalently,
+$\Xiext$ can be trivial on the axis $s=0$ and nontrivial off it.
+\end{corollary}
+
+\section{The spectrum of transitions}\label{sec:spectrum}
+
+We now turn to the horizontal direction: which chains $\{\Xi_\beta\}_{\beta>0}$ occur. By
+\cite[Lem.~3.5]{Main} the chain is non-decreasing, and by \cite[Prop.~4.16]{Main} any
+finite chain is realizable. We realize arbitrary countable chains.
+
+\begin{theorem}[Realization]\label{thm:realize}
+Let $(\beta_n)_{n\ge1}\subset(0,1)$ be any sequence. There is $S=Q\sqcup P_0\sqcup\bigsqcup_nR_n\subset P_\Q$
+with
+\begin{enumerate}
+\item $\beta_c(S)=1$ and $\zeta_S(\beta)=\infty$ for $0<\beta\le1$;
+\item $\sigma(I_S)$ dense in $G_S$;
+\item with $q_n$ the $n$-th element of $Q$ and $\chi_n$ the quadratic character at that
+component,
+\[
+\Xi_\beta(\Q,S)=\bigl\langle\chi_n:\beta_n<\beta\bigr\rangle\cong\bigoplus_{n:\ \beta_n<\beta}\Z/2\Z
+\qquad(0<\beta\le1),
+\]
+and $\Xi_\beta=\widehat{G_S}$ for $\beta>1$. In particular the jump set is
+$\{\beta_n\}\cup\{1\}$.
+\end{enumerate}
+\end{theorem}
+
+The construction proceeds in blocks; the block scheme is what makes infinitely many
+congruence conditions manageable.
+
+\begin{lemma}[Independence of the quadratic conditions]\label{lem:disjoint}
+Let $q_1<\dots<q_j$ be distinct odd primes, $q^*=(-1)^{(q-1)/2}q$, $M\ge1$, and
+$E=\Q(\zeta_M)(\sqrt{q_1^*},\dots,\sqrt{q_j^*})$. Then
+$[E:\Q]=\varphi(M)\cdot2^{\#\{i\le j:q_i\nmid M\}}$, and for any $a\in(\Z/M\Z)^\times$ and
+signs $\epsilon_i$ compatible with $a$ at the $q_i$ dividing $M$, the primes $\ell$ with
+$\ell\equiv a\ (M)$ and $\bigl(\tfrac{\ell}{q_i}\bigr)=\epsilon_i$ have natural density
+$[E:\Q]^{-1}>0$.
+\end{lemma}
+
+\begin{proof}
+The $q_i^*$ are multiplicatively independent modulo squares, so
+$[\Q(\sqrt{q_1^*},\dots,\sqrt{q_j^*}):\Q]=2^j$ by Kummer theory. $\Q(\sqrt{q_i^*})$ is the
+unique quadratic subfield of $\Q(\zeta_{q_i})$, so it lies in $\Q(\zeta_M)$ iff $q_i\mid M$;
+the degree formula follows. Quadratic reciprocity turns the sign conditions into splitting
+conditions, and Chebotarev applies.
+\end{proof}
+
+\begin{definition}[Block scheme]\label{def:blocks}
+Choose $z_1<z_2<\cdots$ recursively, $z_{j+1}$ as large as needed in terms of $z_j$ and $j$,
+and put $B_j=[z_j,z_{j+1})$. Let $q_j$ be a prime in $B_j$ with $\bigl(\tfrac{q_j}{q_i}\bigr)=+1$
+for all $i<j$ (such primes have positive density by Lemma~\ref{lem:disjoint}, so they exist in
+$B_j$ once $z_{j+1}$ is large), and $Q=\{q_j\}$. For $j\ge1$ set
+\[
+C_{0,j}=\bigl\{\ell:\ \bigl(\tfrac{\ell}{q_i}\bigr)=+1\ \forall i\le j\bigr\},
+\quad
+C_{n,j}=\bigl\{\ell:\ \bigl(\tfrac{\ell}{q_n}\bigr)=-1,\ \bigl(\tfrac{\ell}{q_i}\bigr)=+1\ \forall i\le j,\ i\ne n\bigr\},
+\]
+each of density $2^{-j}$ by Lemma~\ref{lem:disjoint}, and
+\[
+P_0=\bigsqcup_{j\ge1}\bigl(C_{0,j}\cap B_j\bigr)\setminus Q,
+\qquad
+R_n=\bigsqcup_{j\ge n}\rho_{n,j},\quad \rho_{n,j}\subseteq C_{n,j}\cap B_j\ \text{finite}.
+\]
+The essential property is that for $\ell\in S\cap[z_j,\infty)$ the symbols
+$\bigl(\tfrac{\ell}{q_i}\bigr)$, $i\le j$, are determined by which block-class $\ell$ lies
+in.
+\end{definition}
+
+\begin{lemma}[The pieces]\label{lem:pieces}
+The $z_j$ and $\rho_{n,j}$ may be chosen so that:
+\begin{enumerate}
+\item $\sum_{\ell\in P_0\cap B_j}\ell^{-1}\ge1$ for every $j$, whence
+$\sum_{P_0}\ell^{-1}=\infty$ and $\beta_c(S)=1$; and for every $M$ and every
+$a\in(\Z/M\Z)^\times$ with $\bigl(\tfrac{a}{q_i}\bigr)=1$ whenever $q_i\mid M$,
+$\sum_{\ell\in P_0,\ \ell\equiv a\,(M)}\ell^{-1}=\infty$;
+\item $|R_n\cap[1,x]|\asymp_nx^{\beta_n}$, hence by Abel summation
+$\sum_{\ell\in R_n}\ell^{-\beta}<\infty\iff\beta>\beta_n$, with divergence at the endpoint;
+\item $q_n\ge z_n$ with $\log\log z_n\ge2^n$, so $\sum_nq_n^{-\beta}<\infty$ for every
+$\beta>0$ and $Q$ is negligible in every convergence question.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) $C_{0,j}$ has density $2^{-j}$, so
+$\sum_{\ell\in C_{0,j},\ \ell\le x}\ell^{-1}=2^{-j}\log\log x+O_j(1)$; choose $z_{j+1}$ with
+$2^{-j}(\log\log z_{j+1}-\log\log z_j)\ge2$. For the refined statement, for $j$ beyond the
+largest index with $q_i\mid M$ the two conditions are compatible and
+Lemma~\ref{lem:disjoint} gives positive density, so enlarging $z_{j+1}$ further (finitely
+many extra requirements per block) gives block sums $\ge\varphi(M)^{-1}$.
+(2) $C_{n,j}$ has positive density, so it meets $[y,2y]$ for $y\ge y_0(j)$; take
+$\rho_{n,j}$ to contain one prime of $C_{n,j}$ in each $[m^{1/\beta_n},2m^{1/\beta_n}]$
+contained in $B_j$. Abel summation with $A(x)=|R_n\cap[1,x]|\asymp x^{\beta_n}$ and $A(t)=0$ for $t<z_n$ gives
+\[
+\sum_{\ell\in R_n,\ \ell\le x}\ell^{-\beta}=A(x)x^{-\beta}+\beta\int_{z_n}^{x}A(t)t^{-\beta-1}\,dt
+\ \asymp\ x^{\beta_n-\beta}+\beta\int_{z_n}^{x}t^{\beta_n-\beta-1}\,dt .
+\]
+The lower limit contributes the constant $z_n^{\beta_n-\beta}$; the integral converges as
+$x\to\infty$ iff $\beta>\beta_n$, equals $\beta_n\log(x/z_n)\to\infty$ at $\beta=\beta_n$,
+and diverges as a power for $\beta<\beta_n$.
+(3) $q_n\ge\exp\exp(2^n)$ makes $q_n^{-\beta}\le\exp(-\beta\exp(2^n))$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:realize}]
+(1) is Lemma~\ref{lem:pieces}(1). For (2), fix a modulus $M$ supported on a finite
+$F\subset S$, let $Q_F=Q\cap\{q:q\mid M\}$ and
+$K_M=\{a:\bigl(\tfrac{a}{q}\bigr)=1\ \forall q\in Q_F\}$, a subgroup of index $2^{|Q_F|}$
+with $(\Z/M\Z)^\times/K_M\cong(\Z/2\Z)^{Q_F}$. By Lemma~\ref{lem:pieces}(1) every $a\in K_M$
+is realized by infinitely many $\ell\in P_0$, so $K_M\subseteq\langle\ell\bmod M\rangle$; and
+for $q_n\in Q_F$ any large $\ell\in R_n$ outside $F$ maps to the basis vector $e_n$ of the
+quotient. Hence the classes generate $(\Z/M\Z)^\times$.
+
+For (3), let $\chi\ne1$ factor through $(\Z/M\Z)^\times$. If $\tilde\chi|_{K_M}\ne1$, pick
+$a\in K_M$ with $\tilde\chi(a)\ne1$; by Lemma~\ref{lem:pieces}(1)
+$\sum_{\ell\in P_0,\ \ell\equiv a}\ell^{-1}=\infty$ and every such $\ell$ detects $\chi$, so
+$\chi\notin\Xi_\beta$ for $\beta\le1$. If $\tilde\chi|_{K_M}=1$ then
+$\tilde\chi=\prod_{n\in T}\tilde\chi_{q_n}$ for a unique $T$, and by (2) and injectivity
+$\chi=\chi_T:=\prod_{n\in T}\chi_n$. For $\ell\in S$ with $\ell\ge z_{\max T}$ the block
+property gives $\chi_T(\sigma_\ell)=+1$ on $P_0$ and on $R_m$ with $m\notin T$, and $-1$ on
+$R_m$ with $m\in T$; so, $Q$ being negligible and $[1,z_{\max T})$ finite,
+\[
+\sum_{\ell\in D_{\chi_T}}\ell^{-\beta}<\infty\iff\sum_{m\in T}\sum_{\ell\in R_m}\ell^{-\beta}<\infty
+\iff\beta>\max_{m\in T}\beta_m,
+\]
+by Lemma~\ref{lem:pieces}(2). This is the stated formula; for $\beta>1$,
+$\zeta_S(\beta)<\infty$ and \cite[Lem.~3.5]{Main} gives $\Xi_\beta=\widehat{G_S}$.
+\end{proof}
+
+\begin{remark}[Numerical check]\label{rem:numcascade}
+Three ingredients were verified computationally on a scaled-down model with
+$Q=\{7,11,13,17\}$ and primes up to $2\cdot10^6$: the $2^4=16$ joint sign patterns of
+Lemma~\ref{lem:disjoint} occur with densities in $[0.0621,0.0629]$ against the predicted
+$1/16=0.0625$; the detecting set of $\chi_T$ equals $\bigsqcup_{m\in T}R_m$ exactly, for
+every subset $T$ tested; and a set thinned to counting function $\asymp x^{b}$ has its
+$\beta$-weighted sums collapsing across $\beta=b$ as Lemma~\ref{lem:pieces}(2) requires.
+\end{remark}
+
+\section{Cantor transition loci, and the unattainable staircase}\label{sec:cantor}
+
+\begin{definition}\label{def:locus}
+The \emph{jump set} is $J(S)=\{\beta_\chi:\chi\ne1\}$, where $\beta_\chi$ is the convergence
+exponent of the detecting set $D_\chi=\{\pp\in S:\chi(\sigma_\pp)\ne1\}$; the
+\emph{transition locus} $\mathcal L(S)$ is the set of $\beta$ near which $\beta\mapsto\Xi_\beta$
+is not constant.
+\end{definition}
+
+\begin{corollary}[Dense and Cantor loci]\label{cor:loci}
+Taking $(\beta_n)$ an enumeration of $\Q\cap(0,1)$ in Theorem~\ref{thm:realize} gives
+$J(S)=(\Q\cap(0,1))\cup\{1\}$ and $\mathcal L(S)=[0,1]$. Taking $(\beta_n)$ dense in a Cantor
+set $\cC\subset(0,1)$ gives $\mathcal L(S)=\cC\cup\{1\}$: the transition locus is exactly the
+prescribed Cantor set.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:realize}(3), $\Xi_\beta$ is constant on an open interval
+$I\subseteq(0,1)$ if and only if $I$ contains no $\beta_n$. Hence a point of $(0,1)$ fails to
+have a neighbourhood of constancy exactly when it is a limit of the $\beta_n$, so that
+\[
+\mathcal L(S)\cap(0,1)=\overline{J(S)\cap(0,1)}=\overline{\{\beta_n\}} ,
+\]
+identifying the non-local-constancy locus with the closure of the jump set, as in
+Remark~\ref{rem:whatremains}. Finally $\beta=1$ always lies in $\mathcal L(S)$, since
+$\Xi_\beta$ jumps to $\widehat{G_S}$ there.
+\end{proof}
+
+\begin{definition}\label{def:order}
+For weights $w_n>0$ with $\sum w_n=1$ the \emph{normalized rank} is
+$\dw_w(\beta)=\sum_{n:\beta_n<\beta}w_n\in[0,1]$.
+\end{definition}
+
+\begin{theorem}[Pure-jump staircase]\label{thm:staircase}
+In the situation of Corollary~\ref{cor:loci} with locus $\cC$, $\dw_w$ is non-decreasing,
+equals $0$ below $\min\cC$ and $1$ above $\max\cC$, is constant on every connected component
+of $(0,1)\setminus\cC$, and its set of points of increase is exactly $\cC$.
+\end{theorem}
+
+\begin{proof}
+A component of the complement contains no $\beta_n$, so $\dw_w$ is constant there; every
+neighbourhood of a point of $\cC$ contains some $\beta_n$ by density.
+\end{proof}
+
+\begin{theorem}[The devil's staircase is unattainable]\label{thm:impossible}
+For every set of primes $S$: $\widehat{G_S}$ is countable, hence $J(S)$ is countable; and
+for every choice of weights $\dw_w$ is a pure jump function, discontinuous at every
+$\beta_n$ with jump $w_n>0$, whose distributional derivative is the purely atomic measure
+$\sum_nw_n\delta_{\beta_n}$. Consequently there is no $S$ and no weighting for which
+$\dw_w$ equals the Cantor function, or any continuous non-constant function.
+\end{theorem}
+
+\begin{proof}
+$G_S$ is a compact metrizable abelian group, being a Hausdorff quotient of the second
+countable locally compact group $\mathbb I_S$ \cite[Prop.~2.5]{Main}; the dual of a compact
+metrizable abelian group is countable. For each $\chi$ the set $\{\beta:\chi\in\Xi_\beta\}$ is an up-set, so each $\chi$
+contributes a single jump and $J(S)=\{\beta_\chi\}$ is countable. In the situation of
+Theorem~\ref{thm:realize}, $\chi_n\notin\Xi_{\beta_n}$ by the endpoint divergence in
+Lemma~\ref{lem:pieces}(2) while $\chi_n\in\Xi_\beta$ for $\beta>\beta_n$, so the jump at
+$\beta_n$ is at least $w_n>0$. A non-decreasing function of the form
+$\sum_{\beta_n<\beta}w_n$ has purely atomic distributional derivative. The Cantor function
+is continuous with non-atomic derivative, and a purely atomic probability measure and a
+non-atomic one are mutually singular, hence distinct.
+\end{proof}
+
+\begin{theorem}[Approximation]\label{thm:approx}
+Let $\cC$ be the middle-thirds Cantor set, $c$ the Cantor function, and $S$ as in
+Corollary~\ref{cor:loci} with $(\beta_n)$ dense in $\cC$. For every $\varepsilon>0$ there
+are weights $w_n>0$, $\sum w_n=1$, with $\|\dw_w-c\|_\infty<\varepsilon$.
+\end{theorem}
+
+\begin{proof}
+Let $\mu_c$ be the Cantor measure. Partition $\cC$ into finitely many relatively clopen
+pieces of diameter $<\delta$ and place the $\mu_c$-mass of each at a point $\beta_{n_i}$
+inside it, giving $\nu=\sum_{i\le N}v_i\delta_{\beta_{n_i}}$. Since $c$ is continuous, weak
+convergence of distribution functions is uniform (P\'olya's theorem, \cite[Problem~14.8]{Billingsley}), so for $\delta$ small
+$\|F_\nu-c\|_\infty<\varepsilon/2$. Put $w_{n_i}=(1-\tfrac\varepsilon4)v_i$ and distribute
+$\tfrac\varepsilon4$ among the remaining indices with arbitrary positive weights; then
+$|\dw_w-F_\nu|\le\tfrac\varepsilon4F_\nu+\tfrac\varepsilon4\le\tfrac\varepsilon2$.
+\end{proof}
+
+\begin{remark}[Jump set versus transition locus]\label{rem:whatremains}
+The obstruction in Theorem~\ref{thm:impossible} is not an artifact of the construction of
+\S\ref{sec:spectrum}: $\Xi_\beta$ is a subgroup of the fixed countable group
+$\widehat{G_S}$, and a monotone family of subgroups of a countable group can change at only
+countably many parameters. What survives, and what Corollary~\ref{cor:loci} realizes, is the
+distinction between the \emph{jump set}, necessarily countable, and the \emph{transition
+locus} $\overline{J(S)}$, which is the closure of a countable set and hence an arbitrary
+separable closed set --- in particular an arbitrary Cantor set. The Cantor spectrum of
+transitions is real; the continuity of the staircase is not. Theorems
+\ref{thm:impossible} and \ref{thm:approx} together say the devil's staircase is a limit
+point of the realizable order parameters in the uniform norm, but not itself realizable.
+\end{remark}
+
+\section{Order parameters}\label{sec:order}
+
+Each transition brings into existence a macroscopic observable, and the family is
+independent.
+
+\begin{definition}\label{def:Psin}
+With $E_n=\{\ell\in S:\ell<z_n\}$ finite and
+$E_n^-=\{\ell\in E_n:\bigl(\tfrac{\ell}{q_n}\bigr)=-1\}$, put
+\begin{equation}\label{eq:Psin}
+\Psi_n(x)=\Bigl(\tfrac{u_{q_n}(x)\bmod q_n}{q_n}\Bigr)\cdot(-1)^{\sum_{\ell\in R_n}v_\ell(x)}\cdot\prod_{\ell\in E_n^-}(-1)^{v_\ell(x)}\ \in\{\pm1\}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}\label{prop:Psin}
+\begin{enumerate}
+\item $\Psi_n(mx)=\Psi_n(x)$ for every $m\in\N_S$ and every $x$ in the domain --- pointwise,
+not merely almost everywhere;
+\item $\Psi_n$ is defined $\nu$-almost everywhere iff $\beta>\beta_n$;
+\item under $\nusym$ the family $(\Psi_n)$ consists of independent uniform signs, and for
+$\beta>\beta_n$ the map $\varphi\mapsto(\varphi(\Psi_n))_n$ is a bijection from the extreme
+points of the $\mathrm{KMS}_\beta$ simplex onto $\{\pm1\}^{\{n:\beta_n<\beta\}}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) It suffices to treat $m=\ell_0$ prime. Multiplication by $\ell_0$ sends
+$v_\ell\mapsto v_\ell+\delta_{\ell,\ell_0}$ and $u_{q_n}\mapsto\ell_0u_{q_n}$ for
+$\ell_0\ne q_n$ \cite[proof of Prop.~4.12]{Main}, so the first factor is multiplied by
+$\bigl(\tfrac{\ell_0}{q_n}\bigr)$ unless $\ell_0=q_n$, when it is unchanged. If
+$\ell_0=q_n$, no $v_\ell$ with $\ell\in R_n\cup E_n^-$ changes. If $\ell_0\in E_n$ and the
+symbol is $-1$ then $\ell_0\in E_n^-$ and $v_{\ell_0}$ increases by one, flipping the third
+factor. If $\ell_0\ge z_n$ and $\ell_0\notin R_n$, then either $\ell_0\in Q$, and the symbol
+is $+1$ by the choice of $Q$ in Definition~\ref{def:blocks}, or the block property gives
+symbol $+1$; in both cases no relevant valuation changes. If $\ell_0\in R_n$, the symbol is
+$-1$ and $v_{\ell_0}$ increases by one, flipping the second factor.
+
+(2) $\sum_{\ell\in R_n}\pi_\beta(v_\ell\ge1)=\sum_{\ell\in R_n}\ell^{-\beta}$ is finite iff
+$\beta>\beta_n$ by Lemma~\ref{lem:pieces}(2); apply the two Borel--Cantelli lemmas to the
+independent events $\{v_\ell\ge1\}$.
+
+(3) Under $\nusym$ the conditional law of $u$ given $v$ is Haar, so the $u_{q_n}$ are
+independent and each $\bigl(\tfrac{u_{q_n}}{q_n}\bigr)$ is a uniform sign independent of
+everything else; multiplying by the remaining factors preserves uniformity and independence.
+The bijection is Theorem~\ref{thm:realize}(3) together with \cite[Thm.~3.6]{Main}, which
+identifies the extreme points with $\widehat{\Xi_\beta}=(\Z/2\Z)^{\{n:\beta_n<\beta\}}$.
+\end{proof}
+
+\begin{remark}[Numerical check]\label{rem:numpsi}
+Take the model $Q=\{7,11,13,17\}$. Pointwise invariance was verified over
+$4\cdot10^{5}$ random configurations, with no failures, together with a control
+confirming that dropping the $R_n$-correction destroys it. The independence
+asserted in (3) was checked by computing
+$\mathbb E[\prod_{n\in T}\Psi_n]$ over all $15$ nonempty subsets of four indices, the largest
+absolute value being $0.0037$ against a three-sigma bound of $0.0047$.
+\end{remark}
+
+\begin{remark}[Physical reading]\label{rem:memory}
+Each $\Psi_n$ is a tail observable: changing the valuations at any finite set of primes
+leaves it unchanged, because a change at $\ell\in R_n$ flips two factors of \eqref{eq:Psin}
+simultaneously. It records one asymptotically conserved bit, coming into existence at the
+sharp temperature $\beta_n$ where the Borel--Cantelli series for $R_n$ turns from divergent
+to convergent. As $\beta$ increases across $\cC$ the bits condense on a countable dense
+subset of a Cantor set, and $\dw_w(\beta)$ is the total weight of those already condensed;
+between two condensations, that is on each complementary interval, the memory is frozen. By
+Theorem~\ref{thm:impossible} they cannot condense continuously: each bit is a discrete
+degree of freedom contributing a jump, and $\widehat{G_S}$ has only countably many. The
+information-theoretic counterpart --- the relative entropy of an extremal state with respect
+to the symmetric one grows by $\log2$ with each condensed bit --- is taken up in a companion
+paper on invariants and entropy.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Question} & \text{Answer} & \text{Reference}\\\hline
+\text{factor type} & \text{bounded above by}\ \Sigma_\beta,\ \text{below by pairs} & \text{Prop.~\ref{prop:bound}, Lem.~\ref{lem:pairs}}\\
+S=P_K,\ \beta\le1 & \mathrm{III}_1;\ \Sigma_\beta=\{0\}\ \text{via}\ L(1-i\tau,\chi)\ne0 & \text{Thm.~\ref{thm:classical}, Prop.~\ref{prop:slices}}\\
+\text{two incommensurable norms} & \text{do not suffice} & \text{Thm.~\ref{thm:counter}}\\
+\text{exact commensurability} & \text{impossible for infinite }S & \text{Lem.~\ref{lem:noexact}}\\
+\text{uniqueness}\Rightarrow\mathrm{III}_1 & \text{false} & \text{Cor.~\ref{cor:indep}}\\
+\text{chains}\ \{\Xi_\beta\} & \text{any}\ (\beta_n)\subset(0,1)\ \text{realizable} & \text{Thm.~\ref{thm:realize}}\\
+\text{transition locus} & \text{any Cantor set} & \text{Cor.~\ref{cor:loci}}\\
+\text{jump set} & \text{always countable} & \text{Thm.~\ref{thm:impossible}}\\
+\text{devil's staircase} & \text{unattainable, approximable} & \text{Thms.~\ref{thm:impossible}, \ref{thm:approx}}
+\end{array}
+\]
+
+Five questions remain. First, whether $\Sigma_\beta$ determines the type, i.e.\ whether the
+flow of weights of these factors always has pure point spectrum (Remark~\ref{rem:flow}); if
+it does, Proposition~\ref{prop:bound} is an equivalence and Lemma~\ref{lem:pairs} is not
+needed. Second, the extended group $\Xiext$ has not been computed for the sparse sets
+of \cite[\S5]{Main}; in particular whether Brun-summable $S$ gives $\mathrm{III}_\lambda$ or
+$\mathrm{III}_0$ is open. In Theorem~\ref{thm:counter} we determined $\Sigma_1$ exactly, but
+for a general band set with $\varepsilon(\ell)=(\log\log\ell)^{-\theta}$ the dependence of
+$\Sigma_1$ on $\theta$ is unexamined. Fourth, Theorem~\ref{thm:impossible} shows the
+realizable order parameters are pure jump functions; which monotone families of subgroups of
+a countable group arise as $\{\Xi_\beta\}$, beyond the direct sums realized here, we do not
+know. Finally, Lemma~\ref{lem:dict} says that $\Xi_\beta$ is the kernel of
+$\chi\mapsto[\chi\circ\sigma]$ into the measurable cohomology group
+$H^1_{\mathrm{meas}}(\cR_S,\pi_\beta;\T)$; that group itself is not computed here, and a
+computation would presumably exhibit $\widehat{G_S}/\Xi_\beta$ inside it and give the chain
+$\{\Xi_\beta\}$ a cohomological reading.
+
+\begin{thebibliography}{9}
+\bibitem{AW} H. Araki, E. J. Woods, \emph{A classification of factors}, Publ. RIMS Kyoto Univ. 4 (1968), 51--130.
+\bibitem{Billingsley} P. Billingsley, \emph{Convergence of Probability Measures}, 2nd ed., Wiley, 1999.
+\bibitem{BC} J.-B. Bost, A. Connes, \emph{Hecke algebras, type III factors and phase transitions with spontaneous symmetry breaking in number theory}, Selecta Math. (N.S.) 1 (1995), 411--457.
+\bibitem{Connes73} A. Connes, \emph{Une classification des facteurs de type III}, Ann. Sci. \'Ec. Norm. Sup. (4) 6 (1973), 133--252.
+\bibitem{CT} A. Connes, M. Takesaki, \emph{The flow of weights on factors of type III}, T\^ohoku Math. J. 29 (1977), 473--575.
+\bibitem{Hecke} E. Hecke, \emph{Eine neue Art von Zetafunktionen und ihre Beziehungen zur Verteilung der Primzahlen}, Math. Z. 1 (1918), 357--376; 6 (1920), 11--51.
+\bibitem{Krieger} W. Krieger, \emph{On ergodic flows and the isomorphism of factors}, Math. Ann. 223 (1976), 19--70.
+\bibitem{Landau} E. Landau, \emph{\"Uber Ideale und Primideale in Idealklassen}, Math. Z. 2 (1918), 52--154.
+\bibitem{LLN} M. Laca, N. S. Larsen, S. Neshveyev, \emph{On Bost--Connes type systems for number fields}, J. Number Theory 129 (2009), 325--338.
+\bibitem{Maharam} D. Maharam, \emph{Incompressible transformations}, Fund. Math. 56 (1964), 35--50.
+\bibitem{Neu} J. Neukirch, \emph{Algebraic Number Theory}, Grundlehren 322, Springer, 1999.
+\bibitem{Schmidt} K. Schmidt, \emph{Cocycles on Ergodic Transformation Groups}, Macmillan Lectures in Math. 1, Delhi, 1977.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\end{thebibliography}
+
+\end{document}
