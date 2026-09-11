@@ -1,0 +1,538 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Rep}{\operatorname{Rep}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\id}{\mathrm{id}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[The non-abelian obstruction]{Towards non-abelian localized Bost--Connes systems:\\ the matrix Kakutani dichotomy and a Tannakian obstruction}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/VI-nonabelian/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+The $GL_1$ theory of \cite{Main} classifies the $\mathrm{KMS}_\beta$ simplex of
+$\cA_{K,S}$ as $\Prob(G_S/\Xi_\beta^\perp)$, where $\Xi_\beta$ is a subgroup of the
+Pontryagin dual $\widehat{G_S}$ cut out by a Dirichlet series condition. We examine what
+survives when the abelian symmetry group is replaced by a Galois group with non-abelian
+image, and separate three things that are usually conflated.
+
+\emph{What transfers.} The Dirichlet-series half of the Kakutani dichotomy is
+representation-theoretic, not character-theoretic. For a unitary representation $\rho$ of a
+compact group equipped with Frobenius classes we take as the obstruction quantity the
+Hilbert--Schmidt Frobenius series
+\[
+\Xi_\beta(\rho,S)=\sum_{\pp\in S}\Ns\pp^{-\beta}\bigl\|I_n-\rho(\Frob_\pp)\bigr\|_{\HS}^2
+=2\sum_{\pp\in S}\Ns\pp^{-\beta}\bigl(n-\Re\Tr\rho(\Frob_\pp)\bigr),
+\]
+which reduces to the abelian condition for characters, and whose convergence is the
+coboundary condition for the $U(n)$-valued Frobenius cocycle whenever that cocycle is
+defined, namely when the Frobenius classes commute; without commutation there is no
+cocycle on the tail relation at all, and the series is the primary object. Its relation
+to $L$-functions is
+\[
+\Xi_\beta(\rho,S)=2n\log\zeta_{K,S}(\beta)-2\Re\log L_S(\beta,\rho)+O(1),
+\]
+so that at $\beta\le1$ and $S=P_K$ the obstruction is absent for every nontrivial
+irreducible $\rho$, the input being $L(1,\rho)\ne0,\infty$: Hecke--Landau for Artin
+representations, Jacquet--Shalika in the automorphic case. For Artin representations the
+Chebotarev criterion of \cite[Thm.~3.9]{Main} transfers with
+$D_\rho=\{\pp:\rho(\Frob_\pp)\ne I\}$.
+
+\emph{What does not transfer, and its replacement.} The classification
+$\Prob(G_S/\Xi_\beta^\perp)$ uses Pontryagin duality twice and fails without it: for
+non-abelian $G$ the set of irreducible representations is not a group, $\Xi_\beta$ cannot be
+a subgroup of it, and $\Xi_\beta^\perp$ is undefined. The correct replacement is not a
+subgroup of a dual but a \emph{quotient of the group}. We prove that
+$\cT_\beta(S)=\{\rho:\Xi_\beta(\rho,S)<\infty\}$ is closed under direct sums, subobjects,
+tensor products and duals, hence is a Tannakian subcategory of $\Rep(G)$, and therefore
+equals $\Rep(G/N_\beta)$ for a closed normal subgroup $N_\beta=\bigcap_{\rho\in\cT_\beta}\ker\rho$.
+In the abelian case $N_\beta=\Xi_\beta^\perp$ and the two formulations agree.
+
+\emph{What is not proved here.} We do not construct a $GL_n$ algebra whose
+$\mathrm{KMS}_\beta$ simplex is $\Prob(G/N_\beta)$, and we explain precisely which step of
+the $GL_1$ proof has no available substitute. Two concrete findings bear on the $GL_2$ case,
+formulated for the Sato--Tate classes of a non-CM elliptic curve. If the classes along $S$
+are Sato--Tate equidistributed then $\Xi_\beta(\rho,S)\sim4\sum_{\pp\in S}\Ns\pp^{-\beta}$
+diverges whenever the partition function does, so \emph{no} symmetry breaking arises from a
+Sato--Tate representation. Conversely, assuming Sato--Tate as an equidistribution input, we
+construct sparse $S$ with $\zeta_S(1)=\infty$ and $\Xi_1(\rho,S)<\infty$ for the
+representation attached to a non-CM elliptic curve, by selecting blocks of primes with
+$\theta_p\le2^{-j}$; the exotic phase is therefore available, but only on deliberately
+constructed anomalous sets, never generically.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+\section{Which steps of the abelian argument use commutativity}
+
+Recall the $GL_1$ chain of reasoning \cite{Main}. A $\mathrm{KMS}_\beta$ state is a measure
+$\nu$ on $Y_S$ scaling by $\Ns\aaa^{-\beta}$; the symmetry group $G_S$ acts on the simplex;
+a character $\chi\in\widehat{G_S}$ fails to be an obstruction exactly when $\chi\circ\sigma$
+is a coboundary for $\pi_\beta$, which by Kakutani is the convergence of
+$\sum_\pp\Ns\pp^{-\beta}|1-\chi(\sigma_\pp)|^2$; the obstruction characters form a
+\emph{subgroup} $\Xi_\beta\le\widehat{G_S}$; and the simplex is
+$\Prob(G_S/\Xi_\beta^\perp)$.
+
+Three of these steps are insensitive to commutativity and two are not.
+
+\begin{itemize}
+\item[(i)] The Kakutani step has two halves: a Dirichlet series in Frobenius data, and its
+identification with a coboundary condition for a cocycle on the tail relation.
+\S\ref{sec:kakutani} shows that the series transfers, with the Hilbert--Schmidt norm in
+place of $|1-z|$, and that the cocycle half transfers exactly when the Frobenius classes
+along $S$ commute --- the tail relation being generated by commuting shifts, a
+$U(n)$-valued cocycle with prescribed non-commuting increments does not exist.
+\item[(ii)] The passage from convergence to a group structure uses that $\widehat{G_S}$ is a
+group under pointwise product. For non-abelian $G$ the irreducibles are not closed under
+tensor product as a group law: $\rho_1\otimes\rho_2$ decomposes. \S\ref{sec:tannaka} replaces
+the subgroup by a Tannakian subcategory.
+\item[(iii)] The identification of the simplex as $\Prob(G_S/\Xi_\beta^\perp)$ uses
+Pontryagin duality to convert a subgroup of the dual into a closed subgroup of the group.
+This is the step with no substitute at the level of duals; \S\ref{sec:tannaka} supplies the
+substitute at the level of the group itself.
+\item[(iv)] The $L$-function dictionary is an Euler-product identity and transfers
+(\S\ref{sec:L}), with different constants from those one might guess.
+\item[(v)] The construction of an algebra whose simplex realizes the answer does \emph{not}
+transfer, and \S\ref{sec:algebra} says why.
+\end{itemize}
+
+Throughout, $K$ is a number field, $S$ a set of finite primes, and $G$ a compact group
+equipped with a family of conjugacy classes $\Frob_\pp\in G$ indexed by all but finitely
+many $\pp\in S$: typically $G$ is a profinite quotient of $\Gal(\bar K/K)$ unramified outside
+a finite set and $\Frob_\pp$ the Frobenius class, but $G$ may also be a Sato--Tate group and
+$\Frob_\pp$ the Satake class, as in \S5. All representations are continuous, unitary and
+finite-dimensional; sums over $\pp\in S$ omit the finitely many primes at which
+$\Frob_\pp$ is undefined, which affects no convergence question. We write
+$\zeta_{K,S}(\beta)=\prod_{\pp\in S}(1-\Ns\pp^{-\beta})^{-1}$ as in \cite{Main}, so that
+$\log\zeta_{K,S}(\beta)=\sum_{\pp\in S}\Ns\pp^{-\beta}+O(1)$ for $\beta>1/2$.
+
+\section{The matrix Kakutani dichotomy}\label{sec:kakutani}
+
+\begin{definition}\label{def:Xi}
+For a representation $\rho:G\to U(n)$ put
+\begin{equation}\label{eq:Xi}
+\Xi_\beta(\rho,S):=\sum_{\pp\in S}\Ns\pp^{-\beta}\bigl\|I_n-\rho(\Frob_\pp)\bigr\|_{\HS}^2 .
+\end{equation}
+\end{definition}
+
+\begin{lemma}[Trace form]\label{lem:trace}
+For $U\in U(n)$, $\|I_n-U\|_{\HS}^2=2\bigl(n-\Re\Tr U\bigr)$. Hence
+\begin{equation}\label{eq:trace}
+\Xi_\beta(\rho,S)=2\sum_{\pp\in S}\Ns\pp^{-\beta}\bigl(n-\Re\Tr\rho(\Frob_\pp)\bigr),
+\end{equation}
+a sum of non-negative terms, each in $[0,4n]$, depending only on the conjugacy class of
+$\rho(\Frob_\pp)$.
+\end{lemma}
+
+\begin{proof}
+$\|I-U\|_{\HS}^2=\Tr\bigl((I-U)^*(I-U)\bigr)=\Tr(I-U-U^*+U^*U)=\Tr(2I-U-U^*)=2n-2\Re\Tr U$,
+using $U^*U=I$. Non-negativity and the bound follow from $|\Tr U|\le n$; conjugation
+invariance of the trace gives the last claim.
+\end{proof}
+
+\begin{theorem}[Matrix Kakutani]\label{thm:kakutani}
+Let $\pi_\beta=\bigotimes_{\pp\in S}\mu_{t_\pp}$ with $t_\pp=\Ns\pp^{-\beta}$ as in
+\cite[Lem.~2.10]{Main}, on $V=\N^{(S)}$ with the tail relation $\cR_S$, and put
+$U_\pp=\rho(\Frob_\pp)\in U(n)$ (a representative of the class).
+\begin{enumerate}
+\item A $U(n)$-valued cocycle $c_\rho$ on $\cR_S$ with $c_\rho(v+e_\pp,v)=U_\pp$ for all
+$\pp$ and $v$ exists if and only if the $U_\pp$, $\pp\in S$, commute pairwise.
+\item Suppose they do. Then there is a measurable $g:V\to U(n)$ with
+$g(v+e_\pp)=U_\pp\,g(v)$ a.e.\ for every $\pp$ --- i.e.\ $c_\rho$ is a coboundary --- if
+and only if $\Xi_\beta(\rho,S)<\infty$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) The cocycle identity along the two paths from $v$ to $v+e_\pp+e_\qq$ gives
+$c_\rho(v+e_\pp+e_\qq,v)=U_\qq U_\pp=U_\pp U_\qq$; conversely, for commuting $U_\pp$ the
+formula $c_\rho(v+a,v)=\prod_\pp U_\pp^{a_\pp}$ is well defined and is a cocycle.
+
+(2) Commuting unitaries are simultaneously diagonalizable: some unitary $W$ satisfies
+\[
+WU_\pp W^*=\mathrm{diag}\bigl(\chi_1(\pp),\dots,\chi_n(\pp)\bigr)\quad\text{for every }\pp,
+\qquad\chi_r(\pp)\in\T .
+\] Since $\|I-U_\pp\|_{\HS}^2=\sum_r|1-\chi_r(\pp)|^2$,
+\[
+\Xi_\beta(\rho,S)=\sum_{r=1}^n\sum_{\pp\in S}\Ns\pp^{-\beta}|1-\chi_r(\pp)|^2 .
+\]
+If $g$ exists, put $h=Wg$, so that $h(v+e_\pp)=\mathrm{diag}(\chi_r(\pp))\,h(v)$ and each
+entry satisfies $h_{rs}(v+e_\pp)=\chi_r(\pp)h_{rs}(v)$. For each $r$ some entry $h_{rs}$ is
+nonzero on a set of positive measure, $h(v)$ being unitary; by \cite[Lem.~3.1]{Main}
+$|h_{rs}|$ is a.e.\ constant, hence a.e.\ nonzero, and \cite[Prop.~3.3]{Main}, whose proof
+uses only $|\chi_r(\pp)|=1$, gives the convergence of the $r$-th series. Conversely,
+if all $n$ series converge, \cite[Prop.~3.4]{Main} gives measurable $g_r:V\to\T$ with
+$g_r(v+e_\pp)=\chi_r(\pp)g_r(v)$, and $g=W^*\mathrm{diag}(g_1,\dots,g_n)W$ is the required
+coboundary.
+\end{proof}
+
+\begin{remark}[The series is the primary object]\label{rem:primary}
+Without commutation of the Frobenius classes there is no cocycle on $\cR_S$ to be a
+coboundary, and the dynamical half of the Kakutani dichotomy has no content; a
+non-abelian dynamical model would need a non-abelian acting semigroup, and Paper V of the
+series shows what that costs. What survives, and what everything below uses, is the
+Dirichlet series $\Xi_\beta(\rho,S)$ itself, with the following formal properties.
+\end{remark}
+
+\begin{lemma}[Additivity and submultiplicativity]\label{lem:additivity}
+For representations $\rho,\rho'$ of dimensions $n,n'$:
+\begin{align}
+\bigl\|I_{n+n'}-(\rho\oplus\rho')(g)\bigr\|_{\HS}^2&=\bigl\|I_n-\rho(g)\bigr\|_{\HS}^2+\bigl\|I_{n'}-\rho'(g)\bigr\|_{\HS}^2, \label{eq:oplus}\\
+\bigl\|I_{nn'}-(\rho\otimes\rho')(g)\bigr\|_{\HS}^2&\le2n'\bigl\|I_n-\rho(g)\bigr\|_{\HS}^2+2n\bigl\|I_{n'}-\rho'(g)\bigr\|_{\HS}^2, \label{eq:otimes}\\
+\bigl\|I_n-\rho^\vee(g)\bigr\|_{\HS}&=\bigl\|I_n-\rho(g)\bigr\|_{\HS}. \label{eq:dual}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+\eqref{eq:oplus} is block-diagonality of $I-(\rho\oplus\rho')$. For \eqref{eq:otimes} write
+$I-A\otimes B=(I-A)\otimes I+A\otimes(I-B)$ and use
+$\|X\otimes I_{n'}\|_{\HS}^2=n'\|X\|_{\HS}^2$, $\|A\otimes Y\|_{\HS}^2=n\|Y\|_{\HS}^2$ for
+$A$ unitary, together with $\|X+Y\|^2\le2\|X\|^2+2\|Y\|^2$. \eqref{eq:dual} is
+$\rho^\vee(g)=\overline{\rho(g)}$ and invariance of the Hilbert--Schmidt norm under entrywise
+conjugation.
+\end{proof}
+
+\begin{remark}[Numerical check]\label{rem:num1}
+Lemma~\ref{lem:trace} and \eqref{eq:otimes} were checked on Haar-random unitaries, $200$ in
+each of the dimensions $n=1,2,3,5$ and $500$ pairs with $(n,n')=(2,3)$, with maximal error
+$3.6\cdot10^{-15}$ and no violation; a check of algebra, recorded because the constants
+of \S\ref{sec:L} depend on it.
+\end{remark}
+
+\section{The obstruction is a quotient, not a dual subgroup}\label{sec:tannaka}
+
+\begin{proposition}[Failure of the abelian formulation]\label{prop:failure}
+Let $G$ be a non-abelian compact group. Then the set of irreducible representations
+$\widehat G$ carries no group structure for which $\rho\mapsto\Xi_\beta(\rho,S)$ is a
+homomorphism-like invariant: $\rho_1\otimes\rho_2$ is in general reducible, so
+$\widehat G$ is a based set with a fusion rule and not a group, and the annihilator
+$\Xi_\beta^\perp$ of a subset of $\widehat G$ is undefined. In particular the statement
+``$\mathrm{KMS}_\beta\cong\Prob(G/\Xi_\beta^\perp)$'' has no meaning as written.
+\end{proposition}
+
+\begin{proof}
+Immediate from the definitions; the abelian case is exactly the case where every
+$\rho_1\otimes\rho_2$ is again irreducible.
+\end{proof}
+
+\begin{theorem}[Tannakian obstruction]\label{thm:tannaka}
+Let $\cT_\beta(S)$ be the full subcategory of $\Rep(G)$ on the objects $\rho$ with
+$\Xi_\beta(\rho,S)<\infty$. Then $\cT_\beta(S)$ contains the trivial representation and is
+closed under direct sums, subobjects, quotients, tensor products and duals; it is therefore a
+Tannakian subcategory of $\Rep(G)$, and
+\[
+\cT_\beta(S)=\Rep\bigl(G/N_\beta\bigr),
+\qquad
+N_\beta:=\bigcap_{\rho\in\cT_\beta(S)}\ker\rho ,
+\]
+a closed normal subgroup of $G$. When $G$ is abelian, $N_\beta=\Xi_\beta^\perp$ and the
+description agrees with \cite[Thm.~3.6]{Main}.
+\end{theorem}
+
+\begin{proof}
+The trivial representation gives all summands zero. Closure under $\oplus$, $\otimes$ and
+duals is Lemma~\ref{lem:additivity}: for $\otimes$ the bound \eqref{eq:otimes} converts two
+convergent series into a convergent one, and $n,n'$ are fixed. For subobjects, if
+$\rho=\rho_1\oplus\rho_2$ then \eqref{eq:oplus} gives
+$\Xi_\beta(\rho_i,S)\le\Xi_\beta(\rho,S)$, and by unitarity every subobject is a direct
+summand; quotients are duals of subobjects. Fullness holds by construction. A full
+subcategory of $\Rep(G)$ closed under these operations and containing the trivial object is
+the representation category of a quotient of $G$, by Tannaka--Krein for compact groups: the
+matrix coefficients of its objects span a $*$-subalgebra of the algebra of representative
+functions, closed under the coproduct, hence the representative functions of $G/N$ with $N$
+the common kernel. Normality and closedness of $N_\beta$ hold because each $\ker\rho$ is a
+closed normal subgroup.
+
+For $G$ abelian, $\cT_\beta$ is generated by the characters in $\Xi_\beta$ and
+$\bigcap_{\chi\in\Xi_\beta}\ker\chi=\Xi_\beta^\perp$.
+\end{proof}
+
+\begin{remark}[What the theorem does and does not assert]\label{rem:tannakawarn}
+Theorem~\ref{thm:tannaka} is a statement about representations and Dirichlet series; it
+identifies the natural non-abelian analogue of $\Xi_\beta$ as the quotient $G/N_\beta$. It
+does \emph{not} assert that any $C^*$-dynamical system has $\Prob(G/N_\beta)$ as its
+$\mathrm{KMS}_\beta$ simplex. That is the content of \S\ref{sec:algebra}, and it is open.
+
+We also restrict to finite-dimensional continuous unitary representations of a compact
+group. For a profinite $G$ these are the Artin representations, with finite image. An
+$\ell$-adic representation is not unitary and is not covered; the $GL_2$ case of \S5 is
+handled through the Sato--Tate group, a compact Lie group, and its Satake classes.
+\end{remark}
+
+\section{$L$-functions, with the correct constants}\label{sec:L}
+
+\begin{theorem}[Euler dictionary]\label{thm:euler}
+For $\beta>1/2$ and $\rho$ of dimension $n$ unramified outside $S$,
+\begin{equation}\label{eq:euler}
+\Xi_\beta(\rho,S)=2n\log\zeta_{K,S}(\beta)-2\,\Re\log L_S(\beta,\rho)+O(1),
+\end{equation}
+where $L_S(s,\rho)=\prod_{\pp\in S}\det\bigl(I-\rho(\Frob_\pp)\Ns\pp^{-s}\bigr)^{-1}$ and the
+implied constant depends only on $n$ and $\beta$.
+\end{theorem}
+
+\begin{proof}
+$\log L_S(s,\rho)=\sum_\pp\sum_{m\ge1}\tfrac1m\Tr\bigl(\rho(\Frob_\pp)^m\bigr)\Ns\pp^{-ms}$,
+and the terms with $m\ge2$ are bounded by $n\sum_\pp\sum_{m\ge2}\Ns\pp^{-m\beta}=O_n(1)$ for
+$\beta>1/2$. Hence
+$\Re\log L_S(\beta,\rho)=\sum_\pp\Ns\pp^{-\beta}\Re\Tr\rho(\Frob_\pp)+O(1)$, and similarly
+$\log\zeta_{K,S}(\beta)=\sum_\pp\Ns\pp^{-\beta}+O(1)$. Substituting into \eqref{eq:trace}
+gives \eqref{eq:euler}.
+\end{proof}
+
+\begin{remark}[Two constants that are easy to get wrong]\label{rem:constants}
+The natural guess $\log\zeta_{K,S}(n\beta)-\Re\log L_S(\beta,\rho)=\Xi_\beta(\rho,S)+O(1)$ is
+incorrect in two ways. The zeta factor is evaluated at $\beta$, not at $n\beta$: the $n$ in
+\eqref{eq:trace} enters as the \emph{coefficient} $2n$ of a single Dirichlet series, coming
+from $\Tr I_n=n$, not as a dilation of its argument. And both terms carry a factor $2$, from
+$\|I-U\|^2_{\HS}=2(n-\Re\Tr U)$. For $n=1$ the correct identity reduces to
+$\Xi_\beta=2\log\zeta_{K,S}(\beta)-2\Re\log L_S(\beta,\chi)+O(1)$, consistent with
+\cite[Rem.~3.11]{Main}.
+\end{remark}
+
+\begin{corollary}[The full prime set]\label{cor:full}
+Let $S=P_K$ and $\rho$ irreducible and nontrivial, and suppose $L(s,\rho)$ is holomorphic
+and nonzero at $s=1$ --- Hecke--Landau for Artin representations, Jacquet--Shalika
+\cite{JS} for the standard $L$-function of a cuspidal automorphic representation. Then
+$\Xi_\beta(\rho,P_K)=\infty$ for every $0<\beta\le1$: the obstruction is absent,
+$N_\beta=G$, and the would-be simplex is a point.
+\end{corollary}
+
+\begin{proof}
+For $\beta>1$, \eqref{eq:euler} gives $\Xi_\beta(\rho,P_K)=2n\log\zeta_K(\beta)+O(1)$, since
+$\log L(\beta,\rho)$ stays bounded as $\beta\downarrow1$ by the hypothesis on $L(1,\rho)$;
+so $\Xi_\beta(\rho,P_K)\to\infty$ as $\beta\downarrow1$. As $\Xi_\beta$ is non-increasing
+in $\beta$, being a Dirichlet series with non-negative coefficients, $\Xi_\beta=\infty$ for
+all $\beta\le1$.
+\end{proof}
+
+The convergent case $\Xi_1(\rho,P_K)<\infty$ would require $\Re\log L(\beta,\rho)$ to
+diverge like $n\log\zeta_K(\beta)$, i.e.\ a pole of order $n$ at $s=1$, which happens only
+for $\rho$ trivial.
+
+\begin{corollary}[Chebotarev criterion, Artin case]\label{cor:cheb}
+Let $\rho$ have finite image and let $D_\rho=\{\pp\in S:\rho(\Frob_\pp)\ne I_n\}$. Then
+\[
+\Xi_\beta(\rho,S)<\infty\iff\sum_{\pp\in D_\rho}\Ns\pp^{-\beta}<\infty .
+\]
+\end{corollary}
+
+\begin{proof}
+The image is finite, so $\{\|I-\rho(g)\|_{\HS}^2:g\in G,\ \rho(g)\ne I\}$ is a finite set of
+strictly positive numbers, bounded above by $4n$ and below by some $c>0$. Hence the summand
+in \eqref{eq:Xi} is between $c\Ns\pp^{-\beta}$ and $4n\Ns\pp^{-\beta}$ on $D_\rho$ and zero
+off it.
+\end{proof}
+
+\begin{remark}
+Corollary~\ref{cor:cheb} is the exact analogue of \cite[Thm.~3.9]{Main} and shows that the
+Chebotarev machinery of that paper --- in particular the density computations and the block
+constructions of \cite[\S5]{SeriesI} --- transfers unchanged to Artin representations, with
+$D_\rho$ in place of the detecting set of a character. \emph{It fails for infinite image}:
+if $\rho(\Frob_\pp)$ can approach $I_n$, the indicator of $D_\rho$ is not comparable to
+$\|I-\rho(\Frob_\pp)\|_{\HS}^2$ and only the quadratic form is correct. The $GL_2$ case below
+is exactly of this kind.
+\end{remark}
+
+\section{$GL_2$: Sato--Tate forbids symmetry breaking, anomalies permit it}
+
+Let $E/\Q$ be a non-CM elliptic curve, $a_p$ the trace of Frobenius, and
+$a_p=2\sqrt p\cos\theta_p$ with $\theta_p\in[0,\pi]$. The $\ell$-adic representation of $E$
+is not unitary and does not fit Definition~\ref{def:Xi} directly; what does is the
+Sato--Tate group $G=SU(2)$ (the non-CM case, by Serre's open image theorem \cite{Serre})
+with the Satake classes $\Frob_p=\mathrm{diag}(e^{i\theta_p},e^{-i\theta_p})$ and $\rho$
+its standard representation, to which \S\S\ref{sec:kakutani}--\ref{sec:L} apply verbatim.
+Then $n=2$ and
+\begin{equation}\label{eq:ST}
+\bigl\|I_2-\rho(\Frob_p)\bigr\|_{\HS}^2=2\bigl(2-2\cos\theta_p\bigr)=4\bigl(1-\cos\theta_p\bigr)=8\sin^2(\theta_p/2).
+\end{equation}
+
+\begin{theorem}[Sato--Tate forbids the obstruction]\label{thm:ST}
+Suppose the $\theta_p$, $p\in S$, are equidistributed in $[0,\pi]$ for the Sato--Tate measure
+$\mu_{ST}=\tfrac2\pi\sin^2\theta\,d\theta$ in the sense that
+$\sum_{p\in S,\ p\le x}p^{-\beta}f(\theta_p)\sim\bigl(\int f\,d\mu_{ST}\bigr)\sum_{p\in S,\ p\le x}p^{-\beta}$
+for continuous $f$. Then
+\[
+\Xi_\beta(\rho,S)\sim4\sum_{p\in S}p^{-\beta},
+\]
+which diverges whenever the partition function does. Hence $\rho\notin\cT_\beta(S)$ and no
+symmetry breaking arises from Sato--Tate distributed classes, at any $\beta$ with
+$\zeta_S(\beta)=\infty$.
+\end{theorem}
+
+\begin{proof}
+By \eqref{eq:ST} the summand is $f(\theta_p)$ with $f(\theta)=4(1-\cos\theta)$, continuous
+and bounded on $[0,\pi]$. Since $\int_0^\pi\cos\theta\,\sin^2\theta\,d\theta=0$,
+\[
+\int_0^\pi f\,d\mu_{ST}=\frac{8}{\pi}\int_0^\pi(1-\cos\theta)\sin^2\theta\,d\theta=4 ,
+\]
+and the hypothesis applied to $f$ gives the stated asymptotic.
+\end{proof}
+
+\begin{remark}[Numerical check]\label{rem:num2}
+$\int_0^\pi(2-2\cos\theta)\,d\mu_{ST}=2.0000000000$ by numerical quadrature on $2\times10^6$
+nodes, matching the exact value $2$; the factor $2$ of Lemma~\ref{lem:trace} then gives the
+constant $4$ in Theorem~\ref{thm:ST}.
+\end{remark}
+
+\begin{theorem}[Anomalous sparse sets exist]\label{thm:anomalous}
+Assume Sato--Tate for $E$ --- a theorem for non-CM curves over $\Q$ \cite{Taylor} --- in
+the form: for every $\delta>0$ the set $\{p:\theta_p\le\delta\}$ has positive natural
+density, hence
+$\sum_{p\le x,\ \theta_p\le\delta}p^{-1}\to\infty$. Then there is $S\subset P_\Q$ with
+\[
+\sum_{p\in S}p^{-1}=\infty
+\qquad\text{and}\qquad
+\Xi_1(\rho,S)<\infty .
+\]
+\end{theorem}
+
+\begin{proof}
+Build $S=\bigsqcup_{j\ge1}S_j$ greedily. Given $S_1,\dots,S_{j-1}$, the hypothesis with
+$\delta=2^{-j}$ gives $\sum_{p\le x,\ \theta_p\le2^{-j}}p^{-1}\to\infty$, so a finite set
+$S_j$ of primes with $\theta_p\le2^{-j}$, disjoint from the previous blocks, may be chosen
+with $\sum_{p\in S_j}p^{-1}\ge1$. Then $\sum_{p\in S}p^{-1}\ge\sum_j1=\infty$. On the other
+hand, by \eqref{eq:ST} and $\sin^2(\theta/2)\le\theta^2/4$,
+\[
+\Xi_1(\rho,S)=\sum_j\sum_{p\in S_j}p^{-1}\cdot8\sin^2(\theta_p/2)
+\le\sum_j2\cdot4^{-j}\sum_{p\in S_j}p^{-1} .
+\]
+Choosing $S_j$ additionally with $\sum_{p\in S_j}p^{-1}\le2$, which is possible since single
+terms $p^{-1}$ can be made arbitrarily small, gives $\Xi_1(\rho,S)\le\sum_j4\cdot4^{-j}<\infty$.
+\end{proof}
+
+\begin{remark}[What has and has not been shown]\label{rem:anomalouswarn}
+Theorem~\ref{thm:anomalous} produces a set on which the analytic obstruction is finite: the
+Sato--Tate classes of a non-CM elliptic curve become ``invisible'' along a deliberately
+chosen set of primes with anomalously small angle. By Theorem~\ref{thm:tannaka} applied to
+$G=SU(2)$ it follows that $\rho\in\cT_1(S)$ and hence $N_1\subseteq\ker\rho=\{1\}$, so the
+Tannakian quotient $G/N_1=SU(2)$ is the whole Sato--Tate group, nontrivial and
+non-abelian.
+
+What has \emph{not} been shown is that this residual symmetry acts on a simplex of
+$\mathrm{KMS}$ states of any algebra, for the reason of \S\ref{sec:algebra}. The phrase
+``non-abelian symmetry breaking'' is therefore premature: we have a non-abelian obstruction
+group, not yet a broken phase. The construction also assumes Sato--Tate as an
+equidistribution input; for non-CM elliptic curves over $\Q$ this is a theorem, but only the
+qualitative positive-density statement is used.
+\end{remark}
+
+\section{The algebra is not constructed}\label{sec:algebra}
+
+\begin{remark}[Where the $GL_1$ proof stops]\label{rem:gap}
+The classification in \cite{Main} runs: (a) $\mathrm{KMS}_\beta$ states of
+$C(Y_S)\rtimes J_S$ correspond bijectively to $\Ns\aaa^{-\beta}$-scaling measures on $Y_S$,
+by the conditional expectation onto the diagonal; (b) such measures form a simplex on which
+$G_S$ acts; (c) the ergodic decomposition of that action is computed by the Kakutani
+criterion. Steps (a) and (b) require the coefficient algebra to be commutative and the
+semigroup to be Ore, so that a canonical expectation exists and the crossed product is a
+groupoid algebra.
+
+The candidate $\cA^{GL_n}_{K,S}=C(Y^{(n)}_S)\rtimes M$ fails both at present. The
+multiplicative structure $M$ is not a semigroup for the obvious choices: $M_n(J_S)$ is not
+closed under multiplication with the required cancellation, and $GL_n$ over a semiring of
+ideals has no Ore condition available to us. And the Connes--Marcolli $GL_2$ system \cite{CM}, which
+does exist, is not of this shape: its symmetry is the action of $GL_2(\mathbb A_f)$ by
+endomorphisms of a noncommutative space of two-dimensional lattices, and its arithmetic is
+that of modular functions and the modular field, not of a Galois group acting through
+Frobenius classes. There is no non-abelian class field theory realized in it, which is why
+its $\mathrm{KMS}$ theory does not take the form $\Prob(G/N)$.
+
+The honest statement is therefore: \S\S\ref{sec:kakutani}--\ref{sec:L} determine what the
+answer would have to be, and identify the correct algebraic shape of the obstruction, but the
+system whose equilibrium states realize $\Prob(G/N_\beta)$ is not available. Two routes seem
+worth trying. One is to look for a groupoid model directly: a groupoid whose unit space
+carries a $G$-action with the tail relation of \cite{Main} and whose isotropy realizes
+$N_\beta$; this bypasses the semigroup difficulty entirely. The other is to stay with $GL_1$
+but to enlarge the coefficient algebra, replacing $C(Y_S)$ by a noncommutative algebra
+carrying $\rho$; here the Kakutani analysis of \S\ref{sec:kakutani} applies verbatim, and the
+question is whether the resulting crossed product has a tractable expectation.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Statement} & \text{Status} & \text{Reference}\\\hline
+\|I-U\|_{\HS}^2=2(n-\Re\Tr U) & \text{true} & \text{Lem.~2.2}\\
+\text{Kakutani dichotomy for }U(n)\text{-cocycles} & \text{iff the classes commute} & \text{Thm.~2.3}\\
+\Xi_\beta\ \text{a subgroup of }\widehat G & \text{meaningless for non-abelian }G & \text{Prop.~3.1}\\
+\Prob(G/\Xi_\beta^\perp) & \text{meaningless as written} & \text{Prop.~3.1}\\
+\cT_\beta=\Rep(G/N_\beta) & \textbf{true; the correct replacement} & \text{Thm.~3.2}\\
+\log\zeta_{K,S}(n\beta)-\Re\log L_S=\Xi_\beta+O(1) & \text{false} & \text{Rem.~4.2}\\
+\Xi_\beta=2n\log\zeta_{K,S}(\beta)-2\Re\log L_S+O(1) & \textbf{true} & \text{Thm.~4.1}\\
+\Xi_\beta(\rho,P_K)=\infty,\ \rho\ne1\ \text{irreducible},\ \beta\le1 & \text{true, via }L(1,\rho)\ne0,\infty & \text{Cor.~4.3}\\
+\text{Chebotarev criterion via }D_\rho & \text{true for finite image only} & \text{Cor.~4.4}\\
+\text{Sato--Tate}\Rightarrow\text{symmetry breaking} & \text{false: forbids it} & \text{Thm.~5.1}\\
+\text{anomalous sparse }S\ \text{with}\ \Xi_1<\infty & \text{true, under Sato--Tate} & \text{Thm.~5.3}\\
+\cA^{GL_n}_{K,S}\ \text{constructed} & \text{no} & \S\ref{sec:algebra}
+\end{array}
+\]
+
+The pattern is the one already familiar from Paper III of the series: the arithmetic
+content --- a Dirichlet series in Frobenius data, an $L$-function on $\Re s=1$ ---
+generalizes with no difficulty, because none of it used commutativity. What used
+commutativity was, first, the dynamical half of the Kakutani step, which needs a cocycle
+on a relation generated by commuting shifts, and second the \emph{duality} converting the
+series into a statement about a space of states; the substitute for the latter is
+Tannakian rather than Pontryagin, a quotient of the group rather than a subgroup of its
+dual, and for the former there is none. The missing ingredient is not a theorem but an
+object, namely an algebra whose equilibrium states are indexed by $G/N_\beta$.
+
+Three questions. Is $N_\beta$ the intersection of the kernels of \emph{all} representations
+in $\cT_\beta$, or is it already cut out by the irreducible ones of bounded dimension? For
+$G$ with an open image in $GL_2(\hat\Z)$ this is a question about which quotients can be
+realized by anomalous prime sets. Second, Theorem~\ref{thm:anomalous} constructs
+$S$ for a fixed $\rho$; can one construct $S$ realizing a \emph{prescribed} quotient
+$G/N$, as \cite[Thm.~5.1]{SeriesI} does in the abelian case for prescribed
+$\bigoplus\Z/2\Z$? Third, and most important, is the groupoid model of Remark~\ref{rem:gap}
+available? Without it this paper describes an obstruction group with nothing yet to obstruct.
+
+\begin{thebibliography}{9}
+\bibitem{CM} A. Connes, M. Marcolli, \emph{From physics to number theory via noncommutative geometry}, in: Frontiers in Number Theory, Physics, and Geometry I, Springer, 2006, 269--347.
+\bibitem{JS} H. Jacquet, J. A. Shalika, \emph{A non-vanishing theorem for zeta functions of $GL_n$}, Invent. Math. 38 (1976/77), 1--16.
+\bibitem{Serre} J.-P. Serre, \emph{Propri\'et\'es galoisiennes des points d'ordre fini des courbes elliptiques}, Invent. Math. 15 (1972), 259--331.
+\bibitem{Taylor} R. Taylor, \emph{Automorphy for some $\ell$-adic lifts of automorphic mod $\ell$ Galois representations. II}, Publ. Math. IHES 108 (2008), 183--239.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\bibitem{SeriesI} R. Chen, \emph{Localized Bost--Connes systems I: factor type and the spectrum of transitions}, preprint, 2026, DOI \href{https://doi.org/10.5281/zenodo.22160827}{10.5281/zenodo.22160827}.
+\end{thebibliography}
+
+\end{document}
