@@ -1,0 +1,226 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+\raggedbottom
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newcommand{\OK}{\mathcal{O}_K}
+\newcommand{\Op}{\mathcal{O}_\pp}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Ns}{N}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\Aaff}{\mathcal{A}^{\mathrm{aff}}}
+
+\title[K-theory of the affine boundary quotient]{K-theory of the affine boundary quotient:\\ the return of the norm and the trace}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Paper XXX of the series on localized Bost--Connes systems. The framework is that of
+\cite{Main}, cited by DOI; Paper II of the series, referred to by numeral, is a published
+companion (its \S6 introduces the affine system), and the facts used from it are restated
+in place.}
+\date{5 September 2026}
+
+\begin{document}
+
+\begin{abstract}
+For the affine control system of Paper II (its \S6) at a \emph{principal} prime
+$\pp=(\pi)$ of a number field $K$ of degree $n$, with $q=\Ns\pp$, we compute the K-theory
+of the boundary quotient $\partial\Aaff$. The tight quotient is stably isomorphic to
+$C_0(K_\pp)\rtimes(\OK[1/\pi]\rtimes_\pi\Z)$, and an iterated Pimsner--Voiculescu
+computation over the exterior-power tower $M_r=\varinjlim(\Lambda^r\OK,\,t_r)$, with
+integral transfer $t_r=\pm(\Lambda^{n-r}\pi)^\vee$ and scaling action
+$\alpha_*=q^{-1}\Lambda^r\pi$, yields: a copy of $\Z$ in each of $K_0$ and $K_1$ from the
+top layer when $\Ns_{K/\Q}\pi=+q$ (a single $\Z$ and a $\Z/2$ when $\Ns\pi=-q$); the class
+of the unit generating a torsion summand $\Z/(q-1)$ of exact order $q-1$ --- the norm
+survives, and the divisibility bound $(\Ns\pp-1)[1]=0$ of Paper II is attained; and, in the
+intermediate layers $0<r<n$, finite torsion of order the prime-to-$q$ part of
+$\bigl|\det(q\cdot1-\Lambda^r\pi)\bigr|$ up to primes inverted by the tower --- for $K$
+real quadratic, a summand $\Z/|q\pm1-\Tr\pi|'$ of $K_1$. The trace of the uniformizer
+enters the K-theory. Consequently the affine boundary is \emph{not} a canonical invariant
+of $\pp$: replacing $\pi$ by $u\pi$ for a unit $u$ changes the torsion, computed explicitly
+in $\Q(\sqrt2)$. The class group is located precisely at the entrance: for non-principal
+$\pp$ the semigroup of Paper II's \S6 is not well defined over $\OK$, and the ray-class
+repair is the first of three problems recorded honestly at the end.
+\end{abstract}
+
+\maketitle
+
+\section{The setting, and a repair}\label{sec:setting}
+
+Paper II (its \S6) attaches to a set $S$ of primes of $K$ the affine system
+$\Aaff_{K,S}=C(\widehat{\mathcal O}_S)\rtimes(\OK\rtimes J_S)$, translations by $\OK$ and
+scalings by fixed uniformizers, and its boundary quotient $\partial\Aaff_{K,S}$, obtained
+by imposing, for each $\pp\in S$, the Cuntz relation
+$\sum_{a\in\OK/\pp}\mu_{(a,\pp)}\mu_{(a,\pp)}^*=1$; the quotient is a unital Kirchberg
+algebra satisfying the UCT, and $(\Ns\pp-1)[1]=0$ in $K_0$.
+
+One repair is needed before any computation. If the uniformizer $\pi_\pp$ is merely local,
+the semigroup law $(b,\mathfrak a)(b',\mathfrak a')=(b+\pi_{\mathfrak a}b',\mathfrak
+a\mathfrak a')$ leaves $\OK$: the affine monoid of Paper II's \S6 is well defined over
+$\OK$ only when the scalings are by \emph{global} elements. We therefore assume throughout
+that $\pp=(\pi)$ is principal with a chosen generator $\pi\in\OK$, and we work at a single
+prime, $S=\{\pp\}$, $q:=\Ns\pp$, $n:=[K:\Q]$, $\Ns_{K/\Q}\pi=\pm q$. The non-principal
+case requires a ray-class extension of the acting monoid and is recorded as Problem (a) in
+\S\ref{sec:honest}; as Remark~\ref{rem:units} shows, this is exactly where the class group
+enters the affine theory.
+
+\section{The dilated form}\label{sec:reduction}
+
+\begin{proposition}\label{prop:dilation}
+$\partial\Aaff_{K,\{\pp\}}\otimes\K\ \cong\
+C_0(K_\pp)\rtimes\bigl(\OK[1/\pi]\rtimes_\pi\Z\bigr)$, where $\OK[1/\pi]$ acts by
+translation through its dense image (strong approximation) and $\Z$ by multiplication by
+$\pi$. In particular the two algebras have the same K-theory.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+On the boundary the scaling isometry $\mu_\pi$ has the Cuntz relation above, and the
+standard dilation of the corner endomorphism $\mathrm{Ad}\,\mu_\pi$ to an automorphism
+enlarges the base $\Op$ to $K_\pp=\bigcup_m\pi^{-m}\Op$ and the translation group $\OK$ to
+$\OK[1/\pi]$; the image of $\OK$ is dense in $\Op$ (strong approximation), hence
+$\OK[1/\pi]$ is dense in $K_\pp$, the action is minimal, and
+$1_{\Op}\bigl(C_0(K_\pp)\rtimes(\OK[1/\pi]\rtimes\Z)\bigr)1_{\Op}$ is a full corner
+isomorphic to $\partial\Aaff_{K,\{\pp\}}$. The group $\OK[1/\pi]\rtimes\Z$ is solvable,
+hence amenable, so the crossed product is nuclear and the Baum--Connes machinery below is
+available.
+\end{proof}
+
+\section{The exterior tower and the iterated Pimsner--Voiculescu computation}\label{sec:pv}
+
+Write $B=C_0(K_\pp)\rtimes\OK[1/\pi]$ and $\alpha$ for the scaling automorphism, so that
+the algebra of Proposition~\ref{prop:dilation} is $B\rtimes_\alpha\Z$.
+
+\begin{lemma}[The tower]\label{lem:tower}
+For $0\le r\le n$ let $t_r:\Lambda^r\OK\to\Lambda^r\OK$ be the transfer, characterized by
+$t_r\circ\Lambda^r(\pi)=q\cdot\mathrm{id}$; it is integral,
+$t_r=\pm(\Lambda^{n-r}\pi)^\vee$ under the duality $\Lambda^r\otimes\Lambda^{n-r}\to
+\Lambda^n\cong\Z$ (multiplication by $\pi$ on $\Lambda^n$ being $\Ns\pi$). Then
+\[
+K_*(B)\ \cong\ \bigoplus_{r\equiv *\,(2)}M_r,\qquad
+M_r:=\varinjlim\bigl(\Lambda^r\OK\ \xrightarrow{\,t_r\,}\ \Lambda^r\OK\
+\xrightarrow{\,t_r\,}\cdots\bigr),
+\]
+and the scaling acts on $M_r$ by the invertible map $\alpha_*=q^{-1}\Lambda^r\pi$
+(inverse $q^{-1}t_r$).
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+$C(\Op)=\varinjlim_mC(\OK/\pp^m)$ equivariantly; the translation action of $\OK$ on
+$\OK/\pp^m$ is transitive with stabilizer $\pp^m=\pi^m\OK$, so by Green's imprimitivity
+$C(\OK/\pp^m)\rtimes\OK\cong M_{q^m}\bigl(C^*(\pi^m\OK)\bigr)$, whose K-theory is the
+exterior algebra $\Lambda^*(\pi^m\OK)$ in the usual parity. The connecting map from level
+$m$ to level $m{+}1$ is the transfer for the index-$q$ inclusion
+$\pi^{m+1}\OK\subset\pi^m\OK$, which under the identifications
+$\Lambda^r(\pi^m\OK)\cong\Lambda^r\OK$ (via $\Lambda^r\pi^{-m}$) becomes $t_r$; passing to
+$B$ replaces the colimit over $m$ by the same colimit, the corner being full.
+Integrality of $t_r$: pairing with $\Lambda^{n-r}$ and using
+$\Lambda^r\pi\otimes\Lambda^{n-r}\pi\mapsto\Ns\pi=\pm q$ on $\Lambda^n$ gives
+$t_r=\pm(\Lambda^{n-r}\pi)^\vee$. The scaling conjugates level $m$ to level $m{+}1$
+composed with $\Lambda^r\pi$, which in the colimit is $q^{-1}\Lambda^r\pi$; the two
+calibrations of Remark~\ref{rem:calibration} pin the normalization.
+\end{proof}
+
+\begin{remark}[Two calibrations, $n=1$]\label{rem:calibration}
+For $K=\Q$, $\pi=p=q$: at $r=0$, $t_0=q$ and $M_0=\Z[1/q]$ with $\alpha_*=1/q$ ---
+the class $[1_{\Op}]$ scales by the measure factor, as it must. At $r=1$, $t_1=q\cdot
+p^{-1}=1$ and $M_1=\Z$ with $\alpha_*=p/q=1$: the unitary of a single translation coset
+has, in the merged level, class $1$ and \emph{not} $p$ --- this is the pivot of the whole
+computation, checked level by level on the Bunce--Deddens tower: the level-$m$ generator
+of $K_1(M_{p^m}(C^*(p^m\Z)))\cong\Z$ is the coset unitary, the transfer to level $m{+}1$
+carries it to the coset unitary again, and the scaling permutes the $p$ cosets without
+multiplying the class. Anchors: the resulting $K_*(B\rtimes\Z)$ below reproduces, for
+$K=\Q$, $K_0=\Z\oplus\Z/(p-1)$ with $[1]$ generating the torsion and $K_1=\Z$; at $p=2$
+this gives $K_0\cong\Z$, $K_1\cong\Z$, $[1]=0$, consistent with the $2$-adic ring algebra
+computation of Larsen--Li \cite{LarsenLi}.
+\end{remark}
+
+\begin{theorem}[K-theory of the affine boundary, principal single prime]\label{thm:main}
+Assume $\pi^A\ne q$ for every $r$-subset $A$ of the archimedean embeddings and every
+$0<r<n$, where $\pi^A=\prod_{i\in A}\pi^{(i)}$. Then, with $T_r:=\coker(1-\alpha_*\mid
+M_r)$ finite for $0<r<n$ and $T_0=\Z/(q-1)$:
+\begin{align*}
+\Ns\pi=+q:&\quad K_0(\partial\Aaff)\cong\Z\oplus\bigoplus_{r\ \mathrm{even}}T_r,\qquad
+K_1(\partial\Aaff)\cong\Z\oplus\bigoplus_{r\ \mathrm{odd}}T_r,\\
+\Ns\pi=-q:&\quad\text{the two }\Z\text{'s are replaced by a single }\Z/2\text{ in parity }n .
+\end{align*}
+The class $[1]$ generates $T_0=\Z/(q-1)$: its order is \emph{exactly} $q-1$, attaining the
+divisibility bound of Paper II. The order of $T_r$ is the part of
+$\bigl|\det(q\cdot1-\Lambda^r\pi)\bigr|/q^{\binom nr}$ prime to the primes inverted by the
+tower $t_r$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Pimsner--Voiculescu \cite{PV} for $B\rtimes_\alpha\Z$:
+$0\to\coker(1-\alpha_*|K_*(B))\to K_*(B\rtimes\Z)\to\ker(1-\alpha_*|K_{*+1}(B))\to0$,
+summed over the parity decomposition of Lemma~\ref{lem:tower}. At $r=0$:
+$1-\alpha_*=1-q^{-1}$ on $\Z[1/q]$ has cokernel $\Z/(q-1)$ generated by the class of
+$1_{\Op}$, and kernel $0$. At $r=n$: $M_n=\Z$, $\alpha_*=\Ns\pi/q=\pm1$; for $+1$ both
+kernel and cokernel are $\Z$, contributing the two free summands; for $-1$,
+$1-\alpha_*=2$, cokernel $\Z/2$, kernel $0$. At $0<r<n$: the eigenvalues of $\alpha_*$
+are $\pi^A/q$, none equal to $1$ by hypothesis, so $1-\alpha_*$ is injective with finite
+cokernel of the stated order; the extensions split at the level of orders and free ranks,
+the remaining extension data being Problem (b) of \S\ref{sec:honest}.
+\end{proof}
+
+\begin{example}[Real quadratic, explicitly]\label{ex:quadratic}
+$n=2$, $\pi'$ the conjugate, $t_1=\pm\pi'$ (multiplication by the conjugate --- the
+transfer \emph{is} the adjugate), $M_1=\OK$ with the primes dividing $\Ns\pi'$ inverted,
+and $\alpha_*=\pi/q$. Then
+\[
+\det(1-\alpha_*)=\Ns_{K/\Q}\Bigl(1-\frac{\pi}{q}\Bigr)=\frac{\Ns(q-\pi)}{q^2}
+=\frac{q\mp1-\Tr\pi}{q}\cdot(\pm1),
+\]
+so $K_1(\partial\Aaff)$ contains the summand $\Z/\bigl|q\pm1-\Tr\pi\bigr|'$ (prime-to-$q$
+part), the sign that of $\Ns\pi=\pm q$. \emph{The trace of the uniformizer enters the
+K-theory.} Concretely, in $K=\Q(\sqrt2)$ with $\pp=(3+\sqrt2)$, $q=7$, $\Ns\pi=+7$,
+$\Tr\pi=6$: the summand is $\Z/|7+1-6|=\Z/2$.
+\end{example}
+
+\begin{remark}[The units are audible; the class group is at the door]\label{rem:units}
+Replacing $\pi$ by $u\pi$ for $u\in\OK^\times$ of norm $1$ preserves $\pp$ and $q$ but
+changes $\Tr$: in $\Q(\sqrt2)$, $u=3+2\sqrt2$ gives $u\pi=13+9\sqrt2$, $\Ns=7$,
+$\Tr=26$, and the summand becomes $\Z/|7+1-26|=\Z/18$. The affine boundary quotient is
+therefore \emph{not} a canonical invariant of the prime: it hears the unit orbit of the
+chosen uniformizer --- the reason Paper II's \S6 had to ``fix a family of uniformizers''.
+And the class group is located exactly at the entrance of the theory rather than inside
+the K-groups: it obstructs the existence of a global $\pi$ at all, Problem (a) below.
+\end{remark}
+
+\section{What the affine boundary remembers, and what remains}\label{sec:honest}
+
+Three layers of arithmetic survive where the multiplicative system forgets: the
+\emph{norm}, as the exact order $q-1$ of $[1]$; the \emph{splitting data} of $\pp$,
+through the values of the exterior characteristic polynomials of $\pi$ at $q$ (for real
+quadratic fields, $\Tr\pi$); and, unexpectedly, the \emph{unit orbit} of the uniformizer,
+which makes the invariant finer than the prime itself. The degree $n$ sets the number of
+layers; the unit \emph{rank} enters only through the orbit sensitivity.
+
+Three problems remain and are recorded as such. \emph{(a) The ray-class repair:} for
+non-principal $\pp$ the acting monoid must be enlarged (ray classes, or a principalizing
+extension), and the resulting boundary compared with the principal case --- this is where
+the class group genuinely enters. \emph{(b) Extension data:} for $n\ge3$, and for
+$|S|\ge2$ under the iterated Pimsner--Voiculescu sequences, the orders and free ranks
+above determine $K_*$ only up to group extensions. \emph{(c) The $q$-part:} the torsion
+orders are computed prime to the primes inverted by the transfers; the exact $q$-primary
+bookkeeping requires the integral colimit, not just its localization.
+
+\begin{thebibliography}{9}
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\bibitem{CuntzLi} J. Cuntz, X. Li, \emph{The regular C*-algebra of an integral domain}, Clay Math. Proc. 10 (2010), 149--170.
+\bibitem{LarsenLi} N. S. Larsen, X. Li, \emph{The $2$-adic ring C*-algebra of the integers and its representations}, J. Funct. Anal. 262 (2012), 1392--1426.
+\bibitem{PV} M. Pimsner, D. Voiculescu, \emph{Exact sequences for K-groups and Ext-groups of certain cross-product C*-algebras}, J. Operator Theory 4 (1980), 93--118.
+\end{thebibliography}
+
+\end{document}
