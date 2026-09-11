@@ -1,0 +1,560 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\NC}{\mathrm{NC}}
+\newcommand{\spn}{\operatorname{span}}
+\newcommand{\bfree}{\beta_c^{\mathrm{free}}}
+\newcommand{\bcl}{\beta_c^{\mathrm{cl}}}
+\newcommand{\Prob}{\operatorname{Prob}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[The free variant]{Localized Bost--Connes systems V:\\ the free variant and the free critical exponent}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/V-free/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Replacing the free abelian monoid $J_S$ of the localized Bost--Connes system by the free
+monoid $\F_S^+$ produces a system whose statistics are free-probabilistic and whose
+thermodynamics is governed by a new arithmetic invariant. We determine both, and conclude
+that the deformation is incompatible with the phase structure it was meant to probe.
+
+The incompatibility begins at the definition: keeping the coefficient algebra $C(Y_S)$ while
+freeing the isometries is inconsistent, since orthogonal range projections contradict the
+nested ones of $C(Y_S)$, and the universal algebra is zero. The consistent free system is
+the Toeplitz--Cuntz algebra of $\F_S^+$ with the norm dynamics; it retains the norms of
+$S$ and nothing else --- no symmetry group $G_S$, no obstruction group $\Xi_\beta$. Its
+partition function is $Z_{\mathrm{free}}(\beta)=(1-L_S(\beta))^{-1}$ with
+$L_S(\beta)=\sum_{\pp\in S}\Ns\pp^{-\beta}$, so the critical point solves $L_S=1$: a
+Galton--Watson branching criticality rather than an abscissa of convergence. The range
+projections being mutually orthogonal, every $\mathrm{KMS}_\beta$ state forces
+$L_S(\beta)\le1$, so \emph{no $\mathrm{KMS}_\beta$ state exists below the threshold}, and
+above it there is exactly one --- the same mechanism by which partitioning, as opposed to
+nested, range projections restrict the admissible temperatures in the $ax+b$ systems
+(Paper II of the series).
+
+In the Fock--Gibbs state the field operators $\Phi_\pp=\mu_\pp+\mu_\pp^*$ have an exactly
+computable law on $[-2,2]$: with $t=\Ns\pp^{-\beta}$ the moments are $m_2=1+t$,
+$m_4=2+3t+t^2$ and the free cumulant $\kappa_4=-t(1+t)$ is strictly negative, so
+$\Phi_\pp$ is semicircular only in the limit $\beta\to\infty$. The fields are not exactly
+free: the obstruction is the hard-core exclusion $e_\pp e_\qq=0$, giving the mixed cumulant
+$-t_\pp t_\qq$, and asymptotic freeness holds at exactly that rate. Two natural guesses fail:
+$\cN_\pp=\mu_\pp\mu_\pp^*$ is a \emph{projection}, so its law is Bernoulli and not free
+Poisson; and Voiculescu's microstates free entropy is undefined for $n\ge2$ variables, the
+$\mathrm{KMS}_\beta$ state not being tracial.
+
+The invariant $\bfree(S)$, the root of $L_S=1$, is arithmetically of a different kind from
+the classical critical exponent. It is not a tail invariant: over $\Q$, deleting the single
+prime $2$ moves it from $1.399433\ldots$, the root of the prime zeta function minus one,
+to $1.224388\ldots$; and it obeys the universal bound $\bfree(S)\le\bfree(P_\Q)$. Applied to
+the cascade constructions of \cite{SeriesI} the conclusion is sharp and negative: there
+$L_S(1)=\infty$ by design, so $\bfree(S)>1$, while the entire transition locus lies in
+$(0,1]$. Every classical phase transition occurs at a temperature where the free system has no
+equilibrium state at all, and $\bfree$ can be prescribed anywhere in $\bigl(1,\bfree(P_\Q)\bigr)$
+without disturbing the cascade. The two exponents carry disjoint information.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+\section{The free system}
+
+\subsection{The naive deformation is inconsistent}
+
+The first idea is to keep the coefficient algebra of the classical system and to free the
+isometries: consider the universal $C^*$-algebra $\cA^{\mathrm{naive}}$ generated by a copy
+of $C(Y_S)$ and isometries $\mu_\pp$, $\pp\in S$, subject to
+\begin{equation}\label{eq:naive}
+\mu_\pp^*\mu_\qq=\delta_{\pp\qq}1,\qquad \mu_\pp f\mu_\pp^*=\alpha_\pp(f)\quad(f\in C(Y_S)),
+\end{equation}
+where $\alpha_\pp(f)=(f\circ\pp^{-1})\mathbf 1_{\pp Y_S}$ is the endomorphism of the
+classical system \cite[\S2]{Main}. The two halves of \eqref{eq:naive} pull in opposite
+directions: the first makes the range projections $e_\pp=\mu_\pp\mu_\pp^*$ orthogonal, the
+second identifies $e_\pp=\alpha_\pp(1)$ with the image of $\mathbf 1_{\pp Y_S}$, and in
+$C(Y_S)$ the range projections are nested, $\mathbf 1_{\pp Y_S}\mathbf 1_{\qq Y_S}=\mathbf 1_{\pp\qq Y_S}\ne0$.
+
+\begin{proposition}[Incompatibility]\label{prop:naive}
+If $|S|\ge2$ then $\cA^{\mathrm{naive}}=0$.
+\end{proposition}
+
+\begin{proof}
+Let $\pp\ne\qq$. By \eqref{eq:naive}, $e_\pp e_\qq=\mu_\pp(\mu_\pp^*\mu_\qq)\mu_\qq^*=0$,
+while $e_\pp e_\qq$ is the image of $\mathbf 1_{\pp Y_S}\mathbf 1_{\qq Y_S}=\mathbf 1_{\pp\qq Y_S}=\alpha_\pp(\mathbf 1_{\qq Y_S})$.
+Hence $\mu_\pp\mathbf 1_{\qq Y_S}\mu_\pp^*=0$, and multiplying by $\mu_\pp^*$ on the left and
+$\mu_\pp$ on the right, using $\mu_\pp^*\mu_\pp=1$, gives $\mathbf 1_{\qq Y_S}=0$ in
+$\cA^{\mathrm{naive}}$. Then $\mu_\qq=e_\qq\mu_\qq=\mathbf 1_{\qq Y_S}\mu_\qq=0$, so
+$1=\mu_\qq^*\mu_\qq=0$.
+\end{proof}
+
+The classical system has a single isometry per prime with \emph{nested} ranges, and this
+is what lets $C(Y_S)$, with its symmetry group $G_S$ and obstruction group $\Xi_\beta$, sit
+inside it; a free monoid of isometries has \emph{partitioning} ranges, and cannot coexist
+with that coefficient algebra. The consistent free deformation therefore retains, of the
+arithmetic of $S$, only the norms.
+
+\subsection{The Toeplitz--Cuntz system}
+
+\begin{definition}\label{def:free}
+Let $\F_S^+$ be the free monoid on $S$ and $\Ns w=\prod_j\Ns\pp_j$ for
+$w=\pp_1\cdots\pp_k$. The \emph{free system} is the Toeplitz--Cuntz algebra
+$\cA^{\mathrm{free}}_S=\cT_S$, the universal $C^*$-algebra generated by isometries $\mu_\pp$,
+$\pp\in S$, with
+\begin{equation}\label{eq:rel}
+\mu_\pp^*\mu_\qq=\delta_{\pp\qq}1 ,
+\end{equation}
+with the dynamics $\sigma_t(\mu_w)=\Ns w^{it}\mu_w$. Write $e_\pp=\mu_\pp\mu_\pp^*$,
+$\mu_w=\mu_{\pp_1}\cdots\mu_{\pp_k}$, and $L_S(\beta)=\sum_{\pp\in S}\Ns\pp^{-\beta}$.
+\end{definition}
+
+The Fock representation on $\ell^2(\F_S^+)$, $\mu_\pp\xi_w=\xi_{\pp w}$, is faithful: for
+finite $S$ this is Cuntz's theorem \cite{Cuntz77}, and in general it follows from the
+gauge-invariant uniqueness theorem, the Fock representation carrying the gauge action. The diagonal $C^*\{\mu_w\mu_w^*\}$ of $\cT_S$ is commutative and plays the
+role of the coefficient algebra; its spectrum is the space of finite and infinite words,
+the boundary of the word tree, and \emph{not} $Y_S$.
+
+\emph{The series.} The present paper is V. The foundational paper is \cite{Main};
+\cite{SeriesI} is I of the series and treats the factor type and the spectrum of
+transitions. Papers II (ideal structure and index), III ($\Xi_\beta$ as an invariant of a
+measure class) and IV (metric geometry) are in preparation; nothing here depends on them,
+and we refer to them by numeral, without citation.
+
+\begin{proposition}\label{prop:Z}
+$\sum_{w\in\F_S^+}\Ns w^{-\beta}=\sum_{k\ge0}L_S(\beta)^k=(1-L_S(\beta))^{-1}$, convergent
+precisely when $L_S(\beta)<1$.
+\end{proposition}
+
+\begin{proof}
+Words of length $k$ are indexed by $S^k$ and $\Ns$ is multiplicative, so
+$\sum_{|w|=k}\Ns w^{-\beta}=L_S(\beta)^k$.
+\end{proof}
+
+\begin{theorem}[The equilibrium states]\label{thm:betac}
+Let $|S|\ge2$. Then $L_S$ is continuous and strictly decreasing on its domain with
+$L_S(0^+)>1$ and $L_S(\infty)=0$, so there is a unique $\bfree(S)$ with $L_S(\bfree)=1$
+whenever $L_S$ exceeds $1$ somewhere. Moreover:
+\begin{enumerate}
+\item every $\mathrm{KMS}_\beta$ state satisfies $L_S(\beta)\le1$; hence for
+$\beta<\bfree(S)$ \emph{no $\mathrm{KMS}_\beta$ state exists};
+\item for every $\beta$ there is at most one $\mathrm{KMS}_\beta$ state, and it is given
+on the dense $*$-algebra spanned by the $\mu_w\mu_v^*$ by
+\begin{equation}\label{eq:unique}
+\varphi(\mu_w\mu_v^*)=\delta_{wv}\,\Ns w^{-\beta};
+\end{equation}
+\item for $L_S(\beta)<1$ the Fock--Gibbs state
+\begin{equation}\label{eq:gibbs}
+\varphi_\beta(x)=\bigl(1-L_S(\beta)\bigr)\sum_{w\in\F_S^+}\Ns w^{-\beta}\bigl\langle x\,\xi_w,\xi_w\bigr\rangle
+\end{equation}
+on $\ell^2(\F_S^+)$ is a $\mathrm{KMS}_\beta$ state, hence the unique one;
+\item at $\beta=\bfree(S)$ a $\mathrm{KMS}_\beta$ state exists, namely the weak-$*$ limit of
+$\varphi_{\beta'}$ as $\beta'\downarrow\bfree$, and it is the unique one.
+\end{enumerate}
+So the free system has no equilibrium state below $\bfree$ and exactly one at every
+$\beta\ge\bfree$.
+\end{theorem}
+
+\begin{proof}
+(1) By \eqref{eq:rel} the $e_\pp$ are mutually orthogonal, so $\sum_{\pp\in F}e_\pp\le1$ for
+finite $F$; and the KMS condition gives
+$\varphi(e_\pp)=\Ns\pp^{-\beta}\varphi(\mu_\pp^*\mu_\pp)=\Ns\pp^{-\beta}$. Hence
+$\sum_{\pp\in F}\Ns\pp^{-\beta}\le1$ for every finite $F$, i.e.\ $L_S(\beta)\le1$, and strict
+monotonicity forces $\beta\ge\bfree$.
+
+(2) The elements $\mu_w\mu_v^*$ span a dense $*$-subalgebra, by \eqref{eq:rel}. For a
+$\mathrm{KMS}_\beta$ state $\varphi$ and words $w,v$, the KMS condition with the entire
+element $\mu_w$, $\sigma_{i\beta}(\mu_w)=\Ns w^{-\beta}\mu_w$, gives
+$\varphi(\mu_w\mu_v^*)=\Ns w^{-\beta}\varphi(\mu_v^*\mu_w)$. If neither of $v,w$ is a prefix
+of the other, $\mu_v^*\mu_w=0$ by \eqref{eq:rel}. If $w=vu$ with $u\ne\emptyset$ then
+$\mu_v^*\mu_w=\mu_u$, and if $v=wu$ then $\mu_v^*\mu_w=\mu_u^*$; in both cases the value
+vanishes, since $\varphi$ is invariant under $\sigma_t$ and $\mu_u^{\pm}$ is an eigenvector
+of $\sigma_t$ with eigenvalue $\Ns u^{\pm it}\ne1$. Hence $\varphi(\mu_w\mu_v^*)=0$ for
+$w\ne v$, and $\varphi(\mu_w\mu_w^*)=\Ns w^{-\beta}\varphi(\mu_w^*\mu_w)=\Ns w^{-\beta}$.
+
+(3) \eqref{eq:gibbs} is a state by Proposition~\ref{prop:Z}, and
+$\langle\mu_w\mu_v^*\xi_u,\xi_u\rangle\ne0$ forces $u=vu'$ and $wu'=u$, i.e.\ $w=v$, so
+$\varphi_\beta(\mu_w\mu_v^*)=\delta_{wv}(1-L_S)\sum_{u'}\Ns(wu')^{-\beta}=\delta_{wv}\Ns w^{-\beta}$,
+which is \eqref{eq:unique}; the KMS condition for the generators then follows from
+\eqref{eq:unique} by the computation of (2) read backwards.
+
+(4) The state space is weak-$*$ compact, and a weak-$*$ limit of $\mathrm{KMS}_{\beta'}$
+states with $\beta'\to\beta$ is a $\mathrm{KMS}_\beta$ state \cite[Prop.~5.3.25]{BR};
+the limit exists because \eqref{eq:unique} converges as $\beta'\to\bfree$.
+\end{proof}
+
+\begin{remark}[Branching versus convergence]\label{rem:branch}
+Classically the partition function is the Euler product
+$\prod_\pp(1-\Ns\pp^{-\beta})^{-1}$ and the critical exponent is the abscissa of convergence
+of $L_S$. Freely, $\F_S^+$ has exponentially many words, $L_S(\beta)$ is the branching number
+of the weighted word tree, and the transition is the Galton--Watson criticality $L_S=1$: a
+tree of branching number $>1$ has too many words to normalize. The same orthogonality that
+yields $L_S(\beta)\le1$ produces the constraint $\beta=1$ on the affine ($ax+b$) system,
+whose Cuntz relations are finite partitions (Paper II). Nested range projections leave
+every temperature admissible; partitioning ones do not. And the classical phase structure
+does not survive at all: by Proposition~\ref{prop:naive} the free system has no coefficient
+algebra $C(Y_S)$, hence no symmetry group $G_S$, no obstruction group $\Xi_\beta$, and, by
+Theorem~\ref{thm:betac}(2), a unique equilibrium state wherever it has one. Everything
+below is computed in the Fock--Gibbs state.
+\end{remark}
+
+\section{The law of the fields}
+
+Fix $\pp$, write $t=\Ns\pp^{-\beta}\in(0,1)$, $\Phi=\mu_\pp+\mu_\pp^*$, $e=e_\pp$.
+
+\begin{theorem}[Moments and cumulants]\label{thm:moments}
+In $\varphi_\beta$,
+\[
+m_1=m_3=0,\qquad m_2=1+t,\qquad m_4=2+3t+t^2,\qquad \kappa_4=m_4-2m_2^2=-t(1+t)<0 ,
+\]
+and the law of $\Phi_\pp$ is
+\[
+d\rho_t(x)=(1-t)\sum_{n\ge0}t^n\,U_n(x/2)^2\,\frac{\sqrt{4-x^2}}{2\pi}\,dx ,
+\]
+supported on $[-2,2]$ for every $\beta$, with $U_n$ the Chebyshev polynomials of the second
+kind. In particular $\Phi_\pp$ is not semicircular for $t>0$.
+\end{theorem}
+
+\begin{proof}
+Only gauge-invariant words survive, so odd moments vanish and
+$m_2=\varphi(\mu\mu^*+\mu^*\mu)=t+1$. For $m_4$, using $\mu^*\mu=1$ and
+$\varphi(\mu x\mu^*)=t\varphi(x)$, the six balanced words give
+$\varphi(\mu\mu\mu^*\mu^*)=t^2$, $\varphi(\mu\mu^*\mu\mu^*)=\varphi(e)=t$,
+$\varphi(\mu\mu^*\mu^*\mu)=t$, $\varphi(\mu^*\mu\mu\mu^*)=t$,
+$\varphi(\mu^*\mu\mu^*\mu)=1$, $\varphi(\mu^*\mu^*\mu\mu)=1$, summing to $t^2+3t+2$. For the
+density, note that $C^*(\mu_\pp)$ is the Toeplitz algebra, and that on the Fock space
+$\ell^2(\F_S^+)=\bigoplus_{u}\ell^2(\pp^{\N}u)$, the sum over words $u$ not beginning with
+$\pp$, the operator $\Phi$ is the Jacobi matrix with unit off-diagonal and zero diagonal on
+each summand $\ell^2(\N)$, whose spectral measure at the $n$-th basis vector is
+$U_n(x/2)^2\sqrt{4-x^2}\,dx/2\pi$; grouping the terms of \eqref{eq:gibbs} by $u$, the law of
+$\Phi$ is the geometric mixture with weights $(1-t)t^n$, since the factor
+$\sum_u\Ns u^{-\beta}$ over words not beginning with $\pp$ is $(1-t)/(1-L_S(\beta))$. The
+relation $\kappa_4=m_4-2m_2^2$ for a centred variable is the moment--cumulant formula
+\cite{NS}.
+\end{proof}
+
+\begin{corollary}[Semicircular limit]\label{cor:semicircle}
+As $\beta\to\infty$, $\rho_t$ converges weakly to the Wigner semicircular law of radius $2$
+\cite{VDN};
+equivalently $\kappa_2\to1$, all free cumulants of order $\ge3$ vanish, and the even moments
+converge to the Catalan numbers $1,2,5,14,42,\dots$
+\end{corollary}
+
+\begin{theorem}[The number operators are projections]\label{thm:bernoulli}
+$\cN_\pp=e_\pp$ satisfies $e_\pp^2=e_\pp$, so
+$\mathrm{law}(\cN_\pp)=(1-t)\delta_0+t\delta_1$ in $\varphi_\beta$. This is a Bernoulli law,
+not a free Poisson law: a free Poisson variable is a projection only in the degenerate cases
+$\delta_0$ and $\delta_1$.
+\end{theorem}
+
+\begin{proof}
+$\mu_\pp$ is an isometry, so $\varphi(e_\pp^n)=\varphi(e_\pp)=t$ for every $n\ge1$, which
+determines the stated law; its spectrum is $\{0,1\}$, whereas a nondegenerate
+Marchenko--Pastur law has an absolutely continuous part.
+\end{proof}
+
+\section{Asymptotic, not exact, freeness}
+
+\begin{theorem}[The obstruction]\label{thm:notfree}
+For $\pp\ne\qq$ the fields $\Phi_\pp,\Phi_\qq$ are not free in $\varphi_\beta$: while
+$\varphi(\Phi_\pp\Phi_\qq)=0$ and $\varphi(\Phi_\pp\Phi_\qq\Phi_\pp\Phi_\qq)=0$, one has
+\begin{equation}\label{eq:mixed}
+\varphi\bigl(\Phi_\pp^2\Phi_\qq^2\bigr)-\varphi\bigl(\Phi_\pp^2\bigr)\varphi\bigl(\Phi_\qq^2\bigr)=-\,t_\pp t_\qq .
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Gauge invariance requires each letter to appear equally often with and without adjoint, so
+$\varphi(\Phi_\pp\Phi_\qq)=0$. For $\Phi_\pp^2\Phi_\qq^2$ the surviving terms give
+$\varphi\bigl((e_\pp+1)(e_\qq+1)\bigr)=\varphi(e_\pp e_\qq)+t_\pp+t_\qq+1$, and
+$e_\pp e_\qq=\mu_\pp(\mu_\pp^*\mu_\qq)\mu_\qq^*=0$ by \eqref{eq:rel}; subtract
+$(1+t_\pp)(1+t_\qq)$. For the alternating moment the four balanced terms are
+$\mu_{\pp\qq}\mu_{\qq\pp}^*$, $\mu_\pp\mu_{\pp\qq}^*\mu_\qq$,
+$\mu_\pp^*\mu_\qq\mu_\pp\mu_\qq^*$ and $\mu_{\qq\pp}^*\mu_{\pp\qq}$; the second and third
+vanish by $\mu_\pp^*\mu_\qq=0$, the fourth is $\mu_{\qq\pp}^*\mu_{\pp\qq}=0$, and the
+first is $\varphi(\mu_w\mu_v^*)$ with $w\ne v$, hence $0$ by \eqref{eq:unique}.
+\end{proof}
+
+\begin{corollary}[Asymptotic freeness]\label{cor:asympfree}
+Let $(\pp_k)\subset S$ with $\Ns\pp_k\to\infty$ and $\beta>\bfree(S)$. Every mixed free
+cumulant of $\{\Phi_{\pp_k}\}$ is $O\bigl(\prod_jt_{\pp_{i_j}}\bigr)$, hence
+$O\bigl(\min_j\Ns\pp_{i_j}^{-\beta}\bigr)$, and tends to $0$; the family is asymptotically
+free and by \eqref{eq:mixed} the rate $t_\pp t_\qq$ is attained.
+\end{corollary}
+
+\begin{proof}
+By \eqref{eq:unique} a mixed moment $\varphi(\Phi_{\pp_{i_1}}\cdots\Phi_{\pp_{i_n}})$ is a sum,
+over the choices of $\mu$ or $\mu^*$ in each factor, of terms $\varphi(\mu_w\mu_v^*)$ after
+reduction by \eqref{eq:rel}; a term survives only if it reduces to $\mu_w\mu_w^*$, and then
+equals $\Ns w^{-\beta}=\prod t$ over the letters of $w$ with multiplicity. Every letter
+distinct from those reducing to the identity contributes a factor $t_\pp$, so the moment
+differs from the corresponding moment of free variables with the same one-variable laws by
+terms each carrying at least one factor $t_\pp$ per additional distinct letter. Möbius
+inversion on $\NC(n)$ \cite{NS}, a finite linear combination of products of moments,
+preserves this order of magnitude, and each $t<1$.
+\end{proof}
+
+\begin{remark}[Hard-core exclusion]\label{rem:hardcore}
+Free variables would satisfy $\varphi(e_\pp e_\qq)=t_\pp t_\qq$; the true value is $0$,
+because no vector lies simultaneously in the ranges of $\mu_\pp$ and $\mu_\qq$. The
+discrepancy is exactly $-t_\pp t_\qq$, and as the norms grow the ranges become
+$\varphi$-small and the exclusion invisible. This is the free counterpart of the classical
+asymptotic independence of distinct primes for the geometric measures $\pi_\beta$.
+\end{remark}
+
+\begin{theorem}[Free entropy is unavailable]\label{thm:nochi}
+$\varphi_\beta$ is not tracial: $\varphi_\beta(\mu_\pp\mu_\pp^*)=t_\pp<1=\varphi_\beta(\mu_\pp^*\mu_\pp)$.
+Hence Voiculescu's microstates free entropy $\chi(\Phi_{\pp_1},\dots,\Phi_{\pp_n})$
+\cite{Voi94} and the free Fisher information are undefined for $n\ge2$, both requiring a
+tracial $W^*$-probability space. For $n=1$ the entropy is defined, the distribution of a single
+self-adjoint element being a measure, and equals
+$\chi(\Phi_\pp)=\iint\log|x-y|\,d\rho_t(x)d\rho_t(y)+\tfrac34+\tfrac12\log2\pi$; it is finite
+and continuous in $t$, and since $t_\pp<L_S(\bfree)=1$ strictly, it remains finite as
+$\beta\downarrow\bfree$. There is no logarithmic singularity of the free entropy at the
+critical point.
+\end{theorem}
+
+\begin{proof}
+The displayed inequality is the KMS condition. Both invariants are defined for $n$-tuples in
+a tracial von Neumann algebra, and no such structure is available. For $n=1$, $\rho_t$ is
+supported in $[-2,2]$ with bounded density for $t$ bounded away from $1$, so the logarithmic
+energy is finite and continuous.
+\end{proof}
+
+\begin{remark}[Two things called free]\label{rem:freeenergy}
+The quantity $-\log(1-L_S(\beta))=\log Z_{\mathrm{free}}(\beta)$ does diverge as
+$\beta\downarrow\bfree$, by Proposition~\ref{prop:Z}. That is the free \emph{energy}, a
+thermodynamic quantity attached to the whole algebra, not Voiculescu's free \emph{entropy},
+an invariant of an $n$-tuple of noncommutative random variables. The coincidence of names is
+unfortunate; an asymptotic of the form $\chi_\beta\sim\frac n2\log(1-L_S(\beta))$ conflates
+them, its right side being the free energy and its left side undefined for $n\ge2$ and
+bounded for $n=1$.
+\end{remark}
+
+\section{The free critical exponent}
+
+\begin{definition}\label{def:bfree}
+Let $\bcl(S)=\inf\{\beta:L_S(\beta)<\infty\}$ be the abscissa of convergence, the classical
+critical exponent of \cite{Main}, and
+$\lambda_S=\lim_{\beta\downarrow\bcl(S)}L_S(\beta)\in(0,\infty]$. When $\lambda_S>1$ let
+$\bfree(S)$ be the root of $L_S=1$; when $\lambda_S\le1$ set $\bfree(S)=\bcl(S)$.
+\end{definition}
+
+\begin{theorem}[Trichotomy]\label{thm:trich}
+For infinite $S$ exactly one of the following holds.
+\begin{enumerate}
+\item[\textup{(S)}] $\lambda_S>1$: there is a unique $\bfree(S)\in(\bcl(S),\infty)$, the
+admissible set is $[\bfree,\infty)$, and $Z_{\mathrm{free}}\to\infty$ as
+$\beta\downarrow\bfree$.
+\item[\textup{(C)}] $\lambda_S=1$: $\bfree=\bcl$, the admissible set is $(\bcl,\infty)$, and
+$Z_{\mathrm{free}}\to\infty$ at $\bcl$.
+\item[\textup{(B)}] $\lambda_S<1$: $\bfree=\bcl$, the admissible set is $(\bcl,\infty)$, and
+$Z_{\mathrm{free}}$ is \emph{bounded} there, with supremum $(1-\lambda_S)^{-1}<\infty$: the
+free phase is closed.
+\end{enumerate}
+For every $\alpha\in(0,1)$ and every $\lambda\in(0,\infty]$ there is $S\subseteq P_\Q$ with
+$\bcl(S)=\alpha$ and $\lambda_S=\lambda$, so all three occur.
+\end{theorem}
+
+\begin{proof}
+Monotonicity and continuity of a Dirichlet series on its half-plane of convergence give the
+trichotomy, using Theorem~\ref{thm:betac}(1) for the admissible sets. For the realization,
+fix $\alpha$. A set $T$ with $|T\cap[1,x]|\asymp x^\alpha$, obtained greedily as in
+\cite[Lem.~5.4]{SeriesI}, has $\bcl(T)=\alpha$ and, by Abel summation, $L_T(\alpha)=\infty$,
+giving $\lambda=\infty$. For $\lambda<\infty$ take instead
+$|T\cap[1,x]|\asymp x^\alpha/\log^2x$; then $\bcl(T)=\alpha$ still while the $m$-th element
+satisfies $\ell_m\asymp(m\log^2m)^{1/\alpha}$ and $\ell_m^{-\alpha}\asymp(m\log^2m)^{-1}$, so
+$L_T(\alpha)<\infty$. Discarding an initial segment of $T$ lowers $L_T(\alpha)$ below
+$\lambda$ without changing $\bcl$; then adjoin primes $p_1<p_2<\cdots$ outside $T$ chosen
+greedily, $p_k$ so large that $p_k^{-\alpha}$ is at most half of the remaining deficit
+$\lambda-L(\alpha)$ of the set built so far. The deficit tends to $0$, the adjoined set has
+counting function $O(\log x)$, hence does not change $\bcl$, and the resulting $S$ has
+$L_S(\alpha)=\lambda$ exactly.
+\end{proof}
+
+\begin{proposition}[Not a tail invariant]\label{prop:tail}
+$\bcl(S)$ is unchanged by adding or deleting finitely many primes and depends only on the
+counting function, through $\bcl(S)=\limsup_m\log m/\log\Ns\pp_m$. By contrast $\bfree$ is
+monotone in $S$ and strictly changed by deleting a single prime in regime (S); two sets with
+the same counting asymptotics can have different $\bfree$. Moreover, over $\Q$,
+\[
+\bfree(S)\le\bfree(P_\Q)=1.399433335\ldots ,
+\]
+the root of the prime zeta function minus one, with equality only for $S=P_\Q$.
+\end{proposition}
+
+\begin{proof}
+The first is the standard formula for the convergence exponent. The rest follows from strict
+monotonicity of $L_S$ in $S$ and in $\beta$.
+\end{proof}
+
+\begin{remark}[Computed values]\label{rem:values}
+Computed from the primes below $x=2\cdot10^7$ with an analytic tail correction (code in
+\texttt{code/verify\_series.py}): substituting $t=e^u$ gives
+$\sum_{\pp>x}\Ns\pp^{-\beta}\approx\int_{\log x}^\infty e^{(1-\beta)u}u^{-k}du$, the
+exponential integral $E_1((\beta-1)\log x)$ for $k=1$ and, for the Hardy--Littlewood
+densities $2C_2/\log^2t$ with $k=2$, a quantity finite at $\beta=1$ with value
+$2C_2/\log x=0.0785$:
+\[
+\begin{array}{lcc}
+S & L_S(1^+) & \bfree(S)\\\hline
+\text{all primes} & \infty & 1.399433\\
+\text{all primes except }2 & \infty & 1.224388\\
+\text{all primes except }2,3 & \infty & 1.154890\\
+\{p>10^6\} & \infty & 1.019162\\
+\text{Sophie Germain} & 1.535 & 1.2114\\
+\text{twin primes (lower)} & 1.059 & 1.0089
+\end{array}
+\]
+The first four rows are correct to the digits shown; the last two depend on the tail
+model in their third decimal. Removing the single prime $2$ moves $\bfree$ by $0.175$,
+quantifying Proposition~\ref{prop:tail}; nothing comparable can happen to $\bcl$, which is
+$1$ for the first four rows. The twin row should be read with care: the bare sum over the
+computed range is $0.9805$ and the Hardy--Littlewood tail contributes $0.0785$, so the set
+is supercritical but only just, and the conclusion rests on the tail estimate rather than
+on a computation (Brun's constant $B_2=1.9022\ldots$ gives the same picture:
+$\sum_{p\ \mathrm{twin}}p^{-1}=\tfrac12\bigl(B_2+\sum2/(p(p+2))\bigr)\approx1.06$).
+Whether $\sum_{p\ \mathrm{twin}}p^{-1}$ exceeds $1$ is an arithmetic question we do not
+settle; if it does not, the twin set is an instance of regime (B).
+\end{remark}
+
+\section{The free deformation annihilates the cascade}
+
+\begin{theorem}[Annihilation]\label{thm:annih}
+Let $S$ be any of the cascade or Cantor sets of \cite[Thm.~5.1, Cor.~6.2]{SeriesI}. Then
+$\bcl(S)=1$ and $\lambda_S=\infty$, so $\bfree(S)>1$ strictly; the transition locus of the
+classical system lies in $(0,1]$; and by Theorem~\ref{thm:betac}(1) the free system has no
+$\mathrm{KMS}_\beta$ state for $\beta<\bfree(S)$. Consequently every classical phase
+transition occurs at a temperature at which the free system has no equilibrium state; on the
+whole admissible range of the free system the classical one has $\zeta_{K,S}(\beta)<\infty$
+and $\Xi_\beta=\widehat{G_S}$, i.e.\ is in its Gibbs regime with all its phase transitions
+behind it; and the free system has a single transition, at $\bfree(S)$, from no
+equilibrium state to exactly one.
+\end{theorem}
+
+\begin{proof}
+The abundant base of \cite[Lem.~5.4(1)]{SeriesI} has $\sum_{\ell\in P_0}\ell^{-1}=\infty$, so
+$L_S(1)=\infty$, $\bcl(S)=1$ and $\lambda_S=\infty$; Theorem~\ref{thm:trich}(S) gives
+$\bfree(S)>1$. By \cite[Thm.~5.1(3)]{SeriesI} the thresholds lie in $(0,1)$ and
+$\Xi_\beta=\widehat{G_S}$ for $\beta>1$.
+\end{proof}
+
+\begin{theorem}[The two exponents are independent]\label{thm:tune}
+Let $S$ be a cascade set and $\gamma\in\bigl(1,\bfree(P_\Q)\bigr)$. There is $S'$ differing
+from $S$ by finitely many primes --- hence with the same chain $\{\Xi_\beta\}$ and the same
+transition locus --- with $\bfree(S')$ within any prescribed $\varepsilon$ of $\gamma$. The
+interval is optimal: $\bfree(S')>1$ always by Theorem~\ref{thm:annih} and
+$\bfree(S')<\bfree(P_\Q)$ by Proposition~\ref{prop:tail}.
+\end{theorem}
+
+\begin{proof}
+Adding or deleting finitely many primes leaves $\Xi_\beta$ unchanged, a finite set
+contributing a finite amount to every series in \eqref{eq:rel} and the computation of
+$\Xi_\beta$ in \cite[Thm.~5.1]{SeriesI} being stated modulo finite exceptional sets.
+Deleting all primes of $S$ below $z$ gives
+$L_{S'}(\beta)\le\sum_{\ell>z}\ell^{-\beta}\to0$ for fixed $\beta>1$ as $z\to\infty$, so
+$\bfree(S')$ can be pushed arbitrarily close to $1$; adjoining all primes below $N$ gives
+$L_{S'}\ge\sum_{p\le N}p^{-\beta}$, whose root increases to $\bfree(P_\Q)$. Adding one prime
+at a time moves the root by a controlled amount, giving every intermediate value up to
+$\varepsilon$.
+\end{proof}
+
+\begin{remark}[Numerical illustration]\label{rem:tuning}
+Restricting to primes above $z$ gives the upper bounds $1.056773$ at $z=10^2$, $1.028710$ at
+$z=10^4$, $1.019162$ at $z=10^6$ and $1.014372$ at $z=10^8$ (the last from the tail
+integral alone), tending to $1$; adjoining all
+primes below $N$ gives roots $1.147338$ at $N=10$, $1.356444$ at $N=10^2$, $1.388390$ at
+$N=10^3$, $1.396110$ at $N=10^4$, $1.399069$ at $N=10^6$ and $1.399307$ at $N=10^7$,
+increasing to $\bfree(P_\Q)=1.399433$ but never attaining it.
+\end{remark}
+
+\begin{remark}[What the deformation is good for]\label{rem:moral}
+The free variant was proposed as a route to importing free probability into the arithmetic
+phase structure. Theorem~\ref{thm:annih} shows the two are incompatible in a precise sense:
+the phenomena classified by $\Xi_\beta$ live at high temperature, where the partition
+function diverges, and it is exactly that region which the free monoid renders inaccessible,
+because exponential word growth prevents normalization once the branching number exceeds
+$1$. The classical system is interesting at high temperature and trivial at low; the free
+system exists only at low temperature and is trivial there. Theorem~\ref{thm:tune} confirms
+that the two exponents carry disjoint information rather than being two views of one
+structure.
+
+What the deformation does produce is $\bfree$ itself, a well-defined arithmetic invariant of
+a set of primes: computable, universally bounded over $\Q$, and --- unlike every exponent in
+this series --- sensitive to individual norms rather than only to a counting function.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Statement} & \text{Status} & \text{Reference}\\\hline
+C(Y_S)\ \text{survives the deformation} & \text{false: the universal algebra is }0 & \text{Prop.~\ref{prop:naive}}\\
+Z_{\mathrm{free}}=(1-L_S)^{-1},\ L_S(\bfree)=1 & \text{true} & \text{Prop.~\ref{prop:Z}, Thm.~\ref{thm:betac}}\\
+\text{two regimes across }\bfree & \text{false: empty below} & \text{Thm.~\ref{thm:betac}(1)}\\
+\text{KMS}_\beta\text{ state unique for }\beta\ge\bfree & \text{true} & \text{Thm.~\ref{thm:betac}(2)}\\
+\Phi_\pp\ \text{semicircular} & \text{only as }\beta\to\infty & \text{Thm.~2.1, Cor.~2.2}\\
+\cN_\pp\ \text{free Poisson} & \text{false: a projection} & \text{Thm.~2.3}\\
+\{\Phi_\pp\}\ \text{exactly free} & \text{false} & \text{Thm.~3.1}\\
+\{\Phi_\pp\}\ \text{asymptotically free} & \text{true} & \text{Cor.~3.2}\\
+\chi(\Phi_{\pp_1},\dots,\Phi_{\pp_n}),\ n\ge2 & \text{undefined} & \text{Thm.~3.4}\\
+\bfree\ \text{a tail invariant} & \text{false} & \text{Prop.~4.3}\\
+\text{cascade survives the deformation} & \text{false} & \text{Thm.~5.1}
+\end{array}
+\]
+
+Three questions remain. First, whether some intermediate deformation --- a coefficient
+algebra adapted to the word tree, carrying an action of a quotient of $G_S$ --- can retain
+part of the classical phase structure while keeping partitioning ranges; Proposition~\ref{prop:naive}
+rules out the obvious candidate, not every candidate. Second, $\varphi_\beta$ admits no
+trace, but the associated von Neumann algebra has a canonical trace on its continuous core;
+whether a free entropy computed there carries arithmetic information is open, and by the
+pattern of Paper III we expect not. Third, $\bfree(S)$ is defined
+for any set of primes and we have not found an interpretation of it outside this system ---
+for instance as a threshold for a branching process on the multiplicative semigroup generated
+by $S$ --- nor decided the regime of the twin primes, which by Remark~\ref{rem:values}
+reduces to comparing a Brun-type constant with $1$.
+
+\begin{thebibliography}{9}
+\bibitem{BR} O. Bratteli, D. W. Robinson, \emph{Operator Algebras and Quantum Statistical Mechanics 2}, 2nd ed., Springer, 1997.
+\bibitem{Cuntz77} J. Cuntz, \emph{Simple $C^*$-algebras generated by isometries}, Comm. Math. Phys. 57 (1977), 173--185.
+\bibitem{NS} A. Nica, R. Speicher, \emph{Lectures on the Combinatorics of Free Probability}, LMS Lecture Notes 335, CUP, 2006.
+\bibitem{Voi94} D. V. Voiculescu, \emph{The analogues of entropy and of Fisher's information measure in free probability theory II}, Invent. Math. 118 (1994), 411--440.
+\bibitem{VDN} D. V. Voiculescu, K. Dykema, A. Nica, \emph{Free Random Variables}, CRM Monogr. Ser. 1, AMS, 1992.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\bibitem{SeriesI} R. Chen, \emph{Localized Bost--Connes systems I: factor type and the spectrum of transitions}, preprint, 2026, DOI \href{https://doi.org/10.5281/zenodo.22160827}{10.5281/zenodo.22160827}.
+\end{thebibliography}
+
+\end{document}
