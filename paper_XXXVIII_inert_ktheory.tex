@@ -1,0 +1,168 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+\raggedbottom
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\OH}{\mathcal{O}_H}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\PP}{\mathfrak{P}}
+\newcommand{\Ns}{N}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\Aloc}{\mathcal{A}^{\mathrm{aff},\mathrm{loc}}}
+
+\title[Integral equivariant K-theory of the inert model]{Integral equivariant K-theory of the inert local model:\\ the ray-class entanglement and exact torsion}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Paper XXXVIII of the series on localized Bost--Connes systems. The framework is
+that of \cite{Main}, cited by DOI; Papers XXX, XXXI and XXXII of the series are referred
+to by numeral, and every fact used is restated in place. Search and Smith-form scripts in
+\texttt{code/xxxviii-inert/} of the repository.}
+\date{6 September 2026}
+
+\begin{document}
+
+\begin{abstract}
+We carry out the first integral case of Paper XXXII's Problem (i): the equivariant
+K-theory of the inert local model at $K=\Q(\sqrt{-5})$, $H=\Q(i,\sqrt5)$,
+$\pp_3=(3,1+\sqrt{-5})$ inert in $H/K$, $C=\mathrm{Gal}(H/K)\cong\Z/2$. The ring
+$\OH=\Z[i]\otimes\Z[\varphi]$ is a \emph{free} $\Z[C]$-module of rank two (a Tate
+cohomology computation), so the entire exterior tower carries explicit integral
+$C$-structure: $\Lambda^0=\Z_+$, $\Lambda^1\cong\Z[C]^2$,
+$\Lambda^2\cong\Z_-^2\oplus\Z[C]^2$, $\Lambda^3\cong\Z[C]^2$, $\Lambda^4=\Z_+$. A finite
+search produces the explicit generator $\Pi=-3-i+2\varphi+i\varphi$ of a prime above
+$3$, with $\Ns_{H/\Q}\Pi=+9$ and $\Tr_{H/\Q}\Pi=-8$, and Smith normal forms of
+$9\cdot1-\Lambda^r\Pi$ evaluate the intermediate layers exactly (prime-to-$3$
+regularization): $\Z/5\oplus\Z/5\oplus\Z/61$ at $r=1$;
+$\Z/2\oplus\Z/2\oplus\Z/5\oplus\Z/7\oplus\Z/11$ at $r=2$, containing the sign-twisted
+$\Z_-^2$-block; $\Z/29$ at $r=3$. Assembling with the top and bottom layers gives
+\[
+K_0\supseteq\Z^2\oplus(\Z/8)^2\oplus\bigl[\Z/2^{\oplus2}\oplus\Z/5\oplus\Z/7\oplus\Z/11\bigr],
+\qquad
+K_1\supseteq\Z^2\oplus\bigl[\Z/5^{\oplus2}\oplus\Z/61\bigr]\oplus\Z/29,
+\]
+where $(\Z/8)^2=\Z/(q^h{-}1)\otimes R(\Z/2)$: the unit class is split by the spectral
+projections $\tfrac{1\pm U_\sigma}2$ into a pair of classes of exact order $8$. The
+entanglement law this computation exhibits: the class group doubles or sign-twists
+exactly the \emph{non-induced} strata, while free $\Z[C]$-blocks count once by Shapiro
+--- the class group does not change the orders of the middle layers, only their
+representation labels. Two honest gaps close the paper: the $u_\sigma$-twisted
+bookkeeping of those labels, and the extension data in degree four. A structural
+by-product is recorded: the $\sigma$-fixed locus of the inert model is the bottom
+$h$-step system of Paper XXXI --- null in measure, nonempty in topology --- so Paper
+XXXII's Problem (ii) is a direct summand of Problem (i), not its sequel.
+\end{abstract}
+
+\maketitle
+
+\section{The explicit generator and the equivariant exterior tower}\label{sec:tower}
+
+The discriminants $-4$ and $5$ are coprime, so $\OH=\Z[i]\otimes\Z[\varphi]$,
+$\varphi=\tfrac{1+\sqrt5}2$, with $\sigma$ (the generator of $C$, fixing
+$\sqrt{-5}=i\sqrt5$) acting by $i\mapsto-i$, $\varphi\mapsto1-\varphi$.
+
+\begin{lemma}\label{lem:free}
+$\Z[\varphi]\cong\Z[C]$ as a $C$-module ($\hat H^0=\hat H^1=0$: the norm has image $\Z$
+and $\ker N=\mathrm{im}(1-\sigma)=\Z\sqrt5$), and $\Z[i]\cong\Z_+\oplus\Z_-$; hence
+$\OH\cong\Z[C]^2$ is free, and the integral exterior tower is
+\[
+\Lambda^0=\Z_+,\quad\Lambda^1\cong\Z[C]^2,\quad
+\Lambda^2\cong\Z_-^{\,2}\oplus\Z[C]^2,\quad\Lambda^3\cong\Z[C]^2,\quad\Lambda^4=\Z_+,
+\]
+the $\Z_-$'s in $\Lambda^2$ coming from $\Lambda^2_\Z(\Z[C])$
+($\sigma(1\wedge\sigma)=-(1\wedge\sigma)$), and $\det\sigma=+1$ on $\Lambda^4$.
+\end{lemma}
+
+\begin{proposition}[The generator]\label{prop:pi}
+$\Pi=-3-i+2\varphi+i\varphi\in\OH$ satisfies $\Ns_{H/\Q}\Pi=+9$ and
+$\Tr_{H/\Q}\Pi=-8$; its multiplication matrix $A$ on the basis $(1,i,\varphi,i\varphi)$
+has $\det A=+9$, so $(\Pi)=:\PP_1$ is a prime of norm $9$ above $3$, and the inert
+model of Paper XXXII at $\PP_1$ is defined with scaling $\Pi$.
+\end{proposition}
+
+\section{Exact evaluation of the intermediate layers}\label{sec:layers}
+
+The tower transfers invert only the prime $3$ (they are built from the $\Pi$-adjugates,
+of determinant a power of $\Ns\Pi=9$), so the regularized cokernel of $1-\alpha_*$,
+$\alpha_*=9^{-1}\Lambda^r\Pi$, is the prime-to-$3$ part of the integral cokernel of
+$9\cdot1-\Lambda^r A$, computed by Smith normal form:
+
+\begin{theorem}\label{thm:layers}
+With $T_r$ the regularized cokernel at layer $r$:
+\[
+\begin{array}{lll}
+r=1: & \det(9-\Lambda^1A)=13725=3^2\!\cdot\!5^2\!\cdot\!61, &
+T_1\cong\Z/5\oplus\Z/5\oplus\Z/61;\\[2pt]
+r=2: & \det(9-\Lambda^2A)=-1122660, &
+T_2\cong\Z/2\oplus\Z/2\oplus\Z/5\oplus\Z/7\oplus\Z/11;\\[2pt]
+r=3: & \det(9-\Lambda^3A)=21141=3^6\!\cdot\!29, &
+T_3\cong\Z/29,
+\end{array}
+\]
+$T_2$ containing the contribution of the sign-twisted $\Z_-^{\,2}$-block of
+Lemma~\ref{lem:free}. At the ends, $T_0=\Z/(9-1)=\Z/8$ generated by the unit class, and
+$M_4=\Z$ with $\alpha_*=\Ns\Pi/9=+1$.
+\end{theorem}
+
+\section{The K-theory of the crossed product and the entanglement law}\label{sec:ktheory}
+
+\begin{theorem}\label{thm:main}
+For the inert local model at $\PP_1$ with its $\Z/2$-action,
+\[
+K_0\bigl(\partial\Aloc_{\PP_1}\rtimes\Z/2\bigr)\ \supseteq\
+\Z^2\ \oplus\ (\Z/8)^2\ \oplus\
+\bigl[\Z/2\oplus\Z/2\oplus\Z/5\oplus\Z/7\oplus\Z/11\bigr],
+\]
+\[
+K_1\bigl(\partial\Aloc_{\PP_1}\rtimes\Z/2\bigr)\ \supseteq\
+\Z^2\ \oplus\ \bigl[\Z/5\oplus\Z/5\oplus\Z/61\bigr]\ \oplus\ \Z/29 .
+\]
+Here $(\Z/8)^2=T_0\otimes R(\Z/2)$: \emph{the unit class is split by the spectral
+projections $\tfrac{1\pm U_\sigma}2$ of the implementing unitary into two classes of
+exact order $8$}, one per character of the class group; and the two $\Z$'s are the
+$R(\Z/2)$-doubling of the trivially-acted top layer.
+\end{theorem}
+
+\begin{remark}[The entanglement law]\label{rem:law}
+The class group entangles with the $q$-torsion precisely on the \emph{non-induced}
+strata: layers with trivial or sign action ($r=0$, $r=4$, and the $\Z_-^{\,2}$-block of
+$\Lambda^2$) are doubled or sign-twisted by $R(\Z/2)$, while the free $\Z[C]$-blocks
+contribute once, by Shapiro's lemma. The class group does not change the orders of the
+middle layers --- those are the Smith invariants of Theorem~\ref{thm:layers} --- it
+changes their representation labels.
+\end{remark}
+
+\begin{remark}[Problem (ii) is a summand of Problem (i)]\label{rem:fixed}
+The $\sigma$-fixed locus of $\mathcal O_{\PP_1}$ is $\mathcal O_{\pp_3}$: null for the
+Gibbs measure, nonempty in topology --- and K-theory sees topology. The fixed-point
+contribution to the equivariant theory is the bottom $h$-step system of Paper XXXI
+re-entering as the fixed subgroupoid: the fixed-point-versus-crossed-product question of
+Paper XXXII is a direct summand of the present computation, not its sequel.
+\end{remark}
+
+\section{Assessment}\label{sec:assessment}
+
+Two gaps remain and are recorded as such. \emph{(a) Character bookkeeping:} the scaling
+is equivariant only up to the descent cocycle $u_\sigma=\sigma\Pi/\Pi$ of Paper XXXII,
+so the middle layers are twisted $R(\Z/2)$-modules; their orders are fixed by
+Theorem~\ref{thm:layers}, but the assignment of each cyclic summand to the trivial or
+sign character awaits the twisted bookkeeping. \emph{(b) Extension data:} in degree four
+the Pimsner--Voiculescu assembly determines $K_*$ up to group extensions, as in Paper
+XXX. Neither gap touches the displayed subgroups, the split unit class, or the
+entanglement law.
+
+\begin{thebibliography}{9}
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\bibitem{CR} C. W. Curtis, I. Reiner, \emph{Methods of Representation Theory I}, Wiley, 1981.
+\end{thebibliography}
+
+\end{document}
