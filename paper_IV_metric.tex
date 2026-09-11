@@ -1,0 +1,597 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.05in]{geometry}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\hO}{\widehat{\cO}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\Ent}{\mathrm{S}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Db}{D_{\mathrm{base}}}
+\newcommand{\Dm}{D_{\mathrm{mod}}}
+\newcommand{\nusym}{\nu_{\mathrm{sym}}}
+\newcommand{\phisym}{\varphi_{\mathrm{sym}}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Msym}{M_{\mathrm{sym}}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[Noncommutative metric geometry]{Localized Bost--Connes systems IV:\\ noncommutative metric geometry}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/IV-metric/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Three invariants of the localized Bost--Connes system jump by a fixed amount at each phase
+transition: the rank of the obstruction group jumps by one \cite{SeriesI}, the
+subfactor index doubles, and the relative entropy of an extremal phase against the
+symmetric one increases by $\log2$ (Papers II and III of the series). We show that the
+natural \emph{metric} invariant does not: for a horizontal Dirac operator on the base
+algebra $C(X)$ of the system, the Connes--Rieffel distance between the measures of the two
+symmetry-broken extremal $\mathrm{KMS}_\beta$ states vanishes \emph{continuously} as $\beta$
+decreases to the threshold, so the algebraic transition is of first order and the metric
+transition of second.
+
+The reason is a rigidity. For a horizontal Dirac operator, $C(X)$ is a compact quantum
+metric space in Rieffel's sense if and only if the metric weights are summable, and
+summability forces the order parameter $\Psi$ out of the Lipschitz domain: the finite
+truncations $\Psi^{(m)}_N$ have commutator norms diverging like
+$\bigl(\sum_{\ell\le N}w_{\ell,m}^{-2}\bigr)^{1/2}$. A macroscopic tail observable can never
+be smoothed into the Lipschitz algebra of a Dirac operator that metrizes the weak-$*$
+topology, and it is exactly this failure that makes the metric transition continuous: the
+supremum defining the distance is carried by finite-level functions whose overlap with
+$\Psi$ degenerates at the threshold.
+
+Quantitatively we prove the squeeze
+\[
+w_0\,\Pi_\infty(\beta)\ \le\ W_1(\varphi_+,\varphi_-)\ \le\ w_0,
+\qquad
+\Pi_\infty(\beta)=\prod_{\ell\in R}\frac{1-\ell^{-\beta}}{1+\ell^{-\beta}},
+\]
+with $w_0$ the weight of the single elementary move at the component $3$. The lower bound is
+the Kakutani affinity of the parity family, positive precisely when
+$\sum_{\ell\in R}\ell^{-\beta}<\infty$, so the Borel--Cantelli criterion governing the
+existence of $\Psi$ reappears verbatim as a metric quantity. The distance is therefore
+\emph{local}, bounded by a single-coordinate cost, although $\Psi$ is a tail observable and
+$\nu_+\perp\nu_-$ at maximal total variation. One structural fact is recorded along the
+way: the modular direction is metrically blind, any Dirac operator commuting with $C(Y_S)$
+giving infinite distance, so that a metric on the $\mathrm{KMS}_\beta$ simplex must come
+from the horizontal geometry of the base; whether our horizontal operator extends to a
+spectral triple on the crossed product is left open.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction: three jumps and one slope}
+
+We use the notation of \cite{Main}. In the symmetry-broken phase of \cite[\S4.2]{Main} ---
+$K=\Q$, $S=\{3\}\cup P_1\cup R$ with $P_1=\{\ell\equiv1\ (3)\}$ and $R$ infinite of primes
+$\equiv2\ (3)$ --- the $\mathrm{KMS}_\beta$ simplex is a segment as soon as
+$\sum_{\ell\in R}\ell^{-\beta}<\infty$, its extreme points $\varphi_\pm$ separated by
+\begin{equation}\label{eq:Psi}
+\Psi(x)=\Bigl(\tfrac{u_3(x)\bmod3}{3}\Bigr)\,(-1)^{\sum_{\ell\in R}v_\ell(x)}\in\{\pm1\},
+\qquad
+\nu_\pm=2\,\mathbf 1_{\{\Psi=\pm1\}}\,\nusym,
+\end{equation}
+so that $\nu_+-\nu_-=2\Psi\,\nusym$ \cite[Prop.~4.12]{Main}; here $\Psi$ is defined
+$\nusym$-almost everywhere exactly when $\sum_{\ell\in R}\ell^{-\beta}<\infty$.
+
+\emph{The series.} The present paper is IV. The foundational paper is \cite{Main};
+\cite{SeriesI} is I and treats the factor type and the spectrum of transitions. Papers II
+(ideals, boundary and index), III ($\Xi_\beta$ as an invariant of a measure class) and V
+(the free variant) are in preparation; nothing here depends on them, and we refer to them
+by numeral, without citation.
+
+At a threshold $\beta_n$ the companion papers record three discontinuities: the rank of
+$\Xi_\beta$ increases by one and the normalized order parameter is a pure jump function
+\cite[Thm.~6.5]{SeriesI}; the index $[\,\Msym:M_\varepsilon]$ of the symmetry-breaking
+inclusion doubles (Paper II); and the relative entropy
+$\Ent(\omega_{\varphi_\varepsilon}\|\omega_{\phisym})$ increases by $\log2$ (Paper III).
+All three count phases, and phases are counted in integers.
+
+The metric invariant behaves differently, and Theorem~\ref{thm:continuous} is the reason for
+this paper. The mechanism is Theorem~\ref{thm:notlip}: $\Psi$ cannot be Lipschitz for a
+Dirac operator that metrizes the weak-$*$ topology, so the supremum defining the distance
+cannot be attained on $\Psi$ itself and is carried instead by finite-level approximations
+whose correlation with $\Psi$ degenerates at the threshold.
+
+
+\section{The base space and the horizontal Dirac operator}
+
+\subsection{Two structural facts}
+
+\begin{proposition}[The modular direction is metrically blind]\label{prop:blind}
+Let $\cA_{K,S}$ be represented on a Hilbert space and $D$ a self-adjoint operator commuting
+with the image of $C(Y_S)$ --- for instance, in a representation in which $C(Y_S)$ acts
+diagonally with respect to a basis $(\epsilon_\aaa)_{\aaa\in J_S}$, the modular operator
+$\Dm\epsilon_\aaa=(\log\Ns\aaa)\epsilon_\aaa$, which generates the dynamics. Then the
+Connes distance \cite{Connes89,ConnesBook} satisfies
+$W_1^{D}(\varphi_+,\varphi_-)=+\infty$ whenever $\varphi_+\ne\varphi_-$.
+\end{proposition}
+
+\begin{proof}
+Both states are of the form $\nu_\pm\circ E$ with $E$ the canonical expectation, so they
+agree on every $\mu_\aaa f\mu_\bb^*$ with $\aaa\ne\bb$; hence $\varphi_+\ne\varphi_-$ forces
+$\varphi_+(f)\ne\varphi_-(f)$ for some $f\in C(Y_S)$. For such $f$ and every $s>0$ we have
+$[D,sf]=0$, so $sf$ lies in the Lipschitz ball and
+$|\varphi_+(sf)-\varphi_-(sf)|\to\infty$.
+\end{proof}
+
+\begin{remark}[Why we work on the base]\label{prop:reduction}
+Proposition~\ref{prop:blind} says that a metric on the $\mathrm{KMS}_\beta$ simplex must
+come from an operator that does \emph{not} commute with $C(Y_S)$, i.e.\ from the horizontal
+geometry of the base. Every $\mathrm{KMS}_\beta$ state is $\nu\circ E$ for a measure $\nu$ on
+$Y_S$ and the canonical expectation $E$ \cite[Prop.~2.8]{Main}, and $\varphi\mapsto\nu$ is an
+affine bijection onto the scaling-invariant measures. We therefore put a Connes--Rieffel
+metric on the base algebra and measure the simplex through it:
+\[
+W_1(\varphi_1,\varphi_2):=W_1^{C(X)}(\nu_1,\nu_2)
+=\sup\bigl\{|\nu_1(f)-\nu_2(f)|:\ f\in C(X)_{sa},\ L(f)\le1\bigr\},
+\]
+with $L$ the seminorm of Lemma~\ref{lem:L}. If a Dirac operator $D$ on a representation of
+$\cA_{K,S}$ restricted to $C(X)$ gave the seminorm $L$ and had bounded commutators with
+the isometries, one would have $W_1^{\cA_{K,S}}\ge W_1^{C(X)}$ for the states $\nu_i\circ E$,
+with equality when the gauge action is implemented by unitaries commuting with $D$. The
+operator of Definition~\ref{def:D} does not have this property: it must weight the level
+$k$ of each coordinate $v_\ell$ by a summable sequence $w_{\ell,k}$ (Theorem~\ref{thm:cqms}),
+whereas the isometry $\mu_\pp$ shifts the levels and would force $w_{\ell,k}=w_{\ell,k+1}$.
+We make no claim about a spectral triple on the crossed product; see the assessment.
+\end{remark}
+
+\subsection{The compact model and the moves}
+
+$Y_S$ is a quotient of $\hO_S$ in which the coordinates $(v_\ell,u_\ell)$ are a
+measure-theoretic rather than topological decomposition. We therefore work on
+\begin{equation}\label{eq:X}
+X:=G_S\times\overline{\N}^{\,S},\qquad\overline\N=\N\cup\{\infty\},
+\end{equation}
+compact metrizable and totally disconnected, on which by \cite[Lem.~2.10]{Main}
+\begin{equation}\label{eq:nusym}
+\nusym=m_{G_S}\otimes\bigotimes_{\ell\in S}\mu_{t_\ell},\qquad
+\mu_t(k)=(1-t)t^k,\quad t_\ell=\ell^{-\beta},
+\end{equation}
+so $\nusym$ charges no hyperplane $\{v_\ell=\infty\}$ and the natural map $X\to Y_S$ is a
+measure isomorphism off a null set. All test functions constructed below lie in $C(X)$.
+
+\begin{definition}[Moves and weights]\label{def:moves}
+Let $g_0\in G_S$ be the unit whose $3$-component is $-1$ and whose other components are
+$1$, and $\theta_0=\theta_{g_0}$ the corresponding involution of $X$ (translation of the
+$G_S$-coordinate by $g_0$); it flips $\chi_3$. Let $G_S=U_0\supset U_1\supset U_2\supset\cdots$
+be open subgroups with $U_1=\ker\chi_3$ and $\bigcap_kU_k=\{1\}$, and let $(g_i)_{i\ge1}$ be
+elements of $U_1$ such that, for every $k\ge1$, the $g_i$ lying in $U_k$ generate
+$U_k/U_{k+1}$; write $\theta_i=\theta_{g_i}$, so that $\{g_0\}\cup\{g_i\}$ generates a
+dense subgroup of $G_S$ and every element of $U_k$ is a convergent product of $g_i^{\pm1}$
+with $g_i\in U_k$. For $\ell\in S$, $k\in\N$ let $\tau_{\ell,k}$ be the \emph{localized shift}
+sending $(u,v)\mapsto(u,v+e_\ell)$ if $v_\ell=k$ and fixing everything otherwise. Index these
+moves by $j\in J$, write $\Delta_jf=f\circ\vartheta_j-f$, and fix weights $w_j>0$ with
+\begin{equation}\label{eq:summable}
+\Sigma:=\sum_{j\in J}w_j<\infty ,
+\end{equation}
+$w_{\ell,k}$ non-increasing in $k$. The weights are \emph{independent of $\beta$}; only the
+measure depends on $\beta$. Write $w_0$ for the weight of $\theta_0$.
+\end{definition}
+
+\begin{definition}\label{def:D}
+On $\mathcal H=L^2(X,\nusym)\oplus\bigl(L^2(X,\nusym)\otimes\ell^2(J)\bigr)$ put
+$\Db=\begin{psmallmatrix}0&\delta^*\\ \delta&0\end{psmallmatrix}$ with
+$(\delta\xi)_j=w_j^{-1}\Delta_j\xi$, and let $C(X)$ act diagonally by multiplication.
+\end{definition}
+
+\begin{lemma}[Commutator formula]\label{lem:L}
+For $f\in C(X)$,
+\begin{equation}\label{eq:L}
+L(f):=\|[\Db,f]\|=\Bigl\|\Bigl(\sum_{j\in J}w_j^{-2}|\Delta_jf|^2\Bigr)^{1/2}\Bigr\|_\infty ,
+\end{equation}
+a seminorm with $L(f^*)=L(f)$ and $L(fg)\le\|f\|_\infty L(g)+\|g\|_\infty L(f)$. The
+operator $\Db$ is of the type introduced by Christensen and Ivan for AF algebras and
+Cantor sets \cite{CI}, with the moves in the role of the edges.
+\end{lemma}
+
+\begin{proof}
+$(\delta M_f\xi)_j-(M_f^\oplus\delta\xi)_j=w_j^{-1}(\Delta_jf)(\xi\circ\vartheta_j)$, so
+$[\Db,M_f]$ is off-diagonal with multiplier of pointwise $\ell^2(J)$-norm as displayed. The
+algebraic properties follow from
+$\Delta_j(fg)=(f\circ\vartheta_j)\Delta_jg+(\Delta_jf)g$.
+\end{proof}
+
+\section{$C(X)$ is a compact quantum metric space}
+
+\begin{lemma}[Kernel and paths]\label{lem:kernelpath}
+$\{f\in C(X):L(f)=0\}=\C1$; and for $L(f)\le1$,
+\[
+|f(x)-f(y)|\le\sum_{j\in J(x,y)}w_j
+\]
+for any finite or convergent sequence of moves carrying $x$ to $y$ using each at most
+once. In particular $\diam\le\Sigma<\infty$. Let $J_{\le k}$ consist of $\theta_0$, the
+$\theta_i$ with $g_i\notin U_k$, and the $\tau_{\ell,m}$ with $\ell$ among the first $k$
+primes of $S$ and $m<k$. If $x=(u,v)$ and $y=(u',v')$ satisfy $u'u^{-1}\in U_k$ and
+$v_\ell=v'_\ell$ for the first $k$ primes $\ell$ whenever $\min(v_\ell,v'_\ell)<k$, then
+\[
+|f(x)-f(y)|\le\Sigma_k:=\sum_{j\notin J_{\le k}}w_j\ \xrightarrow[k\to\infty]{}\ 0 .
+\]
+\end{lemma}
+
+\begin{proof}
+$L(f)=0$ forces $\Delta_jf\equiv0$; invariance under all $\theta_i$ gives, by density and
+continuity, independence of $u$, and invariance under all $\tau_{\ell,k}$ gives constancy on
+the finitely supported $v$, dense in $\overline\N^{\,S}$. For the estimate,
+$L(f)\le1$ gives $|f(\vartheta_jx)-f(x)|\le w_j$ for each single move; along a finite
+sequence of distinct moves the differences add, and a convergent sequence is handled by
+continuity of $f$. The localized shifts make ``each move at most once'' achievable: passing
+from $v_\ell=m$ to $v_\ell=m'$ uses the distinct moves $\tau_{\ell,m},\dots,\tau_{\ell,m'-1}$,
+and $v_\ell=\infty$ is reached by the convergent sequence $\tau_{\ell,m},\tau_{\ell,m+1},\dots$.
+For the last statement, carry $x$ to $y$ by first writing $u'u^{-1}$ as a convergent
+product of $g_i^{\pm1}$ with $g_i\in U_k$ (possible by the choice of the $g_i$), then
+adjusting the $v_\ell$ with $\ell$ beyond the first $k$ primes, and finally the $v_\ell$ of
+the first $k$ primes, which by hypothesis differ only at levels $\ge k$: every move used
+lies outside $J_{\le k}$, and the moves used are distinct.
+\end{proof}
+
+\begin{theorem}[Compact quantum metric space]\label{thm:cqms}
+Under \eqref{eq:summable}, $(C(X),L)$ is a compact quantum metric space in the sense of
+Rieffel \cite{Rieffel98,Rieffel99}: $L$ is a lower semicontinuous Lip-norm with kernel
+$\C1$, finite on the dense subalgebra of functions depending on finitely many coordinates
+and eventually constant in each $v_\ell$, and the Monge--Kantorovich metric
+\[
+W_1(\varphi_1,\varphi_2)=\sup\bigl\{|\varphi_1(f)-\varphi_2(f)|:\ f\in C(X)_{sa},\ L(f)\le1\bigr\}
+\]
+metrizes the weak-$*$ topology on the state space, of diameter $\le\Sigma$.
+\end{theorem}
+
+\begin{proof}
+By Rieffel's criterion \cite[Thm.~1.8]{Rieffel98} it suffices that
+$\mathcal B=\{f\in C(X)_{sa}:L(f)\le1,\ f(x_0)=0\}$ be totally bounded in $\|\cdot\|_\infty$.
+Lemma~\ref{lem:kernelpath} gives $\|f\|_\infty\le\Sigma$ and equicontinuity: the sets
+$\{y:\ u'u^{-1}\in U_k,\ v'_\ell=v_\ell\ \text{or}\ \min(v_\ell,v'_\ell)\ge k\ \text{for the first }k\text{ primes}\}$
+are neighbourhoods of $x$ on which every $f\in\mathcal B$ varies by at most $\Sigma_k\to0$;
+$X$ is compact, so Arzel\`a--Ascoli applies. Lower semicontinuity follows from \eqref{eq:L}, each
+$f\mapsto\Delta_jf$ being continuous for uniform convergence.
+\end{proof}
+
+\begin{remark}[Summability is necessary]\label{rem:necessary}
+Suppose $\sum_kw_{\ell,k}=\infty$ for some $\ell$, and put
+$f_n=\sum_{k<n}w_{\ell,k}\mathbf 1_{\{v_\ell>k\}}$. Then $\Delta_{\ell,k}f_n=w_{\ell,k}$ for
+$k<n$, no other elementary difference is nonzero, $L(f_n)=1$, and
+$\operatorname{osc}(f_n)=\sum_{k<n}w_{\ell,k}\to\infty$, so $\mathcal B$ is unbounded; the
+same construction along a level $U_k/U_{k+1}$ of the $G_S$-moves shows that
+$\sum_iw_i=\infty$ is likewise fatal. Summability of the weights and finiteness of the
+diameter are equivalent here.
+\end{remark}
+
+\section{The order parameter is not Lipschitz}
+
+\begin{lemma}[Elementary differences]\label{lem:diffPsi}
+On the conull set where $\Psi$ is defined,
+$\Delta_0\Psi=-2\Psi$, $\Delta_{\ell,k}\Psi=-2\Psi\cdot\mathbf 1_{\{v_\ell=k\}}$ for
+$\ell\in R$, and $\Delta_j\Psi=0$ for all other moves.
+\end{lemma}
+
+\begin{proof}
+$\theta_0$ multiplies $u_3$ by a non-residue, flipping $\chi_3$ and hence $\Psi$;
+$\tau_{\ell,k}$ increases $v_\ell$ by one exactly on $\{v_\ell=k\}$, flipping the parity
+factor when $\ell\in R$. The $\theta_i$, $i\ge1$, lie in $\ker\chi_3$.
+\end{proof}
+
+\begin{theorem}[Exclusivity]\label{thm:notlip}
+Assume \eqref{eq:summable} and $R\ne\emptyset$. Then $L(\Psi)=\infty$, and indeed
+$L(\Psi_N)=\infty$ for every $N\ge\min R$, where
+$\Psi_N=\chi_3\prod_{\ell\in R,\ \ell\le N}(-1)^{v_\ell}$, $L$ being extended to bounded
+Borel functions by the same formula \eqref{eq:L}. No truncation of the order parameter
+beyond the level of $\chi_3$ lies in the Lipschitz domain of the operators of
+Definition~\ref{def:D}; and since $\Psi_N$ is discontinuous along $\{v_\ell=\infty\}$ for
+$\ell\in R$, $\ell\le N$, it lies in the Lipschitz domain of no Lip-norm on $C(X)$
+whatever.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:diffPsi}, at a point $x$ with $v_\ell(x)=k$,
+\[
+\sum_jw_j^{-2}|\Delta_j\Psi(x)|^2=4w_0^{-2}+4\sum_{\ell\in R}w_{\ell,v_\ell(x)}^{-2}\ \ge\ 4w_{\ell,k}^{-2}.
+\]
+Summability forces $w_{\ell,k}\to0$ as $k\to\infty$ for each $\ell$, while
+$\nusym(\{v_\ell=k\})=(1-t_\ell)t_\ell^k>0$ for every $k$; so the essential supremum in
+\eqref{eq:L} is $+\infty$. The same computation truncated at $N$ gives the second assertion.
+\end{proof}
+
+\begin{corollary}[Quantitative divergence]\label{cor:quant}
+Let $\phi_m(v)=(-1)^v$ for $v\le m$ and $(-1)^m$ for $v>m$, so $\phi_m\in C(\overline\N)$, and
+$\Psi^{(m)}_N=\chi_3\prod_{\ell\in R,\ \ell\le N}\phi_m(v_\ell)\in C(X)$. Then
+\begin{equation}\label{eq:quant}
+L\bigl(\Psi^{(m)}_N\bigr)=2\Bigl(w_0^{-2}+\sum_{\ell\in R,\ \ell\le N}w_{\ell,m-1}^{-2}\Bigr)^{1/2}\xrightarrow[m\to\infty]{}\infty,
+\end{equation}
+while $\|\Psi^{(m)}_N-\Psi_N\|_2^2\le4\sum_{\ell\in R,\ \ell\le N}t_\ell^{\,m}$.
+\end{corollary}
+
+\begin{proof}
+$\Delta_{\ell,k}\phi_m=0$ for $k\ge m$ and $=\mp2$ for $k<m$; since $w_{\ell,k}$ is
+non-increasing the supremum over $k<m$ of $w_{\ell,k}^{-2}$ is $w_{\ell,m-1}^{-2}$, attained
+on a set of positive measure. The $L^2$ estimate is the union bound on $\{v_\ell>m\}$.
+\end{proof}
+
+\begin{remark}[Interpretation]\label{rem:impedance}
+The macroscopic charge has infinite impedance at the microscopic scale. Resolving it to depth
+$m$ costs a Lipschitz seminorm growing like $w_{\ell,m-1}^{-1}$, and full resolution costs
+infinitely much --- because a metric that is to induce the weak-$*$ topology must assign
+summable, hence vanishing, weights to deep coordinates. A tail observable is by construction
+insensitive to any finite set of coordinates; a compact quantum metric must be insensitive,
+in the opposite sense, to all but finitely many. The two requirements are incompatible.
+\end{remark}
+
+\section{The squeeze theorem}
+
+Throughout this section $\sum_{\ell\in R}\ell^{-\beta}<\infty$, so $\Psi$ exists and
+$\varphi_+\ne\varphi_-$. Put
+\begin{equation}\label{eq:Pi}
+m_\ell=\frac{1-t_\ell}{1+t_\ell}=\mathbb E_{\mu_{t_\ell}}\bigl[(-1)^{v_\ell}\bigr],
+\qquad \Pi_\infty=\prod_{\ell\in R}m_\ell .
+\end{equation}
+
+\begin{lemma}[Kakutani criterion]\label{lem:kakutani}
+$0<m_\ell<1$, and $\Pi_\infty>0\iff\sum_{\ell\in R}(1-m_\ell)<\infty\iff\sum_{\ell\in R}\ell^{-\beta}<\infty$.
+\end{lemma}
+
+\begin{proof}
+$1-m_\ell=2t_\ell/(1+t_\ell)\in[t_\ell,2t_\ell]$, so the two series converge together; an
+infinite product of factors in $(0,1)$ is positive iff the defects are summable.
+\end{proof}
+
+\begin{lemma}[Reduction to odd functions]\label{lem:odd}
+$L$ is invariant under $f\mapsto f\circ\theta_0$; the odd part
+$f^-=\tfrac12(f-f\circ\theta_0)$ satisfies $L(f^-)\le L(f)$ and
+$\langle f^-,\Psi\rangle=\langle f,\Psi\rangle$. Every odd $f$ is $\chi_3h$ with
+$h=\chi_3f$ even, and then $\Delta_0f=-2f$ and
+$\langle f,\Psi\rangle=\langle h,\sigma\rangle$ with $\sigma=\prod_{\ell\in R}(-1)^{v_\ell}$.
+\end{lemma}
+
+\begin{proof}
+$\theta_0$ is a measure-preserving involution commuting with every $\vartheta_j$, so $L$ is
+$\theta_0$-invariant and $L(f^-)\le L(f)$; and $\Psi\circ\theta_0=-\Psi$ gives
+$\langle f\circ\theta_0,\Psi\rangle=-\langle f,\Psi\rangle$. For odd $f$, $h=\chi_3f$ is
+even, and $\Psi=\chi_3\sigma$ with $\chi_3^2=1$.
+\end{proof}
+
+\begin{theorem}[Squeeze]\label{thm:squeeze}
+\begin{equation}\label{eq:squeeze}
+w_0\,\Pi_\infty(\beta)\ \le\ W_1(\varphi_+,\varphi_-)\ \le\ w_0 .
+\end{equation}
+In particular $W_1(\varphi_+,\varphi_-)>0$ if and only if
+$\sum_{\ell\in R}\ell^{-\beta}<\infty$.
+\end{theorem}
+
+\begin{proof}
+By Remark~\ref{prop:reduction} and \eqref{eq:Psi},
+$W_1(\varphi_+,\varphi_-)=\sup\{|\nu_+(f)-\nu_-(f)|:f\in C(X)_{sa},\ L(f)\le1\}
+=\sup\{2\langle f,\Psi\rangle:f\in C(X)_{sa},\ L(f)\le1\}$, where
+$\langle f,\Psi\rangle=\int f\Psi\,d\nusym$.
+
+\emph{Lower bound.} Take $f=\tfrac{w_0}{2}\chi_3$, continuous and depending only on $u_3$. By
+Lemma~\ref{lem:diffPsi} its only nonzero elementary difference is $\Delta_0f=-w_0\chi_3$, so
+$L(f)=w_0^{-1}w_0=1$; and $\chi_3$ and $\sigma$ being independent under \eqref{eq:nusym},
+\[
+2\langle f,\Psi\rangle=w_0\langle\chi_3,\chi_3\sigma\rangle=w_0\,\mathbb E[\sigma]=w_0\Pi_\infty .
+\]
+
+\emph{Upper bound.} By Lemma~\ref{lem:odd} take $f=\chi_3h$ odd with $L(f)\le1$. Then
+$|\Delta_0f|=2|h|$ pointwise, so \eqref{eq:L} gives $2w_0^{-1}\|h\|_\infty\le1$; since
+$|\sigma|=1$,
+$2\langle f,\Psi\rangle=2\langle h,\sigma\rangle\le2\|h\|_\infty\le w_0$.
+
+If instead $\sum_{\ell\in R}\ell^{-\beta}=\infty$ then $\Psi$ is undefined a.e.,
+$\nu_+=\nu_-$ and $W_1=0$; otherwise $\Pi_\infty>0$ by Lemma~\ref{lem:kakutani}.
+\end{proof}
+
+\begin{remark}[Locality versus tail behaviour]\label{rem:locality}
+The upper bound is the cost of the \emph{single} elementary move $\theta_0$ at the component
+$3$, and its source is that $\varphi_-=\varphi_+\circ\theta_0$: the two phases lie on one
+$G_S$-orbit and the group element realizing the passage is supported at one coordinate. The
+metric separation is therefore local, even though the separating observable is a tail
+function and the measures are mutually singular, at maximal total variation distance $2$.
+Total variation sees the tail; the horizontal distance sees the shortest move.
+\end{remark}
+
+\section{The metric transition is continuous}
+
+\begin{lemma}[Poincar\'e inequality for the geometric law]\label{lem:poincare}
+For $0<t<1$, $\mu_t(k)=(1-t)t^k$ and $\Delta h(k)=h(k+1)-h(k)$,
+\begin{equation}\label{eq:poincare}
+\Var_{\mu_t}(h)\le C(t)\,\mathbb E_{\mu_t}|\Delta h|^2,\qquad C(t)=\frac{4t}{(1-t)^2},
+\end{equation}
+and the constant is sharp up to the factor $4$: $h(k)=k$ gives equality with $t/(1-t)^2$.
+\end{lemma}
+
+\begin{proof}
+This is the discrete weighted Hardy inequality of Muckenhoupt \cite{Muck} in the form
+given by Miclo \cite{Miclo} for a birth--death chain with conductances $c_k=\mu_t(k)$,
+applied to $h-h(0)$: the optimal constant lies between $B$ and $4B$ with
+\[
+B=\sup_{n\ge1}\Bigl(\sum_{k\ge n}\mu_t(k)\Bigr)\Bigl(\sum_{k=0}^{n-1}c_k^{-1}\Bigr)
+=\sup_{n\ge1}\frac{t^n}{1-t}\cdot\frac{t^{-n}-1}{t^{-1}-1}
+=\sup_{n\ge1}\frac{1-t^n}{(1-t)(t^{-1}-1)}=\frac{t}{(1-t)^2}.
+\]
+For $h(k)=k$, $\Var=t/(1-t)^2$ and $\mathbb E|\Delta h|^2=1$.
+\end{proof}
+
+\begin{theorem}[Continuous vanishing at $\beta_c$]\label{thm:continuous}
+Assume the weights satisfy \eqref{eq:summable} and are bounded, let $\beta_c=\beta_c(R)>0$
+be the convergence exponent of $\sum_{\ell\in R}\ell^{-\beta}$, and assume the series
+diverges at the exponent itself, $\sum_{\ell\in R}\ell^{-\beta_c}=\infty$, as it does for
+the cascade sets of \cite[Prop.~4.16]{Main} and \cite[Lem.~5.4]{SeriesI}. Then
+\[
+\lim_{\beta\downarrow\beta_c}W_1(\varphi_+,\varphi_-)=0 .
+\]
+Consequently $\beta\mapsto\diam_{W_1}\bigl(\mathrm{KMS}_\beta\bigr)$ vanishes on
+$(0,\beta_c]$, is strictly positive on $(\beta_c,\infty)$, and is continuous at $\beta_c$.
+(If instead $\sum_{\ell\in R}\ell^{-\beta_c}<\infty$, then $\Psi$ exists at $\beta_c$ and
+Theorem~\ref{thm:squeeze} gives $W_1\ge w_0\Pi_\infty(\beta_c)>0$ there, while $W_1=0$ for
+$\beta<\beta_c$: the diameter then jumps at $\beta_c$, exactly as the algebraic
+invariants do.)
+\end{theorem}
+
+\begin{proof}
+Let $f=\chi_3h$ be odd with $L(f)\le1$, so $\|h\|_\infty\le w_0/2$ by the proof of
+Theorem~\ref{thm:squeeze}. Let $\mathcal F_N=\sigma(u;v_\ell,\ \ell\le N)$ and $E_N$ the
+conditional expectation, and split
+$2\langle h,\sigma\rangle=2\langle E_Nh,\sigma\rangle+2\langle h-E_Nh,\sigma\rangle$.
+
+\emph{First term.} Write $\sigma=\sigma_{\le N}\sigma_{>N}$; the factor $\sigma_{>N}$ is
+independent of $\mathcal F_N$ and of $\sigma_{\le N}$ with mean
+$\Pi_N=\prod_{\ell\in R,\ \ell>N}m_\ell$, so
+$2\langle E_Nh,\sigma\rangle=2\Pi_N\langle E_Nh,\sigma_{\le N}\rangle\le2\Pi_N\|h\|_\infty\le w_0\Pi_N$.
+
+\emph{Second term.} Since $\nusym$ is a product measure, tensorization of the variance gives
+$\|h-E_Nh\|_2^2=\mathbb E[\Var(h\mid\mathcal F_N)]\le\sum_{\ell>N}\mathbb E[\Var_{v_\ell}(h)]$,
+and by Lemma~\ref{lem:poincare},
+$\Var_{v_\ell}(h)\le C(t_\ell)\mathbb E_{v_\ell}|\Delta_\ell h|^2$. Now $\Delta_\ell h$
+coincides with $\Delta_{\ell,k}h$ on $\{v_\ell=k\}$ and $\chi_3$ does not depend on $v$, so
+$|\Delta_{\ell,k}h|=|\Delta_{\ell,k}f|\le w_{\ell,k}L(f)\le w_{\ell,k}$ there, whence
+$\mathbb E_{v_\ell}|\Delta_\ell h|^2\le\sum_k(1-t_\ell)t_\ell^kw_{\ell,k}^2\le\sum_kw_{\ell,k}^2$.
+For $\ell\ge2$ and $\beta\ge\beta_c$ we have $t_\ell\le2^{-\beta_c}=:t_0<1$, so
+$C(t_\ell)\le4t_0/(1-t_0)^2=:C_0$ uniformly, and
+\[
+\|h-E_Nh\|_2^2\le C_0\sum_{\ell>N}\sum_{k}w_{\ell,k}^2=:\rho_N^2 .
+\]
+Since $\sum_{\ell,k}w_{\ell,k}^2\le(\sup_jw_j)\Sigma<\infty$, we get $\rho_N\to0$ as
+$N\to\infty$, \emph{uniformly in $\beta\ge\beta_c$}. As $\|\sigma\|_2=1$, Cauchy--Schwarz
+gives $2\langle h-E_Nh,\sigma\rangle\le2\rho_N$.
+
+Combining, $W_1(\varphi_+,\varphi_-)\le w_0\Pi_N(\beta)+2\rho_N$ for every $N$. Given
+$\varepsilon>0$, choose $N$ with $2\rho_N<\varepsilon/2$; for that fixed $N$,
+$\sum_{\ell\in R,\ \ell>N}\ell^{-\beta}\uparrow\sum_{\ell\in R,\ \ell>N}\ell^{-\beta_c}=\infty$
+as $\beta\downarrow\beta_c$ by monotone convergence and the divergence hypothesis, so
+$\Pi_N(\beta)\to0$ by Lemma~\ref{lem:kakutani} and $w_0\Pi_N(\beta)<\varepsilon/2$ for
+$\beta$ close enough to $\beta_c$.
+\end{proof}
+
+\begin{remark}[First order versus second order]\label{rem:orders}
+\[
+\begin{array}{lcc}
+& \beta\le\beta_c & \beta>\beta_c\\\hline
+\text{number of extreme }\mathrm{KMS}_\beta\text{ states} & 1 & 2\quad(\text{jump})\\
+\text{rank of }\Xi_\beta\ \text{\cite{SeriesI}} & 0 & 1\quad(\text{jump})\\
+\text{index }[\Msym:M_\varepsilon]\ \text{(Paper II)} & 1 & 2\quad(\text{jump})\\
+\Ent(\omega_{\varphi_\pm}\|\omega_{\phisym})\ \text{(Paper III)} & 0 & \log2\quad(\text{jump})\\
+\diam_{W_1}(\mathrm{KMS}_\beta) & 0 & >0\quad(\text{continuous at }\beta_c)
+\end{array}
+\]
+The first four count phases and jump by construction. The fifth does not, and
+Theorem~\ref{thm:notlip} is why: were $\Psi$ Lipschitz, the test function $\Psi/L(\Psi)$
+would give $W_1\ge2/L(\Psi)$, a bound not degenerating at the threshold, and the metric
+transition would also be of first order. Because $\Psi$ is not Lipschitz the supremum is
+carried by functions measurable with respect to finitely many coordinates, whose correlation
+with $\Psi$ is $\Pi_N$, and that correlation collapses as the Kakutani product degenerates.
+The failure of the order parameter to be Lipschitz is not a defect of the construction but
+the mechanism that makes the metric transition continuous.
+\end{remark}
+
+\begin{remark}[A model computation]\label{rem:numerics}
+For $R=\{r\}$ a single prime and constant weights $w_0$, $w_r$ along the $r$-line ---
+for which \eqref{eq:summable} fails and $C(X)$ is not a compact quantum metric space, but
+the reduction of Lemma~\ref{lem:odd} still applies and $L(f)=\sup_k\bigl(4w_0^{-2}h(k)^2+w_r^{-2}|h(k+1)-h(k)|^2\bigr)^{1/2}$
+for odd $f=\chi_3h$ with $h$ a function of $v_r$ --- the distance is the convex program
+\[
+W_1=\sup\Bigl\{2\sum_{k\ge0}(1-t)t^k(-1)^kh(k):\ 4w_0^{-2}h(k)^2+w_r^{-2}\bigl(h(k+1)-h(k)\bigr)^2\le1\ \ \forall k\Bigr\},
+\]
+which can be solved numerically after truncation. Two feasible profiles are explicit: the
+constant $h\equiv w_0/2$, which is the lower bound $w_0m_r$ of \eqref{eq:squeeze}, and the
+alternating $h(k)=(-1)^ka$ with $a=\tfrac12(w_0^{-2}+w_r^{-2})^{-1/2}$, which gives
+$2a=(w_0^{-2}+w_r^{-2})^{-1/2}$ for every $t$. With $w_0=1$ (code in \texttt{code/verify\_series.py}):
+\[
+\begin{array}{cccccc}
+t & w_r & W_1\ (\text{numerical}) & \text{alternating} & w_0m_r\ (\text{lower}) & w_0\ (\text{upper})\\\hline
+0.5 & 1 & 0.707 & 0.707 & 0.333 & 1\\
+0.9 & 1 & 0.707 & 0.707 & 0.053 & 1\\
+0.1 & 1 & 0.838 & 0.707 & 0.818 & 1\\
+0.5 & 5 & 0.981 & 0.981 & 0.333 & 1\\
+0.9 & 5 & 0.981 & 0.981 & 0.053 & 1
+\end{array}
+\]
+The alternating profile is the optimizer whenever its value exceeds the constant one; for
+small $t$, where $m_r$ is close to $1$, the optimizer interpolates between the two. The
+squeeze \eqref{eq:squeeze} holds in every case, and its lower bound is far from sharp for
+$t$ near $1$. This model has $\sum_{\ell\in R}\ell^{-\beta}=t<\infty$ for all $\beta$, hence
+no transition, and cannot probe Theorem~\ref{thm:continuous}: the collapse there requires
+$R$ infinite and is driven by $\rho_N\to0$, which has no analogue for $|R|=1$. We record
+the table only as a check on \eqref{eq:squeeze}. In Lemma~\ref{lem:poincare} the quantity
+$B_n=t(1-t^n)/(1-t)^2$ increases to $B=t/(1-t)^2$, and $h(k)=k$ attains it.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Statement} & \text{Status} & \text{Reference}\\\hline
+\text{modular direction metrically blind} & \text{true} & \text{Prop.~2.1}\\
+\text{horizontal distance on the base} & \text{defined} & \text{Rem.~2.2}\\
+(C(X),L)\ \text{a compact quantum metric space} & \iff\ \textstyle\sum_jw_j<\infty & \text{Thm.~3.2, Rem.~3.3}\\
+\Psi\ \text{Lipschitz} & \text{never, given the above} & \text{Thm.~4.2}\\
+w_0\Pi_\infty\le W_1\le w_0 & \text{true} & \text{Thm.~5.3}\\
+W_1>0\iff\sum_R\ell^{-\beta}<\infty & \text{true} & \text{Thm.~5.3}\\
+\text{metric transition} & \text{continuous} & \text{Thm.~6.2}
+\end{array}
+\]
+
+Three questions remain. The infinite-index prime inclusions are not the issue here, but the
+exact value of $W_1(\varphi_+,\varphi_-)$ is unknown: Theorem~\ref{thm:squeeze} gives
+$w_0\Pi_\infty\le W_1\le w_0$ and Remark~\ref{rem:numerics} shows both bounds can be far
+from the truth; the upper bound $w_0\Pi_N+2\rho_N$ from the proof of
+Theorem~\ref{thm:continuous} suggests the answer is $\inf_N(w_0\Pi_N+2\rho_N)$ up to
+constants, and it would be interesting to know whether the optimizer is asymptotically a
+finite-level function $\Psi^{(m)}_N$. Second, we have restricted to $C(X)$: the operator $\Db$ is not defined on a
+representation of $\cA_{K,S}$, and Remark~\ref{prop:reduction} explains why the summable
+level weights that Theorem~\ref{thm:cqms} requires are incompatible with bounded
+commutators with the isometries, while by Proposition~\ref{prop:blind} the modular operator
+alone gives infinite distances. Constructing a Dirac operator on $\cA_{K,S}$ with a
+nondegenerate vertical component --- bounded commutators with the isometries, compact
+resolvent, Lip-kernel $\C1$ --- so that the distance on the $\mathrm{KMS}_\beta$ simplex is
+a genuine Connes distance of the crossed product, is open for Ore semigroup crossed
+products of this type; a twisted spectral triple in the sense of Connes--Moscovici, with
+twist the modular automorphism $\sigma_{i\beta}$, is the natural candidate, and $\Psi$ might
+be twisted-Lipschitz although it is not Lipschitz.
+Third, for the cascade systems of \cite{SeriesI} each generator $\chi_n$ has its own
+elementary move and the analogue of Theorem~\ref{thm:squeeze} should give a family of bounds
+indexed by $n$; whether $\diam_{W_1}$ then reproduces a continuous version of the weighted
+staircase, and whether it is continuous at every threshold, we do not know.
+
+\begin{thebibliography}{9}
+\bibitem{Connes89} A. Connes, \emph{Compact metric spaces, Fredholm modules, and hyperfiniteness}, Ergodic Theory Dynam. Systems 9 (1989), 207--220.
+\bibitem{ConnesBook} A. Connes, \emph{Noncommutative Geometry}, Academic Press, 1994.
+\bibitem{CI} E. Christensen, C. Ivan, \emph{Spectral triples for AF $C^*$-algebras and metrics on the Cantor set}, J. Operator Theory 56 (2006), 17--46.
+\bibitem{Miclo} L. Miclo, \emph{An example of application of discrete Hardy's inequalities}, Markov Process. Related Fields 5 (1999), 319--330.
+\bibitem{Muck} B. Muckenhoupt, \emph{Hardy's inequality with weights}, Studia Math. 44 (1972), 31--38.
+\bibitem{Rieffel98} M. A. Rieffel, \emph{Metrics on states from actions of compact groups}, Doc. Math. 3 (1998), 215--229.
+\bibitem{Rieffel99} M. A. Rieffel, \emph{Metrics on state spaces}, Doc. Math. 4 (1999), 559--600.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\bibitem{SeriesI} R. Chen, \emph{Localized Bost--Connes systems I: factor type and the spectrum of transitions}, preprint, 2026, DOI \href{https://doi.org/10.5281/zenodo.22160827}{10.5281/zenodo.22160827}.
+\end{thebibliography}
+
+\end{document}
