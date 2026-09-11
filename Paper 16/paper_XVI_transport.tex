@@ -1,0 +1,402 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\Db}{D_{\mathrm{base}}}
+\newcommand{\Dv}{D_{\mathrm{vert}}}
+\newcommand{\Df}{D_{\mathrm{full}}}
+\newcommand{\nusym}{\nu_{\mathrm{sym}}}
+\newcommand{\id}{\mathrm{id}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[Twists, detailed balance, and tensorisation]{Quantum optimal transport on Bost--Connes systems:\\ the twist is harmful, the generator has a sign error,\\ and the transition is invisible to local inequalities}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/XVI-transport/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We examine three proposals for a quantum optimal transport theory on the type $\mathrm{III}$
+Bost--Connes systems and find that each fails, in each case for an identifiable and
+correctable reason. Two of the corrections are clean; the third is a structural obstruction.
+
+\emph{The modular twist is not merely unnecessary but harmful.} With
+$\Dv\epsilon_\aaa=(\log\Ns\aaa)\epsilon_\aaa$ and $\vartheta=\sigma_{-i\beta}$, one computes
+\[
+[\Dv,\mu_\pp]_\vartheta\,\epsilon_\bb=\bigl(\log\Ns\pp+(1-\Ns\pp^{\beta})\log\Ns\bb\bigr)\epsilon_{\pp\bb},
+\]
+which is \emph{unbounded}. The untwisted commutator is bounded and elementary:
+$\Dv\mu_\pp=\mu_\pp(\Dv+\log\Ns\pp)$ gives $[\Dv,\mu_\pp]=(\log\Ns\pp)\mu_\pp$. The reason is
+that a twist repairs a \emph{multiplicative} mismatch, whereas $\Dv$ is \emph{additive} in
+$\log\Ns$; introducing $\vartheta$ manufactures the mismatch it was meant to cure. The
+untwisted $\Df=\Db\otimes\sigma_1+\Dv\otimes\sigma_2$ does have $\ker L=\C1$ --- and, as it
+turns out, exactly when $S$ is norm-separated, the same condition that governs the
+equal-norm analysis of Paper XIV of the series (its Theorem 1.3). Whether it is a spectral
+triple reduces to whether the horizontal operator has compact resolvent, which is not
+established.
+
+\emph{The proposed Lindbladian does not preserve the KMS state.} Writing $a_\pp,b_\pp$ for
+the rates of $\mu_\pp^*(\cdot)\mu_\pp$ and $\mu_\pp(\cdot)\mu_\pp^*$, the KMS condition gives
+$\varphi(\cL f)=\sum_\pp\{\nu(fe_\pp)(a_\pp\Ns\pp^{\beta}-b_\pp)+\nu(f)(b_\pp\Ns\pp^{-\beta}-a_\pp)\}$,
+which vanishes for all $f$ if and only if $b_\pp=a_\pp\Ns\pp^{+\beta}$. The proposal takes
+$b_\pp=a_\pp\Ns\pp^{-\beta}$: \emph{the sign of the exponent is wrong}, and with it
+$\varphi(\cL e_\pp)=(1-t^2)(1-t)\ne0$ for $t=\Ns\pp^{-\beta}$. The corrected ratio
+$b_\pp/a_\pp=e^{\beta\log\Ns\pp}$ is the detailed-balance factor, as it must be.
+
+\emph{Critical slowing down does not occur.} The proposed asymptotic
+$\alpha(\beta)\asymp\Pi_\infty(\beta)=\prod_{\ell}\frac{1-\ell^{-\beta}}{1+\ell^{-\beta}}$
+is of the wrong shape: spectral gaps, modified log-Sobolev constants and Bakry--\'Emery
+curvature bounds \emph{tensorise to an infimum} of single-site quantities, each a function
+of its own $\ell^{-\beta}$ alone, not to a product over $\ell$. The single-site defects
+$1-\ell^{-\beta}$ are bounded below by $1-3^{-\beta}\ge0.66$, and the single-site spectral
+gap by $(1-t)^2/4t$ (the Poincar\'e constant of the geometric law), so with unit rates the
+gap stays bounded below near $\beta_c$ while $\Pi_\infty\to0$. The arithmetic transition is
+a \emph{tail} phenomenon --- the Kakutani singularity of an infinite product --- and such
+tensorising local quantities cannot see it. This is the same mechanism that made the metric
+transition of Paper IV of the series (its Theorem 6.2) continuous rather than first-order.
+\end{abstract}
+
+\maketitle
+
+\section{The twist}
+
+We use the notation of \cite{Main}: $\cA_{\Q,S}=C(Y_S)\rtimes J_S$, spanned by the monomials
+$\mu_\aaa f\mu_\bb^*$, with $\sigma_t(\mu_\aaa)=\Ns\aaa^{it}\mu_\aaa$; $X$ and $\nusym$ are
+the compact model and its symmetric measure. Papers III, IV and XIV of the series, referred
+to by numeral, are unpublished companions; every fact used from them is restated or
+re-derived in place. Represent $\cA_{\Q,S}$ on $\cH_0=L^2(X,\nusym)\otimes\ell^2(J_S)$ in the Toeplitz
+representation, $\mu_\aaa\epsilon_\bb=\epsilon_{\aaa\bb}$, and set
+$\Dv\epsilon_\aaa=(\log\Ns\aaa)\epsilon_\aaa$. Let $\vartheta=\sigma_{-i\beta}$, so
+$\vartheta(\mu_\aaa)=\Ns\aaa^{\beta}\mu_\aaa$ and $\vartheta(f)=f$ for $f\in C(Y_S)$.
+
+\begin{proposition}[The twisted commutator is unbounded]\label{prop:unbounded}
+For every prime $\pp$ and every $\beta>0$,
+\begin{equation}\label{eq:twist}
+[\Dv,\mu_\pp]_\vartheta\,\epsilon_\bb
+=\bigl(\Dv\mu_\pp-\vartheta(\mu_\pp)\Dv\bigr)\epsilon_\bb
+=\Bigl(\log\Ns\pp+\bigl(1-\Ns\pp^{\beta}\bigr)\log\Ns\bb\Bigr)\epsilon_{\pp\bb},
+\end{equation}
+whose coefficient tends to $-\infty$ as $\Ns\bb\to\infty$. Hence
+$[\Dv,\mu_\pp]_\vartheta\notin\mathcal B(\cH_0)$.
+\end{proposition}
+
+\begin{proof}
+$\Dv\mu_\pp\epsilon_\bb=\log\Ns(\pp\bb)\epsilon_{\pp\bb}=(\log\Ns\pp+\log\Ns\bb)\epsilon_{\pp\bb}$
+and $\vartheta(\mu_\pp)\Dv\epsilon_\bb=\Ns\pp^{\beta}(\log\Ns\bb)\epsilon_{\pp\bb}$;
+subtract. Since $\Ns\pp^\beta\ne1$ the coefficient is unbounded in $\bb$.
+\end{proof}
+
+\begin{proposition}[The untwisted commutator is bounded]\label{prop:bounded}
+$\Dv\mu_\aaa=\mu_\aaa\bigl(\Dv+\log\Ns\aaa\bigr)$, hence
+\[
+[\Dv,\mu_\aaa]=(\log\Ns\aaa)\,\mu_\aaa,\qquad \bigl\|[\Dv,\mu_\aaa]\bigr\|=\log\Ns\aaa<\infty,
+\]
+and $[\Dv,f]=0$ for $f\in C(Y_S)$.
+\end{proposition}
+
+\begin{proof}
+Both sides send $\epsilon_\bb$ to $(\log\Ns\aaa+\log\Ns\bb)\epsilon_{\aaa\bb}$; the vanishing
+on $C(Y_S)$ is the observation recorded in Paper IV of the series (its Proposition 2.1),
+$\Dv$ being diagonal in a basis with respect to which $C(Y_S)$ acts diagonally.
+\end{proof}
+
+\begin{remark}[Why the twist backfires]\label{rem:whybackfire}
+A Connes--Moscovici twist \cite{CM} repairs a \emph{multiplicative} discrepancy: it is used when
+conjugation by the algebra rescales $D$, so that $Dx-xD$ fails to be bounded by a factor,
+and $\vartheta$ absorbs the factor. Here $\Dv$ is \emph{additive} in $\log\Ns$, so
+$Dx-xD$ is already bounded, and inserting the multiplicative $\vartheta(\mu_\aaa)=\Ns\aaa^\beta\mu_\aaa$
+introduces a factor where there was none. Equation \eqref{eq:twist} is precisely the
+manufactured mismatch. The twisted triple, with twist $\sigma_{i\beta}$, was the candidate
+proposed in the closing assessment of Paper IV; this section is the reason we do not pursue
+it.
+\end{remark}
+
+\begin{remark}[Numerical illustration]\label{rem:numtwist}
+For $\Ns\pp=3$, $\beta=1$ the coefficient in \eqref{eq:twist} takes the values
+$-3.5,\,-12.7,\,-26.5,\,-54.2$ at $\Ns\bb=10,10^3,10^6,10^{12}$; for $\beta=2$,
+$-17.3,\,-54.2,\,-109.4,\,-219.9$. The untwisted commutator has constant norm
+$\log3=1.0986$.
+\end{remark}
+
+\section{The untwisted operator, and the reappearance of norm-separation}
+
+Let $\Df=\Db\otimes\sigma_1+\Dv\otimes\sigma_2$ on $\cH=\cH_0\otimes\C^2$, with $\Db$ the
+horizontal operator of Paper IV (its Definition 2.4), amplified to act on the
+$L^2(X,\nusym)$ factor of every summand $L^2(X,\nusym)\otimes\epsilon_\bb$, and
+$L(x)=\|[\Df,x]\|$. In this representation $\mu_\aaa$ acts on $\ell^2(J_S)$ alone and $f\in
+C(Y_S)$ acts on the summand indexed by $\bb$ as multiplication by the translate
+$f\circ m_\bb$, so $[\Db,\mu_\aaa]=0$ while $[\Db,f]$ is the $\bb$-indexed family
+$[\Db,f\circ m_\bb]$.
+
+\begin{proposition}[Kernel]\label{prop:kernel}
+The operators $\sigma_1,\sigma_2$ anticommute and $x$ acts diagonally, so
+$[\Df,x]=[\Db,x]\otimes\sigma_1+[\Dv,x]\otimes\sigma_2$, which vanishes iff both terms do. By
+Proposition~\ref{prop:bounded}, $\ker[\Dv,\cdot\,]=\cA^\sigma_{\Q,S}$. Hence
+\[
+\ker L=\bigl\{x\in\cA^\sigma:[\Db,x]=0\bigr\},
+\]
+which equals $\C1$ if and only if $\cA^\sigma=C(Y_S)$, i.e.\ if and only if $S$ is
+norm-separated in the sense of Theorem 1.3 of Paper XIV.
+\end{proposition}
+
+\begin{proof}
+$[\Dv,\mu_\aaa f\mu_\bb^*]=(\log\Ns\aaa-\log\Ns\bb)\mu_\aaa f\mu_\bb^*$, zero iff
+$\Ns\aaa=\Ns\bb$, so the kernel of the vertical commutator is exactly the fixed-point algebra
+of $\sigma$. For $f\in C(Y_S)$, $[\Db,f]=0$ forces $[\Db,f\circ m_1]=0$ on the summand
+$\bb=(1)$, hence $f\in\C1$ by the Lip-kernel lemma of Paper IV (its Lemma 3.1); if
+$\cA^\sigma\supsetneq C(Y_S)$ the element $\mu_\aaa\mu_\bb^*$ with $\Ns\aaa=\Ns\bb$,
+$\aaa\ne\bb$, lies in $\ker[\Dv,\cdot]$ and, acting on $\ell^2(J_S)$ alone, also in
+$\ker[\Db,\cdot]$.
+\end{proof}
+
+\begin{remark}[Spectral triple: not established]\label{rem:notriple}
+Since $\Db$ and $1\otimes\Dv$ commute and are placed on anticommuting Clifford directions,
+$\Df^2=\Db^2\otimes1+1\otimes\Dv^2$, and on the summand $L^2(X,\nusym)\otimes\epsilon_\aaa$
+this is $\Db^2+(\log\Ns\aaa)^2$. Over $\Q$ the norms $\Ns\aaa$ are distinct and tend to
+infinity, so $\Df$ has compact resolvent if and only if $\Db$ does on $L^2(X,\nusym)$ ---
+a property of the weight sequence of Paper IV, which that paper does not establish and we do
+not claim; its own assessment leaves the spectral triple on the crossed product open, and so
+do we. In particular no index theory is asserted. The pair $(\cA_{\Q,S},L)$ can still be a
+compact quantum metric space in Rieffel's sense \cite{Rieffel} --- which requires only that
+the Lipschitz ball be totally bounded modulo scalars --- and it is that notion, not the
+spectral triple, that is at issue here; the two are often conflated.
+\end{remark}
+
+\begin{remark}[Open Problem 1 of Paper IV]\label{rem:openone}
+Proposition~\ref{prop:kernel} settles the kernel question but not the compact quantum metric
+space question, which additionally requires total boundedness of
+$\{x:L(x)\le1,\varphi(x)=0\}$. The vertical directions have Lipschitz cost bounded below by
+$\log\Ns\pp_0$ for the smallest prime, which is encouraging; we have not verified total
+boundedness and do not claim it.
+\end{remark}
+
+\section{The generator: a sign error in the detailed balance}
+
+\begin{proposition}[Invariance forces the detailed-balance ratio]\label{prop:balance}
+Let
+\[
+\cL(x)=\sum_{\pp\in S}a_\pp\bigl(\mu_\pp^*x\mu_\pp-x\bigr)+\sum_{\pp\in S}b_\pp\Bigl(\mu_\pp x\mu_\pp^*-\tfrac12(e_\pp x+xe_\pp)\Bigr),
+\qquad e_\pp=\mu_\pp\mu_\pp^* ,
+\]
+the GKLS form with jump operators $\mu_\pp$ and $\mu_\pp^*$. Then $\cL(1)=0$, and for
+$f\in C(Y_S)$ --- where $\tfrac12(e_\pp f+fe_\pp)=e_\pp f$ --- the KMS condition
+$\varphi(xy)=\varphi(y\,\sigma_{i\beta}(x))$ gives
+$\varphi(\mu_\pp^*x\mu_\pp)=\Ns\pp^{\beta}\varphi(xe_\pp)$ and
+$\varphi(\mu_\pp x\mu_\pp^*)=\Ns\pp^{-\beta}\varphi(x)$ --- the scaling relations recorded
+as Proposition 5.1 of Paper III of the series --- whence
+\begin{equation}\label{eq:inv}
+\varphi\bigl(\cL(f)\bigr)=\sum_{\pp}\Bigl\{\nu(fe_\pp)\bigl(a_\pp\Ns\pp^{\beta}-b_\pp\bigr)
++\nu(f)\bigl(b_\pp\Ns\pp^{-\beta}-a_\pp\bigr)\Bigr\}.
+\end{equation}
+This vanishes for every $f$ if and only if
+\begin{equation}\label{eq:db}
+b_\pp=a_\pp\,\Ns\pp^{+\beta}\qquad\text{for every }\pp\in S .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+$\cL(1)=\sum a_\pp(\mu_\pp^*\mu_\pp-1)+\sum b_\pp(e_\pp-e_\pp)=0$. The two scaling relations
+are the KMS condition with $y=\mu_\pp$, respectively $y=\mu_\pp^*$, and
+$\sigma_{i\beta}(\mu_\pp)=\Ns\pp^{-\beta}\mu_\pp$. For \eqref{eq:inv} apply them termwise.
+If \eqref{eq:db} holds, both brackets vanish. Conversely write
+$A_\pp=a_\pp\Ns\pp^\beta-b_\pp$ and $B=\sum_\pp(b_\pp\Ns\pp^{-\beta}-a_\pp)$; under $\nu$
+the valuations are independent with $\nu(e_\pp)=t_\pp=\Ns\pp^{-\beta}$ and
+$\nu(e_\pp e_{\qq})=t_\pp t_{\qq}$ for $\pp\ne\qq$, so $f=1$ gives
+$\sum_\pp A_\pp t_\pp+B=0$ while $f=e_{\qq}$ gives
+$t_{\qq}\bigl(A_{\qq}+\sum_{\pp\ne\qq}A_\pp t_\pp+B\bigr)=0$; subtracting,
+$A_{\qq}(1-t_{\qq})=0$, so $A_{\qq}=0$ for every $\qq$, and then $B=0$ term by term.
+\end{proof}
+
+\begin{corollary}[The proposed generator is not invariant]\label{cor:signerror}
+The choice $a_\pp=w_\pp$, $b_\pp=w_\pp\Ns\pp^{-\beta}$ gives
+$b_\pp=a_\pp\Ns\pp^{-\beta}$, violating \eqref{eq:db}: the sign of the exponent is
+reversed. Explicitly, with $t=\Ns\pp^{-\beta}$ and $w_\pp=1$: for every $\qq\ne\pp$ the
+proposed rates satisfy $A_\qq t_\qq+B_\qq=(t_\qq^{-1}-t_\qq)t_\qq+(t_\qq^2-1)=0$, so the
+$\qq$-terms of \eqref{eq:inv} cancel at $f=e_\pp$ and the value is carried by the
+$\pp$-term alone:
+\[
+\varphi\bigl(\cL(e_\pp)\bigr)=t\bigl(t^{-1}-t\bigr)+t\bigl(t^2-1\bigr)=(1-t^2)(1-t)>0
+\]
+for $t\in(0,1)$; numerically $0.5926$ at $(\Ns\pp,\beta)=(3,1)$, $0.8779$ at $(3,2)$,
+$0.9033$ at $(5,1.5)$, $0.8397$ at $(7,1)$. With $b_\pp=a_\pp\Ns\pp^{+\beta}$ the same
+expression is exactly $0$.
+\end{corollary}
+
+\begin{remark}[What the corrected ratio means]\label{rem:dbmeaning}
+Condition \eqref{eq:db} reads $b_\pp/a_\pp=e^{\beta\log\Ns\pp}$: the backward rate exceeds
+the forward rate by the Boltzmann factor of the energy $\log\Ns\pp$ transferred by
+$\mu_\pp$. This is quantum detailed balance in the sense standard for quantum Markov
+semigroups \cite{CarlenMaas}, and it is the only choice compatible with
+$\varphi_\beta$. The proposal's $\Ns\pp^{-\beta}$ is the anti-detailed-balance choice, which
+drives the system away from equilibrium.
+
+Note the price: \eqref{eq:db} requires $\sum_\pp a_\pp\Ns\pp^{\beta}<\infty$ for the second
+sum to converge in norm, so the weights must decay faster than $\Ns\pp^{-\beta}$. That is a
+genuine constraint but is satisfiable, for instance by $a_\pp=\Ns\pp^{-\beta-1-\epsilon}$.
+We have verified invariance, $\varphi\circ\cL=0$; full KMS-symmetry of the semigroup with
+respect to $\varphi_\beta$ in the sense of Cipriani \cite{Cipriani} is a stronger statement,
+which we have not checked.
+\end{remark}
+
+\section{No critical slowing down}
+
+\begin{theorem}[Tensorisation to an infimum]\label{thm:tensorise}
+Let $\cL=\sum_\pp a_\pp\cL_\pp$ act on the product system $(V,\pi_\beta)=\bigotimes_\pp(\N,\mu_{t_\pp})$
+with $t_\pp=\Ns\pp^{-\beta}$, each $\cL_\pp$ the birth--death generator on its own factor
+with the corrected rates $(a_\pp,\,a_\pp t_\pp^{-1})$ of \eqref{eq:db}. Then:
+\begin{enumerate}
+\item the spectral gap satisfies $\operatorname{gap}(\cL)=\inf_{\pp}a_\pp\operatorname{gap}(\cL_\pp/a_\pp)$, and by the
+Poincar\'e inequality for the geometric law (Paper IV, its Lemma 6.1, with sharp constant
+$C(t)=4t/(1-t)^2$)
+\[
+\operatorname{gap}(\cL_\pp/a_\pp)\ \ge\ \frac{(1-t_\pp)^2}{4t_\pp}\ \ge\ \frac{(1-t_\pp)^2}{4};
+\]
+\item the modified log-Sobolev constant satisfies
+$\alpha(\beta)=\inf_{\pp}a_\pp\,\alpha_0(t_\pp)$, where $\alpha_0(t)$ is the single-site
+constant of the normalized chain: entropy is subadditive over the product measure and the
+Dirichlet form is additive, giving $\ge$, and single-site test functions give $\le$.
+\end{enumerate}
+Both constants are therefore \emph{infima of single-site quantities, each a function of its
+own $t_\pp$ alone} --- not products over $\pp$. In particular: with rates bounded below,
+$\inf_\pp a_\pp>0$, the gap stays $\ge\inf_\pp a_\pp\,(1-3^{-\beta})^2/4>0$ uniformly for
+$\beta$ in a neighbourhood of $\beta_c$; with the norm-summable rates of
+Remark~\ref{rem:dbmeaning} the infima vanish for every $\beta$, for the weight reason
+alone and $\beta$-independently. In neither reading does any of these constants acquire the
+product shape $\Pi_\infty(\beta)$, whose vanishing at $\beta_c$ is driven by the divergence
+of $\sum_\ell\ell^{-\beta}$, a tail quantity invisible to an infimum.
+\end{theorem}
+
+\begin{proof}
+For commuting single-site generators on a product measure, the Dirichlet form and the
+variance resp.\ entropy split: $\operatorname{Var}=\sum$ over sites of averaged single-site
+variances bounds the gap from below by the infimum, and single-site eigenfunctions attain
+it; the same subadditivity of entropy (a product measure satisfies
+$\operatorname{Ent}(f)\le\sum_\pp\mathbb E\operatorname{Ent}_\pp(f)$) with the additive
+Dirichlet form gives $\alpha\ge\inf a_\pp\alpha_0(t_\pp)$, and functions of a single
+coordinate give $\le$. The single-site gap bound is Lemma 6.1 of Paper IV, whose Dirichlet
+form $\mathbb E_{\mu_t}|\Delta h|^2$ is that of the normalized chain with rates $(1,t^{-1})$.
+\end{proof}
+
+\begin{corollary}[The proposed asymptotic is of the wrong shape]\label{cor:wrongshape}
+$\Pi_\infty(\beta)=\prod_{\ell\in R}\frac{1-\ell^{-\beta}}{1+\ell^{-\beta}}$ is a product over
+all $\ell$ and tends to $0$ as $\beta\downarrow\beta_c$, precisely because the series
+$\sum_\ell\ell^{-\beta}$ diverges there. By Theorem~\ref{thm:tensorise} the gap and MLSI
+constants are infima of single-site quantities, which do not degenerate this way: the
+single-site defect $1-\ell^{-\beta}$ never falls below $1-3^{-\beta}\ge0.66$, so with unit
+rates the gap infimum stays $\ge(1-3^{-\beta})^2/4\ge0.11$. Numerically, over the primes
+$3\le\ell\le10^4$,
+\[
+\begin{array}{lcc}
+\beta & \inf_\ell(1-\ell^{-\beta}) & \Pi_\infty\\\hline
+1.5 & 0.8076 & 3.70\cdot10^{-1}\\
+1.2 & 0.7324 & 1.27\cdot10^{-1}\\
+1.05 & 0.6845 & 3.58\cdot10^{-2}\\
+1.001 & 0.6670 & 1.86\cdot10^{-2}
+\end{array}
+\]
+The product collapses; the single-site defect does not fall below $1-3^{-\beta}\ge0.66$.
+Hence $\alpha(\beta)\not\asymp\Pi_\infty(\beta)$, and there is no critical slowing down of
+this kind.
+\end{corollary}
+
+\begin{corollary}[Bakry--\'Emery]\label{cor:BE}
+The same argument applies to the curvature-dimension condition: for product systems with
+additive generators the tensorised curvature bound is again an infimum of single-site
+quantities, each a function of its own $t_\pp$ alone. Whatever the single-site value, the
+bound therefore has no product shape, and no degeneration tied to $\beta_c$ beyond what the
+weights impose $\beta$-independently: there is no Ricci-flat singularity at the transition.
+\end{corollary}
+
+\begin{remark}[Why the transition is invisible]\label{rem:invisible}
+The arithmetic phase transition is the Kakutani dichotomy: an infinite product of
+single-site affinities degenerates although every factor stays bounded away from $0$
+(Paper IV, its Lemma 5.1). It is therefore a \emph{tail} event, detectable only by quantities
+sensitive to infinitely many coordinates at once. Modified log-Sobolev constants and
+Bakry--\'Emery curvature are local: they tensorise, so they see only the worst single site.
+The same mechanism produced Theorem 6.2 of Paper IV, where the metric transition was
+continuous rather than first-order because the order parameter is a tail observable outside
+the Lipschitz domain, and Theorem 2.3 of Paper III, where $\Xi_\beta$ was identified as an
+invariant of a measure class. Three different local invariants, one tail phenomenon, three
+failures to detect it.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Proposal} & \text{Status} & \text{Reference}\\\hline
+[\Df,x]_\vartheta\ \text{bounded} & \textbf{false: unbounded} & \text{Prop.~1.1}\\
+\text{untwisted}\ [\Dv,\mu_\aaa]\ \text{bounded} & \text{true} & \text{Prop.~1.2}\\
+\text{the twist is needed} & \textbf{no; it creates the problem} & \text{Rem.~1.3}\\
+\ker L=\C1 & \text{true iff }S\ \text{norm-separated} & \text{Prop.~2.1}\\
+(\cA,\cH,\Df)\ \text{a spectral triple} & \text{not established: reduces to }\Db & \text{Rem.~2.2}\\
+\cA_{\Q,S}\ \text{a compact quantum metric space} & \text{not established} & \text{Rem.~2.3}\\
+\varphi\circ\cL_\beta=0\ \text{as proposed} & \textbf{false: sign error} & \text{Cor.~3.2}\\
+b_\pp=a_\pp\Ns\pp^{+\beta} & \textbf{the correction} & \text{Prop.~3.1}\\
+\text{KMS-symmetry (Cipriani sense)} & \text{not checked} & \text{Rem.~3.3}\\
+\alpha(\beta)\asymp\Pi_\infty(\beta) & \textbf{false: infimum, not product} & \text{Thm.~4.1, Cor.~4.2}\\
+\text{critical slowing down} & \textbf{does not occur} & \text{Cor.~4.2}\\
+\kappa(\beta)\to0\ \text{at}\ \beta_c & \textbf{false} & \text{Cor.~4.3}
+\end{array}
+\]
+
+Two of the three failures are repairable and the repairs are one-line: drop the twist, and
+flip the sign in the detailed-balance ratio. The third is not a repair but a structural
+statement, and it is the one worth keeping. Modified log-Sobolev and Bakry--\'Emery
+tensorise, hence are determined by the worst single coordinate, hence cannot detect a
+Kakutani dichotomy, which is by construction a statement about infinitely many coordinates
+whose individual contributions are all harmless; and the Connes distance of Paper IV is
+blind to the same transition in the complementary sense of its Theorem 4.2, the tail order
+parameter and all its truncations lying outside every Lipschitz domain. A quantum optimal
+transport theory that detects the arithmetic transition would have to be built from a
+genuinely non-tensorising quantity, and we do not know one.
+
+Three questions. Is $(\cA_{\Q,S},L)$ with the untwisted $\Df$ a compact quantum metric
+space, i.e.\ is the Lipschitz ball totally bounded? Does the corrected generator of
+Proposition~\ref{prop:balance} satisfy KMS-symmetry in the sense of Cipriani
+\cite{Cipriani}, and if so what
+is the associated non-tracial carré du champ? And is there any transport-theoretic quantity
+that fails to tensorise --- the natural candidates being those built from the tail
+$\sigma$-algebra, where by \cite[Prop.~7.2]{SeriesI} the order parameter lives, rather than
+from a sum of single-site Dirichlet forms.
+
+\begin{thebibliography}{9}
+\bibitem{CarlenMaas} E. A. Carlen, J. Maas, \emph{Gradient flow and entropy inequalities for quantum Markov semigroups with detailed balance}, J. Funct. Anal. 273 (2017), 1810--1869.
+\bibitem{Cipriani} F. Cipriani, \emph{Dirichlet forms and Markovian semigroups on standard forms of von Neumann algebras}, J. Funct. Anal. 147 (1997), 259--300.
+\bibitem{CM} A. Connes, H. Moscovici, \emph{Type $\mathrm{III}$ and spectral triples}, in: Traces in Number Theory, Geometry and Quantum Fields, Vieweg, 2008, 57--71.
+\bibitem{Rieffel} M. A. Rieffel, \emph{Metrics on state spaces}, Doc. Math. 4 (1999), 559--600.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\bibitem{SeriesI} R. Chen, \emph{Localized Bost--Connes systems I: factor type and the spectrum of transitions}, preprint, 2026, DOI \href{https://doi.org/10.5281/zenodo.22160827}{10.5281/zenodo.22160827}.
+\end{thebibliography}
+
+\end{document}
