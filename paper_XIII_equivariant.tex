@@ -1,0 +1,479 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\spn}{\operatorname{span}}
+\newcommand{\id}{\mathrm{id}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[The fixed-point algebra is the Cartan subalgebra]{Equivariant rigidity of localized Bost--Connes\\ $C^*$-dynamical systems: the fixed-point algebra\\ is the Cartan subalgebra}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/XIII-equivariant/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+By Paper IX of the series the von Neumann algebra of a localized Bost--Connes system
+remembers nothing: it is injective, hence determined by its flow of weights. There it was
+also observed that the obstruction group $\Xi_\beta$ survives at the $C^*$-level, through
+the $\mathrm{KMS}_\beta$ simplex. We make that precise and determine how much of the
+arithmetic an equivariant isomorphism of $C^*$-dynamical systems recovers.
+
+The technical point on which everything rests is elementary and, as far as we can tell, has
+not been isolated. Renault's reconstruction theorem applies to Cartan \emph{pairs}, whereas
+an isomorphism of $C^*$-dynamical systems is only required to intertwine the flows; Cartan
+subalgebras of a $C^*$-algebra are in general far from unique, so the passage from one to the
+other is not automatic. We show it is automatic here, for a reason internal to the system:
+\[
+\cA_{K,S}^{\sigma}=\overline{\spn}\bigl\{\mu_\aaa f\mu_\bb^*:\Ns\aaa=\Ns\bb\bigr\}
+=C(Y_S)\qquad\text{whenever }\Ns:J_S\to\N\text{ is injective,}
+\]
+since $\Ns\aaa=\Ns\bb$ then forces $\aaa=\bb$ and $\mu_\aaa f\mu_\aaa^*=\alpha_\aaa(f)\in C(Y_S)$.
+The Cartan subalgebra is therefore \emph{canonically the fixed-point algebra of the flow},
+and every $\sigma$-equivariant isomorphism preserves it. Norm-separation is the same thing
+as $\Q$-linear independence of the $\log\Ns\pp$, holds exactly when $S$ contains at most one
+prime above each rational prime, and is automatic over $\Q$.
+
+With that, Renault's theorem gives: a $\sigma$-equivariant isomorphism
+$\cA_{K_1,S_1}\cong\cA_{K_2,S_2}$ induces an isomorphism of the groupoids of the two systems
+intertwining the scaling cocycles $c(\aaa)=\log\Ns\aaa$. The full bisections on which the
+cocycle is constant are exactly the semigroup elements, so the isomorphism induces a
+norm-preserving bijection $S_1\to S_2$: the multiset $\{\Ns\pp\}_{\pp\in S}$ is recovered. The
+symmetry group $G_S$ acts by automorphisms of the groupoid fixing every semigroup
+bisection, and over $\Q$, for sets of primes that are Dirichlet-dense at each of their
+members, these are the only such automorphisms; whenever the isomorphism intertwines the
+symmetry actions --- automatic in that case --- it matches the Frobenius classes and
+transports the whole chain $\{\Xi_\beta\}$. In general what is recovered is the compact
+space $G_S$, the $\mathrm{KMS}_\beta$ simplices, the transition locus and $\beta_c$; whether the
+group structure of $G_S$ is an invariant of the dynamical system for fields with infinite
+unit group we do not know.
+
+We are careful about what is \emph{not} recovered. The system sees only the triple
+$\bigl(S,\Ns|_S,G_S\bigr)$ with its Frobenius data; the field $K$ enters only through that
+triple, and whether the triple determines $K$ is an arithmetic question we do not settle and
+which, for $S=P_K$, belongs to the literature on Bost--Connes reconstruction. The narrow class
+number is not recovered by any argument here. The KMS bundle is a weaker invariant than the
+groupoid: it sees the simplices and their symmetry, but we see no way to extract the
+individual norms from it. Finally, the proposed equivariant classification of the Kirchberg
+boundary by $KK_\R$ is not available to us: the classification of flows on Kirchberg algebras
+up to cocycle conjugacy is not a settled theory, and we do not assert it.
+\end{abstract}
+
+\maketitle
+
+\section{The fixed-point algebra}
+
+We use the notation of \cite{Main}: $\cA_{K,S}=C(Y_S)\rtimes J_S$, spanned by $\mu_\aaa f\mu_\bb^*$,
+with $\sigma_t(\mu_\aaa)=\Ns\aaa^{it}\mu_\aaa$ and $\alpha_\aaa(f)=\mu_\aaa f\mu_\aaa^*$; it is
+the unital full corner of the groupoid algebra of $\cG_S=I_S\ltimes\widetilde Y_S$, and we
+write $\cG_S|_{Y_S}$ for the reduction of $\cG_S$ to the compact open subset $Y_S$ of its
+unit space, an \'etale groupoid with $C^*(\cG_S|_{Y_S})=\cA_{K,S}$ and $C(Y_S)$ as diagonal.
+
+\emph{The series.} The foundational paper is \cite{Main} and Paper I is \cite{SeriesI};
+Papers II, III and IX, cited by numeral, are in preparation, and the facts used from them
+are re-proved here.
+
+\begin{definition}\label{def:injective}
+Say that $S$ is \emph{norm-separated} if $\Ns:J_S\to\N$, $\aaa\mapsto\Ns\aaa$, is injective.
+\end{definition}
+
+\begin{lemma}[When norm-separation holds]\label{lem:sep}
+The following are equivalent:
+\begin{enumerate}
+\item $S$ is norm-separated;
+\item the numbers $\log\Ns\pp$, $\pp\in S$, are linearly independent over $\Q$;
+\item $S$ contains at most one prime above each rational prime.
+\end{enumerate}
+In particular every $S$ is norm-separated when $K=\Q$, and $S$ fails to be norm-separated
+as soon as it contains two primes above the same rational prime --- two primes of equal
+norm, or a prime together with another whose norm is a power of its residue
+characteristic.
+\end{lemma}
+
+\begin{proof}
+(1)$\Leftrightarrow$(2): $J_S$ is free on $S$, so $\Ns\aaa=\Ns\bb$ with $\aaa\ne\bb$ is a
+nontrivial relation $\sum_\pp(a_\pp-b_\pp)\log\Ns\pp=0$ with integer coefficients, and every
+integer relation arises this way; integer and rational independence agree.
+(2)$\Leftrightarrow$(3): $\log\Ns\pp=f_\pp\log p$ for $\pp$ above the rational prime $p$ with
+residue degree $f_\pp$, and the $\log p$ are $\Q$-independent by unique factorization; so
+a rational relation among the $\log\Ns\pp$ decomposes into relations among the primes above
+each fixed $p$, and two primes above the same $p$ satisfy
+$f_{\pp'}\log\Ns\pp-f_\pp\log\Ns\pp'=0$. Compare \cite[Lem.~4.1]{SeriesI}.
+\end{proof}
+
+\begin{example}\label{ex:fail}
+For $K=\Q(i)$: the two primes above $5$ both have norm $5$, so any $S$ containing both fails;
+a set containing one prime above each of some rational primes --- one of the two primes
+above each $p\equiv1\pmod4$, inert primes $p\equiv3\pmod4$ with norm $p^2$, the prime $1+i$
+--- is norm-separated. For $K=\Q(\sqrt2)$ the set of all primes fails at every split prime.
+The failure by equal norms is the generic one.
+\end{example}
+
+\begin{theorem}[The Cartan subalgebra is the fixed-point algebra]\label{thm:fixed}
+If $S$ is norm-separated then
+\begin{equation}\label{eq:fixed}
+\cA_{K,S}^{\sigma}:=\bigl\{x\in\cA_{K,S}:\sigma_t(x)=x\ \forall t\bigr\}=C(Y_S).
+\end{equation}
+Consequently the Cartan subalgebra $C(Y_S)\subset\cA_{K,S}$ is canonically determined by
+the flow, and every $\sigma$-equivariant isomorphism
+$\Phi:\cA_{K_1,S_1}\to\cA_{K_2,S_2}$ satisfies $\Phi\bigl(C(Y_{S_1})\bigr)=C(Y_{S_2})$, hence
+is an isomorphism of Cartan pairs.
+\end{theorem}
+
+\begin{proof}
+A spectral subspace argument: $\sigma_t(\mu_\aaa f\mu_\bb^*)=(\Ns\aaa/\Ns\bb)^{it}\mu_\aaa f\mu_\bb^*$,
+so the elements $\mu_\aaa f\mu_\bb^*$ are eigenvectors and $\sigma$ is the restriction to
+$\R$ of an action of the compact dual of the countable group $\Gamma_\beta=\langle\Ns\pp\rangle\le\R_{>0}$,
+in which $\R$ is dense since $\Gamma_\beta$ is torsion free; averaging over that compact group
+is a conditional expectation onto the fixed-point algebra which kills every eigenvector of
+nonzero weight, so the fixed-point algebra is the closed span of those $\mu_\aaa f\mu_\bb^*$
+with $\Ns\aaa=\Ns\bb$. Norm-separation gives $\aaa=\bb$, and then
+$\mu_\aaa f\mu_\aaa^*=\alpha_\aaa(f)$, a continuous function on $Y_S$ supported on the clopen
+set $\aaa Y_S$. Hence $\cA^\sigma\subseteq C(Y_S)$; the reverse inclusion holds because
+$\sigma_t$ fixes $C(Y_S)$ pointwise. For the consequence, $\Phi\circ\sigma^1_t=\sigma^2_t\circ\Phi$
+gives $\Phi(\cA_1^{\sigma^1})=\cA_2^{\sigma^2}$.
+\end{proof}
+
+\begin{remark}[Why this needs saying]\label{rem:whyneeded}
+Renault's reconstruction theorem is a statement about Cartan \emph{pairs}
+$\bigl(B\subset A\bigr)$: it recovers the twisted groupoid from the pair, not from $A$ alone.
+A $C^*$-algebra may carry many non-conjugate Cartan subalgebras, so an isomorphism of algebras
+--- even an equivariant one --- carries no information about groupoids unless it is known to
+respect the pair. Theorem~\ref{thm:fixed} supplies exactly that, by identifying the Cartan
+subalgebra intrinsically, in terms of the flow that the isomorphism is assumed to intertwine.
+Without it the reconstruction argument of \S\ref{sec:rec} has a gap.
+\end{remark}
+
+\begin{remark}[The unseparated case]\label{rem:unsep}
+If $S$ is not norm-separated then $\cA^\sigma$ is strictly larger than $C(Y_S)$: it contains
+$\mu_\aaa f\mu_{\bb}^*$ for distinct $\aaa,\bb$ of equal norm, which is not in the diagonal.
+The fixed-point algebra is then non-commutative and Theorem~\ref{thm:fixed} fails. This does not
+show that the reconstruction fails, only that this route to it does; a different intrinsic
+characterization of $C(Y_S)$ would be needed, and we do not have one.
+\end{remark}
+
+\section{Reconstruction}\label{sec:rec}
+
+Throughout this section $S$ is norm-separated. We first record what in the groupoid
+$\cG_S|_{Y_S}$ is intrinsic. Its arrows are the pairs $(\aaa\bb^{-1},y)$ with $y\in Y_S$ and
+$\aaa\bb^{-1}y\in Y_S$, the scaling cocycle is $c(\aaa\bb^{-1},y)=\log\Ns\aaa-\log\Ns\bb$,
+and for $\aaa\in J_S$ the set $B_\aaa=\{(\aaa,y):y\in Y_S\}$ is a full bisection --- an
+open set of arrows on which the source map is a homeomorphism onto the whole unit space
+--- with range $\aaa Y_S$ and $c\equiv\log\Ns\aaa$.
+
+\begin{lemma}[The semigroup is intrinsic]\label{lem:bisections}
+The full bisections of $\cG_S|_{Y_S}$ on which $c$ is constant are exactly the $B_\aaa$,
+$\aaa\in J_S$, and $B_\aaa B_\bb=B_{\aaa\bb}$. Consequently an isomorphism of \'etale
+groupoids $\theta:\cG_{S_1}|_{Y_{S_1}}\to\cG_{S_2}|_{Y_{S_2}}$ with $c_2\circ\theta=c_1$ induces a
+monoid isomorphism $\pi:J_{S_1}\to J_{S_2}$ with $\Ns\pi(\aaa)=\Ns\aaa$, hence a bijection
+$S_1\to S_2$ preserving norms.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:sep}, norm-separation means that $\Ns:I_S\to\Q_{>0}$ is injective on the
+group of fractions $I_S=\Z^{(S)}$, so the value $c(\gamma)$ determines the element
+$g\in I_S$ with $\gamma=(g,y)$. A full bisection contains for each $y\in Y_S$ exactly one
+arrow with source $y$; if $c$ is constant on it, all these arrows have the same $g=\aaa\bb^{-1}$
+with $\aaa,\bb\in J_S$ coprime, and the arrow $(\aaa\bb^{-1},y)$ exists in $\cG_S|_{Y_S}$ only
+for $y\in\bb Y_S$. Fullness forces $\bb Y_S=Y_S$, i.e.\ $\bb=1$, so the bisection is $B_\aaa$.
+The composition rule is $(\aaa,\bb y)(\bb,y)=(\aaa\bb,y)$. An isomorphism $\theta$ preserving $c$ maps full
+bisections with constant $c$ to full bisections with the same constant, and preserves
+composition, so $B_\aaa\mapsto B_{\pi(\aaa)}$ defines a monoid isomorphism of the free
+abelian monoids $J_{S_i}$ with $\Ns\pi(\aaa)=\Ns\aaa$; a monoid isomorphism of free abelian
+monoids maps the free generators to the free generators.
+\end{proof}
+
+\begin{definition}\label{def:frobdense}
+Let $\operatorname{Aut}_0(\cG_S|_{Y_S})$ be the group of automorphisms of the topological
+groupoid $\cG_S|_{Y_S}$ that map each bisection $B_\aaa$ onto itself, with the topology of
+uniform convergence on $Y_S$; equivalently, the automorphisms of $\cA_{K,S}$ fixing every
+$\mu_\aaa$ and preserving $C(Y_S)$. The translation action of $G_S$ on
+$Y_S=\widehat{\cO}_S\times_{U_S}G_S$ commutes with the partial action of $J_S$, so it gives an
+injective continuous homomorphism $G_S\to\operatorname{Aut}_0(\cG_S|_{Y_S})$. For $K=\Q$ say
+that $S$ is \emph{Dirichlet-dense} if for every $p\in S$ the primes of $S\setminus\{p\}$
+generate a dense subgroup of $\Z_p^\times$, i.e.\ meet every residue class modulo every
+power of $p$; the set of all primes, and any set of density one in every arithmetic
+progression, is Dirichlet-dense.
+\end{definition}
+
+\begin{proposition}[The symmetry group is intrinsic over $\Q$]\label{prop:aut}
+Let $K=\Q$ and let $S$ be Dirichlet-dense. Then $G_S\to\operatorname{Aut}_0(\cG_S|_{Y_S})$ is an
+isomorphism.
+\end{proposition}
+
+\begin{proof}
+For $K=\Q$, $Y_S=\prod_{p\in S}\Z_p$ with $\aaa\in J_S$ acting by multiplication and
+$G_S=\prod_{p\in S}\Z_p^\times$ acting by multiplication as well. Let $\psi\in\operatorname{Aut}_0$.
+It commutes with multiplication by every $n\in J_S$ and preserves the ranges $nY_S$, hence
+the valuations, hence the set $G_S=Y_S^\times$ of units; write $\psi(u)=u\,c(u)$ for
+$u\in G_S$, with $c:G_S\to G_S$ continuous. For $x\in Y_S$ with no zero component, $x=nu$
+uniquely with $n\in J_S$, $u\in G_S$, and $\psi(x)=n\psi(u)=x\,c(u)$. Let $p\in S$ and
+consider points $x$ with $x_p=0$: they are limits of $n_ku_k$ with $n_k\in J_S$ divisible by
+$p^k$, and the $p$-components $u_{k,p}$ of the units are unconstrained, since
+$(n_k)_p\to0$; so continuity of $\psi$ at such points forces the components $c(u)_q$, $q\ne p$,
+not to depend on $u_p$. Varying $p$ over $S\setminus\{q\}$, the component $c(u)_q$ depends
+only on $u_q$: $c(u)=(c_q(u_q))_q$ with $c_q:\Z_q^\times\to\Z_q^\times$ continuous. Now
+compare $\psi(nx)$ and $n\psi(x)$ for $x$ a unit and $n\in J_S$: the $q$-component of $nx$ is
+$q^{v_q(n)}n'_qx_q$ with $n'_q=n/q^{v_q(n)}$, so $\psi(nx)_q=q^{v_q(n)}n'_qx_q\,c_q(n'_qx_q)$,
+while $(n\psi(x))_q=q^{v_q(n)}n'_qx_q\,c_q(x_q)$. Hence $c_q(n'_qx_q)=c_q(x_q)$ for all
+$n\in J_S$ and $x_q\in\Z_q^\times$: $c_q$ is invariant under multiplication by the unit parts
+of the elements of $J_S$, which generate the subgroup of $\Z_q^\times$ generated by the
+primes of $S\setminus\{q\}$, dense by hypothesis. So each $c_q$ is constant, $c$ is a constant
+$g\in G_S$, and $\psi$ is multiplication by $g$.
+\end{proof}
+
+\begin{remark}\label{rem:autgeneral}
+For a general number field the same argument gives less. The constraint from continuity
+at the points with infinite valuation at $\pp$ concerns $\psi$ only modulo the image
+$r(\cO_\pp^\times)\subseteq G_S$ of the local units, and for fields with infinite unit group
+the images of the local units at different primes are not independent in $G_S$, the global
+units sitting diagonally in all of them. We do not know whether
+$\operatorname{Aut}_0(\cG_S|_{Y_S})=G_S$ in general; the compact model $\overline{\N}^{\,S}\times G_S$
+used elsewhere in the series differs from $Y_S$ exactly at these points, and would give the
+equality for every Frobenius-dense $S$, but it is not the space on which $\cA_{K,S}$ is built.
+\end{remark}
+
+\begin{theorem}[Equivariant reconstruction]\label{thm:rec}
+Let $S_1,S_2$ be infinite and norm-separated, and suppose
+$\Phi:\bigl(\cA_{K_1,S_1},\sigma^1\bigr)\to\bigl(\cA_{K_2,S_2},\sigma^2\bigr)$ is an
+isomorphism of $C^*$-dynamical systems. Then:
+\begin{enumerate}
+\item $\Phi$ is an isomorphism of Cartan pairs and, by Renault's theorem, is induced by an
+isomorphism of \'etale groupoids $\theta:\cG_{S_1}|_{Y_{S_1}}\to\cG_{S_2}|_{Y_{S_2}}$;
+\item $\theta$ intertwines the scaling cocycles, $c_2\circ\theta=c_1$;
+\item $\theta$ induces a norm-preserving bijection $\pi:S_1\to S_2$, so the multisets
+$\{\Ns\pp\}_{\pp\in S_1}$ and $\{\Ns\pp\}_{\pp\in S_2}$ coincide;
+\item $\theta$ maps the valuation fibres of $Y_{S_1}$ homeomorphically onto those of
+$Y_{S_2}$, compatibly with $\pi$; in particular the fibre over $0$, which is the compact
+space $G_{S_1}$, is carried homeomorphically onto $G_{S_2}$;
+\item $\Phi$ induces affine isomorphisms $\mathrm{KMS}_\beta(\cA_{K_1,S_1})\cong\mathrm{KMS}_\beta(\cA_{K_2,S_2})$
+for every $\beta$, so the compact spaces $G_{S_1}/\Xi_\beta(K_1,S_1)^\perp$ and
+$G_{S_2}/\Xi_\beta(K_2,S_2)^\perp$ are homeomorphic, $|\Xi_\beta|$ agree when finite, the
+transition loci agree, and $\beta_c(S_1)=\beta_c(S_2)$;
+\item suppose $\Phi$ intertwines the symmetry actions, $\Phi\circ\tau_g=\tau_{\iota(g)}\circ\Phi$
+for an isomorphism of topological groups $\iota:G_{S_1}\to G_{S_2}$ --- which is automatic,
+with $\iota=\theta(\cdot)\theta^{-1}$ on $\operatorname{Aut}_0$, when $K_1=K_2=\Q$ and the
+$S_i$ are Dirichlet-dense, by Proposition~\ref{prop:aut}. Then
+$\iota(\sigma_\pp)\in\sigma_{\pi(\pp)}\,r(\cO_{\pi(\pp)}^\times)$ for every $\pp\in S_1$: the
+Frobenius classes modulo inertia are matched, and $\hat\iota^{-1}$ maps
+$\Xi_\beta(K_2,S_2)$ onto $\Xi_\beta(K_1,S_1)$ for every $\beta>0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) Theorem~\ref{thm:fixed} makes $\Phi$ an isomorphism of Cartan pairs. The groupoid
+$\cG_S|_{Y_S}$ is \'etale, Hausdorff, second countable, amenable, and topologically
+principal: the isotropy at a point with all valuations finite is trivial, since
+$\aaa\bb^{-1}y=y$ forces $\aaa=\bb$ on such points, and these points are dense. So
+$(C(Y_S)\subset\cA_{K,S})$ is a Cartan pair with trivial Weyl twist, and Renault's theorem
+\cite{Renault} gives $\theta$ inducing $\Phi$. (2) Under $\Phi=\theta_*$ the flow is
+$\sigma_t(f)(\gamma)=e^{itc(\gamma)}f(\gamma)$ on functions supported on bisections, so
+$\Phi\sigma^1_t=\sigma^2_t\Phi$ gives $e^{itc_2(\theta\gamma)}=e^{itc_1(\gamma)}$ for all $t$.
+(3) is Lemma~\ref{lem:bisections}. (4) $\theta$ maps $B_\aaa$ to $B_{\pi(\aaa)}$, hence the
+ranges $\aaa Y_{S_1}$ to $\pi(\aaa)Y_{S_2}$, hence the valuation fibres to the valuation
+fibres; the fibre over $0$ is $U_S\times_{U_S}G_S=G_S$. (5) An isomorphism of
+$C^*$-dynamical systems carries $\mathrm{KMS}_\beta$ states to $\mathrm{KMS}_\beta$ states; the
+simplices are $\Prob(G_S/\Xi_\beta^\perp)$ by \cite[Thm.~3.6]{Main}, and an affine isomorphism
+of Bauer simplices is a homeomorphism of their extreme boundaries; the transition locus is
+the set of $\beta$ at which the simplex changes. (6) Since $\Phi=\theta_*$ preserves the
+Cartan pair, intertwining the symmetry actions means $\theta\circ\tau_g=\tau_{\iota(g)}\circ\theta$
+on $Y_{S_1}$; when $\operatorname{Aut}_0=G_S$ on both sides this holds with
+$\iota=\theta(\cdot)\theta^{-1}$, an isomorphism of topological groups since $\theta$ matches
+the bisections $B_\aaa$. On the valuation fibres, which are $G_S$-torsors, $\theta$ is
+$\iota$-equivariant, so in the coordinates $y=(v,h)$ of \cite[Lem.~2.10]{Main} on the points
+with finite valuations, $\theta(v,h)=(\pi(v),\iota(h)c_v)$ with constants $c_v\in G_{S_2}$, and
+$\theta(\pp\cdot(v,h))=\pi(\pp)\cdot\theta(v,h)$ reads
+$\iota(\sigma_\pp)\iota(h)c_{v+e_\pp}=\sigma_{\pi(\pp)}\iota(h)c_v$, i.e.\
+$c_{v+e_\pp}=u_\pp c_v$ with $u_\pp=\iota(\sigma_\pp)^{-1}\sigma_{\pi(\pp)}$. The points
+$(ke_\pp,h)$ converge in $Y_{S_1}$ as $k\to\infty$ modulo the inertia image $r(\cO_\pp^\times)$,
+and their images $(ke_{\pi(\pp)},\iota(h)u_\pp^kc_0)$ must converge modulo
+$r(\cO_{\pi(\pp)}^\times)$; a sequence $u^k$ converging in the compact group
+$G_{S_2}/r(\cO_{\pi(\pp)}^\times)$ has $u$ trivial there. So $u_\pp\in r(\cO_{\pi(\pp)}^\times)$.
+Finally $\Xi_\beta$ is characterized by the series $\sum_\pp\Ns\pp^{-\beta}|1-\chi(\sigma_\pp)|^2$
+\cite[(1.1)]{Main}, whose convergence class is unchanged when $\sigma_\pp$ is altered by
+inertia elements at $\pp$ for all but finitely many $\pp$, the $\mathrm{KMS}$ simplex being
+an invariant of the system; so it is transported by $\pi$ and $\hat\iota$.
+\end{proof}
+
+\begin{remark}[The hypotheses]\label{rem:indep}
+Norm-separation enters twice, in Theorem~\ref{thm:fixed} and in
+Lemma~\ref{lem:bisections}; by Lemma~\ref{lem:sep} it is the same as the $\Q$-independence
+of the $\log\Ns\pp$, so there is only one arithmetic condition on $S$ in parts (1)--(5), and
+it is automatic over $\Q$. Part (6) needs the symmetry actions to be intertwined: without
+that, $\theta$ still matches the fibres and the simplices, but a homeomorphism of compact
+groups carries no group structure, and we do not know whether $G_S$ with its Frobenius
+classes is an invariant of the dynamical system in general (Remark~\ref{rem:autgeneral}).
+\end{remark}
+
+\section{What is not recovered}
+
+\begin{remark}[The field]\label{rem:field}
+Theorem~\ref{thm:rec} recovers the pair $\bigl(S,\Ns|_S\bigr)$, and, when the symmetry
+actions are intertwined, the triple $\bigl(S,\Ns|_S,G_S\bigr)$ with its Frobenius data. It does
+\emph{not} recover $K$. The system is built from that triple and nothing else, so two
+number fields yielding the same triple give isomorphic dynamical systems, whatever their
+other invariants. Whether the triple determines $K$ is an arithmetic question, not an
+operator-algebraic one; for $S=P_K$ it is the subject of the literature on reconstruction from
+Bost--Connes systems, which we have not been able to consult here and against which any claim
+of field reconstruction should be checked. We make no such claim.
+\end{remark}
+
+\begin{remark}[Arithmetic equivalence is not obviously the right equivalence]\label{rem:arith}
+Arithmetically equivalent fields share their Dedekind zeta function, hence the multiset of
+norms $\{\Ns\pp\}$ for $S=P_K$. They need not share $G_K$, which involves the class group and
+the units, and $G_S$ is part of the recovered data by
+Theorem~\ref{thm:rec}(6). So the invariant recovered here is finer than the zeta function and
+coarser than $K$; locating it exactly is open. We note that the narrow class number
+$h^+_S=|\Cl^+_S|$ is not recovered by any argument of this paper: $\Cl^+_S$ is the quotient of
+$G_S$ by the image of the local units, a finite-index open subgroup which nothing in the
+dynamical system singles out.
+\end{remark}
+
+\section{The KMS bundle is a weaker invariant}
+
+\begin{definition}\label{def:bundle}
+The \emph{KMS bundle} of $(\cA_{K,S},\sigma)$ is
+$\bigsqcup_{\beta>0}\mathrm{KMS}_\beta(\cA_{K,S})$ over $(0,\infty)$, with the fibrewise
+affine structure and the $G_S$-action. An isomorphism of KMS bundles is a fibrewise affine
+bijection over the identity of $(0,\infty)$ together with an isomorphism $\iota$ of the
+symmetry groups, the two being compatible.
+\end{definition}
+
+\begin{proposition}[What the bundle sees]\label{prop:bundle}
+A fibrewise affine bijection of KMS bundles over the identity of $(0,\infty)$ determines the
+compact spaces $G_S/\Xi_\beta^\perp$ for every $\beta$, hence the transition locus, $\beta_c$,
+and $|\Xi_\beta|$ where finite. An isomorphism of KMS bundles in the sense of
+Definition~\ref{def:bundle} determines in addition the chain $\{\Xi_\beta\}_{\beta>0}$ as
+subgroups of $\widehat{G_S}$, since $\Xi_\beta^\perp$ is the stabilizer in $G_S$ of any extreme
+point of the fibre at $\beta$.
+\end{proposition}
+
+\begin{proof}
+Each of these is read off \cite[Thm.~3.6]{Main}: the fibre at $\beta$ is
+$\Prob(G_S/\Xi_\beta^\perp)$, on whose extreme points $G_S$ acts transitively with
+stabilizer $\Xi_\beta^\perp$.
+\end{proof}
+
+\begin{remark}[What the bundle does not see]\label{rem:bundleweak}
+We see no way to extract the individual norms $\Ns\pp$ from the bundle. The fibres depend on
+$S$ only through the sets $\{\pp:\chi(\sigma_\pp)\ne1\}$ and their convergence exponents; two
+systems whose primes have different norms but the same detecting sets and the same
+convergence behaviour would have isomorphic bundles. The bundle is therefore weaker than the
+groupoid of Theorem~\ref{thm:rec}, which recovers the norms outright, and the chain of
+implications runs
+\[
+\text{equivariant }C^*\text{-isomorphism}\ \Longrightarrow\ \text{groupoid isomorphism}\ \Longrightarrow\ \text{KMS bundle isomorphism},
+\]
+with the converses unproved. We do not claim the bundle is a complete invariant.
+\end{remark}
+
+\section{The Kirchberg boundary: a caution}
+
+\begin{remark}[Flows on Kirchberg algebras]\label{rem:kirchberg}
+By Paper II of the series the boundary $\partial\cA^{\mathrm{aff}}_{K,S}$ of the affine
+system is a unital Kirchberg algebra satisfying the UCT, and it carries the flow
+$\sigma_t(\mu_{(a,\pp)})=\Ns\pp^{it}\mu_{(a,\pp)}$. It is tempting to classify the pair by
+equivariant $KK$. We do not, for two reasons.
+
+First, the classification of \emph{flows} --- actions of $\R$ --- on Kirchberg algebras up to
+cocycle conjugacy is not a settled theory. The Kirchberg--Phillips theorem
+\cite{KirchbergPhillips} classifies the algebras; the equivariant theory is well developed
+for finite and, more recently, for many amenable \emph{discrete} groups \cite{Szabo}, but
+$\R$-actions on purely infinite algebras remain substantially open, and we are not able to
+invoke a classification theorem here. (For the diagonal-preserving isomorphisms of
+\S\ref{sec:rec}, by contrast, the relevant rigidity is that of continuous orbit
+equivalence \cite{Li,Matsumoto}, whose groupoid form is Renault's theorem.)
+
+Second, and more concretely, by Paper II this system has
+$\mathrm{KMS}_\beta$ states only at $\beta=1$. Whatever the classification of the flow, the
+equilibrium invariant that carries the arithmetic in the Toeplitz system has collapsed to a
+single point on the boundary, so the boundary is not where the reconstruction of
+\S\ref{sec:rec} can be carried out.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{@{}l@{\ \ }l@{\ \ }l@{}}
+\text{Statement} & \text{Status} & \text{Reference}\\\hline
+\cA^\sigma=C(Y_S)\ \text{for norm-separated }S & \textbf{true} & \text{Thm.~\ref{thm:fixed}}\\
+\text{norm-separation automatic over }\Q & \text{true} & \text{Lem.~\ref{lem:sep}}\\
+\text{equivariant iso preserves the Cartan pair} & \textbf{true} & \text{Thm.~\ref{thm:fixed}}\\
+\text{Renault: pair}\Rightarrow\text{groupoid} & \text{true} & \text{Thm.~\ref{thm:rec}(1)}\\
+\text{norm-separation}=\Q\text{-indep.\ of }\log\Ns\pp & \text{true} & \text{Lem.~\ref{lem:sep}}\\
+\text{norms }\{\Ns\pp\}\ \text{recovered} & \text{true} & \text{Thm.~\ref{thm:rec}(3)}\\
+\text{simplices, transition locus, }\beta_c\ \text{recovered} & \text{true} & \text{Thm.~\ref{thm:rec}(5)}\\
+G_S,\ \sigma_\pp,\ \{\Xi_\beta\}\ \text{recovered} & \text{if symmetries intertwined} & \text{Thm.~\ref{thm:rec}(6)}\\
+\operatorname{Aut}_0=G_S & \text{true over }\Q\text{, Dirichlet-dense }S & \text{Prop.~\ref{prop:aut}}\\
+h^+_S\ \text{recovered} & \textbf{not claimed} & \text{Rem.~\ref{rem:arith}}\\
+\text{the field }K\ \text{recovered} & \textbf{not claimed} & \text{Rem.~\ref{rem:field}}\\
+\text{KMS bundle a complete invariant} & \textbf{not claimed; weaker} & \text{Rem.~\ref{rem:bundleweak}}\\
+\text{Kirchberg boundary classified by }KK_\R & \textbf{not available} & \text{Rem.~\ref{rem:kirchberg}}
+\end{array}
+\]
+
+The contrast with Paper IX is the point. There the von Neumann algebra was shown to
+retain nothing, the groupoid being amenable and Connes' classification leaving only the flow
+of weights. Here the $C^*$-algebra \emph{with its flow} retains the norms, the
+$\mathrm{KMS}$ simplices, and --- once the symmetries are intertwined, which over $\Q$ is
+automatic --- the symmetry group with its Frobenius classes and the whole chain
+$\{\Xi_\beta\}$. The mechanism is
+Theorem~\ref{thm:fixed}: the flow itself pins down the Cartan subalgebra, so the
+reconstruction theory of Renault becomes available to a merely equivariant isomorphism. Weak
+closure destroys the flow --- the modular group of a single extremal state is an inner
+datum --- and with it the pin.
+
+Four questions. Is $C(Y_S)$ intrinsically characterized when $S$ is not norm-separated, so
+that Theorem~\ref{thm:rec} extends beyond Lemma~\ref{lem:sep}? Is
+$\operatorname{Aut}_0(\cG_S|_{Y_S})=G_S$ for fields with infinite unit group, so that the group
+structure of $G_S$ is an invariant of the dynamical system there too? Is the KMS bundle a
+complete invariant after
+all, or is there a pair of systems with isomorphic bundles and non-isomorphic groupoids ---
+we would expect the latter and suggest looking at sets with the same detecting data but
+different norms. And what exactly is the arithmetic content of the recovered triple
+$(S,\Ns|_S,G_S)$: it is finer than the Dedekind zeta function, since $G_S$ carries class group
+and unit data, and coarser than $K$; where it sits between them we do not know.
+
+\begin{thebibliography}{9}
+\bibitem{KirchbergPhillips} E. Kirchberg, N. C. Phillips, \emph{Embedding of exact $C^*$-algebras in the Cuntz algebra $\mathcal O_2$}, J. Reine Angew. Math. 525 (2000), 17--53.
+\bibitem{Li} X. Li, \emph{Continuous orbit equivalence rigidity}, Ergodic Theory Dynam. Systems 38 (2018), 1543--1563.
+\bibitem{Matsumoto} K. Matsumoto, H. Matui, \emph{Continuous orbit equivalence of topological Markov shifts and Cuntz--Krieger algebras}, Kyoto J. Math. 54 (2014), 863--877.
+\bibitem{Renault} J. Renault, \emph{Cartan subalgebras in $C^*$-algebras}, Irish Math. Soc. Bull. 61 (2008), 29--63.
+\bibitem{Szabo} G. Szab\'o, \emph{On the classification of $C^*$-dynamical systems}, survey, 2021.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems: from Chebotarev density to the Hardy--Littlewood conjecture}, preprint, 2026, DOI \href{https://doi.org/10.5281/zenodo.22152101}{10.5281/zenodo.22152101}.
+\bibitem{SeriesI} R. Chen, \emph{Localized Bost--Connes systems I: factor type and the spectrum of transitions}, preprint, 2026, DOI \href{https://doi.org/10.5281/zenodo.22160827}{10.5281/zenodo.22160827}.
+\end{thebibliography}
+
+\end{document}
