@@ -1,0 +1,334 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+\raggedbottom
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\id}{\mathrm{id}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[The gap is exactly one]{Localized $GL_2$ Bost--Connes systems:\\ the equilibrium range and the automorphic obstruction range\\ are disjoint, by exactly one}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/XXI-GL2/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We examine the proposal to characterize Langlands reciprocity for weight-two forms through
+the $\mathrm{KMS}$ structure of a localized $GL_2$ Bost--Connes system, and find a
+quantitative obstruction that closes it.
+
+The Hilbert--Schmidt identity is correct: with $U_p=p^{-1/2}\rho_f(\Frob_p)$ unitary by
+Deligne, $\|I_2-U_p\|_\HS^2=4(1-\cos\theta_p)=8\sin^2(\theta_p/2)$, and
+$\Xi_1(\pi_f,P_\Q)=\infty$ for every cuspidal eigenform, by Jacquet--Shalika. But the
+$L$-function formula proposed for it is wrong: $\Xi_\beta$ is \emph{linear} in $\Tr U_p$, so
+only the standard $L$-function appears,
+\[
+\Xi_\beta(\pi_f,S)=4\log\zeta_S(\beta)-2\,\Re\log L_S(\beta,\pi_f)+O(1),
+\]
+matching Theorem 4.1 of Paper VI of the series at $n=2$; the term
+$-2\Re\log L_S(\beta,\Sym^2\pi_f)$ is
+spurious. Rankin--Selberg governs the second moment $\sum_p|\Tr U_p|^2p^{-s}$, which is
+Sato--Tate, not $\Xi_\beta$.
+
+The decisive obstruction is a mismatch of temperature ranges, and it is exact. For any
+$S$, the automorphic obstruction can be nontrivial only where $\sum_{p\in S}p^{-\beta}$
+diverges, since $\Xi_\beta\le8\sum_{p\in S}p^{-\beta}$; write $\beta_c(S)\le1$ for that
+abscissa. The $GL_2$ partition function has local factor
+$(1-p^{-\beta})^{-1}(1-p^{1-\beta})^{-1}$ --- the Solomon zeta of $M_2(\Z_p)$ --- so it
+converges exactly for $\beta>1+\beta_c(S)$. Hence
+\[
+\text{obstruction nontrivial}\iff\beta\le\beta_c(S),
+\qquad
+\text{Gibbs states exist}\iff\beta>1+\beta_c(S),
+\]
+and the two regions are disjoint with a gap of width exactly $1$, for every $S$ and every
+automorphic $\pi$. For $S=P_\Q$: obstruction on $(0,1]$, equilibrium on $(2,\infty)$. There is
+no temperature at which the $GL_2$ system has equilibrium states and the automorphic
+obstruction can break symmetry.
+
+The shift by one is not accidental. The number of sublattices of index $p$ in $\Z_p^2$ is
+$p+1$ while the norm is $p$, and by Theorem 1.2 of Paper XII this excess is universal:
+$d_\pp=(q^d-1)/(q-1)>q$. The same off-by-one of $\mathbb P^{d-1}$ that empties the boundary
+quotient there displaces the equilibrium range here.
+
+Finally, the proposed algebra is not available as stated: $M_2(\Z)^+$ has infinite unit group
+$SL_2(\Z)$, so by the unit-group exclusion of Paper X (its Remark 1.5) its partition function
+diverges identically and one
+must pass to the Hecke quotient, which is not a semigroup crossed product.
+\end{abstract}
+
+\maketitle
+
+\section{The algebra}
+
+The framework is that of \cite{Main}; Papers VI, X and XII of the series, referred to by
+numeral, are unpublished companions, and every fact used from them is restated or verified
+in place.
+
+\begin{proposition}[The semigroup crossed product is unavailable]\label{prop:units}
+Let $P=M_2(\Z)\cap GL_2^+(\Q)$. Then $P^\times=SL_2(\Z)$ --- an element of $P$ with inverse
+in $P$ has positive integral determinant on both sides, hence determinant $1$ --- is
+infinite and $|\det|=1$ on it, so
+$\sum_{g\in P}|\det g|^{-\beta}\ge|P^\times|=\infty$ for every $\beta$. Hence
+$C(Y)\rtimes P$ carries no Gibbs state at any temperature, and the construction must be
+replaced by the Hecke-algebra quotient of Connes--Marcolli \cite{CM}, in which one sums over
+$GL_2(\Z)$-orbits.
+\end{proposition}
+
+\begin{proof}
+This is the unit-group exclusion recorded in Paper X (its Remark 1.5): a multiplicative norm
+is $1$ on units, so an infinite unit group makes
+$\zeta_P$ diverge identically.
+\end{proof}
+
+\begin{proposition}[The Solomon zeta]\label{prop:solomon}
+Summing over $GL_2(\Z)$-orbits, the local factor at $p$ is the Solomon zeta of $M_2(\Z_p)$
+\cite{Solomon},
+\[
+\zeta_{GL_2,p}(\beta)=\bigl(1-p^{-\beta}\bigr)^{-1}\bigl(1-p^{1-\beta}\bigr)^{-1},
+\]
+so for a set $S$ of primes
+\begin{equation}\label{eq:zetaGL2}
+\zeta_{GL_2,S}(\beta)=\prod_{p\in S}\bigl(1-p^{-\beta}\bigr)^{-1}\bigl(1-p^{1-\beta}\bigr)^{-1},
+\end{equation}
+which converges if and only if $\sum_{p\in S}p^{1-\beta}<\infty$.
+\end{proposition}
+
+\begin{proof}
+The Gibbs weight of the Hecke quotient sums one term per \emph{left} coset $GL_2(\Z)g$,
+equivalently per sublattice $L\subseteq\Z_p^2$, weighted by its index \cite{CM} --- not one
+term per double coset. The number of sublattices of $\Z_p^2$ of index $p^n$ is
+$\sigma(p^n)=1+p+\cdots+p^n$, and
+\[
+\sum_{n\ge0}\sigma(p^n)\,p^{-\beta n}
+=\sum_{n\ge0}\frac{p^{n+1}-1}{p-1}\,p^{-\beta n}
+=\bigl(1-p^{-\beta}\bigr)^{-1}\bigl(1-p^{1-\beta}\bigr)^{-1}.
+\]
+Convergence of the Euler product
+is convergence of $\sum_p(p^{-\beta}+p^{1-\beta})$, dominated by the second term.
+\end{proof}
+
+\section{The obstruction series and its $L$-function}
+
+\begin{lemma}[Hilbert--Schmidt identity]\label{lem:HS}
+Let $f\in S_2(\Gamma_0(N))$ be a normalized cuspidal Hecke eigenform, $p\nmid N$, and
+$U_p=p^{-1/2}\rho_f(\Frob_p)$, unitary with eigenvalues $e^{\pm i\theta_p}$ by Deligne's
+theorem \cite{Deligne}. Then
+\[
+\bigl\|I_2-U_p\bigr\|_\HS^2=2\bigl(2-\Re\Tr U_p\bigr)=4\bigl(1-\cos\theta_p\bigr)=8\sin^2(\theta_p/2),
+\]
+so that
+\begin{equation}\label{eq:XiGL2}
+\Xi_\beta(\pi_f,S)=8\sum_{p\in S}p^{-\beta}\sin^2\!\bigl(\theta_p/2\bigr).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Lemma 2.2 of Paper VI (its Trace form) with $n=2$, together with $\Tr U_p=a_p/\sqrt p=2\cos\theta_p$.
+\end{proof}
+
+\begin{theorem}[The $L$-function dictionary, corrected]\label{thm:L}
+For $\beta>1/2$,
+\begin{equation}\label{eq:Lcorrect}
+\Xi_\beta(\pi_f,S)=4\log\zeta_S(\beta)-2\,\Re\log L_S(\beta,\pi_f)+O(1),
+\end{equation}
+with $L_S(s,\pi_f)=\prod_{p\in S}\bigl((1-e^{i\theta_p}p^{-s})(1-e^{-i\theta_p}p^{-s})\bigr)^{-1}$
+the analytically normalized standard $L$-function. No symmetric square factor occurs.
+\end{theorem}
+
+\begin{proof}
+By \eqref{eq:XiGL2}, $\Xi_\beta=4\sum_pp^{-\beta}-2\sum_pp^{-\beta}\Tr U_p$. The first sum is
+$\log\zeta_S(\beta)+O(1)$; the second is $\Re\log L_S(\beta,\pi_f)+O(1)$, the prime-power
+terms converging for $\beta>1/2$. This is Theorem 4.1 of Paper VI at $n=2$, where the general
+form is $2n\log\zeta_{K,S}(\beta)-2\Re\log L_S(\beta,\rho)+O(1)$.
+\end{proof}
+
+\begin{remark}[Why $\Sym^2$ cannot appear]\label{rem:sym2}
+The proposed formula adds $-2\Re\log L_S(\beta,\Sym^2\pi_f)$. That term cannot be present:
+$\|I-U\|_\HS^2=2(2-\Re\Tr U)$ is \emph{linear} in $\Tr U_p$, whereas $\Sym^2$ enters through
+$\Tr(U_p^2)=\Tr(U_p)^2-2\det U_p$, a quadratic expression. Rankin--Selberg does govern the
+second moment: $\log L_S(s,\pi\times\pi^\vee)=\sum_p|\Tr U_p|^2p^{-s}+O(1)$, whose pole at
+$s=1$ is the input to Sato--Tate. That is a different series from $\Xi_\beta$.
+\end{remark}
+
+\begin{corollary}[Divergence at $\beta=1$]\label{cor:diverge}
+For $S=P_\Q$ and any cuspidal eigenform $f$, $\Xi_1(\pi_f,P_\Q)=\infty$.
+\end{corollary}
+
+\begin{proof}
+As $\beta\downarrow1$, $\log\zeta(\beta)\to\infty$ while $L(\beta,\pi_f)$ has neither zero nor
+pole at $\beta=1$ --- Jacquet--Shalika non-vanishing on $\Re s=1$ \cite{JS}, and cuspidality excluding a
+pole --- so $\Re\log L_S(\beta,\pi_f)=O(1)$. Apply \eqref{eq:Lcorrect}.
+\end{proof}
+
+\section{The gap is exactly one}
+
+\begin{definition}\label{def:betac}
+For $S$ a set of primes let $\beta_c(S)=\inf\{\beta:\sum_{p\in S}p^{-\beta}<\infty\}$, so
+$0\le\beta_c(S)\le1$.
+\end{definition}
+
+\begin{theorem}[Disjoint ranges]\label{thm:gap}
+For every set $S$ of primes and every automorphic representation $\pi$ of $GL_2$ unramified
+outside $S$:
+\begin{enumerate}
+\item $\Xi_\beta(\pi,S)<\infty$ for every $\beta>\beta_c(S)$, so no representation is an
+obstruction there; the obstruction can be nontrivial only for $\beta\le\beta_c(S)$;
+\item $\zeta_{GL_2,S}(\beta)<\infty$ for $\beta>1+\beta_c(S)$ and $=\infty$ for
+$\beta<1+\beta_c(S)$ --- at the boundary $\beta=1+\beta_c(S)$ itself, finite exactly when
+$\sum_{p\in S}p^{-\beta_c(S)}$ converges --- so Gibbs states of
+the $GL_2$ system exist only for $\beta\ge1+\beta_c(S)$, and only beyond it when the
+critical series diverges.
+\end{enumerate}
+Consequently
+\[
+\bigl(0,\beta_c(S)\bigr]\ \cap\ \bigl[1+\beta_c(S),\infty\bigr)=\emptyset ,
+\]
+and the open interval $(\beta_c(S),1+\beta_c(S))$, of width exactly $1$, lies in neither
+region. For $S=P_\Q$ the obstruction lives
+on $(0,1]$ and the equilibrium states on $(2,\infty)$.
+\end{theorem}
+
+\begin{proof}
+(1) By \eqref{eq:XiGL2}, $\Xi_\beta(\pi,S)\le8\sum_{p\in S}p^{-\beta}$, finite for
+$\beta>\beta_c(S)$. (2) By Proposition~\ref{prop:solomon}, convergence is that of
+$\sum_{p\in S}p^{1-\beta}=\sum_{p\in S}p^{-(\beta-1)}$, which for $\beta-1>\beta_c(S)$
+converges, for $\beta-1<\beta_c(S)$ diverges, and at $\beta-1=\beta_c(S)$ is the critical
+series itself.
+\end{proof}
+
+\begin{corollary}[The programme cannot close]\label{cor:cannot}
+There is no temperature at which the localized $GL_2$ system possesses equilibrium states and
+the automorphic obstruction $\Xi_\beta(\pi,S)$ is capable of producing symmetry breaking. In
+particular the proposed uniqueness theorem on $(0,1]$ concerns a range in which the $GL_2$
+system has no Gibbs states, and Corollary~\ref{cor:diverge}, though true, has no
+$\mathrm{KMS}$ consequence for this system.
+\end{corollary}
+
+\begin{remark}[Numerical illustration]\label{rem:num}
+For $S=P_\Q$: $\sum_{p\le10^6}p^{-\beta}$ equals $4.79$, $2.89$, $1.99$ at
+$\beta=0.9,1.0,1.1$, the first two growing without bound and the third converging; while
+$\zeta(\beta)\zeta(\beta-1)$ is divergent at $\beta\le2$ and equals $8.33$, $1.98$, $1.30$ at
+$\beta=2.2,3,4$. The window $(1,2]$ has neither.
+\end{remark}
+
+\begin{remark}[The shift is the multiplicity--norm mismatch]\label{rem:mismatch}
+The displacement by $1$ is the phenomenon isolated in Theorem 1.2 of Paper XII. There, for a
+maximal order in a central simple algebra of degree $d$, the number of right ideals of reduced
+norm $\pp$ is $d_\pp=(q^d-1)/(q-1)=1+q+\cdots+q^{d-1}$, strictly larger than the norm
+$q=\Ns\pp$; for $d=2$ the excess is exactly the point at infinity of $\mathbb P^1$. Here the
+same count --- $p+1$ sublattices of index $p$ in $\Z_p^2$ against norm $p$ --- produces the
+factor $(1-p^{1-\beta})^{-1}$ in \eqref{eq:zetaGL2} and shifts the abscissa by $1$. In
+Paper XII the excess emptied the boundary quotient; here it displaces the equilibrium
+range out of reach of the obstruction. It is one fact with two consequences.
+\end{remark}
+
+\section{Sparse sets for $\Delta$}
+
+\begin{theorem}[Anomalous sets exist]\label{thm:sparse}
+Let $\Delta\in S_{12}(SL_2(\Z))$ with $\tau(p)=2p^{11/2}\cos\theta_p$. Assuming the Sato--Tate
+equidistribution for $\Delta$ --- a theorem of Barnet-Lamb, Geraghty, Harris and Taylor \cite{BLGHT} --- for
+every $\delta>0$ the set $\{p:\theta_p\le\delta\}$ has positive density. Choosing finite
+blocks $S_j\subseteq\{p:\theta_p\le2^{-j}\}$ with $1\le\sum_{p\in S_j}p^{-1}\le2$ and putting
+$S_\Delta=\bigsqcup_jS_j$ gives
+\[
+\sum_{p\in S_\Delta}p^{-1}=\infty,\qquad \Xi_1(\pi_\Delta,S_\Delta)\le\sum_j2\cdot4^{-j}\cdot2<\infty .
+\]
+\end{theorem}
+
+\begin{proof}
+$8\sin^2(\theta/2)\le2\theta^2$, so the $j$-th block contributes at most
+$2\cdot4^{-j}\sum_{p\in S_j}p^{-1}\le4\cdot4^{-j}$. This is Theorem 5.3 of Paper VI with
+$\Delta$ in place of an elliptic curve.
+\end{proof}
+
+\begin{remark}[But not symmetry breaking]\label{rem:notbreaking}
+Theorem~\ref{thm:sparse} produces a set on which the analytic obstruction is finite. It does
+not produce a broken phase, for two reasons already recorded. By
+Remark 5.4 of Paper VI an obstruction group is not a broken phase until an algebra realizes
+it; and by Theorem~\ref{thm:gap} the temperature $\beta=1$ at which the construction operates
+is one at which this $GL_2$ system has no equilibrium states, $\beta_c(S_\Delta)=1$ forcing
+Gibbs states only above $2$. The residual symmetry subgroup $H_\Delta\subseteq SU(2)$ asked
+for is therefore not defined: there is no simplex on which it could act.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Proposal} & \text{Status} & \text{Reference}\\\hline
+C(Y)\rtimes M_2(\Z_S)^+ & \textbf{no: }|P^\times|=\infty & \text{Prop.~1.1}\\
+\|I_2-U_p\|^2_\HS=8\sin^2(\theta_p/2) & \text{true} & \text{Lem.~2.1}\\
+\Xi_\beta\ \text{involves}\ \Sym^2 & \textbf{false: spurious term} & \text{Rem.~2.3}\\
+\Xi_\beta=4\log\zeta_S-2\Re\log L_S+O(1) & \textbf{true} & \text{Thm.~2.2}\\
+\Xi_1(\pi_f,P_\Q)=\infty & \text{true, Jacquet--Shalika} & \text{Cor.~2.4}\\
+\text{uniqueness on }(0,1] & \textbf{vacuous: no KMS states there} & \text{Cor.~3.3}\\
+\text{obstruction region} & (0,\beta_c(S)],\ \beta_c\le1 & \text{Thm.~3.2}\\
+\text{equilibrium region} & (1+\beta_c(S),\infty) & \text{Thm.~3.2}\\
+\text{the two overlap} & \textbf{never; gap exactly }1 & \text{Thm.~3.2}\\
+\text{sparse }S_\Delta\ \text{with}\ \Xi_1<\infty & \text{true, under Sato--Tate} & \text{Thm.~4.1}\\
+\text{residual symmetry}\ H_\Delta\subseteq SU(2) & \textbf{not defined} & \text{Rem.~4.2}
+\end{array}
+\]
+
+The arithmetic side of the proposal is sound and largely already proved in
+Paper VI: the Hilbert--Schmidt series, its $L$-function form once the spurious
+symmetric square is removed, the divergence at $\beta=1$ by Jacquet--Shalika, and the
+construction of Sato--Tate anomalous sets. What fails is the junction with statistical
+mechanics, and it fails quantitatively rather than vaguely. The obstruction is a Dirichlet
+series in $p^{-\beta}$, with abscissa at most $1$; the $GL_2$ partition function counts
+sublattices, whose local factor $(1-p^{1-\beta})^{-1}$ moves the abscissa to
+$1+\beta_c(S)$. The gap is exactly $1$ and it is the same off-by-one of $\mathbb P^1$ that
+Paper XII showed to be universal.
+
+Two ways out suggest themselves and neither is free. One could weight the dynamics
+differently, replacing $|\det g|$ by another multiplicative norm; but by
+Proposition 1.4 of Paper X norms factor through the abelianization, and on $GL_2$ orbits the
+abelianization is generated by $\det$, so any admissible norm is $|\det|^t$ and merely
+rescales $\beta$, leaving the ratio of the two abscissae fixed at
+$(1+\beta_c)/\beta_c$ rather than closing the gap. Or one could keep the $GL_1$
+normalization and attach the automorphic data as a coefficient system rather than as the
+acting semigroup --- which is the route of \S6 of Paper VI, where the Kakutani analysis
+applies verbatim and only the existence of a tractable expectation was left open. We would
+pursue the second.
+
+\begin{thebibliography}{9}
+\bibitem{CM} A. Connes, M. Marcolli, \emph{Noncommutative Geometry, Quantum Fields and Motives}, AMS Colloq. Publ. 55, 2008.
+\bibitem{Deligne} P. Deligne, \emph{La conjecture de Weil. I}, Publ. Math. IHES 43 (1974), 273--307.
+\bibitem{BLGHT} T. Barnet-Lamb, D. Geraghty, M. Harris, R. Taylor, \emph{A family of Calabi--Yau varieties and potential automorphy II}, Publ. RIMS 47 (2011), 29--98.
+\bibitem{JS} H. Jacquet, J. A. Shalika, \emph{A non-vanishing theorem for zeta functions of $GL_n$}, Invent. Math. 38 (1976/77), 1--16.
+\bibitem{Solomon} L. Solomon, \emph{Zeta functions and integral representation theory}, Advances in Math. 26 (1977), 306--326.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\end{thebibliography}
+
+\end{document}
