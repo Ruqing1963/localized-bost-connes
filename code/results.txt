@@ -1,0 +1,22 @@
+N=1:  (A) degree-1 closed form = 0.4714045208
+       (B) parity-measurable opt = 0.4714045208   (viol 0.0e+00)   B-A = -2.776e-16
+       (C) full grid  M=6      = 0.4718513252   (viol 8.9e-16)   C-B = +4.468e-04
+       (C) full grid  M=9      = 0.4709441648   (viol 1.1e-14)   C-B = -4.604e-04
+
+N=2:  (A) degree-1 closed form = 0.2421610524
+       (B) parity-measurable opt = 0.3043430994   (viol 5.0e-15)   B-A = +6.218e-02
+       (C) full grid  M=6      = 0.3049586250   (viol 4.7e-15)   C-B = +6.155e-04
+       (C) full grid  M=9      = 0.3062231674   (viol 7.8e-07)   C-B = +1.880e-03
+
+N=3:  (A) degree-1 closed form = 0.1620370370
+       (B) parity-measurable opt = 0.2253694742   (viol 3.6e-16)   B-A = +6.333e-02
+       (C) full grid  M=6      = 0.2277508318   (viol 2.7e-05)   C-B = +2.381e-03
+       (C) full grid  M=9      = 0.2288460288   (viol 2.0e-05)   C-B = +3.477e-03
+
+Apples-to-apples on the truncated grid (isolates the non-parity gain):
+  N=1 M=6: C_parity=0.4695955915  C_full=0.4718513252  gain=+2.256e-03  (viol 0e+00/9e-16)
+  N=1 M=9: C_parity=0.4709441648  C_full=0.4709441648  gain=+1.110e-15  (viol 0e+00/1e-14)
+  N=2 M=6: C_parity=0.3026912933  C_full=0.3049586250  gain=+2.267e-03  (viol 0e+00/5e-15)
+  N=2 M=9: C_parity=0.3040407403  C_full=0.3062231674  gain=+2.182e-03  (viol 0e+00/8e-07)
+  N=3 M=6: C_parity=0.2240531249  C_full=0.2277508318  gain=+3.698e-03  (viol 0e+00/3e-05)
+  N=3 M=9: C_parity=0.2251455509  C_full=0.2288460288  gain=+3.700e-03  (viol 5e-14/2e-05)
