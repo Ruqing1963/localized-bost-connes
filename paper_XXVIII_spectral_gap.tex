@@ -1,0 +1,478 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{booktabs}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\Nrd}{\operatorname{Nrd}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\op}{\mathrm{op}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+\hypersetup{pdftitle={The Ramanujan bound is the tempered bound: a no-go theorem for condition
+(C4)}}
+
+\title[The Ramanujan bound is the tempered bound]{The Ramanujan bound is the tempered bound:\\
+the Hecke operator on the Bruhat--Tits tree, and\\ a no-go theorem for condition (C4)}
+
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\date{}
+
+\raggedbottom
+\begin{document}
+
+\begin{abstract}
+Condition (C4) of Paper X of this series asks whether the measured groupoid of the Hurwitz
+quaternion Bost--Connes system is non-amenable, equivalently whether its factor escapes the
+injectivity that erased the arithmetic in every earlier model. Paper XI reduced the question to a
+spectral property of a transfer operator and found the naive operator unusable, the range
+projections being nested rather than orthogonal; Paper XII reduced it further to a single
+representation of the norm-one group and warned that a spectral gap would not suffice. We settle
+the question.
+
+We first build the operator the programme wanted: the Hecke operator
+$T_p=\sum_{k=1}^{p+1}\pi(a_k)$, the sum of the Koopman unitaries of the $p+1$ Hurwitz quaternions
+of reduced norm $p$, which is the adjacency operator of the $(p+1)$-regular Bruhat--Tits tree of
+$\mathrm{GL}_2(\Q_p)$ transported to the Maharam extension. It involves no projections and so has
+none of the pathology of the transfer operator.
+
+We then compute its spectrum exactly. For every finite set $F$ of primes the subgroup
+$G_F=\HH(\Z[1/F])^\times$ is discrete in $\prod_{p\in F}\HH(\Q_p)^\times$ and acts \emph{properly
+and freely} on a conull set, because every element of $\HH(\Q)^\times$ is a unit at almost every
+place. Hence the Koopman representation restricted to $G_F$ is a multiple of the regular
+representation, and, with $\varepsilon_p$ the central unitary of $p$ (so that
+$\varepsilon_p^{-1/2}T_p$ is the self-adjoint Hecke operator),
+\[
+\mathrm{sp}\bigl(\varepsilon_p^{-1/2}T_p\restriction L^2_0\bigr)=[-2\sqrt p,\,2\sqrt p],\qquad \|T_p\|=2\sqrt p .
+\]
+The Ramanujan bound is attained, not merely respected. It is also worthless for the purpose:
+$2\sqrt p$ is the norm of the adjacency operator in the \emph{regular} representation of a free
+group, so the gap between $2\sqrt p$ and the trivial eigenvalue $p+1$ is Kesten's gap and measures
+the non-amenability of the \emph{group}, not of the \emph{action}. By Kuhn's theorem an amenable
+action has tempered Koopman representation; attaining the Ramanujan bound proves temperedness, and
+temperedness is the signature of amenability, not an obstruction to it.
+
+The same properness gives the verdict directly, with no spectral theory at all. The orbit relation
+is the increasing union over finite $F$ of the smooth relations of the proper actions of $G_F$,
+hence hyperfinite; the groupoid is amenable and the factor is injective. \textbf{(C4) is false},
+the Hurwitz factor collapses to $R_\infty$, $R_\lambda$ or a Krieger factor like every abelian
+system before it, and by Paper IX it retains nothing of the arithmetic. The argument uses only
+that each element of the monoid is a unit at almost every place, so it closes the search of
+Paper X in full: conditions (C1)--(C3) are incompatible with (C4) for every order in every
+finite-dimensional $\Q$-algebra.
+\end{abstract}
+
+\maketitle
+
+\section{Setting and statements}\label{sec:setup}
+
+$\HH$ is the rational Hamilton quaternion algebra, ramified at $2$ and $\infty$;
+$\cH\subset\HH(\Q)$ is the Hurwitz order, $P=\cH\setminus\{0\}$ the multiplicative Ore monoid of
+Paper X, $\Nrd$ the reduced norm and $G=PP^{-1}=\HH(\Q)^\times$ the group of right fractions
+\cite{Vigneras}. For a prime $p$ write $\cH_p=\cH\otimes\Z_p$; for odd $p$ one has
+$\cH_p\cong M_2(\Z_p)$ and the right ideals of $\cH_p$ of reduced norm $p$ are the $p+1$ neighbours
+of the base vertex in the Bruhat--Tits tree $\cT_p$ of $\mathrm{GL}_2(\Q_p)$ \cite{Serre}. The
+localized Bost--Connes framework in which the system sits is that of \cite{Main}; the ingredients
+we use from Papers IX--XII of the series are re-proved here.
+
+\begin{hypothesis}[The model]\label{hyp:model}
+$\Omega=\widehat\cH=\prod_p\cH_p$ carries a $\mathrm{KMS}_\beta$ measure $\nu_\beta$ of the
+Nica--Toeplitz algebra $\cT(P)$, $\widetilde\Omega=\varinjlim(\Omega,\cdot a)=\HH(\A_f)$ is the
+dilation, $G$ acts on $\widetilde\Omega$ by right translation, and $\widetilde\nu_\beta$ is the
+extension of $\nu_\beta$, so that
+$\widetilde\nu_\beta(Ea)=\Nrd(a)^{-\beta}\widetilde\nu_\beta(E)$. The Maharam extension is
+\begin{equation}\label{eq:maharam}
+G\curvearrowright\bigl(\widetilde\Omega\times\R,\ \widetilde\nu_\beta\otimes e^{s}ds\bigr),
+\qquad a\cdot(x,s)=\bigl(xa,\ s+\beta\log\Nrd(a)\bigr),
+\end{equation}
+which preserves the displayed infinite measure. Condition (C4) of Paper X asks whether the
+measured groupoid $G\ltimes(\widetilde\Omega,\widetilde\nu_\beta)$ is non-amenable, equivalently
+--- by Takesaki duality, as in Paper XI --- whether \eqref{eq:maharam} is non-amenable,
+equivalently whether $M_\beta=\pi_\varphi(\cT(P))''$ fails to be injective.
+\end{hypothesis}
+
+Nothing below uses the value of $\beta$, the existence of a $\mathrm{KMS}$ state in any particular
+temperature range, or the type of $M_\beta$. Only the following is used, and it is a property of
+the arithmetic and not of the dynamics.
+
+\begin{lemma}[Finite support]\label{lem:support}
+Every $a\in G=\HH(\Q)^\times$ lies in $\cH_q^\times$ for all but finitely many primes $q$.
+\end{lemma}
+
+\begin{proof}
+Write $a=b/m$ with $b\in\cH$ and $m\in\Z_{>0}$. For $q\nmid m\Nrd(b)$ one has $b\in\cH_q$ and
+$\Nrd(b)\in\Z_q^\times$, so $b\bar b=\Nrd(b)$ is a unit and $b\in\cH_q^\times$; and
+$m\in\Z_q^\times$. Only the finitely many $q$ dividing $m\Nrd(b)$ are excluded.
+\end{proof}
+
+For a finite set $F$ of primes put
+\[
+G_F=\bigl\{a\in G:\ a\in\cH_q^\times\ \text{for every } q\notin F\bigr\}=\HH\bigl(\Z[1/F]\bigr)^\times,
+\qquad L_F=\prod_{p\in F}\HH(\Q_p)^\times .
+\]
+By Lemma~\ref{lem:support}, $G=\bigcup_FG_F$, the union being increasing and countable.
+
+\medskip
+The three results are the following.
+
+\begin{theorem}[Local properness]\label{thm:proper}
+For every finite $F$, $G_F$ is a discrete subgroup of $L_F$ and its action on $\widetilde\Omega$
+is free and proper on a conull invariant set. Consequently the orbit relation $\cR_F$ is smooth,
+and the Koopman representation of the Maharam extension restricted to $G_F$ is unitarily
+equivalent to a multiple of the regular representation $\lambda_{G_F}$.
+\end{theorem}
+
+\begin{theorem}[The spectrum of the Hecke operator]\label{thm:spec}
+Let $p$ be an odd prime, $a_1,\dots,a_{p+1}\in\cH$ generators of the $p+1$ right ideals of reduced
+norm $p$, and $T_p=\sum_{k=1}^{p+1}\pi(a_k)$ the associated Hecke operator on
+$L^2\bigl(\widetilde\Omega\times\R\bigr)$ of Definition~\ref{def:hecke}. Then $T_p$ is the
+adjacency operator of $\cT_p$ in the regular representation up to the central unitary
+$\varepsilon_p=\pi(p)$, and on the orthogonal complement
+$L^2_0$ of the invariant vectors the self-adjoint operator $\varepsilon_p^{-1/2}T_p$ of
+Lemma~\ref{lem:hecke}(1) satisfies
+\[
+\mathrm{sp}\bigl(\varepsilon_p^{-1/2}T_p\restriction L^2_0\bigr)=\bigl[-2\sqrt p,\ 2\sqrt p\,\bigr],
+\qquad \bigl\|T_p\restriction L^2_0\bigr\|=2\sqrt p .
+\]
+($T_p$ itself is normal but not self-adjoint, $T_p^*=\varepsilon_p^{-1}T_p$; its spectrum is
+the disc swept by the central phases, and the invariant statement is the one displayed.)
+The Ramanujan bound is attained, and the trivial eigenvalue $p+1$ is absent from $L^2_0$.
+\end{theorem}
+
+\begin{theorem}[No-go for (C4)]\label{thm:nogo}
+The orbit relation $\cR_G=\bigcup_F\cR_F$ is hyperfinite. Hence the measured groupoid of
+Hypothesis~\ref{hyp:model} is amenable, (C4) is false, and $M_\beta$ is injective: it is
+$R_\infty$, a Powers factor $R_\lambda$, a Krieger factor, or type I. By Paper IX it therefore
+retains no arithmetic invariant of the system.
+\end{theorem}
+
+Theorem~\ref{thm:nogo} does not use Theorem~\ref{thm:spec}; the spectral computation is included
+because it identifies precisely what the programme of Paper XI was measuring, and why the
+measurement could not have decided the question. Section~\ref{sec:general} extends the no-go to
+every candidate monoid admissible under (C1)--(C3).
+
+\section{The Hecke operator}\label{sec:hecke}
+
+Paper XI worked with the transfer operator $\cM_p(x)=\frac1{p+1}\sum_kv_{a_k}^*xv_{a_k}$ built
+from the isometries of $\cT(P)$. Its defect is structural: the range projections
+$e_{a_k}=v_{a_k}v_{a_k}^*$ are nested, $e_{a_j}e_{a_k}=e_p\ne0$, so $\cM_p$ is not a Markov
+operator of the tree and forcing orthogonality collapses the algebra. The remedy is to work on the
+Maharam extension, where the generators act by \emph{unitaries} and no projection occurs.
+
+\begin{definition}\label{def:hecke}
+Let $\pi$ be the Koopman representation of \eqref{eq:maharam},
+\[
+\bigl(\pi(a)f\bigr)(x,s)=f\bigl(xa,\ s+\beta\log\Nrd(a)\bigr),
+\qquad a\in G,
+\]
+a unitary representation of $G$ on $L^2(\widetilde\Omega\times\R,\widetilde\nu_\beta\otimes e^sds)$
+because the Maharam extension preserves the measure. For odd $p$ fix representatives
+$a_1,\dots,a_{p+1}\in\cH$ of the $p+1$ right ideals of reduced norm $p$ and set
+\[
+T_p=\sum_{k=1}^{p+1}\pi(a_k).
+\]
+\end{definition}
+
+\begin{lemma}\label{lem:hecke}
+With $\varepsilon_p=\pi(p)$ the unitary of the central element $p$:
+\begin{enumerate}
+\item the set $\{a_k\}$ may be chosen closed under $a\mapsto\bar a$ modulo right units, and then
+$T_p^*=\varepsilon_p^{-1}T_p$, so $\varepsilon_p^{-1/2}T_p$ is self-adjoint for either square root;
+\item $T_p^2=T_{p^2}+(p+1)\varepsilon_p$, where $T_{p^2}$ is the sum over the $p(p+1)$ right
+ideals of reduced norm $p^2$ not containing $p\cH$;
+\item under the identification of Theorem~\ref{thm:proper}, $T_p$ is the adjacency operator of the
+$(p+1)$-regular tree $\cT_p$ acting on $\ell^2$ of its vertex set.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) $a_k\bar a_k=p$, so $\pi(\bar a_k)=\varepsilon_p\pi(a_k)^{-1}=\varepsilon_p\pi(a_k)^*$;
+summing over a self-conjugate set of representatives gives the identity. (2) Expanding
+$T_p^2=\sum_{j,k}\pi(a_ja_k)$, the products $a_ja_k$ of reduced norm $p^2$ either generate an ideal
+not containing $p\cH$, and each such ideal arises exactly once, or satisfy $a_ja_k\in p\cH$, which
+happens for exactly one $k$ for each $j$: $a_ja_k\in p\cH$ forces $a_k\cH=\bar a_j\cH$, and
+with the self-conjugate choice of (1) then $a_k=\bar a_j$ exactly, so the product is
+$a_j\bar a_j=p$ and contributes $\varepsilon_p$ exactly; there are $p+1$ such pairs. (3) The vertices of $\cT_p$ at distance $n$ from the base vertex are
+the right ideals of $\cH_p$ of reduced norm $p^n$ that are not divisible by $p$ beyond the
+necessary amount, and $a\mapsto$ (the ideal it generates) intertwines right multiplication by the
+$a_k$ with the adjacency of $\cT_p$; the identification of the Hilbert space is
+Corollary~\ref{cor:regular}. (Vertices are ideal classes up to homothety, i.e.\ after
+trivializing the central $\langle p\rangle$; on the Koopman space itself the central unitary
+$\varepsilon_p$ survives, which is why the self-adjoint operator is
+$\varepsilon_p^{-1/2}T_p$.)
+\end{proof}
+
+\begin{remark}
+By Lubotzky--Phillips--Sarnak the group generated by $a_1,\dots,a_{p+1}$ modulo the centre and the
+$24$ units is free of rank $(p+1)/2$ and acts simply transitively on the vertices of $\cT_p$; the
+finite quotients by congruence subgroups are the Ramanujan graphs $X^{p,q}$. This is the algebraic
+rigidity the present programme hoped to exploit.
+\end{remark}
+
+\section{Local properness and the regular representation}\label{sec:proper}
+
+\begin{proof}[Proof of Theorem~\ref{thm:proper}]
+\emph{Discreteness.} Let $a_n\in G_F$ with $a_n\to1$ in $L_F$. Then $\Nrd(a_n)\to1$ in
+$\prod_{p\in F}\Q_p^\times$, and $\Nrd(a_n)\in\Z[1/F]^\times=\{\pm\prod_{p\in F}p^{e_p}\}$, so for
+large $n$ all exponents vanish and $\Nrd(a_n)=1$. Thus $a_n$ lies in the norm-one group
+$\HH(\Z[1/F])^1$, which is a lattice in $\prod_{p\in F}\HH(\Q_p)^1$ because $\HH$ is definite and
+$\HH(\R)^1=SU(2)$ is compact; in particular it is discrete, so $a_n=1$ for large $n$.
+
+\emph{Properness and freeness.} Write $\widetilde\Omega=X_F\times Y_F$ with
+$X_F=\prod_{p\in F}\HH(\Q_p)$ and $Y_F$ the remaining coordinates. The locus where the component at $p$
+has zero reduced norm is $\widetilde\nu_\beta$-null: an element of $\cH_p$ of zero reduced
+norm lies, for every $n$, in one of the right ideals of reduced norm $p^n$, of which there
+are $\sigma(p^n)=1+p+\cdots+p^n$, each carried by the scaling relation to measure
+$p^{-n\beta}$ times that of the base cylinder (an element of reduced norm $p^n$ is a unit at
+every other place, by Lemma~\ref{lem:support}, so the cylinder is an honest translate); the
+bound $\sigma(p^n)p^{-n\beta}\to0$ holds for $\beta>1$, in particular throughout the Gibbs
+range $\beta>2$ of Paper X. So $X_F^\times=\prod_{p\in F}\HH(\Q_p)^\times$ is conull and invariant.
+By Lemma~\ref{lem:support} and the definition of $G_F$, an element $a\in G_F$ acts on $Y_F$ through
+the compact group $\prod_{q\notin F}\cH_q^\times$ and on $X_F^\times$ by right translation by the
+discrete subgroup $G_F\le L_F$. Right translation of a locally compact group by a discrete subgroup
+is free and proper, and properness in one factor of a product is properness; so the action on
+$X_F^\times\times Y_F$ is free and proper.
+
+\emph{Smoothness and the Koopman representation.} A free proper action of a countable group admits
+a measurable fundamental domain $D$, so $\widetilde\Omega\times\R=\bigsqcup_{a\in G_F}(D\cdot a)$
+up to null sets and $\cR_F$ is smooth. Trivializing the Radon--Nikodym derivative by half-densities
+gives a unitary
+$L^2(\widetilde\Omega\times\R)\cong L^2(D)\otimes\ell^2(G_F)$ intertwining $\pi\restriction G_F$
+with $1\otimes\lambda_{G_F}$.
+\end{proof}
+
+\begin{corollary}\label{cor:regular}
+$\pi\restriction G_F\cong\dim L^2(D)\cdot\lambda_{G_F}$ for every finite $F$. In particular
+$\pi\restriction G_F$ is tempered, and for every $\xi$ in the group algebra
+$\|\pi(\xi)\|=\|\lambda_{G_F}(\xi)\|$.
+\end{corollary}
+
+\section{The spectrum, and what it does not prove}\label{sec:spec}
+
+\begin{proof}[Proof of Theorem~\ref{thm:spec}]
+Take $F=\{p\}$, so $T_p=\pi(\xi)$ with $\xi=\sum_ka_k$ in the group algebra of $G_{\{p\}}$. By
+Corollary~\ref{cor:regular}, $\|T_p\|=\|\lambda(\xi)\|$ and more precisely
+$\mathrm{sp}(T_p)=\mathrm{sp}_{L(G_{\{p\}})}(\xi)$, the spectrum in the group von Neumann algebra.
+Modulo the centre and the $24$ units, the $a_k$ generate a group $\Gamma$
+acting simply transitively on the vertices of $\cT_p$ --- free of rank $(p+1)/2$ when
+$p\equiv1\ (\mathrm{mod}\ 4)$ \cite{LPS}, a free product of cyclic groups in general ---
+and $\xi$ maps to the sum of the
+$p+1$ generating translations, whose image under $\lambda_\Gamma$ is the adjacency operator of the
+Cayley graph of $\Gamma$, which is $\cT_p$ \cite{Serre}. To pass from $\ell^2(G_{\{p\}})$ to
+$\ell^2$ of the vertex set, decompose over the characters of the central subgroup generated
+by $p$ and the finite unit group: in each fibre $T_p$ acts as a phase-twisted tree adjacency
+operator, and on a tree every phase twist is gauge-trivial, so the fibre operator is
+unitarily a phase times the tree adjacency, and the self-adjoint $\varepsilon_p^{-1/2}T_p$
+has in every fibre the spectrum of the tree adjacency itself. By Kesten's theorem \cite{Kesten} the
+spectrum of the adjacency
+operator of the $(p+1)$-regular tree on $\ell^2$ of its vertices is exactly
+$[-2\sqrt p,2\sqrt p\,]$, with norm $2\sqrt p$ and no eigenvalues. Invariant vectors would carry
+the eigenvalue $p+1$ and do not lie in $\ell^2$, so they are absent from $L^2_0$.
+\end{proof}
+
+\begin{corollary}[There is a gap, and it is Kesten's]\label{cor:gap}
+$\|T_p\restriction L^2_0\|=2\sqrt p<p+1$, a gap of relative size $1-2\sqrt p/(p+1)$:
+\[
+\begin{array}{lrrrrrr}
+p & 3 & 5 & 7 & 11 & 13 & 101\\
+2\sqrt p & 3.464 & 4.472 & 5.292 & 6.633 & 7.211 & 20.10\\
+p+1 & 4 & 6 & 8 & 12 & 14 & 102\\
+\text{gap} & 0.134 & 0.255 & 0.339 & 0.447 & 0.485 & 0.803
+\end{array}
+\]
+This gap is present in the regular representation of $\Gamma$ itself, and its existence is
+equivalent, by Kesten's criterion \cite{Kesten}, to the non-amenability of the free group
+$\Gamma$. It is
+therefore a statement about the \emph{group} $G$, not about the \emph{action} of $G$ on
+$\widetilde\Omega$.
+\end{corollary}
+
+\begin{theorem}[The proposed equivalence is vacuous]\label{thm:vacuous}
+The following are equivalent, and none of them implies non-amenability of the action:
+\begin{enumerate}
+\item $\|T_p\restriction L^2_0\|=2\sqrt p$, the Ramanujan bound, for every odd $p$;
+\item $\pi\restriction G_F$ is weakly contained in $\lambda_{G_F}$ for every finite $F$, i.e.\ the
+Koopman representation is tempered;
+\item the free group $\Gamma$ is non-amenable.
+\end{enumerate}
+Indeed (1) and (2) \emph{hold}, by Theorem~\ref{thm:spec} and Corollary~\ref{cor:regular}, while
+the action is amenable by Theorem~\ref{thm:nogo}.
+\end{theorem}
+
+\begin{proof}
+(1)$\Leftrightarrow$(3) is Kesten's criterion \cite{Kesten}. (2)$\Rightarrow$(1) because temperedness gives
+$\|\pi(\xi)\|\le\|\lambda(\xi)\|$ and the reverse inequality is Corollary~\ref{cor:regular};
+(1)$\Rightarrow$(2) for the algebra generated by the $a_k$, and the general case is
+Corollary~\ref{cor:regular} again. The last assertion is the content of the paper.
+\end{proof}
+
+\begin{remark}[The orientation of the argument]\label{rem:orientation}
+Kuhn's theorem \cite{Kuhn}, quoted in Paper XII, says that an amenable action has tempered
+Koopman representation. Establishing the Ramanujan bound therefore establishes temperedness, which is a
+\emph{necessary condition for amenability}, not an obstruction to it. To prove (C4) by spectral
+means one would have to exhibit spectrum of $T_p$ \emph{outside} $[-2\sqrt p,2\sqrt p]$ on
+$L^2_0$ --- that is, a \emph{violation} of the Ramanujan property, the exact opposite of what the
+arithmetic of the Hurwitz order provides. The bound $2\sqrt p$ is not a strong constraint that the
+programme could exploit; it is the Plancherel measure of $\mathrm{PGL}_2(\Q_p)$ announcing that
+there is nothing beyond the regular representation to find.
+\end{remark}
+
+\section{The no-go theorem}\label{sec:nogo}
+
+\begin{proof}[Proof of Theorem~\ref{thm:nogo}]
+By Lemma~\ref{lem:support} the sets $\cR_F$, $F$ finite, form an increasing sequence of
+subrelations of $\cR_G$ with union $\cR_G$. By Theorem~\ref{thm:proper} each $\cR_F$ is smooth,
+hence hyperfinite. An increasing union of hyperfinite equivalence relations is hyperfinite
+\cite{Dye,CFW}, so $\cR_G$ is hyperfinite, hence amenable \cite{Zimmer}. Amenability of the orbit
+relation is amenability of the measured groupoid, since the isotropy is trivial on the conull set
+of Theorem~\ref{thm:proper} and the relation is the one attached to the groupoid by \cite{FM};
+amenability of the groupoid is equivalent to injectivity of the associated von Neumann algebra by
+\cite{CFW,ADR}. The classification of injective factors then leaves only
+$R_\infty$, $R_\lambda$, a Krieger factor and the type I case, and the reconstruction failure is
+Paper IX.
+\end{proof}
+
+\begin{remark}[Why no spectral input was needed]\label{rem:whyno}
+The proof does not see the tree, the Ramanujan property or the non-amenability of $G$. It uses one
+arithmetic fact, Lemma~\ref{lem:support}: an element of $G$ has a reduced norm with finitely many
+prime factors, so it acts at finitely many places at a time. The group never acts \emph{all at
+once}. Non-amenability of $G$ is a statement about the group acting on itself; the groupoid only
+ever sees the finite-level subgroups $G_F$, each of which acts properly.
+\end{remark}
+
+\begin{remark}[The $F_2$ example was the mechanism]\label{rem:F2}
+Paper XII observed, as a warning about Zimmer's theorem, that the translation action of $F_2$ on
+itself preserves counting measure, is essentially free, and is nonetheless amenable, being proper.
+Theorem~\ref{thm:proper} shows that this is not an analogy: the Hurwitz action \emph{is} an
+increasing union of translation actions of discrete groups on locally compact groups. The
+counterexample and the system coincide.
+\end{remark}
+
+\section{The search of Paper X is empty}\label{sec:general}
+
+\begin{theorem}[General no-go]\label{thm:general}
+Let $A$ be a finite-dimensional $\Q$-algebra with reduced norm $\Nrd$, $\Lambda\subset A$ an
+order, $P\subseteq\Lambda\setminus\{0\}$ a right Ore, right LCM monoid with $G=PP^{-1}\le A^\times$
+and $N=|\Nrd|$ the norm of Paper X. Suppose $G$ acts by right translation on the finite-adelic
+space $\widetilde\Omega=A(\A_f)$ with a quasi-invariant measure scaling by $N^{-\beta}$, and that
+$G$ is discrete in $\prod_{p\in F}A(\Q_p)^\times$ for every finite $F$ --- automatic when
+the orders of $A$ have finite unit groups, as for definite quaternion algebras over $\Q$;
+for orders with infinite unit groups it can fail, already for a real quadratic field, where
+the closure of the unit group in the $p$-adic factors is the Leopoldt object of Papers
+XXII--XXIII, and the hypothesis must then be checked. Then the
+orbit relation is hyperfinite and the associated factor is injective, for every $\beta$.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:support} holds verbatim: $a\in G$ has $\Nrd(a)$ a rational number, so $a$ is a unit
+of $\Lambda\otimes\Z_q$ for all but the finitely many $q$ dividing its numerator and denominator.
+The proof of Theorem~\ref{thm:proper} then applies with $\HH$ replaced by $A$, and the proof of
+Theorem~\ref{thm:nogo} follows.
+\end{proof}
+
+\begin{corollary}\label{cor:closed}
+Conditions (C1)--(C3) of Paper X are incompatible with (C4). Any monoid satisfying (C1) sits inside
+an order in a finite-dimensional $\Q$-algebra, by (C2) and the finiteness of the norm; (C3)
+forces the unit group $P^\times$ to be finite (Paper X, its Remark 1.5: an infinite unit
+group makes $\zeta_P$ diverge identically), so the norm-one group of the order is finite,
+the archimedean norm-one group is compact, and the discreteness hypothesis of
+Theorem~\ref{thm:general} holds; and every
+element of the monoid is a unit at almost every place; so the resulting groupoid is amenable and the factor
+is injective. The search for a non-injective arithmetic Bost--Connes factor cannot succeed by
+enlarging the index monoid.
+\end{corollary}
+
+\begin{remark}[What would be required]\label{rem:escape}
+Theorem~\ref{thm:general} isolates the obstruction exactly: the finite support of the norm. An
+index monoid escaping it would have to contain elements that are non-units at infinitely many
+places, hence of infinite norm, contradicting the multiplicativity of $N$ into $[2,\infty)$
+required by (C1). Within the framework of Paper X, therefore, no escape exists. Enlargements
+outside it --- an index set that is not of arithmetic type, or a coefficient algebra that is not a
+function algebra --- are excluded by Paper II and Paper XXVII respectively.
+\end{remark}
+
+\section{Verdict}\label{sec:verdict}
+
+\[
+\begin{array}{@{}l@{\qquad}l@{\qquad}l@{}}
+\text{Statement} & \text{Status} & \text{Where}\\\hline
+T_p\ \text{is the tree adjacency operator} & \text{true} & \text{Lem.~\ref{lem:hecke}}\\
+G_F\ \text{acts properly and freely} & \text{true} & \text{Thm.~\ref{thm:proper}}\\
+\pi\restriction G_F\cong\infty\cdot\lambda_{G_F} & \text{true} & \text{Cor.~\ref{cor:regular}}\\
+\mathrm{sp}(\varepsilon_p^{-1/2}T_p\restriction L^2_0)=[-2\sqrt p,2\sqrt p] & \text{true, attained} & \text{Thm.~\ref{thm:spec}}\\
+\text{a spectral gap exists} & \text{true, and it is Kesten's} & \text{Cor.~\ref{cor:gap}}\\
+\text{the gap implies (C4)} & \textbf{false} & \text{Thm.~\ref{thm:vacuous}}\\
+\text{the orbit relation is hyperfinite} & \text{true} & \text{Thm.~\ref{thm:nogo}}\\
+\text{(C4)} & \textbf{false} & \text{Thm.~\ref{thm:nogo}}\\
+\text{some other monoid satisfies (C4)} & \textbf{false} & \text{Thm.~\ref{thm:general}}
+\end{array}
+\]
+
+The Hurwitz system has everything the programme asked for. Its group of fractions is
+non-amenable; it carries free subgroups of every finite rank; it generates the Bruhat--Tits trees
+whose congruence quotients are the Ramanujan graphs; the Hecke operator on the Maharam extension
+is exactly the tree adjacency operator, with no nested projections and no Cuntz obstruction; and
+its spectrum attains the Ramanujan bound. None of it matters. The bound $2\sqrt p$ is the norm of
+the same operator in the regular representation, so attaining it certifies that the Koopman
+representation is regular --- and a regular Koopman representation is what a free proper action
+has. The rigidity is real and it belongs to the group; the action never inherits it, because an
+element of an arithmetic monoid is a unit at almost every place and the group acts only finitely
+many places at a time.
+
+The Bost--Connes phase transition therefore survives every enlargement of the index monoid
+compatible with its own axioms, and the factor does not. The arithmetic lives in the
+$C^*$-algebra with its flow, in the $\mathrm{KMS}$ simplex, and in the obstruction group; the von
+Neumann algebra is, and remains, hyperfinite.
+
+\begin{thebibliography}{99}
+\bibitem{ADR} C. Anantharaman-Delaroche, J. Renault, \emph{Amenable Groupoids}, Monogr.
+Enseign. Math. 36, Geneva, 2000.
+\bibitem{CFW} A. Connes, J. Feldman, B. Weiss, \emph{An amenable equivalence relation is generated
+by a single transformation}, Ergodic Theory Dynam. Systems 1 (1981), 431--450.
+\bibitem{Dye} H. A. Dye, \emph{On groups of measure preserving transformations I}, Amer. J. Math.
+81 (1959), 119--159.
+\bibitem{FM} J. Feldman, C. C. Moore, \emph{Ergodic equivalence relations, cohomology, and von
+Neumann algebras I, II}, Trans. Amer. Math. Soc. 234 (1977), 289--324, 325--359.
+\bibitem{Kesten} H. Kesten, \emph{Symmetric random walks on groups}, Trans. Amer. Math. Soc. 92
+(1959), 336--354.
+\bibitem{Kuhn} M. G. Kuhn, \emph{Amenable actions and weak containment of some representations of
+discrete groups}, Proc. Amer. Math. Soc. 122 (1994), 751--757.
+\bibitem{LPS} A. Lubotzky, R. Phillips, P. Sarnak, \emph{Ramanujan graphs}, Combinatorica 8
+(1988), 261--277.
+\bibitem{Serre} J.-P. Serre, \emph{Trees}, Springer, 1980.
+\bibitem{Vigneras} M.-F. Vign\'eras, \emph{Arithm\'etique des alg\`ebres de quaternions}, Lecture
+Notes in Math. 800, Springer, 1980.
+\bibitem{Zimmer} R. J. Zimmer, \emph{Ergodic Theory and Semisimple Groups}, Monographs in Math.
+81, Birkh\"auser, 1984.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes
+systems: from Chebotarev density to the Hardy--Littlewood conjecture}, preprint, 2026, DOI
+\href{https://doi.org/10.5281/zenodo.22152101}{10.5281/zenodo.22152101}.
+\end{thebibliography}
+
+\end{document}
