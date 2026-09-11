@@ -1,0 +1,282 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+\raggedbottom
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Prob}{\mathrm{Prob}}
+\newcommand{\Lip}{L}
+
+\title[The Wasserstein separation of the broken phases]{The Wasserstein separation of the broken phases:\\ a finite-dimensional reduction and the quadratic chaos bound}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Paper XXIX of the series on localized Bost--Connes systems. The framework is that
+of \cite{Main}, cited by DOI; Paper IV of the series, referred to by numeral, is an
+unpublished companion, and the one fact used from it (the squeeze theorem) is re-proved in
+place.}
+\date{5 September 2026}
+
+\begin{document}
+
+\begin{abstract}
+For a localized Bost--Connes system in its symmetry-broken phase, the Connes--Rieffel
+distance $W_1(\varphi_+,\varphi_-)$ between the two extreme $\mathrm{KMS}_\beta$ states was
+squeezed in Paper IV of the series between $w_0\Pi_\infty(\beta)$ and $w_0$, where $w_0$ is
+the weight of the group direction and $\Pi_\infty(\beta)=\prod_j\frac{1-t_j}{1+t_j}$,
+$t_j=\ell_j^{-\beta}$, is the Kakutani product of the order parameter. We sharpen both
+sides. First, a finite-dimensional reduction: with $W_1^{(N)}$ the distance of the
+$N$-coordinate truncation, an exactly computable second-order cone program,
+\[
+\Pi_{(N,\infty)}\,W_1^{(N)}\ \le\ W_1(\varphi_+,\varphi_-)\ \le\
+\Pi_{(N,\infty)}\,W_1^{(N)}+2\rho_N,
+\]
+the lower bound exact on truncations and the tail variance
+$\rho_N^2=2\sum_{j>N}w_j^2t_j/(1-t_j)^2$ explicit. Second,
+testing against the degree-one odd Walsh chaos gives the closed-form lower bound
+\[
+W_1(\varphi_+,\varphi_-)\ \ge\
+\Pi_\infty(\beta)\Bigl(w_0^2+4\sum_{j}\frac{w_j^2\,t_j^2}{(1-t_j)^2}\Bigr)^{1/2},
+\]
+valid whenever $w_0^2\ge2\sum_jw_j^2t_j/(1-t_j)$ and strictly sharper than
+$w_0\Pi_\infty(\beta)$ at every finite $\beta$. The bound collapses onto the squeeze at the
+deep-freeze limit $\beta\to\infty$ and provides an explicit envelope for the second-order
+vanishing at $\beta_c$. We show that near-optimal test functions can be taken asymptotically
+finite-level and odd under the symmetry, and we record the two questions that remain: a
+matching upper bound, and whether the optimal profile is parity-measurable.
+\end{abstract}
+
+\maketitle
+
+\section{The setting, and the squeeze re-proved}\label{sec:setting}
+
+Throughout, $\beta$ lies in the symmetry-broken phase: $J$ is a countable index set of
+primes $\ell_j$ with $t_j=\ell_j^{-\beta}$ and $\sum_jt_j<\infty$. The base space is
+$X=G\times\prod_{j\in J}\overline\N$, with $G$ a compact abelian group carrying a fixed
+character $\chi$ of order $2$ and a distinguished element $\sigma\in G$ with
+$\chi(\sigma)=-1$. The symmetric measure is
+$\nu_{\mathrm{sym}}=\mathrm{Haar}\otimes\bigotimes_j\mu_{t_j}$, where $\mu_t$ is the
+geometric law $\mu_t(k)=(1-t)t^k$ on $\N$. Write $\varepsilon_j(x)=(-1)^{x_j}$, so
+\[
+m_j:=\E[\varepsilon_j]=\frac{1-t_j}{1+t_j}\in(0,1),
+\qquad
+\Pi_{(N,\infty)}:=\prod_{j>N}m_j,\qquad \Pi_\infty:=\Pi_{(0,\infty)} .
+\]
+Since $\sum_j\mu_{t_j}(x_j\ \mathrm{odd})=\sum_jt_j/(1+t_j)<\infty$, Borel--Cantelli makes
+all but finitely many $\varepsilon_j$ equal to $1$ almost surely, so the order parameter
+\[
+\Psi(g,x)=\chi(g)\prod_{j\in J}\varepsilon_j(x_j)\in\{\pm1\}
+\]
+is defined $\nu_{\mathrm{sym}}$-a.e., and $\nu_{\mathrm{sym}}(\Psi=\pm1)=\tfrac12$ by the
+$\chi$-symmetry of Haar measure. The extreme states are
+$\varphi_\pm(f)=2\int f\,\mathbf1_{\{\Psi=\pm1\}}\,d\nu_{\mathrm{sym}}$, so that
+\begin{equation}\label{eq:sep}
+\varphi_+(f)-\varphi_-(f)=2\,\E[f\,\Psi].
+\end{equation}
+The Lipschitz seminorm, in the Rieffel formalism \cite{Rieffel}, is
+\[
+\Lip(f)=\Bigl\|\Bigl(w_0^{-2}|\Delta_0f|^2+\sum_{j\in J}w_j^{-2}|\Delta_jf|^2\Bigr)^{1/2}\Bigr\|_\infty,
+\]
+with $\Delta_0f(g,x)=f(g\sigma,x)-f(g,x)$ the group difference,
+$\Delta_jf$ the one-step difference in the $j$-th coordinate, and weights satisfying
+$\sum_jw_j^2<\infty$. The distance is
+$W_1(\varphi_+,\varphi_-)=\sup\{\varphi_+(f)-\varphi_-(f):f\in C(X)_{sa},\ \Lip(f)\le1\}$.
+
+\begin{lemma}[Squeeze, re-proved]\label{lem:squeeze}
+$w_0\,\Pi_\infty(\beta)\ \le\ W_1(\varphi_+,\varphi_-)\ \le\ w_0$.
+\end{lemma}
+
+\begin{proof}
+Upper: the map $T(g,x)=(g\sigma,x)$ preserves $\nu_{\mathrm{sym}}$ and flips $\Psi$, hence
+transports $\nu_+:=2\mathbf1_{\{\Psi=1\}}\nu_{\mathrm{sym}}$ to $\nu_-$; for $\Lip(f)\le1$
+one has $|f\circ T-f|=|\Delta_0f|\le w_0$ pointwise, so
+$|\varphi_+(f)-\varphi_-(f)|=|\int(f-f\circ T)\,d\nu_+|\le w_0$. Lower: $f=\frac{w_0}{2}\chi$
+has $\Delta_0f=-w_0\chi$, all other differences zero, so $\Lip(f)=1$, and \eqref{eq:sep}
+gives $2\E[f\Psi]=w_0\,\E\bigl[\chi^2\textstyle\prod_j\varepsilon_j\bigr]=w_0\Pi_\infty$.
+\end{proof}
+
+\section{The finite-dimensional reduction}\label{sec:reduction}
+
+Fix $N$ and let $\mathcal F_{\le N}$ be the $\sigma$-algebra generated by $g$ and
+$x_1,\dots,x_N$, with $E_N$ the corresponding conditional expectation (integrating out
+$x_j$, $j>N$). Write $\Psi_N=\chi\prod_{j\le N}\varepsilon_j$ and
+$T_N=\prod_{j>N}\varepsilon_j$, so $\Psi=\Psi_NT_N$ with $T_N$ independent of
+$\mathcal F_{\le N}$ and $\E[T_N]=\Pi_{(N,\infty)}$. Define the truncated distance
+\[
+W_1^{(N)}:=\sup\bigl\{2\,\E[f\,\Psi_N]:\ f\ \mathcal F_{\le N}\text{-measurable},\
+\Lip(f)\le1\bigr\}.
+\]
+
+\begin{theorem}[Sandwich by truncations]\label{thm:reduction}
+For every $N$,
+\[
+\Pi_{(N,\infty)}\,W_1^{(N)}\ \le\ W_1(\varphi_+,\varphi_-)\ \le\
+\Pi_{(N,\infty)}\,W_1^{(N)}\ +\ 2\rho_N,
+\quad\text{where }
+\rho_N^2:=2\sum_{j>N}\frac{w_j^2\,t_j}{(1-t_j)^2}\to0 .
+\]
+The lower bound is exact on truncations: for an optimizer $f_N$ of $W_1^{(N)}$ the value
+$2\,\E[f_N\Psi]$ equals $\Pi_{(N,\infty)}W_1^{(N)}$ exactly.
+\end{theorem}
+
+\begin{proof}
+\emph{Lower.} For $\mathcal F_{\le N}$-measurable $f$, independence gives
+$\E[f\Psi]=\E[f\Psi_N]\,\E[T_N]$, which is $\Pi_{(N,\infty)}\,\E[f\Psi_N]$; take the
+supremum.
+
+\emph{Upper.} Split $f=E_Nf+(f-E_Nf)$. For $j\le N$ the difference $\Delta_j$ commutes with
+$E_N$, and $\Delta_j E_Nf=0$ for $j>N$; by the vector-valued Jensen inequality applied to
+the $\ell^2$-norm inside the supremum, $\Lip(E_Nf)\le\Lip(f)\le1$, so the first term
+contributes at most $\Pi_{(N,\infty)}W_1^{(N)}$ by the computation above. For the second
+term, expand $f-E_Nf=\sum_{j>N}D_jf$ into martingale differences \cite[Ch.~3]{BLM} along the coordinates
+$j>N$ (in any fixed order); the increments are orthogonal, and
+$|D_jf|\le\E_{x_j'}\bigl|f(\dots,x_j,\dots)-f(\dots,x_j',\dots)\bigr|\le
+w_j\,\E|x_j-x_j'|$ pointwise, since $\Lip(f)\le1$ forces $|\Delta_jf|\le w_j$ at every
+point and the coordinate can be moved one step at a time. Hence
+\[
+\E|f-E_Nf|^2=\sum_{j>N}\E|D_jf|^2\le\sum_{j>N}w_j^2\,\E\bigl[(x_j-x_j')^2\bigr]
+=\sum_{j>N}w_j^2\cdot2\,\mathrm{Var}(x_j)=\rho_N^2,
+\]
+using $\mathrm{Var}_{\mu_t}(x)=t/(1-t)^2$. Since $|\Psi|=1$, Cauchy--Schwarz bounds the
+second term's contribution to \eqref{eq:sep} by $2\rho_N$.
+\end{proof}
+
+\begin{remark}[The truncation is a second-order cone program]\label{rem:socp}
+$W_1^{(N)}$ maximizes the linear functional $2\E[f\Psi_N]$ of the finitely many values of
+$f$ subject to one second-order cone constraint per point of the (truncated) configuration
+space: after additionally truncating each coordinate to $x_j\le M$ --- an error controlled
+by the geometric tails $\sum_{j\le N}w_jt_j^{M}/(1-t_j)$ through the same martingale
+argument --- this is a standard SOCP with $O\bigl(2\cdot M^N\bigr)$ variables (the group
+coordinate enters only through the two values of $\chi$), solvable exactly by interior-point
+methods. Theorem~\ref{thm:reduction} converts any numerical solution into a certified
+two-sided bound on $W_1$.
+\end{remark}
+
+\section{The quadratic chaos bound}\label{sec:quadratic}
+
+We now evaluate the degree-one odd Walsh chaos exactly.
+
+\begin{theorem}[Quadratic sum lower bound]\label{thm:quadratic}
+Set $\kappa_j:=\dfrac{1-m_j}{m_j}=\dfrac{2t_j}{1-t_j}$, and suppose
+\begin{equation}\label{eq:interior}
+w_0^2\ \ge\ \sum_{j\in J}w_j^2\,\kappa_j .
+\end{equation}
+Then
+\[
+W_1(\varphi_+,\varphi_-)\ \ge\
+\Pi_\infty(\beta)\Bigl(w_0^2+\sum_{j\in J}w_j^2\,\kappa_j^2\Bigr)^{1/2}
+=\Pi_\infty(\beta)\Bigl(w_0^2+4\sum_{j\in J}\tfrac{w_j^2\,t_j^2}{(1-t_j)^2}\Bigr)^{1/2},
+\]
+the series converging by $\sum_jw_j^2<\infty$ and $t_j\to0$. The bound is strictly larger
+than the squeeze lower bound $w_0\Pi_\infty(\beta)$ at every $\beta<\infty$, and collapses
+onto it as $\beta\to\infty$.
+\end{theorem}
+
+\begin{proof}
+Take the ansatz $f(g,x)=\chi(g)\bigl(c+\sum_jr_j\varepsilon_j(x_j)\bigr)$ with
+$c,r_j\ge0$ and $\sum_jr_j<\infty$. Its differences are
+$\Delta_0f=-2\chi(c+\sum_jr_j\varepsilon_j)$ and
+$\Delta_jf=\chi\,r_j\,\Delta_j\varepsilon_j$ with $|\Delta_j\varepsilon_j|=2$, so the
+Lipschitz constraint reads, pointwise in the signs $\varepsilon\in\{\pm1\}^J$,
+\[
+\frac{4\bigl(c+\sum_jr_j\varepsilon_j\bigr)^2}{w_0^2}+\sum_j\frac{4r_j^2}{w_j^2}\ \le\ 1 .
+\]
+The supremum over sign patterns is attained at $\varepsilon_j\equiv+1$, so with
+$s:=c+\sum_jr_j$ the constraint is exactly the ellipsoid
+$s^2/(w_0/2)^2+\sum_jr_j^2/(w_j/2)^2\le1$. Independence and $\varepsilon_j^2=1$ give the
+objective
+\[
+2\,\E[f\Psi]=2\Bigl(c\,\Pi_\infty+\sum_jr_j\,\frac{\Pi_\infty}{m_j}\Bigr)
+=2\Pi_\infty\Bigl[s+\sum_jr_j\kappa_j\Bigr],
+\]
+after substituting $c=s-\sum_jr_j$. Maximizing the linear functional
+$s+\sum_jr_j\kappa_j$ over the ellipsoid gives the value
+$\tfrac12\bigl(w_0^2+\sum_jw_j^2\kappa_j^2\bigr)^{1/2}$, attained at
+$s^*=\tfrac{(w_0/2)^2}{R}$, $r_j^*=\tfrac{(w_j/2)^2\kappa_j}{R}$ with
+$R=\tfrac12(w_0^2+\sum w_j^2\kappa_j^2)^{1/2}$; the sign conditions $r_j^*\ge0$ hold, and
+$c^*=s^*-\sum_jr_j^*\ge0$ is exactly \eqref{eq:interior}. Multiplying by $2\Pi_\infty$
+yields the bound. Strictness over $w_0\Pi_\infty$ holds whenever some $t_j>0$, i.e.\ at
+every finite $\beta$; as $\beta\to\infty$ every $\kappa_j\to0$ and the correction vanishes.
+\end{proof}
+
+\begin{remark}[The boundary case]\label{rem:boundary}
+If \eqref{eq:interior} fails --- possible near $\beta_c$ when the weights decay slowly ---
+the maximum of the same linear functional is taken on the face $c=0$ of the cone, i.e.\ on
+the ellipsoid intersected with $\{\sum_jr_j=s\}$; this is again a closed-form Lagrange
+computation, and the resulting bound still dominates $w_0\Pi_\infty(\beta)$, but we do not
+display the longer formula. In either regime the theorem provides an explicit lower
+envelope for the second-order vanishing of $W_1$ at $\beta_c$ established in Paper IV.
+\end{remark}
+
+\section{Structure of optimizers, and what remains}\label{sec:structure}
+
+\begin{proposition}[Odd, asymptotically finite-level]\label{prop:structure}
+The supremum defining $W_1$ is unchanged if restricted to functions that are odd under
+$T(g,x)=(g\sigma,x)$, and for every $\epsilon>0$ it is attained within $\epsilon$ by an
+$\mathcal F_{\le N}$-measurable function as soon as $2\rho_N\le\epsilon$.
+\end{proposition}
+
+\begin{proof}
+The odd part $f^{\mathrm o}=\tfrac12(f-f\circ T)$ satisfies
+$\E[f^{\mathrm o}\Psi]=\E[f\Psi]$ (since $\Psi\circ T=-\Psi$ and $\nu_{\mathrm{sym}}$ is
+$T$-invariant) and $\Lip(f^{\mathrm o})\le\Lip(f)$ (each difference of $f^{\mathrm o}$ is
+the average of two differences of $f$). The second statement is
+Theorem~\ref{thm:reduction} with $E_Nf$ in place of $f$.
+\end{proof}
+
+\begin{conjecture}\label{conj:hierarchy}
+The increasing sequence of values of the odd Walsh-chaos programs --- degree one being
+Theorem~\ref{thm:quadratic}, degree $d$ allowing coefficients
+$r_A\prod_{j\in A}\varepsilon_j$ with $|A|\le d$ --- converges to $W_1(\varphi_+,\varphi_-)$.
+\end{conjecture}
+
+\begin{remark}[Numerical verdict]\label{rem:numerics}
+The programs of Remark~\ref{rem:socp} were solved for a toy model ($w_0=1$,
+$w_j=(j+1)^{-1}$, $t_j=p_j^{-1}$, $N\le3$; the feasible set is convex and the objective
+linear, so any KKT point is the global maximum, and constraint violations were at machine
+precision). Two findings, scripts and outputs in \texttt{code/conj42/} of the repository.
+First, the degree-one bound of Theorem~\ref{thm:quadratic} is far from sharp: the exact
+$2^N$-point parity program --- whose value is the limit of the odd Walsh-chaos hierarchy,
+since a forward step always flips parity and the constraint closes on parity classes
+without any truncation --- exceeds it by $26\%$ at $N=2$ and $39\%$ at $N=3$. Higher
+chaos participates massively. Second, and against Conjecture~\ref{conj:hierarchy}: the
+full grid optimum exceeds the parity optimum, in matched truncations, by a stable
+$2$--$4\times10^{-3}$ that is independent of the grid depth $M$ at $N\ge2$, while at
+$N=1$ (where parity-measurable and degree-one coincide) the same gap vanishes to
+$10^{-15}$ once the boundary parity is matched --- a control showing the $N\ge2$ gap is a
+bulk effect, not a boundary artifact. The evidence is therefore that the optimal profile
+is \emph{not} parity-measurable and that the odd-chaos hierarchy converges to a value
+strictly below $W_1^{(N)}$: Conjecture~\ref{conj:hierarchy} is expected to be false as
+stated, and the parity value should be read as a computable, certified lower bound rather
+than the answer.
+\end{remark}
+
+Two questions remain, and they are the genuine content left in this problem. First, a
+matching \emph{upper} bound: the transport map of Lemma~\ref{lem:squeeze} moves mass only
+in the group direction; any improvement must couple the group move to the parity
+configuration, an $x$-adaptive coupling whose cost functional is not yet controlled.
+Second, \emph{parity measurability} (on which Remark~\ref{rem:numerics} already gives a numerical answer): the order parameter sees only the parities
+$\varepsilon_j$, but conditioning a test function on the parity $\sigma$-algebra does not
+obviously contract $\Lip$, because the one-step differences do not respect the parity
+fibres; whether genuinely non-parity-measurable test functions can strictly increase the
+supremum is open. A numerical test of Conjecture~\ref{conj:hierarchy} is available today:
+Remark~\ref{rem:socp} certifies two-sided bounds for small $N$, to be compared with the
+closed form of Theorem~\ref{thm:quadratic}.
+
+\begin{thebibliography}{9}
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\bibitem{Rieffel} M. A. Rieffel, \emph{Metrics on state spaces}, Doc. Math. 4 (1999), 559--600.
+\bibitem{BLM} S. Boucheron, G. Lugosi, P. Massart, \emph{Concentration Inequalities: A Nonasymptotic Theory of Independence}, Oxford University Press, 2013.
+\end{thebibliography}
+
+\end{document}
