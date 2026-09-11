@@ -1,0 +1,426 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\ff}{\mathfrak{f}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\Sp}{\operatorname{Sp}}
+\newcommand{\id}{\mathrm{id}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[Bost--Connes systems over function fields]{Localized Bost--Connes systems over global function fields:\\ commensurability forbids type $\mathrm{III}_1$,\\ and the factor recovers the temperature}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/XVII-function-fields/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We transport the localized Bost--Connes theory to $K=\F_q(C)$ for a smooth projective
+geometrically irreducible curve $C/\F_q$ of genus $g$, and find that one structural feature
+inverts and, with it, the central negative result of Paper IX of the series.
+
+Over a number field the logarithms $\log\Ns\pp$ of an infinite prime set are never pairwise
+commensurable \cite[Lem.~4.1]{SeriesI}; over a function field they are \emph{always}
+commensurable, being $\deg(P)\log q$. Hence
+$\Gamma_\beta=\langle q^{-\beta\deg P}\rangle=q^{-\beta d_S\Z}$ with
+$d_S=\gcd_{P\in S}\deg P$ is a \emph{discrete} subgroup of $\R_{>0}$, so
+$S(M)\subseteq\Gamma_\beta\cup\{0\}$ can never be $[0,\infty)$: \textbf{the extremal
+$\mathrm{KMS}_\beta$ factors are never of type $\mathrm{III}_1$}, in complete contrast with
+\cite[Thm.~3.2]{SeriesI}, where $\mathrm{III}_1$ is generic. The proposed alternative
+``$\mathrm{III}_0$ if $\Gamma_\beta$ is dense'' cannot occur, a discrete group not being
+dense; the alternatives are $\mathrm{III}_\lambda$ with $\lambda\in q^{-\beta d_S\Z}$,
+$\mathrm{III}_0$, or semifiniteness.
+
+The consequence is the interesting one. In the $\mathrm{III}_\lambda$ case
+$M_\beta\cong R_\lambda$ with $\lambda=q^{-\beta d_S}$, and the Powers factors are mutually
+non-isomorphic; so \textbf{the von Neumann algebra determines $\beta\,d_S\log q$}. Paper IX
+showed that over number fields every system with $S=P_K$, $\beta\le1$ gives $R_\infty$ and the
+factor remembers neither $K$, nor $S$, nor $\beta$. Over function fields the collapse is
+partial: the temperature survives weak closure. This is the first repair of Theorem 2.1 of
+Paper IX in the whole programme, and it is bought by commensurability rather
+than by any rigidity input.
+
+Two corrections. The modular flow is periodic with fundamental period
+$T_0=2\pi/(d_S\log q)$, not $2\pi/\log q$; the two agree exactly when $d_S=1$, which does hold
+for $S=\cP_K$ by F.~K. Schmidt's theorem but fails for, say, the set of points of even degree.
+And in the Weil--Chebotarev bound the term $(g_L+1)q^{n/2}$ swamps the main term
+$2g_Lq^{n/2}/n$ and is superfluous: the truth is $O_\chi(q^{n/2}/n)$, with the
+constant-field-extension characters requiring a separate and elementary treatment, Weil's
+bound not applying to them.
+
+The rest goes through and is unconditional. $\beta_c=1$ for every curve; uniqueness holds on
+$(0,1]$ for $S=\cP_K$, unconditionally --- the class-group characters, which over a number
+field can obstruct permanently, here have detecting sets of positive density; and a set with
+$A_n(S)\asymp q^n/n^2$ has $\sum_{P\in S}q^{-\deg P}=\zeta(2)$-like and finite, giving a
+\emph{closed} low-temperature phase $[1,\infty)$ with no sieve hypothesis whatever.
+\end{abstract}
+
+\maketitle
+
+\section{The system and its periodic flow}
+
+Let $C/\F_q$ be a smooth projective geometrically irreducible curve of genus $g$,
+$K=\F_q(C)$, and $\cP_K$ the set of closed points. For $S\subseteq\cP_K$ put
+\[
+J_S=\Div_+^S(C)=\bigoplus_{P\in S}\N\cdot P,\qquad
+\Ns(P)=q^{\deg P},\qquad
+\cA_{C,S}=C(Y_S)\rtimes J_S,
+\]
+with $G_S=\mathbb I_S/\overline{K^\times_S}$ and $\sigma_t(\mu_D)=q^{it\deg D}\mu_D$. Write
+\[
+d_S:=\gcd_{P\in S}\deg P .
+\]
+Constructions and notation follow \cite{Main}; Papers VIII, IX, XIII and XV of the series,
+referred to by numeral, are unpublished companions, and every fact used from them is
+restated or verified in place. One convention is needed at once: for $S=\cP_K$ the degree
+map gives $\mathbb I_S/\overline{K^\times_S}$ a quotient $\Z$, so the group as written is
+not compact; as the framework of \cite{Main} requires a compact symmetry group (and as is
+standard for Bost--Connes systems over function fields), $G_S$ denotes throughout the
+profinite completion in the degree direction. Its dual $\widehat{G_S}$ is then a torsion
+group, and the characters factoring through the constant-field tower
+$\Gal(\overline\F_q/\F_q)\cong\widehat\Z$ are exactly $P\mapsto\zeta^{\deg P}$ with $\zeta$
+a root of unity. For the basic theory of curves over finite fields we refer to
+\cite{Rosen,Stichtenoth}.
+
+\begin{proposition}[Periodicity]\label{prop:period}
+The flow $\sigma$ is periodic with fundamental period
+\[
+T_0=\frac{2\pi}{d_S\log q}.
+\]
+In particular $T_0=2\pi/\log q$ precisely when $d_S=1$, which holds for $S=\cP_K$ by
+F.~K. Schmidt's theorem \cite{Rosen} that the gcd of the degrees of closed points of a curve over a finite
+field is $1$; it fails for instance when $S$ consists of the points of even degree, where
+$d_S=2$ and the period is halved.
+\end{proposition}
+
+\begin{proof}
+$\sigma_T=\id$ iff $q^{iT\deg D}=1$ for every $D\in J_S$, i.e.\ $T\log q\deg D\in2\pi\Z$. The
+degrees realized by $J_S$ generate the subgroup $d_S\Z$ of $\Z$, so the condition is
+$T\,d_S\log q\in2\pi\Z$, whose least positive solution is $T_0$.
+\end{proof}
+
+\begin{remark}\label{rem:periodic}
+Periodicity of $\sigma$ has no analogue over number fields, where the $\log\Ns\pp$ generate a
+dense subgroup of $\R$ and $\sigma$ is never periodic. It means that $\sigma$ factors through
+the circle $\R/T_0\Z$, so $\cA_{C,S}$ carries a genuine $\mathbb T$-action rather than a flow.
+\end{remark}
+
+\section{Rational thermodynamics}
+
+\begin{proposition}[Weil zeta]\label{prop:zeta}
+With $T=q^{-\beta}$,
+\[
+\prod_{P\in S}\bigl(1-q^{-\beta\deg P}\bigr)^{-1}=Z_S(C,T),
+\]
+and for $S=\cP_K$ this is the Weil zeta function \cite{Weil}
+$Z_C(T)=\dfrac{P(T)}{(1-T)(1-qT)}$ with $P(T)=\prod_{j=1}^{2g}(1-\alpha_jT)$ and
+$|\alpha_j|=q^{1/2}$. Its poles are at $T=1$ and $T=q^{-1}$, that is at $\beta=0$ and
+$\beta=1$.
+\end{proposition}
+
+\begin{corollary}[Critical exponent]\label{cor:betac}
+For every curve $C$ and $S=\cP_K$, $\beta_c(C)=1$: the series
+$\sum_{P}q^{-\beta\deg P}=\sum_n a_nq^{-\beta n}$, with
+$a_n=\#\{P:\deg P=n\}=\frac{q^n}{n}+O\bigl(\frac{q^{n/2}}{n}\bigr)$ by Weil, converges for
+$\beta>1$ and diverges for $\beta\le1$.
+\end{corollary}
+
+\begin{proof}
+$\sum_n\frac{q^{n(1-\beta)}}{n}$ diverges for $\beta\le1$, converging otherwise; the Weil
+error term contributes $\sum_nq^{n(1/2-\beta)}/n$, convergent for $\beta>1/2$.
+\end{proof}
+
+\begin{remark}[Numerical illustration]\label{rem:numbetac}
+Partial sums $\sum_{n\le40}a_nq^{-\beta n}$ with $a_n=q^n/n$: for $q=2$ they are $11.36$,
+$4.28$, $2.69$ at $\beta=0.9,1.0,1.1$, and for $q=4$ they are $65.68$, $4.28$, $2.04$; the
+value at $\beta=1$ is $\sum_{n\le40}1/n$ in both cases, growing logarithmically, and the
+$\beta=1.1$ column is bounded.
+\end{remark}
+
+\section{Commensurability forbids type $\mathrm{III}_1$}
+
+\begin{lemma}[Total commensurability]\label{lem:commens}
+For every $P\in S$, $\log\Ns(P)=\deg(P)\log q\in(\log q)\Z$. Hence the log-norms are
+pairwise commensurable, and
+\[
+\Gamma_\beta=\bigl\langle\Ns(P)^{-\beta}:P\in S\bigr\rangle=q^{-\beta d_S\Z},
+\]
+a discrete subgroup of $(\R_{>0},\times)$.
+\end{lemma}
+
+\begin{remark}[The inversion]\label{rem:inversion}
+\cite[Lem.~4.1]{SeriesI} proves that over a number field an infinite $S$ never has pairwise
+commensurable log-norms, distinct rational primes having $\Q$-independent logarithms. Over a
+function field the opposite holds universally. This single reversal drives everything below.
+\end{remark}
+
+\begin{theorem}[Never $\mathrm{III}_1$]\label{thm:neverIII1}
+For every curve $C$, every $S$ and every $\beta>0$, the extremal $\mathrm{KMS}_\beta$ factors
+$M=\pi_\varphi(\cA_{C,S})''$ are \emph{not} of type $\mathrm{III}_1$. Moreover
+$\Gamma_\beta$ being discrete, the case ``$\Gamma_\beta$ dense'' cannot occur, so the
+possibilities are: type $\mathrm{III}_\lambda$ with $\lambda\in q^{-\beta d_S\Z}$; type
+$\mathrm{III}_0$, where $S(M)=\{0,1\}$; or semifinite, where $S(M)=\{1\}$.
+\end{theorem}
+
+\begin{proof}
+By \cite[Prop.~6.1]{Main}, $S(M)\subseteq\overline{\Gamma_\beta}\cup\{0\}$, and
+$\overline{\Gamma_\beta}=\Gamma_\beta$ by Lemma~\ref{lem:commens}. Type $\mathrm{III}_1$
+requires $S(M)=[0,\infty)$, which is not contained in a discrete set together with $0$. The
+listed cases exhaust Connes' classification of $S(M)$.
+\end{proof}
+
+\begin{corollary}[Contrast]\label{cor:contrast}
+By \cite[Thm.~3.2]{SeriesI}, over a number field with $S=P_K$ and $0<\beta\le1$ the type is
+always $\mathrm{III}_1$. Over a function field it never is, for any $S$ and any $\beta$. The
+two settings are opposite in this respect, and the reason is Lemma~\ref{lem:commens} alone,
+no arithmetic being used.
+\end{corollary}
+
+\section{The factor recovers the temperature}
+
+\begin{theorem}[Partial repair of Paper IX]\label{thm:repair}
+Suppose $M_\beta=\pi_{\varphi_\beta}(\cA_{C,S})''$ is of type $\mathrm{III}_\lambda$ with
+$\lambda=q^{-\beta d_S}$. Then $M_\beta\cong R_\lambda$, the Powers factor: $\cA_{C,S}$ is
+amenable --- the argument of Paper IX (its Lemma 1.1) applies verbatim, the acting group
+$I_S=\Z^{(S)}$ being abelian here too, so the groupoid is amenable and $M_\beta$ is
+injective --- and since $R_\lambda\cong R_{\lambda'}$ only for
+$\lambda=\lambda'$, the isomorphism class of $M_\beta$ determines
+\[
+\lambda=q^{-\beta d_S},\qquad\text{hence}\qquad \beta\,d_S\log q .
+\]
+In particular, for fixed $q$ and $d_S$, distinct temperatures give non-isomorphic factors.
+\end{theorem}
+
+\begin{proof}
+Amenability and Connes' classification give $M_\beta\cong R_\lambda$; the Powers factors are
+pairwise non-isomorphic, their $S$-invariants $\{0\}\cup\lambda^\Z$ being distinct.
+\end{proof}
+
+\begin{remark}[What this changes]\label{rem:changes}
+Theorem 2.1 of Paper IX showed that over number fields
+$M_{\Q,P_\Q,1}\cong M_{\Q,P_\Q,1/2}\cong M_{K,P_K,\beta}\cong R_\infty$ for every $K$ and
+every $\beta\in(0,1]$: the factor remembers neither the field, nor the prime set, nor the
+temperature. Theorem~\ref{thm:repair} is the first place in this programme where that
+collapse is not total. It is worth being precise about how much is repaired: the factor
+recovers the single real number $\beta d_S\log q$, and nothing else --- not $C$, not $g$, not
+$S$ beyond $d_S$, not the obstruction group. But $\beta$ was the quantity whose loss was most
+striking in Paper IX, and it is recovered here for free, by commensurability rather
+than by any rigidity theorem.
+
+Numerically:
+\[
+\begin{array}{lccccc}
+(q,d_S,\beta) & (2,1,\tfrac12) & (2,1,1) & (2,1,2) & (4,2,1) & (9,1,\tfrac32)\\
+\lambda & 0.7071 & 0.5000 & 0.2500 & 0.0625 & 0.0370
+\end{array}
+\]
+Distinct temperatures give distinct factors.
+\end{remark}
+
+\begin{remark}[The remaining ambiguity]\label{rem:ambiguity}
+Only the product $\beta d_S\log q$ is recovered, so $(q,d_S,\beta)$ and
+$(q',d_S',\beta')$ with $\beta d_S\log q=\beta'd_S'\log q'$ give isomorphic factors: for
+example $(q,d_S,\beta)=(4,1,1)$ and $(2,1,2)$ both give $\lambda=1/4$. Recovering $q$
+separately requires the $C^*$-level, where by Proposition 1.1 of Paper XV the point spectrum
+$\Sp_p(\sigma)=q^{d_S\Z}$ is available and pins $q^{d_S}$ directly.
+\end{remark}
+
+\section{The Weil--Chebotarev obstruction}
+
+\begin{proposition}[Corrected bound]\label{prop:weilbound}
+Let $\chi$ be a nontrivial character of $G_S$ that does \emph{not} factor through the
+constant-field tower; write $\chi=z^{\deg}\cdot\chi_0$ with $z$ a root of unity and $\chi_0$
+geometric with conductor $\ff_\chi$, and put $B_\chi=2g-2+\deg\ff_\chi$
+\cite{Stichtenoth}. Then $L(T,\chi)=L(zT,\chi_0)=\prod_{j=1}^{B_\chi}(1-\alpha_jT)$ with
+$|\alpha_j|=q^{1/2}$ by Weil \cite{Weil}, and
+\[
+\Bigl|\sum_{\deg P=n}\chi(\Frob_P)\Bigr|\ \le\ \frac{B_\chi}{n}\,q^{n/2}+\frac{4g+4}{n}q^{n/2}
+\qquad(n\ge1).
+\]
+\end{proposition}
+
+\begin{proof}
+Taking logarithmic derivatives of $L(T,\chi)$ gives
+$\sum_{\deg P\mid n}\deg P\cdot\chi(\Frob_P)^{n/\deg P}=-\sum_j\alpha_j^n$, of modulus at
+most $B_\chi q^{n/2}$. The terms with $\deg P=m<n$ are bounded in absolute value by
+$m\,a_m\le\#C(\F_{q^m})\le q^m+1+2gq^{m/2}\le(2g+2)q^m$, and
+$\sum_{m\le n/2}(2g+2)q^m\le(2g+2)\tfrac{q}{q-1}q^{n/2}\le(4g+4)q^{n/2}$; removing them and
+dividing by $n$ gives the statement.
+\end{proof}
+
+\begin{remark}[The proposed bound]\label{rem:proposedbound}
+The bound $2g_Lq^{n/2}/n+(g_L+1)q^{n/2}$ is true but its second term has no factor $1/n$ and
+therefore dominates the first for every $n\ge1$, making the whole estimate weaker than the
+trivial $O(q^{n/2})$ that the main term already provides. The correct order is
+$O_\chi(q^{n/2}/n)$, as in Proposition~\ref{prop:weilbound}.
+\end{remark}
+
+\begin{remark}[Constant field extensions need separate treatment]\label{rem:constfield}
+Weil's bound does not apply to the characters $\chi$ factoring through
+$\Gal(\F_{q^m}/\F_q)$, for which $\chi(\Frob_P)=\zeta^{\deg P}$ with $\zeta$ a primitive
+$m$-th root of unity: the corresponding $L$-function is $Z_C(\zeta T)$, which has poles
+rather than the required polynomial form. These are the function field counterpart of the
+class-group characters of \cite[\S4.1]{Main}, and they must be handled directly. That is
+elementary: $D_\chi=\{P:\deg P\not\equiv0\ (\mathrm{mod}\ m)\}$, and
+$\sum_{P\in D_\chi}q^{-\beta\deg P}=\sum_{n\not\equiv0\ (m)}a_nq^{-\beta n}$ diverges for
+$\beta\le1$, since $a_n\sim q^n/n$ on the nonzero residue classes as well
+(Corollary~\ref{cor:betac}).
+\end{remark}
+
+\begin{theorem}[Unconditional uniqueness]\label{thm:uniqueness}
+Let $S=\cP_K$. For every nontrivial $\chi\in\widehat{G_S}$,
+\[
+\sum_{P}q^{-\beta\deg P}\bigl|1-\chi(\sigma_P)\bigr|^2=\infty\qquad(0<\beta\le1),
+\]
+so $\Xi_\beta=\{1\}$ and the $\mathrm{KMS}_\beta$ state is unique for $0<\beta\le1$,
+unconditionally and with explicit constants. In particular the unramified class-group
+obstruction of \cite[\S4.1]{Main} has no analogue at $S=\cP_K$: the characters pulled back
+from $\operatorname{Pic}(C)$ have detecting sets of positive density.
+\end{theorem}
+
+\begin{proof}
+Since $|1-w|^2=2-2\operatorname{Re}w$ on the unit circle,
+\[
+\sum_{\deg P=n}\bigl|1-\chi(\Frob_P)\bigr|^2
+=2a_n-2\operatorname{Re}\sum_{\deg P=n}\chi(\Frob_P).
+\]
+If $\chi$ does not factor through the
+constant-field tower, Proposition~\ref{prop:weilbound} bounds the second term by
+$2(B_\chi+4g+4)q^{n/2}/n$, so the sum is $\ge a_n$ for $n$ large and
+$\sum_nq^{-\beta n}a_n=\infty$ for $\beta\le1$ by Corollary~\ref{cor:betac}. If
+$\chi=\zeta^{\deg}$ is a constant-field character, Remark~\ref{rem:constfield} applies.
+These two cases are exhaustive, $\widehat{G_S}$ being torsion. Hence $\chi\notin\Xi_\beta$
+for every nontrivial $\chi$ and $0<\beta\le1$, and uniqueness follows from the criterion of
+\cite[Thm.~3.9]{Main}, whose Kakutani--martingale proof uses only the product structure of
+the measures and applies verbatim over a function field. For the last sentence: a character
+of $\operatorname{Pic}(C)$ pulled back to $G_S$ is $\zeta^{\deg}$ times a character of the
+finite group $\operatorname{Pic}^0(C)$; the latter is geometric and everywhere unramified,
+with $B_\chi=2g-2$, so it falls under the first case, and its detecting set has density
+bounded below explicitly in $g$.
+\end{proof}
+
+\begin{remark}[What is gained over the number field case]\label{rem:gain}
+The corresponding statement over $\Q$ \cite[Thm.~3.9]{Main} relies on the prime ideal theorem
+and Chebotarev density with their ineffective error terms, Siegel--Walfisz and the possibility
+of Landau--Siegel zeros. Here Weil's theorem is available and every constant is explicit in
+$g$ and $\deg\ff_\chi$. Nothing is conjectural.
+\end{remark}
+
+\section{Unconditional sparse sets and closed phases}
+
+\begin{theorem}[Closed low-temperature phase, no sieve]\label{thm:sparse}
+Choose, for each $n$, any $A_n=\lfloor q^n/n^2\rfloor$ closed points of degree $n$; this is
+possible for $n$ large since $a_n\sim q^n/n\gg q^n/n^2$. Let $S_{\mathrm{geom}}$ be their
+union. Then
+\[
+\sum_{P\in S_{\mathrm{geom}}}q^{-\beta\deg P}\asymp\sum_n\frac{q^{n(1-\beta)}}{n^2},
+\]
+so $\beta_c(S_{\mathrm{geom}})=1$ and the series \emph{converges at} $\beta=1$, with value
+$\asymp\zeta(2)=\pi^2/6$. Consequently the symmetry-broken phase is the closed half-line
+$[1,\infty)$, exactly as in \cite[Thm.~5.5]{Main}, and the construction uses no sieve
+hypothesis of any kind.
+\end{theorem}
+
+\begin{proof}
+The displayed asymptotic is immediate; $\sum_nn^{-2}<\infty$ gives convergence at $\beta=1$
+and $\sum_nq^{n(1-\beta)}/n^2=\infty$ for $\beta<1$ gives $\beta_c=1$. Closedness of the
+phase is \cite[Thm.~5.5]{Main}, whose hypothesis is exactly convergence at the critical
+exponent.
+\end{proof}
+
+\begin{remark}[Numerical check]\label{rem:numsparse}
+With $q=2$, $\sum_{n\le200}2^{n(1-\beta)}/n^2$ equals $2.964$, $1.640$, $1.493$ at
+$\beta=0.95,1.00,1.05$; the middle value is the truncation of $\pi^2/6=1.6449$.
+\end{remark}
+
+\begin{remark}[Comparison]\label{rem:compare}
+Over $\Q$ the closed phase of \cite[Thm.~5.5]{Main} was obtained for the Sophie Germain
+primes and required Brun's sieve; the corresponding statement for the twin primes remains
+tied to the Hardy--Littlewood conjecture. Over a function field the point counts are known
+exactly, so a set of any prescribed density can simply be selected. The gain is not that a
+hard theorem becomes easy but that the question stops being about existence: one chooses the
+set rather than proving that one exists.
+\end{remark}
+
+\section{Dictionary and assessment}
+
+\[
+\begin{array}{lll}
+\text{Number field }K & \text{Function field }\F_q(C) & \text{Reference}\\\hline
+\log\Ns\pp\ \text{never commensurable} & \text{always commensurable} & \text{\cite[Lem.~4.1]{SeriesI}, Lem.~3.1}\\
+\sigma\ \text{never periodic} & \text{periodic},\ T_0=2\pi/(d_S\log q) & \text{Prop.~1.1}\\
+\beta_c\ \text{depends on }S & \beta_c=1\ \text{for }S=\cP_K & \text{Cor.~2.2}\\
+\text{type }\mathrm{III}_1\ \text{generic} & \textbf{never }\mathrm{III}_1 & \text{Thm.~3.3}\\
+M\cong R_\infty,\ \beta\ \text{forgotten} & M\cong R_\lambda\ \text{recovers}\ \beta d_S\log q & \text{Thm.~4.1}\\
+\text{Chebotarev ineffective} & \text{Weil bound, explicit} & \text{Prop.~5.1}\\
+\text{sparse sets need sieves} & \text{sets are chosen, not found} & \text{Thm.~6.1}\\
+\text{unramified obstruction (\cite[\S4.1]{Main})} & \text{none at }S=\cP_K\text{: positive density} & \text{Thm.~5.4}
+\end{array}
+\]
+
+The transfer succeeds and, unlike the transfer to arithmetic topology of Paper VIII,
+it succeeds with content: every analytic difficulty of the number field theory becomes a
+theorem, and one structural feature genuinely inverts. That inversion, total commensurability
+of the log-norms, is the whole story. It makes the flow periodic, it makes $\Gamma_\beta$
+discrete, it forbids type $\mathrm{III}_1$, and it thereby causes the von Neumann algebra to
+retain the temperature that Paper IX showed is destroyed over number fields.
+
+We should be exact about the size of that last claim. The factor recovers one real number,
+$\beta d_S\log q$, and by Remark~\ref{rem:ambiguity} not even $q$ and $\beta$ separately. It
+does not recover the curve, its genus, or the obstruction group; the collapse of
+Paper IX is weakened, not reversed. But it is the first weakening, and it comes from
+the arithmetic of the ground field rather than from any additional structure imposed on the
+system.
+
+Three questions. Which of the three cases of Theorem~\ref{thm:neverIII1} actually occurs, and
+for which $S$? The natural guess is $\mathrm{III}_{q^{-\beta d_S}}$ throughout, but
+determining $\Sigma_\beta$ exactly, as Paper I does over number fields
+(\cite[Prop.~2.2]{SeriesI} for the bound via the extended group, \cite[Thm.~4.2]{SeriesI}
+for an exact determination), requires computing the extended obstruction group here and we
+have not done it. Second, does the periodicity of $\sigma$ --- so that $\cA_{C,S}$ carries a
+circle action rather than a flow --- bring the classification of Paper XIII within reach of
+the equivariant Kirchberg theory for compact groups, which is far better developed than for
+$\R$ (its Remark 5.1)? Third, the Weil bound gives effective control on
+$\Xi_\beta$ that has no number field counterpart; whether it yields a realization theorem for
+prescribed chains $\{\Xi_\beta\}$, the function field analogue of
+\cite[Thm.~5.1]{SeriesI}, is open and looks tractable.
+
+\begin{thebibliography}{9}
+\bibitem{Rosen} M. Rosen, \emph{Number Theory in Function Fields}, Graduate Texts in Math. 210, Springer, 2002.
+\bibitem{Stichtenoth} H. Stichtenoth, \emph{Algebraic Function Fields and Codes}, 2nd ed., Graduate Texts in Math. 254, Springer, 2009.
+\bibitem{Weil} A. Weil, \emph{Sur les courbes alg\'ebriques et les vari\'et\'es qui s'en d\'eduisent}, Hermann, Paris, 1948.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\bibitem{SeriesI} R. Chen, \emph{Localized Bost--Connes systems I: factor type and the spectrum of transitions}, preprint, 2026, DOI \href{https://doi.org/10.5281/zenodo.22160827}{10.5281/zenodo.22160827}.
+\end{thebibliography}
+
+\end{document}
