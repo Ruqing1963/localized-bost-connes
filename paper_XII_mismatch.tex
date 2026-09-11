@@ -1,0 +1,440 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.05in]{geometry}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\Ns}{\mathrm{N}}
+\newcommand{\Nrd}{\operatorname{Nrd}}
+\newcommand{\id}{\mathrm{id}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[Multiplicity--norm mismatch and the reduction of (C4)]{The universal multiplicity--norm mismatch,\\ and the reduction of \textup{(C4)} to the norm-one subgroup}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/XII-mismatch/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Paper XI of the series left two questions. We settle the first completely and reduce the
+second to a sharply posed problem, without solving it.
+
+\emph{First question.} Is there an order in a central division algebra whose number
+$d_\pp$ of principal right ideals of reduced norm $\pp$ equals $\Ns\pp$, so that a boundary
+quotient with a nonempty $\mathrm{KMS}$ simplex could exist? The answer is no, and the
+obstruction is elementary and universal. At a prime where a maximal order in a central
+simple algebra of degree $d$ has local index $e$, $\Lambda\otimes\cO_\pp\cong M_{d/e}(\cO_{D_e})$,
+the right ideals of reduced norm $\pp$ are the hyperplanes of $\F_{q^e}^{d/e}$, $q=\Ns\pp$;
+hence
+\[
+d_\pp=\frac{q^d-1}{q^e-1},\qquad d_\pp\ge1+q>q\ \text{ for }e<d,\qquad d_\pp=1<q\ \text{ for }e=d,
+\]
+and $d_\pp\ne\Ns\pp$ at every prime, for every $d\ge2$. For $d=2$ the excess at a split prime
+is exactly $1$: the off-by-one of $\mathbb P^1$. Eichler orders do not repair this: at a
+prime exactly dividing the level the local tree collapses to an edge and $d_\pp=2$, which
+equals $\Ns\pp$ only when $\Ns\pp=2$ --- a match at one prime, never at almost all. The
+boundary quotient forcing the $d_\pp$ range projections to partition is in fact the zero
+algebra, a central element of reduced norm $\pp^d$ lying in every right ideal of reduced norm
+$\pp$; and even a partition in mean would force a temperature
+$\beta(\pp)=\log d_\pp/\log q$ that decreases strictly with $q$ to $d-1$.
+
+\emph{Second question.} Condition (C4) asks whether the measured groupoid, equivalently its
+Maharam extension, is non-amenable. We make two structural observations that reduce it.
+The Radon--Nikodym cocycle is $\Nrd(a)^{-\beta}$ and therefore \emph{factors through the
+reduced norm}, so the norm-one subgroup $G^1=\ker(\Nrd)$ --- which is non-amenable,
+containing free groups --- acts \emph{measure preservingly}. The non-amenable directions of
+$G$ and the thermodynamic direction are orthogonal. And in the Fourier decomposition of the
+Maharam extension over the flow variable, the fibre representations are
+$\pi_\tau=\chi_\tau\otimes\pi_0$ with $\chi_\tau(a)=\Nrd(a)^{i\beta\tau}$ a character; since
+$\chi_\tau|_{G^1}=1$ for every $\tau$, \emph{all fibres restrict to one and the same
+representation of $G^1$}. The $\tau$-integral is invisible to $G^1$, and by Kuhn's theorem
+(C4) follows from a single weak-containment statement: $\pi_0|_{G^1}$ not weakly contained in
+the regular representation of $G^1$.
+
+We do not settle it, and we say precisely why the expected arguments fail. Zimmer's theorem
+that an essentially free amenable action preserving a \emph{probability} measure forces the
+group to be amenable does not extend to infinite invariant measures, and the invariant
+measure here is infinite; and a spectral gap for $\pi_0|_{G^1}$ would not suffice, since
+amenable actions have tempered Koopman representations --- the translation action of $F_2$
+on itself preserves counting measure, is essentially free, has a spectral gap, and is an
+amenable groupoid.
+\end{abstract}
+
+\maketitle
+
+\section{Local multiplicities}
+
+Let $K$ be a number field, $A$ a central simple $K$-algebra of degree $d$, so
+$\dim_KA=d^2$, and $\Lambda\subset A$ an order all of whose right ideals are principal, as
+condition (C1) of Paper X requires; the Hurwitz order is one \cite{Reiner,Vigneras}. For a
+finite prime $\pp$ of $K$ with residue field $\F_q$, $q=\Ns\pp$, write
+\[
+d_\pp(\Lambda):=\#\bigl\{\text{right ideals }a\Lambda\subseteq\Lambda\text{ with }\Nrd(a)\cO_K=\pp\bigr\},
+\]
+the number of right ideals of reduced norm $\pp$, a local quantity: right ideals of
+$\Lambda$ of reduced norm $\pp$ correspond to right ideals of $\Lambda\otimes\cO_\pp$ of
+reduced norm $\pp$, by the local--global correspondence for lattices \cite{Reiner}.
+
+\emph{The series.} The foundational paper of the series is not used here; Papers II, IX, X
+and XI, cited by numeral, are in preparation, and the facts taken from them are stated where
+used.
+
+\begin{lemma}[Local multiplicities]\label{lem:split}
+Let $\Lambda$ be maximal and let $e\mid d$ be the local index of $A$ at $\pp$, so that
+$\Lambda\otimes\cO_\pp\cong M_{r}(\cO_D)$ with $r=d/e$ and $\cO_D$ the maximal order of the
+central division algebra $D$ of index $e$ over $K_\pp$, whose residue field is $\F_{q^e}$
+\cite[Ch.~3]{Reiner}. Then
+\begin{equation}\label{eq:dp}
+d_\pp=\bigl|\mathbb P^{r-1}(\F_{q^e})\bigr|=\frac{q^{d}-1}{q^{e}-1}=1+q^e+\cdots+q^{e(r-1)} .
+\end{equation}
+In particular $d_\pp=1+q+\cdots+q^{d-1}$ at a split prime ($e=1$) and $d_\pp=1$ at a totally
+ramified prime ($e=d$).
+\end{lemma}
+
+\begin{proof}
+Right ideals of $M_r(\cO_D)$ are the sets of matrices whose rows lie in a right
+$\cO_D$-submodule $L\subseteq\cO_D^r$, and $L\mapsto$ this ideal is a bijection onto the
+right ideals. A generator $a$ of the ideal has reduced norm of $\pp$-adic valuation equal
+to the length of $\cO_D^r/L$ as an $\cO_D$-module, the simple $\cO_D$-module being
+$\cO_D/\Pi\cO_D\cong\F_{q^e}$ with $\Pi$ the uniformizer of $D$, $\Nrd_D(\Pi)$ having
+valuation $1$. So the ideals of reduced norm $\pp$ are the $L$ with $\cO_D^r/L\cong\F_{q^e}$,
+i.e.\ the preimages of the hyperplanes of the $\F_{q^e}$-vector space
+$(\cO_D/\Pi)^r=\F_{q^e}^r$, parametrized by the dual projective space, of cardinality
+\eqref{eq:dp}.
+\end{proof}
+
+\begin{theorem}[Universal multiplicity--norm mismatch]\label{thm:mismatch}
+Let $\Lambda$ be a maximal order in a central simple algebra of degree $d\ge2$. Then at every
+prime with local index $e<d$,
+\[
+d_\pp-\Ns\pp\ =\ 1+q^e+\cdots+q^{e(r-1)}-q\ \ge\ 1\ >\ 0 ,
+\]
+with equality to $1$ exactly when $d=2$ and $\pp$ is split; and at a totally ramified prime
+$d_\pp=1<\Ns\pp$. In particular $d_\pp\ne\Ns\pp$ for every $d\ge2$ and every $\pp$, and there
+is no maximal order in a central simple algebra for which the multiplicity matches the norm
+at even one prime.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:split}, for $e<d$ we have $r\ge2$ and $d_\pp-q=1+q^e+\cdots+q^{e(r-1)}-q$;
+if $e=1$ and $d=2$ this is $1+q-q=1$; if $e=1$ and $d\ge3$ it is $1+q^2+\cdots+q^{d-1}\ge1+q^2>1$;
+if $e\ge2$ it is at least $1+q^e-q>1$. For $e=d$, $d_\pp=1<q$.
+\end{proof}
+
+\begin{proposition}[Eichler and hereditary orders]\label{prop:eichler}
+Let $d=2$ and let $\Lambda$ be an Eichler order of level $\mathfrak N$. At a prime
+$\pp\,\|\,\mathfrak N$ the local order is conjugate to
+$\begin{psmallmatrix}\cO_\pp&\cO_\pp\\\pp&\cO_\pp\end{psmallmatrix}$, the local tree collapses
+to a single edge, and $d_\pp=2$. Hence $d_\pp=\Ns\pp$ if and only if $\Ns\pp=2$. At the
+primes not dividing $\mathfrak N$ the order is maximal and Theorem~\ref{thm:mismatch} applies.
+Consequently $d_\pp=\Ns\pp$ can hold at finitely many primes at most, and never at almost all
+primes.
+\end{proposition}
+
+\begin{proof}
+The local Eichler order of level $\pp$ is the stabilizer of an edge of the Bruhat--Tits tree,
+whose two endpoints give the two right ideals of reduced norm $\pp$; the remaining
+$q-1$ neighbours of each vertex are not stabilized. The level is divisible by only finitely
+many primes.
+\end{proof}
+
+\section{The boundary quotient is empty, universally}
+
+\begin{theorem}[The boundary quotient is zero]\label{thm:noboundary}
+Let $\Lambda$ be an order in a central simple algebra of degree $d\ge2$ over $K$, all of
+whose right ideals are principal, $P=\Lambda\setminus\{0\}$, and let $\pp=(\pi)$ be a
+principal prime of $K$. Let $A$ be a unital $C^*$-algebra generated by isometries $v_a$,
+$a\in P$, with $v_av_b=v_{ab}$. If two range projections $e_{a_j}$, $e_{a_k}$ of distinct
+right ideals of reduced norm $\pp$ are orthogonal in $A$, then $A=0$. In particular the
+boundary quotient of the Nica--Toeplitz algebra $\cT(P)$ by the relations
+$\sum_{k=1}^{d_\pp}e_{a_k}=1$, at any one such prime, is the zero algebra and carries no
+state.
+\end{theorem}
+
+\begin{proof}
+For $a\in\Lambda$ the reduced characteristic polynomial $t^d-c_1t^{d-1}+\cdots\pm\Nrd(a)$ has
+coefficients in $\cO_K$ and vanishes at $a$, so $\Nrd(a)=a\,b$ with
+$b=\pm(a^{d-1}-c_1a^{d-2}+\cdots)\in\Lambda$ \cite[\S9]{Reiner}: the central element $\Nrd(a)$
+lies in $a\Lambda$. For $a_j$ of reduced norm $\pp=(\pi)$ we have $\Nrd(a_j)=\pi u_j$ with
+$u_j\in\cO_K^\times$, so $\pi=a_jb_ju_j^{-1}\in a_j\Lambda$ and $v_\pi=v_{a_j}v_{b_ju_j^{-1}}$,
+whence $e_\pi=v_\pi v_\pi^*\le v_{a_j}v_{a_j}^*=e_{a_j}$; likewise $e_\pi\le e_{a_k}$. If
+$e_{a_j}e_{a_k}=0$ then $e_\pi=0$, so $v_\pi=e_\pi v_\pi=0$ and $1=v_\pi^*v_\pi=0$. Finally a
+sum of projections equal to $1$ is an orthogonal sum, as in Paper XI: $e_j=e_j\sum_ke_k$ gives
+$\sum_{k\ne j}e_je_ke_j=0$ with positive summands, so $e_je_k=0$.
+\end{proof}
+
+\begin{remark}[Partition in mean]\label{rem:betavals}
+Even the weaker requirement $\sum_{k=1}^{d_\pp}\varphi(e_{a_k})=1$ for a $\mathrm{KMS}_\beta$
+state $\varphi$ of $\cT(P)$ itself, with norm $N=|\Nrd|^t$, forces $d_\pp\,q^{-t\beta}=1$, i.e.
+\[
+\beta=\beta(\pp)=\frac{\log d_\pp}{t\log q}=\frac{1}{t}\cdot\frac{\log\bigl((q^d-1)/(q^e-1)\bigr)}{\log q}
+\]
+at a prime of local index $e$. For split primes the function
+$q\mapsto\log\bigl((q^d-1)/(q-1)\bigr)/\log q$ is strictly decreasing with limit $d-1$ as
+$q\to\infty$ and value $>d-1$ for every finite $q$; so distinct residue characteristics give
+distinct $\beta(\pp)$, and no single $\beta$ serves two split primes. Numerically, for
+$d=2$: $\beta(\pp)t=1.5850,\ 1.2619,\ 1.1133,\ 1.0289,\ 1.0021$ at $q=2,3,5,13,101$, decreasing
+to $1$; for $d=3$: $2.8074,\ 2.3347,\ 2.1337,\ 2.0310,\ 2.0022$, decreasing to $2$; for $d=4$,
+decreasing to $3$.
+\end{remark}
+
+\begin{remark}[Why the affine systems are different]\label{rem:affine}
+In the $ax+b$ systems of Paper II the multiplicity at $\pp$ is the number
+$\Ns\pp$ of additive cosets, exactly equal to the norm, and the translates of a fundamental
+domain are disjoint, so the relation reads $\Ns\pp\cdot\Ns\pp^{-\beta}=1$ and forces $\beta=1$
+\emph{independently of $\pp$}: a KMS state survives at that one temperature. The matching there is not an accident but the statement
+that $\cO_K/\pp$ has $\Ns\pp$ elements. Theorem~\ref{thm:mismatch} says that the
+multiplicative analogue --- counting ideals rather than cosets --- can never match, the
+projective space $\mathbb P^{d-1}(\F_q)$ having one point too many.
+\end{remark}
+
+\begin{corollary}[The dichotomy of Paper XI cannot be broken]\label{cor:dichotomy}
+The question of Paper XI --- whether some order has $d_\pp=\Ns\pp$, so that a boundary
+quotient with nonempty $\mathrm{KMS}$ simplex could exist --- is answered in the negative by
+Theorem~\ref{thm:mismatch} and Proposition~\ref{prop:eichler}, and Theorem~\ref{thm:noboundary}
+shows that the multiplicity is not even the point: the quotient is zero whatever $d_\pp$ is.
+The nested/partition dichotomy must therefore be circumvented rather than broken, which
+means working with the Toeplitz algebra and its Maharam extension.
+\end{corollary}
+
+\section{The cocycle factors through the reduced norm}
+
+We turn to (C4), for the Hurwitz order, $P=\cH\setminus\{0\}$. Let $G=PP^{-1}=\HH(\Q)^\times$
+be the group of fractions, $\widetilde\Omega$ the dilation carrying the $G$-action with the
+measure $\tilde\nu_\beta$ extending a $\mathrm{KMS}_\beta$ measure, $\tilde\nu_\beta(aE)=\Nrd(a)^{-\beta}\tilde\nu_\beta(E)$,
+and
+\[
+G\curvearrowright\bigl(\widetilde\Omega\times\R,\ \tilde\nu_\beta\otimes e^{s}ds\bigr),
+\qquad
+a\cdot(x,s)=\bigl(ax,\ s+\beta\log\Nrd(a)\bigr)
+\]
+the Maharam extension, which preserves the displayed measure: the pushforward of
+$\tilde\nu_\beta\otimes e^sds$ under $a$ scales the first factor by $\Nrd(a)^{-\beta}$ and the
+second by $e^{\beta\log\Nrd(a)}$. By Takesaki duality, as in Paper XI, (C4) --- non-amenability
+of the measured groupoid of $G$ on $(\widetilde\Omega,\tilde\nu_\beta)$, equivalently
+non-injectivity of the factor --- is equivalent to non-amenability of the Maharam extension.
+Put
+\[
+G^1:=\ker\bigl(\Nrd:G\to\Q^\times_+\bigr).
+\]
+
+\begin{proposition}[Orthogonality of the two directions]\label{prop:orthogonal}
+\begin{enumerate}
+\item The Radon--Nikodym cocycle of the $G$-action on $(\widetilde\Omega,\tilde\nu_\beta)$ is
+$a\mapsto\Nrd(a)^{-\beta}$, which factors through $\Nrd$. Consequently $G^1$ acts
+\emph{measure preservingly}, and acts trivially on the flow variable $s$.
+\item $G^1=\HH(\Q)^1$, the norm-one rational quaternions, is non-amenable: it contains
+free subgroups of rank five.
+\item Hence the modular direction of the system, which is the whole content of the dynamics
+$\sigma_t$, lies in the abelian quotient $G/G^1\cong\Nrd(G)\le\Q^\times_+$, while all the
+non-amenability of $G$ lies in $G^1$, on which the dynamics is trivial.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) The scaling relation $\tilde\nu_\beta(aE)=\Nrd(a)^{-\beta}\tilde\nu_\beta(E)$ depends on
+$a$ only through $\Nrd(a)$; for $a\in G^1$ it is the identity, and
+$s\mapsto s+\beta\log\Nrd(a)=s$. (2) By Lubotzky--Phillips--Sarnak \cite[\S3]{LPS} the
+quaternions $1\pm2i,1\pm2j,1\pm2k$ of reduced norm $5$ generate, modulo the centre, a free
+group $\Lambda(5)$ of rank three; the elements of $\Lambda(5)$ of reduced norm $5^{2m}$ form
+a subgroup of index two, free of rank five, and $\alpha\mapsto\alpha/5^m$ embeds it into
+$\HH(\Q)^1/\{\pm1\}$. (3) is (1) and (2).
+\end{proof}
+
+\begin{remark}[What this changes]\label{rem:changes}
+Proposition~\ref{prop:orthogonal} is the reason the Hurwitz system is not merely a
+non-commutative decoration of the abelian one. In every earlier model the acting group was
+abelian and its non-amenability was not merely absent but impossible. Here the group splits
+cleanly: a non-amenable kernel acting by measure-preserving transformations, and an abelian
+quotient carrying the entire thermodynamics. If (C4) holds it will be because of $G^1$, and
+$G^1$ is invisible to $\sigma_t$.
+\end{remark}
+
+\section{All Fourier fibres agree on $G^1$}
+
+\begin{proposition}[Fibre decomposition]\label{prop:fibres}
+Conjugating by $\xi\mapsto e^{s/2}\xi$ identifies $L^2(\R,e^{s}ds)$ with $L^2(\R,ds)$, and
+carries the Koopman representation of the Maharam extension to
+$(\pi(a)F)(x,s)=\Nrd(a)^{\beta/2}F(a^{-1}x,\,s-\beta\log\Nrd(a))$; Fourier transform in $s$ then
+gives
+\[
+L^2\bigl(\widetilde\Omega\times\R,\ \tilde\nu_\beta\otimes e^{s}ds\bigr)
+\ \cong\ \int_\R^\oplus\mathcal H_\tau\,\frac{d\tau}{2\pi},
+\qquad
+\mathcal H_\tau=L^2\bigl(\widetilde\Omega,\tilde\nu_\beta\bigr),
+\]
+with fibre representations
+\begin{equation}\label{eq:fibre}
+\pi_\tau(a)=\chi_\tau(a)\,\pi_0(a),
+\qquad
+\chi_\tau(a)=\Nrd(a)^{i\beta\tau},
+\qquad
+\bigl(\pi_0(a)f\bigr)(x)=\Nrd(a)^{\beta/2}f\bigl(a^{-1}x\bigr).
+\end{equation}
+Here $\pi_0$ is a genuine unitary representation of $G$ on $L^2(\widetilde\Omega)$, the
+dilation being what makes the isometries of $P$ into unitaries.
+\end{proposition}
+
+\begin{proof}
+Standard: $\pi_0$ is the Koopman representation of the non-singular action, with
+Radon--Nikodym factor $\Nrd(a)^{\beta/2}$, and the translation by $\beta\log\Nrd(a)$ in $s$
+becomes multiplication by $\chi_\tau(a)$ on the $\tau$-th Fourier component, the sign of the
+exponent being a convention. The only point to note is that on $\Omega$ itself $\pi_0(a)$ is
+an isometry with range $L^2(a\Omega)\subsetneq L^2(\Omega)$, and becomes unitary only after
+passing to the dilation $\widetilde\Omega=\varinjlim(\Omega,a\cdot)$.
+\end{proof}
+
+\begin{theorem}[The $\tau$-decomposition is invisible to $G^1$]\label{thm:invisible}
+For every $\tau\in\R$, $\chi_\tau|_{G^1}=1$, hence
+\[
+\pi_\tau\big|_{G^1}=\pi_0\big|_{G^1}\qquad\text{for all }\tau .
+\]
+Consequently the restriction to $G^1$ of the Koopman representation of the Maharam extension
+is $\pi_0|_{G^1}\otimes L^2(\R)$, a multiple of a single representation, and
+\begin{equation}\label{eq:reduction}
+\text{(C4)}\ \Longleftarrow\ \pi_0\big|_{G^1}\ \text{is not weakly contained in the regular representation }\lambda_{G^1}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+$\chi_\tau(a)=\Nrd(a)^{i\beta\tau}=1$ for $a\in G^1$. The displayed restriction follows from
+\eqref{eq:fibre} and Proposition~\ref{prop:fibres}. For \eqref{eq:reduction}: if the
+action of $G$ on $(\widetilde\Omega,\tilde\nu_\beta)$ were amenable, so would be its
+restriction to the subgroup $G^1$ \cite{AD}; and by Kuhn's theorem \cite{Kuhn}
+the Koopman representation of an amenable action is weakly contained in the regular
+representation, so $\pi_0|_{G^1}\prec\lambda_{G^1}$.
+\end{proof}
+
+\begin{remark}[A spectral gap would not suffice]\label{rem:nogap}
+The converse of Kuhn's theorem fails, so the implication \eqref{eq:reduction} cannot be
+weakened to the absence of almost invariant vectors: the translation action of $F_2$ on itself
+is amenable, being proper, and its Koopman representation is $\lambda_{F_2}$, which has a
+spectral gap. A gap for $\pi_0|_{G^1}$ is necessary for \eqref{eq:reduction}, since
+$\lambda_{G^1}$ has one, but it is the failure of temperedness that is needed.
+\end{remark}
+
+\begin{remark}\label{rem:onerep}
+Theorem~\ref{thm:invisible} removes the direct integral from the problem. Whatever is to be
+established about weak containment, it concerns one representation of one group --- the
+measure-preserving Koopman representation of the norm-one subgroup --- and not a family of
+questions indexed by $\tau$. This is the concrete simplification we can offer.
+\end{remark}
+
+\section{Why this does not yet close (C4)}
+
+\begin{remark}[The failure of the expected argument]\label{rem:zimmer}
+The natural next step is Zimmer's theorem: an essentially free amenable action of $\Gamma$
+preserving a probability measure forces $\Gamma$ to be amenable. Applied to
+$G^1\curvearrowright(\widetilde\Omega,\tilde\nu_\beta)$ with $G^1$ non-amenable it would give
+(C4) at once. It does not apply, for a specific reason: $\tilde\nu_\beta$ is
+\emph{infinite}. Indeed $\tilde\nu_\beta(a^{-1}\Omega)=\Nrd(a)^{\beta}\to\infty$, so the
+dilation carries only a $\sigma$-finite invariant measure.
+
+That the extension from finite to infinite invariant measure genuinely fails is shown by an
+example: the translation action of $F_2$ on itself preserves counting measure, is essentially
+free, and its orbit groupoid is transitive with trivial isotropy, hence proper, hence
+amenable. Non-amenability of the group is therefore not transmitted by an
+infinite-measure-preserving essentially free action, and by Remark~\ref{rem:nogap} not by a
+spectral gap either.
+\end{remark}
+
+\begin{remark}[What would suffice]\label{rem:suffice}
+Two routes seem available, and we have carried out neither.
+\begin{enumerate}
+\item Find a $G^1$-invariant subset of finite measure meeting almost every orbit, or more
+generally show that the restricted relation $\mathcal R_{G^1}|_\Omega$ on the probability
+space $(\Omega,\nu_\beta)$ is of type $\mathrm{II}_1$ and is the orbit relation of an
+essentially free pmp action of a non-amenable group. The difficulty is that $\Omega$ is not
+$G^1$-invariant, so the restricted relation is not literally an orbit relation.
+\item Show directly that $\pi_0|_{G^1}$ is not weakly contained in $\lambda_{G^1}$ --- for
+instance by exhibiting a finite-dimensional subrepresentation, which an infinite-measure
+Koopman representation need not have. By Theorem~\ref{thm:invisible} this is one
+representation; by Proposition~\ref{prop:orthogonal} it is measure preserving; and $G^1$
+contains the LPS free groups, for which spectral gap statements are available on
+\emph{congruence quotients} \cite{LPS}. Whether any of that transfers to $\widetilde\Omega$,
+which is not a congruence quotient, we do not know --- Paper XI warns that the tree methods
+behind those statements are unavailable here, and Remark~\ref{rem:nogap} that a gap alone
+would in any case not be enough.
+\end{enumerate}
+\end{remark}
+
+\begin{remark}[Essential freeness]\label{rem:free}
+Route (i) needs the $G^1$-action to be essentially free, which we have not verified. The
+isotropy of the $G$-action on $\widetilde\Omega$ was computed in the abelian case in Paper II
+and found to be trivial off a set that the $\mathrm{KMS}$ measures do not charge; the
+analogous computation here would have to handle the $24$ units and the non-commutativity,
+and we have not done it. Zimmer's theorem is used here in the form of \cite[Ch.~4]{Zimmer}.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Question} & \text{Answer} & \text{Reference}\\\hline
+d_\pp\ \text{at a prime of local index }e\text{, maximal order} & (q^d-1)/(q^e-1) & \text{Lem.~1.1}\\
+\exists\ \text{order with}\ d_\pp=\Ns\pp? & \textbf{no, for every }d\ge2 & \text{Thm.~1.2}\\
+\text{excess}\ d_\pp-\Ns\pp\ \text{for}\ d=2 & \text{exactly }1 & \text{Thm.~1.2}\\
+\text{Eichler orders} & d_\pp=2\ \text{at}\ \pp\|\mathfrak N;\ =\Ns\pp\ \text{iff}\ \Ns\pp=2 & \text{Prop.~1.3}\\
+\text{boundary quotient nonzero?} & \textbf{never} & \text{Thm.~2.1}\\
+\text{RN cocycle factors through}\ \Nrd & \textbf{yes} & \text{Prop.~3.1}\\
+G^1\ \text{acts measure-preservingly} & \textbf{yes, and is non-amenable} & \text{Prop.~3.1}\\
+\text{Fourier fibres on}\ G^1 & \textbf{all equal to}\ \pi_0|_{G^1} & \text{Thm.~4.2}\\
+\text{(C4)}\Leftarrow\pi_0|_{G^1}\not\prec\lambda_{G^1} & \textbf{true (Kuhn)} & \text{Thm.~4.2}\\
+\text{Zimmer closes (C4)} & \text{no: invariant measure infinite} & \text{Rem.~5.1}\\
+\text{a spectral gap closes (C4)} & \text{no: amenable actions are tempered} & \text{Rem.~4.3}\\
+\text{(C4)} & \textbf{open} & \text{---}
+\end{array}
+\]
+
+Task 1 is closed. The multiplicity $d_\pp$ counts points of a projective space and the norm
+$\Ns\pp$ counts points of an affine one; the difference is the hyperplane at infinity, and it
+is never zero. The vanishing of the boundary quotient found in Paper XI for the Hurwitz
+order is therefore a universal feature of orders in central simple algebras, and
+the nested/partition dichotomy has to be circumvented rather than broken.
+
+Task 2 is not closed, but it is now a single question rather than a programme. The
+decomposition of $G$ given by Proposition~\ref{prop:orthogonal} --- non-amenable kernel acting
+measure-preservingly, abelian quotient carrying the dynamics --- is the structural feature
+that distinguishes this system from every earlier one, and Theorem~\ref{thm:invisible} reduces
+the analysis to one representation of that kernel. What is missing is a finite-measure
+foothold together with essential freeness, or a proof that $\pi_0|_{G^1}$ is not tempered. If
+$\pi_0|_{G^1}$ is not weakly contained in the regular representation, the Hurwitz factor is
+the first non-injective arithmetic Bost--Connes factor and the deformation/rigidity machinery
+that Paper IX found inapplicable becomes actionable; if the action is amenable, the factor
+collapses like all the others and the programme reaches its end.
+
+\begin{thebibliography}{9}
+\bibitem{AD} C. Anantharaman-Delaroche, J. Renault, \emph{Amenable Groupoids}, Monogr. Enseign. Math. 36, Geneva, 2000.
+\bibitem{Kuhn} M. G. Kuhn, \emph{Amenable actions and weak containment of some representations of discrete groups}, Proc. Amer. Math. Soc. 122 (1994), 751--757.
+\bibitem{LPS} A. Lubotzky, R. Phillips, P. Sarnak, \emph{Ramanujan graphs}, Combinatorica 8 (1988), 261--277.
+\bibitem{Reiner} I. Reiner, \emph{Maximal Orders}, LMS Monographs 28, Oxford, 2003.
+\bibitem{Vigneras} M.-F. Vign\'eras, \emph{Arithm\'etique des alg\`ebres de quaternions}, Lecture Notes in Math. 800, Springer, 1980.
+\bibitem{Zimmer} R. J. Zimmer, \emph{Ergodic Theory and Semisimple Groups}, Monogr. Math. 81, Birkh\"auser, 1984.
+\end{thebibliography}
+
+\end{document}
