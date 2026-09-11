@@ -1,0 +1,56 @@
+[
+  {
+    "check": "Lemma 3.2 identity for 1-|m_p|^2",
+    "reference": "Lemma 3.2",
+    "status": "PASS",
+    "detail": "worst relative error over 200000 random (t,phi): 1.110e-07"
+  },
+  {
+    "check": "Admissible classes generate (Z/MZ)^*",
+    "reference": "Lemma 5.6",
+    "status": "PASS",
+    "detail": "no counterexample for 2 <= M <= 600"
+  },
+  {
+    "check": "Pointwise invariance of Psi (and necessity of its R-correction)",
+    "reference": "Proposition 4.12(2)",
+    "status": "PASS",
+    "detail": "0 failures in 20000 trials; control (Legendre factor alone) broken: True"
+  },
+  {
+    "check": "Genus theory for Q(sqrt(-5)): principal <=> p = 1,9 mod 20",
+    "reference": "Example 4.2",
+    "status": "PASS",
+    "detail": "1124 split primes below 20000, no exceptions"
+  },
+  {
+    "check": "Cascade group theory: (Z/15Z)^*/<4> = (Z/2Z)^2, quartic excluded",
+    "reference": "Proposition 4.15",
+    "status": "PASS",
+    "detail": "all 10 sub-checks pass"
+  },
+  {
+    "check": "Detecting sets on the cascade set are exactly R1, R2, R1 u R2",
+    "reference": "Proposition 4.15, computation of Xi_beta",
+    "status": "PASS",
+    "detail": "|P|=4464, |R1|=2254, |R2|=2256 below 200000; sets match: True"
+  },
+  {
+    "check": "Sophie Germain primes lie in admissible classes; sum 1/p converges slowly",
+    "reference": "Theorem 5.5, Lemma 5.6",
+    "status": "PASS",
+    "detail": "2058 SG primes below 200000; sum 1/p = 1.42845; admissibility violations: none"
+  },
+  {
+    "check": "Empty detecting set for S = {3} u {l = 1 mod 3}",
+    "reference": "Example 3.13",
+    "status": "PASS",
+    "detail": "|S|=8989 below 200000; detecting set empty: True; partial sum at beta=0.5: 0.0"
+  },
+  {
+    "check": "Detecting set is exactly the sparse part R; its weighted sum converges",
+    "reference": "Theorem 4.10, Lemma 4.6",
+    "status": "PASS",
+    "detail": "|R|=4 (largest 5 digits); sum_R p^-0.1 = 2.508619; sum_P1 1/p = 0.8943 (diverges); detecting set = R: True"
+  }
+]

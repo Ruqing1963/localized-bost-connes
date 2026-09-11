@@ -1,0 +1,924 @@
+{
+ "X": [
+  {
+   "item": "a_n = #{Nrd = n}, n<=15, by enumeration",
+   "claimed": [
+    24,
+    24,
+    96,
+    24,
+    144,
+    96,
+    192,
+    24,
+    312,
+    144,
+    288,
+    96,
+    336,
+    192,
+    576
+   ],
+   "computed": [
+    24,
+    24,
+    96,
+    24,
+    144,
+    96,
+    192,
+    24,
+    312,
+    144,
+    288,
+    96,
+    336,
+    192,
+    576
+   ],
+   "ok": true
+  },
+  {
+   "item": "a_n = 24 sigma_odd(n), n<=15",
+   "claimed": "identity",
+   "computed": true,
+   "ok": true
+  },
+  {
+   "item": "# right ideals of norm p (p+1 for odd p, 1 at p=2), p<=23",
+   "claimed": {
+    "2": 1,
+    "3": 4,
+    "5": 6,
+    "7": 8,
+    "11": 12,
+    "13": 14,
+    "17": 18,
+    "19": 20,
+    "23": 24
+   },
+   "computed": {
+    "2": 1,
+    "3": 4,
+    "5": 6,
+    "7": 8,
+    "11": 12,
+    "13": 14,
+    "17": 18,
+    "19": 20,
+    "23": 24
+   },
+   "ok": true
+  },
+  {
+   "item": "zeta_P(4) = 24 zeta(4)(1-2^{-3}) zeta(3), to 8 decimals",
+   "claimed": "27.321296405",
+   "computed": "27.321296405",
+   "ok": true
+  }
+ ],
+ "XI": [
+  {
+   "item": "beta_p for p=3,5,7",
+   "claimed": [
+    1.2619,
+    1.1133,
+    1.0686
+   ],
+   "computed": [
+    1.2619,
+    1.1133,
+    1.0686
+   ],
+   "ok": true
+  }
+ ],
+ "XVI": [
+  {
+   "item": "beta=1.5: inf(1-l^-b), Pi_inf",
+   "claimed": [
+    0.8076,
+    0.37
+   ],
+   "computed": [
+    0.8075,
+    0.37
+   ],
+   "ok": true
+  },
+  {
+   "item": "beta=1.2: inf(1-l^-b), Pi_inf",
+   "claimed": [
+    0.7324,
+    0.127
+   ],
+   "computed": [
+    0.7324,
+    0.127
+   ],
+   "ok": true
+  },
+  {
+   "item": "beta=1.05: inf(1-l^-b), Pi_inf",
+   "claimed": [
+    0.6845,
+    0.0358
+   ],
+   "computed": [
+    0.6845,
+    0.0358
+   ],
+   "ok": true
+  },
+  {
+   "item": "beta=1.001: inf(1-l^-b), Pi_inf",
+   "claimed": [
+    0.667,
+    0.0186
+   ],
+   "computed": [
+    0.667,
+    0.0186
+   ],
+   "ok": true
+  }
+ ],
+ "XIX": [
+  {
+   "item": "p=11, t=0",
+   "claimed": [
+    "Z/12",
+    "Z/2 x Z/6"
+   ],
+   "computed": [
+    "Z/12",
+    "Z/2 x Z/6"
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=13, t=-2",
+   "claimed": [
+    "Z/16",
+    "Z/2 x Z/8",
+    "Z/4 x Z/4"
+   ],
+   "computed": [
+    "Z/16",
+    "Z/2 x Z/8",
+    "Z/4 x Z/4"
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=13, t=5",
+   "claimed": [
+    "Z/3 x Z/3",
+    "Z/9"
+   ],
+   "computed": [
+    "Z/3 x Z/3",
+    "Z/9"
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=17, t=2",
+   "claimed": [
+    "Z/16",
+    "Z/2 x Z/8",
+    "Z/4 x Z/4"
+   ],
+   "computed": [
+    "Z/16",
+    "Z/2 x Z/8",
+    "Z/4 x Z/4"
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=19, t=-7",
+   "claimed": [
+    "Z/27",
+    "Z/3 x Z/9"
+   ],
+   "computed": [
+    "Z/27",
+    "Z/3 x Z/9"
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=23, t=-8",
+   "claimed": [
+    "Z/2 x Z/16",
+    "Z/32"
+   ],
+   "computed": [
+    "Z/2 x Z/16",
+    "Z/32"
+   ],
+   "ok": true
+  }
+ ],
+ "XX": [
+  {
+   "item": "number of (p,t,group) classes with >1 j, primes 5..29",
+   "claimed": 69,
+   "computed": 72,
+   "ok": false
+  },
+  {
+   "item": "same count if p=3 is included",
+   "claimed": 69,
+   "computed": 72,
+   "ok": false
+  },
+  {
+   "item": "p=23, t=-2, Jac=Z/26: j-invariants",
+   "claimed": [
+    1,
+    17
+   ],
+   "computed": [
+    1,
+    17
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=13, t=2, Jac=Z/12: j-invariants",
+   "claimed": [
+    4,
+    6
+   ],
+   "computed": [
+    4,
+    6
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=17, t=-6, Jac=Z/24: j-invariants",
+   "claimed": [
+    1,
+    6
+   ],
+   "computed": [
+    1,
+    6
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=19, t=-4, Jac=Z/24: j-invariants",
+   "claimed": [
+    9,
+    17
+   ],
+   "computed": [
+    9,
+    17
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=29, t=-4, Jac=Z/34: j-invariants",
+   "claimed": [
+    3,
+    7,
+    17
+   ],
+   "computed": [
+    3,
+    7,
+    17
+   ],
+   "ok": true
+  },
+  {
+   "item": "p=23, t=-6, Jac=Z/30: j-invariants",
+   "claimed": [
+    14,
+    18,
+    20,
+    22
+   ],
+   "computed": [
+    14,
+    18,
+    20,
+    22
+   ],
+   "ok": true
+  }
+ ],
+ "XXIV": [
+  {
+   "family": "twin",
+   "count": 2160,
+   "claimed": 2159,
+   "mod3": [
+    2
+   ],
+   "mod4": [
+    1,
+    3
+   ],
+   "mod9": [
+    2,
+    5,
+    8
+   ]
+  },
+  {
+   "family": "Sophie Germain",
+   "count": 2058,
+   "claimed": 2056,
+   "mod3": [
+    2
+   ],
+   "mod4": [
+    1,
+    3
+   ],
+   "mod9": [
+    2,
+    5,
+    8
+   ]
+  },
+  {
+   "family": "Landau n^2+1",
+   "count": 64,
+   "claimed": 63,
+   "mod3": [
+    1,
+    2
+   ],
+   "mod4": [
+    1
+   ],
+   "mod9": [
+    1,
+    2,
+    5,
+    8
+   ]
+  },
+  {
+   "family": "Friedlander-Iwaniec a^2+b^4",
+   "count": 938,
+   "claimed": 938,
+   "mod3": [
+    1,
+    2
+   ],
+   "mod4": [
+    1
+   ],
+   "mod9": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8
+   ]
+  },
+  {
+   "family": "Chen",
+   "count": 7525,
+   "claimed": 1110,
+   "mod3": [
+    1,
+    2
+   ],
+   "mod4": [
+    1,
+    3
+   ],
+   "mod9": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8
+   ]
+  },
+  {
+   "family": "Chen (p <= 2*10^4)",
+   "count": 1112,
+   "claimed": "-",
+   "mod3": [
+    1,
+    2
+   ],
+   "mod4": [
+    1,
+    3
+   ],
+   "mod9": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8
+   ]
+  },
+  {
+   "family": "Heath-Brown a^3+2b^3 (a,b>=1)",
+   "count": 289,
+   "claimed": 623,
+   "mod3": [
+    1,
+    2
+   ],
+   "mod4": [
+    1,
+    3
+   ],
+   "mod9": [
+    1,
+    2,
+    7,
+    8
+   ]
+  },
+  {
+   "family": "Heath-Brown a^3+2b^3 (a,b in Z)",
+   "count": 619,
+   "claimed": "-",
+   "mod3": [
+    1,
+    2
+   ],
+   "mod4": [
+    1,
+    3
+   ],
+   "mod9": [
+    1,
+    2,
+    7,
+    8
+   ]
+  },
+  {
+   "family": "Piatetski-Shapiro c=1.1",
+   "count": 6040,
+   "claimed": 498,
+   "mod3": [
+    1,
+    2
+   ],
+   "mod4": [
+    1,
+    3
+   ],
+   "mod9": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8
+   ]
+  },
+  {
+   "family": "Piatetski-Shapiro c=1.1 (n <= 4000)",
+   "count": 498,
+   "claimed": "-",
+   "mod3": [
+    1,
+    2
+   ],
+   "mod4": [
+    1,
+    3
+   ],
+   "mod9": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8
+   ]
+  },
+  {
+   "item": "detecting set of the mod-3 character on twin",
+   "size_D": 2159,
+   "size_S": 2159
+  },
+  {
+   "item": "detecting set of the mod-3 character on Sophie Germain",
+   "size_D": 2057,
+   "size_S": 2057
+  },
+  {
+   "item": "detecting set of the mod-4 character on Landau n^2+1",
+   "size_D": 1,
+   "size_S": 64
+  },
+  {
+   "item": "detecting set of the mod-4 character on Friedlander-Iwaniec a^2+b^4",
+   "size_D": 1,
+   "size_S": 938
+  },
+  {
+   "item": "Thm 2.2 as stated: D_chi finite for all four families",
+   "claimed": true,
+   "computed": false,
+   "ok": false
+  },
+  {
+   "item": "twin & SG occupy only {2} mod 3; Landau & FI only {1} mod 4",
+   "claimed": true,
+   "computed": true,
+   "ok": true
+  }
+ ],
+ "XXV": [
+  {
+   "item": "number of good primes below 6*10^4 (paper: 6054)",
+   "claimed": 6054,
+   "computed": 6055,
+   "ok": false
+  },
+  {
+   "item": "same, if p=3 is also excluded",
+   "claimed": 6054,
+   "computed": 6054,
+   "ok": true
+  },
+  {
+   "item": "[pi/3,2pi/3] mod 3 proportions",
+   "claimed": [
+    0.5,
+    0.5
+   ],
+   "computed": [
+    0.5,
+    0.5
+   ],
+   "ok": true
+  },
+  {
+   "item": "[pi/3,2pi/3] mod 4 proportions",
+   "claimed": [
+    0.502,
+    0.498
+   ],
+   "computed": [
+    0.502,
+    0.498
+   ],
+   "ok": true
+  },
+  {
+   "item": "[pi/3,2pi/3] mod 5 proportions",
+   "claimed": [
+    0.246,
+    0.25,
+    0.254,
+    0.249
+   ],
+   "computed": [
+    0.246,
+    0.25,
+    0.254,
+    0.249
+   ],
+   "ok": true
+  },
+  {
+   "item": "[pi/3,2pi/3] mod 8 proportions",
+   "claimed": [
+    0.253,
+    0.248,
+    0.248,
+    0.25
+   ],
+   "computed": [
+    0.253,
+    0.248,
+    0.248,
+    0.25
+   ],
+   "ok": true
+  },
+  {
+   "item": "[0,pi/6] mod 3 proportions",
+   "claimed": [
+    0.431,
+    0.569
+   ],
+   "computed": [
+    0.431,
+    0.569
+   ],
+   "ok": true
+  },
+  {
+   "item": "[0,pi/6] mod 4 proportions",
+   "claimed": [
+    0.449,
+    0.551
+   ],
+   "computed": [
+    0.449,
+    0.551
+   ],
+   "ok": true
+  },
+  {
+   "item": "[0,pi/6] mod 5 proportions",
+   "claimed": [
+    0.275,
+    0.222,
+    0.269,
+    0.234
+   ],
+   "computed": [
+    0.275,
+    0.222,
+    0.269,
+    0.234
+   ],
+   "ok": true
+  },
+  {
+   "item": "[0,pi/6] mod 8 proportions",
+   "claimed": [
+    0.228,
+    0.251,
+    0.222,
+    0.299
+   ],
+   "computed": [
+    0.228,
+    0.251,
+    0.222,
+    0.299
+   ],
+   "ok": true
+  },
+  {
+   "item": "[2.4,pi] mod 3 proportions",
+   "claimed": [
+    0.478,
+    0.522
+   ],
+   "computed": [
+    0.478,
+    0.522
+   ],
+   "ok": true
+  },
+  {
+   "item": "[2.4,pi] mod 4 proportions",
+   "claimed": [
+    0.496,
+    0.504
+   ],
+   "computed": [
+    0.496,
+    0.504
+   ],
+   "ok": true
+  },
+  {
+   "item": "[2.4,pi] mod 5 proportions",
+   "claimed": [
+    0.259,
+    0.274,
+    0.235,
+    0.233
+   ],
+   "computed": [
+    0.259,
+    0.274,
+    0.235,
+    0.233
+   ],
+   "ok": true
+  },
+  {
+   "item": "[2.4,pi] mod 8 proportions",
+   "claimed": [
+    0.246,
+    0.265,
+    0.25,
+    0.239
+   ],
+   "computed": [
+    0.246,
+    0.265,
+    0.25,
+    0.239
+   ],
+   "ok": true
+  },
+  {
+   "item": "sample sizes of the two sparse intervals (paper: 167 and 464)",
+   "claimed": [
+    167,
+    464
+   ],
+   "computed": [
+    167,
+    464
+   ],
+   "ok": true
+  }
+ ],
+ "I": [
+  {
+   "item": "16 joint sign patterns for Q={7,11,13,17}, primes<=2e6, densities in [0.0621,0.0629] (to 4 decimals)",
+   "claimed": "[0.0621,0.0629]",
+   "computed": [
+    0.0621,
+    0.0629
+   ],
+   "ok": true
+  },
+  {
+   "item": "w_n / log((n+eps)/(n-eps)) in [0.998,1.003] for 13<=n<=17 (paper originally said [0.9995,1.0030]; n=13 gives 0.9981)",
+   "claimed": "[0.998,1.003]",
+   "computed": [
+    0.9981,
+    1.003
+   ],
+   "ok": true
+  },
+  {
+   "item": "|c_n|/w_n at n=9 (mod-4 character)",
+   "claimed": "8.6e-2",
+   "computed": "8.64e-02",
+   "ok": true
+  },
+  {
+   "item": "|c_n|/w_n at n=17 (mod-4 character)",
+   "claimed": "2.1e-4",
+   "computed": "2.07e-04",
+   "ok": true
+  }
+ ],
+ "IV": [
+  {
+   "item": "W_1 for t=0.5, w_r=1 (w_0=1)",
+   "claimed": 0.707,
+   "computed": 0.707,
+   "ok": true
+  },
+  {
+   "item": "W_1 for t=0.9, w_r=1 (w_0=1)",
+   "claimed": 0.707,
+   "computed": 0.707,
+   "ok": true
+  },
+  {
+   "item": "W_1 for t=0.1, w_r=1 (w_0=1)",
+   "claimed": 0.838,
+   "computed": 0.838,
+   "ok": true
+  },
+  {
+   "item": "W_1 for t=0.5, w_r=5 (w_0=1)",
+   "claimed": 0.981,
+   "computed": 0.981,
+   "ok": true
+  },
+  {
+   "item": "W_1 for t=0.9, w_r=5 (w_0=1)",
+   "claimed": 0.981,
+   "computed": 0.981,
+   "ok": true
+  },
+  {
+   "item": "alternating-profile value for w_r=1 and 5",
+   "claimed": [
+    0.707,
+    0.981
+   ],
+   "computed": [
+    0.707,
+    0.981
+   ],
+   "ok": true
+  }
+ ],
+ "V": [
+  {
+   "item": "beta_free(all primes)",
+   "claimed": 1.399433,
+   "computed": 1.399433,
+   "ok": true
+  },
+  {
+   "item": "beta_free(except 2)",
+   "claimed": 1.224388,
+   "computed": 1.224388,
+   "ok": true
+  },
+  {
+   "item": "beta_free(except 2,3)",
+   "claimed": 1.15489,
+   "computed": 1.15489,
+   "ok": true
+  },
+  {
+   "item": "beta_free(p>1e6)",
+   "claimed": 1.019162,
+   "computed": 1.019162,
+   "ok": true
+  },
+  {
+   "item": "beta_free(p>1e2)",
+   "claimed": 1.056773,
+   "computed": 1.056773,
+   "ok": true
+  },
+  {
+   "item": "beta_free(p>1e4)",
+   "claimed": 1.02871,
+   "computed": 1.02871,
+   "ok": true
+  },
+  {
+   "item": "root of sum_(p<=10) p^-beta = 1",
+   "claimed": 1.147338,
+   "computed": 1.147338,
+   "ok": true
+  },
+  {
+   "item": "root of sum_(p<=100) p^-beta = 1",
+   "claimed": 1.356444,
+   "computed": 1.356444,
+   "ok": true
+  },
+  {
+   "item": "root of sum_(p<=1000) p^-beta = 1",
+   "claimed": 1.38839,
+   "computed": 1.38839,
+   "ok": true
+  },
+  {
+   "item": "root of sum_(p<=10000) p^-beta = 1",
+   "claimed": 1.39611,
+   "computed": 1.39611,
+   "ok": true
+  },
+  {
+   "item": "root of sum_(p<=1e+06) p^-beta = 1",
+   "claimed": 1.399069,
+   "computed": 1.399069,
+   "ok": true
+  },
+  {
+   "item": "root of sum_(p<=1e+07) p^-beta = 1",
+   "claimed": 1.399307,
+   "computed": 1.399307,
+   "ok": true
+  },
+  {
+   "item": "p>1e8 (tail integral only)",
+   "claimed": 1.014372,
+   "computed": 1.014372,
+   "ok": true
+  },
+  {
+   "item": "Sophie Germain: L(1) bare + 2C_2/log x",
+   "claimed": 1.535,
+   "computed": 1.535,
+   "ok": true
+  },
+  {
+   "item": "Sophie Germain: beta_free (HL tail)",
+   "claimed": 1.2114,
+   "computed": 1.2114,
+   "ok": true
+  },
+  {
+   "item": "twin primes: bare L(1) to 2e7",
+   "claimed": 0.9805,
+   "computed": 0.9805,
+   "ok": true
+  },
+  {
+   "item": "twin primes: L(1) with HL tail",
+   "claimed": 1.059,
+   "computed": 1.059,
+   "ok": true
+  },
+  {
+   "item": "twin primes: beta_free (HL tail)",
+   "claimed": 1.0089,
+   "computed": 1.0089,
+   "ok": true
+  }
+ ]
+}
