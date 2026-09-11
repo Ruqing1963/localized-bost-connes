@@ -1,0 +1,316 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+\raggedbottom
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\id}{\mathrm{id}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[Sieve primes and their phases]{The statistical mechanics of sieve-theoretic primes:\\ the critical spectrum, the log-power dichotomy,\\ and two families that are never unique}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/XXIV-sieve/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We compute the thermodynamics of the classical sieve-theoretic prime families for the
+localized Bost--Connes systems of \cite{Main}. The critical exponents proposed are all
+correct, the open/closed dichotomy has a clean and complete explanation, and the account of
+high-temperature uniqueness is wrong for two of the six families, for an elementary reason
+that had not been noticed.
+
+\emph{Critical exponents.} If $\pi_S(x)\asymp x^\theta/\log^kx$ then Abel summation gives
+$\beta_c(S)=\theta$, and at $\beta=\theta$ the series behaves like $\int^x dt/(t\log^kt)$.
+Hence $\beta_c=1$ for twin, Sophie Germain and Chen primes; $3/4$ for
+Friedlander--Iwaniec $a^2+b^4$; $2/3$ for Heath-Brown $a^3+2b^3$; $1/2$ for Landau $n^2+1$;
+and $1/c$ for Piatetski-Shapiro $\lfloor n^c\rfloor$, a continuous spectrum. All six values
+are as proposed.
+
+\emph{The dichotomy is exactly the log-power.} The critical series converges iff $k>1$, so the
+low-temperature phase is closed precisely for the families defined by \emph{two}
+simultaneous prime conditions --- twin, Sophie Germain, Chen, where $k=2$ --- and open for
+those defined by a single condition on a polynomial or fractional sequence, where $k=1$. This
+is a complete answer, and it identifies the source of closedness as the second prime
+condition rather than as anything about the sieve.
+
+\emph{Two of the six are congruence-obstructed, and are never unique --- and which two is
+decided by a kernel condition, not by confinement alone.} All four congruence-trapped
+families sit in a single residue class: twin and Sophie Germain primes in $2\bmod3$, Landau
+and the odd Friedlander--Iwaniec primes in $1\bmod4$. But confinement obstructs only when the
+occupied class lies in the \emph{kernel} of the character. For Landau and
+Friedlander--Iwaniec the class is $1$, the kernel itself, so the nontrivial character mod $4$
+has \emph{finite} detecting set and lies in $\Xi_\beta$ for every $\beta$: a permanent
+obstruction in the sense of \cite[\S4.1]{Main}, and \textbf{for these two families the
+$\mathrm{KMS}_\beta$ state is never unique, at any temperature.} For twin and Sophie Germain
+primes the opposite happens: $\chi(2)=-1$ for the character mod $3$, so the detecting set is
+\emph{cofinite} in $S$ and the character is detected at full strength --- the class $2$
+generates $(\Z/3)^\times$, and by \cite[Lem.~5.6]{Main} the admissible classes generate
+$(\Z/M\Z)^\times$ for every modulus, so no congruence obstructs these families at all.
+Verified numerically to $2\cdot10^5$ (single classes as stated).
+
+Twin, Sophie Germain, Chen, Heath-Brown and Piatetski-Shapiro primes are therefore
+unobstructed, and for them the equidistribution criterion is the right one wherever the
+critical series diverges.
+
+The finding is consistent with \cite[\S5]{Main}: Theorem 5.5(5) there, with Lemma 5.6,
+already established that the Sophie Germain family is confined to no proper kernel, and the
+present analysis confirms it --- the mod-$3$ confinement, far from obstructing, feeds the
+detecting series in full.
+\end{abstract}
+
+\maketitle
+
+\section{The critical exponent}
+
+The framework and notation are those of \cite{Main}, cited by DOI; no unpublished companion
+paper is used.
+
+\begin{proposition}[Abel summation]\label{prop:abel}
+Let $S\subseteq P$ satisfy $\pi_S(x)\asymp x^\theta/\log^kx$ with $\theta\in(0,1]$, $k\ge0$.
+Then
+\begin{equation}\label{eq:abel}
+\sum_{p\in S,\ p\le x}p^{-\beta}\ \asymp\ \int_2^x\frac{t^{\theta-1-\beta}}{\log^kt}\,dt ,
+\end{equation}
+so that $\beta_c(S)=\theta$, and at the critical value $\beta=\theta$ the right side is
+$\int_2^x dt/(t\log^kt)$, which converges as $x\to\infty$ if and only if $k>1$.
+\end{proposition}
+
+\begin{proof}
+The counting function has density $\asymp\theta t^{\theta-1}/\log^kt$; substitute this into
+the Stieltjes integral $\sum_{p\le x}p^{-\beta}=\int_2^xt^{-\beta}\,d\pi_S(t)$.
+For $\beta<\theta$ the integral is
+$\asymp x^{\theta-\beta}/\log^kx\to\infty$; for $\beta>\theta$ it converges. At
+$\beta=\theta$, $\int dt/(t\log^kt)=[\log^{1-k}t/(1-k)]$ for $k\ne1$ and $\log\log t$ for
+$k=1$.
+\end{proof}
+
+\begin{theorem}[The spectrum]\label{thm:spectrum}
+\[
+\begin{array}{lccll}
+S & \theta & k & \beta_c(S) & \text{phase}\\\hline
+\text{twin }\{p:p+2\in P\} & 1 & 2 & 1 & \text{closed }[1,\infty)\\
+\text{Sophie Germain }\{p:2p+1\in P\} & 1 & 2 & 1 & \text{closed }[1,\infty)\\
+\text{Chen }\{p:p+2\in P_2\} & 1 & 2 & 1 & \text{closed }[1,\infty)\\
+\text{Friedlander--Iwaniec }a^2+b^4 & 3/4 & 1 & 3/4 & \text{open }(3/4,\infty)\\
+\text{Heath-Brown }a^3+2b^3 & 2/3 & 1 & 2/3 & \text{open }(2/3,\infty)\\
+\text{Landau }n^2+1 & 1/2 & 1 & 1/2 & \text{open }(1/2,\infty)\\
+\text{Piatetski-Shapiro }\lfloor n^c\rfloor & 1/c & 1 & 1/c & \text{open }(1/c,\infty)
+\end{array}
+\]
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{prop:abel} with the counting functions: Brun's sieve \cite{HR} gives the upper bounds
+with $k=2$ for the shifted families, and Chen's theorem \cite{Chen} the matching lower bound for Chen
+primes; the Friedlander--Iwaniec \cite{FI} and Heath-Brown \cite{HB} asymptotics are theorems with $k=1$; the
+Landau asymptotic with $k=1$ is conjectural (Bateman--Horn); the Piatetski-Shapiro asymptotic
+with $k=1$ is a theorem for $c<243/205$ by Rivat--Sargos \cite{RS}.
+\end{proof}
+
+\begin{remark}[The dichotomy is the second prime condition]\label{rem:dichotomy}
+By Proposition~\ref{prop:abel} the phase is closed exactly when $k>1$, and $k=2$ occurs
+exactly for the families imposing \emph{two} simultaneous primality conditions --- $p$ and
+$p+2$, $p$ and $2p+1$, $p$ and $p+2\in P_2$. The polynomial and fractional families impose
+one condition and have $k=1$. So the closedness observed for Sophie Germain primes in
+\cite[Thm.~5.5]{Main} is not a feature of the sieve but of the second condition, and it
+transfers verbatim to twins and to Chen primes, the latter unconditionally since Chen's
+theorem supplies the lower bound that the twin case still lacks.
+\end{remark}
+
+\section{Congruence confinement versus obstruction}
+
+\begin{lemma}[Elementary congruences]\label{lem:congruence}
+\begin{enumerate}
+\item If $p>3$ and $p+2$ is prime then $p\equiv2\pmod3$.
+\item If $p>3$ and $2p+1$ is prime then $p\equiv2\pmod3$.
+\item If $p=n^2+1$ is prime and $p>2$ then $n$ is even and $p\equiv1\pmod4$.
+\item Squares and fourth powers are $\equiv0,1\pmod4$, so $a^2+b^4\equiv0,1,2\pmod4$; hence
+an odd prime of the form $a^2+b^4$ satisfies $p\equiv1\pmod4$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) If $p\equiv1$ then $3\mid p+2$. (2) If $p\equiv1$ then $3\mid2p+1$. (3) If $n$ is odd then
+$n^2+1\equiv2\pmod4$, forcing $p=2$; so $n$ is even and $p=4m^2+1$. (4) Direct.
+\end{proof}
+
+\begin{theorem}[Permanent obstruction --- and its exact scope]\label{thm:permanent}
+Let $\chi_4$ be the nontrivial character modulo $4$ and $\chi_3$ the nontrivial character
+modulo $3$; for a Dirichlet character, $|1-\chi(\sigma_p)|=|1-\chi(p)|$, the Frobenius
+convention of \cite[(1.1)]{Main} inverting $\chi(p)$ without changing the modulus of the
+summand. Then:
+\begin{enumerate}
+\item For $S$ the Landau primes $n^2+1$ or the Friedlander--Iwaniec primes $a^2+b^4$, the
+detecting set $D_{\chi_4}=\{p\in S:\chi_4(p)\ne1\}$ is \emph{finite}, since by
+Lemma~\ref{lem:congruence}(3)--(4) all odd members lie in the class $1\bmod4$, which is
+$\ker\chi_4$. Hence $\sum_{D_{\chi_4}}p^{-\beta}<\infty$ for every $\beta>0$,
+$\chi_4\in\Xi_\beta(\Q,S)$ for every $\beta$, the $\mathrm{KMS}_\beta$ simplex has at
+least two extreme points at every temperature, and the state is \emph{never} unique.
+\item For $S$ the twin or Sophie Germain primes the same confinement has the opposite
+effect: by Lemma~\ref{lem:congruence}(1)--(2) all members $p>3$ lie in the class $2\bmod3$,
+and $\chi_3(2)=-1\ne1$, so $D_{\chi_3}$ is \emph{cofinite} in $S$ and
+$\sum_{D_{\chi_3}}p^{-\beta}=\sum_{p\in S}p^{-\beta}+O(1)$: the character is detected at
+full strength. More generally the class $2$ generates $(\Z/3)^\times$, and by
+\cite[Lem.~5.6]{Main} the admissible classes of these families generate
+$(\Z/M\Z)^\times$ for every modulus $M$, so \emph{no} Dirichlet character has finite
+detecting set: there is no permanent congruence obstruction for twin or Sophie Germain
+primes.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+A character trivial on the single occupied class has finite detecting set --- that is (1),
+where the class is the kernel itself --- and a character nontrivial on it detects all but
+finitely many members --- that is the first half of (2). For the last claim of (2), a
+character with finite detecting set would be trivial on all but finitely many of $S$, hence
+on the subgroup generated by the occupied classes, which is everything by
+\cite[Lem.~5.6]{Main}. The never-uniqueness in (1) is \cite[Thm.~3.9]{Main}, uniqueness
+requiring $\sum_{D_\chi}p^{-\beta}=\infty$ for every nontrivial $\chi$; the obstruction is
+permanent in the sense of \cite[\S4.1]{Main}.
+\end{proof}
+
+\begin{remark}[Numerical verification]\label{rem:numver}
+Computed to $2\cdot10^5$, counting $p>3$ for the mod-$3$ rows, odd $p$ for Landau, all
+representable primes for Friedlander--Iwaniec, $p>3$ with $p+2\in P_2$ for Chen, positive
+$a,b$ for Heath-Brown (the range of \cite{HB}), and the distinct primes
+$\lfloor n^c\rfloor\le2\cdot10^5$ for Piatetski-Shapiro:
+\[
+\begin{array}{lrcl}
+S & \#S & M & \text{coprime classes occupied}\\\hline
+\text{twin (smaller member)} & 2159 & 3 & \{2\}\ \text{of}\ \{1,2\}\\
+\text{Sophie Germain} & 2056 & 3 & \{2\}\ \text{of}\ \{1,2\}\\
+\text{Landau }n^2+1 & 63 & 4 & \{1\}\ \text{of}\ \{1,3\}\\
+\text{Friedlander--Iwaniec} & 938 & 4 & \{1\}\ \text{of}\ \{1,3\}\\
+\text{Chen} & 7523 & 3,4 & \text{both classes}\\
+\text{Heath-Brown} & 289 & 4,9 & \text{both mod }4;\ \{1,2,7,8\}\ \text{mod }9\\
+\text{Piatetski-Shapiro }c=1.1 & 6040 & 3,4 & \text{both classes}
+\end{array}
+\]
+The single-class rows now illustrate \emph{both} halves of Theorem~\ref{thm:permanent}:
+for Landau and Friedlander--Iwaniec the occupied class is the kernel $\{1\}$
+(obstruction); for twin and Sophie Germain it is $\{2\}$, on which $\chi_3$ is $-1$
+(full-strength detection). For Heath-Brown modulo $9$ the set $\{1,2,7,8\}$ is not
+contained in a proper subgroup of
+$(\Z/9)^\times$: a character trivial on it must have $\chi(2)=1$ and hence be trivial, since
+$2$ generates. So Heath-Brown is not obstructed either.
+\end{remark}
+
+\begin{corollary}[The proposed criterion is not the right one]\label{cor:criterion}
+The claim that high-temperature uniqueness is equivalent to equidistribution across
+admissible coprime classes is correct in one direction --- equidistribution does force
+$\sum_{D_\chi}p^{-\beta}\asymp\zeta_S(\beta)=\infty$ for $\beta<\beta_c$, hence uniqueness ---
+but it is not necessary: twin and Sophie Germain primes are as far from equidistributed as
+possible, confined to one class, and are nevertheless unobstructed, the confining class
+generating the group. What decides is not equidistribution but
+\cite[Thm.~5.5(5)]{Main}: confinement to a proper \emph{kernel}. That happens for Landau
+and Friedlander--Iwaniec, and for no other family here.
+\end{corollary}
+
+\begin{remark}[Consequence for \cite{Main}]\label{rem:consequence}
+\cite[Thm.~5.5]{Main} establishes for the Sophie Germain family the Brun-summability, the
+closed low-temperature phase, and --- in its part (5), with \cite[Lem.~5.6]{Main} --- the
+uniqueness criterion in the divergent range. All of it stands, and
+Theorem~\ref{thm:permanent}(2) is its confirmation from the congruence side: the mod-$3$
+confinement feeds the detecting series rather than starving it. The correct picture for
+Sophie Germain primes is therefore: no permanent obstruction anywhere; uniqueness wherever
+the series diverges (conditional on the lower bound of \cite[Thm.~5.5(2)]{Main}); and full
+symmetry breaking, $\Xi_\beta=\widehat{G_S}$, on the closed phase $[1,\infty)$ where
+$\zeta_S$ converges.
+\end{remark}
+
+\section{The continuous spectrum}
+
+\begin{theorem}[Piatetski-Shapiro]\label{thm:PS}
+For $1<c<243/205$ the asymptotic $\pi_{\mathrm{PS}(c)}(x)\sim x^{1/c}/\log x$ is a theorem
+(Piatetski-Shapiro for $c<12/11$, Heath-Brown for $c<755/662$, Rivat--Sargos for
+$c<243/205$). Hence for those $c$ the system $\cA_{\Q,S_{\mathrm{PS}}(c)}$ has
+$\beta_c=1/c\in(205/243,1)$, unconditionally, with an open low-temperature phase; and
+$c\mapsto1/c$ traces a continuous family of critical temperatures.
+\end{theorem}
+
+\begin{remark}[The range is narrow]\label{rem:narrow}
+$205/243=0.8436$, so the unconditional range of critical temperatures is
+$\beta_c\in(0.8436,1)$, an interval of length about $0.156$. The full conjectural range
+$(0,1)$ requires the asymptotic for all $c>1$, which is open. It is worth stating the
+unconditional interval numerically, since ``a continuous spectrum on $(0,1)$'' overstates
+what is available.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Claim} & \text{Status} & \text{Reference}\\\hline
+\beta_c=1\ \text{for twin, SG, Chen} & \text{true} & \text{Thm.~1.2}\\
+\beta_c=3/4,\ 2/3,\ 1/2\ \text{for FI, HB, Landau} & \text{true} & \text{Thm.~1.2}\\
+\beta_c=1/c\ \text{for Piatetski-Shapiro} & \text{true} & \text{Thm.~3.1}\\
+\text{closed iff Brun-summable} & \text{true; and iff }k>1 & \text{Prop.~1.1}\\
+\text{closedness comes from the sieve} & \text{no: from the 2nd prime condition} & \text{Rem.~1.3}\\
+\text{uniqueness}\iff\text{equidistribution} & \text{no: kernel confinement decides} & \text{Cor.~2.4}\\
+\text{Landau, FI: unique somewhere} & \textbf{false: never unique} & \text{Thm.~2.2(1)}\\
+\text{twin, SG obstructed} & \textbf{no: class }2\text{ generates} & \text{Thm.~2.2(2)}\\
+\text{Chen, HB, PS obstructed} & \text{no} & \text{Rem.~2.3}\\
+\text{PS spectrum covers }(0,1) & \text{unconditionally only }(0.8436,1) & \text{Rem.~3.2}
+\end{array}
+\]
+
+Two of the three proposed pieces are correct and one is not, and the failure is elementary
+rather than deep. The critical exponents are exactly the counting exponents; the open/closed
+dichotomy is exactly the power of the logarithm, hence exactly the number of simultaneous
+prime conditions. Four of the six families are trapped in a single residue class by a
+congruence that has nothing to do with sieves --- but confinement obstructs only when the
+class sits in the kernel. That happens for Landau and Friedlander--Iwaniec, whose
+$\mathrm{KMS}$ states are never unique by \cite[Thm.~3.9]{Main}; for twin and Sophie
+Germain primes the same confinement is detection at full strength, and there is no
+obstruction at all.
+
+The moral is worth recording because it is the opposite of the usual one in this corpus. Here
+the analytic input --- the hard sieve theorems --- is not where the difficulty lies; those
+theorems give the critical exponents and the phase types cleanly. What decides the
+qualitative behaviour is a congruence available to a first-year student, read correctly:
+$\Xi_\beta$ measures how a set of primes sits inside residue classes \emph{relative to the
+kernels of characters}. A set confined to the class $1$ is maximally obstructed no matter
+how delicate its density; a set confined to a generating class is not obstructed at all.
+
+Two questions. For the closed-phase families --- twin, Sophie Germain, Chen, all now known
+unobstructed --- high-temperature uniqueness coexists with the closed phase as soon as the
+divergence of the critical series below $\beta_c$ is available, which is unconditional for
+Chen (Chen's theorem \cite{Chen} supplies the lower bound) and conditional for the other
+two; can the Chen case be carried out in full, making it the first family in the corpus with
+both a closed phase and proven high-temperature uniqueness? And second, for the two
+obstructed families the permanent obstruction has order $2$; is the full $\Xi_\beta$ for,
+say, the Landau primes equal to that order-two group below $\beta_c$, or is it larger?
+
+\begin{thebibliography}{9}
+\bibitem{Chen} J. R. Chen, \emph{On the representation of a larger even integer as the sum of a prime and the product of at most two primes}, Sci. Sinica 16 (1973), 157--176.
+\bibitem{FI} J. Friedlander, H. Iwaniec, \emph{The polynomial $X^2+Y^4$ captures its primes}, Ann. of Math. (2) 148 (1998), 945--1040.
+\bibitem{HB} D. R. Heath-Brown, \emph{Primes represented by $x^3+2y^3$}, Acta Math. 186 (2001), 1--84.
+\bibitem{HR} H. Halberstam, H.-E. Richert, \emph{Sieve Methods}, LMS Monographs 4, Academic Press, 1974.
+\bibitem{RS} J. Rivat, P. Sargos, \emph{Nombres premiers de la forme $\lfloor n^c\rfloor$}, Canad. J. Math. 53 (2001), 414--433.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\end{thebibliography}
+
+\end{document}
