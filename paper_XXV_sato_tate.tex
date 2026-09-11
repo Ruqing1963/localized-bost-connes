@@ -1,0 +1,335 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+\raggedbottom
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\ST}{\mathrm{ST}}
+\newcommand{\id}{\mathrm{id}}
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+\title[Sato--Tate families]{Sato--Tate families in localized Bost--Connes systems:\\ open phase, no congruence obstruction,\\ and the symmetric power expansion}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Montreal, Canada}
+\email{ruqing@hotmail.com}
+\thanks{Sources, code and data for the entire series: \url{https://github.com/Ruqing1963/localized-bost-connes}; this paper is in \texttt{papers/XXV-sato-tate/}.}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Let $E/\Q$ be a non-CM elliptic curve, $a_p=2\sqrt p\cos\theta_p$, and
+$S_{[a,b]}=\{p:\theta_p\in[a,b]\}$ for $0\le a<b\le\pi$. We settle the three questions posed
+for the localized system $\cA_{\Q,S_{[a,b]}}$.
+
+\emph{The phase is open, and necessarily so.} By Sato--Tate $S_{[a,b]}$ has positive natural
+density $\delta=\mu_\ST([a,b])=\frac1\pi\bigl[(b-a)-\tfrac12(\sin2b-\sin2a)\bigr]$ among the
+primes, so $\pi_S(x)\sim\delta x/\log x$: the exponent is $\theta=1$ and the logarithmic power
+is $k=1$. By Proposition 1.1 of Paper XXIV the critical series is then
+$\asymp\delta\log\log x$, divergent, and the symmetry-broken phase is $(1,\infty)$, open. The
+precise asymptotic is
+\[
+\zeta_{S_{[a,b]}}(\beta)=\bigl(\delta+o(1)\bigr)\log\frac{1}{\beta-1}\qquad(\beta\to1^+),
+\]
+with $o(1)$ replaced by $O(1/\log\frac{1}{\beta-1})$ under any effective Sato--Tate error
+term $O(x/\log^{1+\varepsilon}x)$.
+This is not an accident of the interval: \emph{a set of positive density can never have a
+closed phase}, closedness requiring $k\ge2$, hence density zero with an extra logarithm.
+
+\emph{There is no congruence obstruction.} The residue $p\bmod m$ is
+$\det\bar\rho_{E,m}(\Frob_p)$, the cyclotomic character, while $\theta_p$ is governed by the
+trace; Serre's open image theorem makes the mod-$m$ image open, and joint equidistribution of
+$(\theta_p,p\bmod m)$ follows from the non-vanishing of $L(s,\Sym^kE\otimes\chi)$ on
+$\Re s=1$, now unconditional for non-CM $E/\Q$ by Newton--Thorne together with Shahidi.
+Hence every nontrivial character has a detecting set of positive density, and
+\textbf{the $\mathrm{KMS}_\beta$ state is unique for all $0<\beta\le1$}. This is the
+opposite verdict to Theorem 2.2(1) of Paper XXIV of the series, where the Landau and
+Friedlander--Iwaniec primes are trapped in the kernel class $1\bmod4$ and hence
+never unique --- and it is reached by the opposite mechanism to that theorem's part (2),
+where the twin and Sophie Germain primes escape obstruction while confined to a single
+\emph{generating} class. Verified numerically on $y^2=x^3+x+1$ over $6055$ primes below $6\cdot10^4$:
+in each of three intervals and each modulus $m\in\{3,4,5,8\}$ every coprime class carries the
+uniform proportion.
+
+\emph{The symmetric powers control the constant, not the transition.} Expanding the indicator
+in the characters $U_k(\cos\theta)=\Tr\Sym^k$, which are orthonormal for $\mu_\ST$,
+\[
+\zeta_{S_{[a,b]}}(s)=\delta\log\frac{1}{s-1}+\sum_{k\ge1}c_k\log L\bigl(s,\Sym^kE\bigr)+O(1),
+\qquad
+c_k=\frac2\pi\int_a^b\sin\bigl((k+1)t\bigr)\sin t\,dt .
+\]
+Only the $k=0$ term, the Riemann zeta function, has a pole at $s=1$; every $\Sym^k$ with
+$k\ge1$ is automorphic with $L(1,\Sym^kE)\ne0$, so contributes $O(1)$. The higher symmetric
+powers therefore fix the constant in the expansion and the shape of $\Xi_\beta$, and have no
+influence whatever on $\beta_c$.
+
+We flag one technical point that the $L^2$ expansion conceals: $\mathbf 1_{[a,b]}$ is not
+smooth, so the interchange of $\sum_k$ and $\sum_p$ requires a Beurling--Selberg smoothing,
+standard in equidistribution but not vacuous.
+\end{abstract}
+
+\maketitle
+
+\section{The thermodynamic baseline}
+
+The framework is that of \cite{Main}, cited by DOI; Papers VI and XXIV of the series,
+referred to by numeral, are unpublished companions, and every fact used from them is
+restated or verified in place.
+
+\begin{proposition}[Density]\label{prop:density}
+For $0\le a<b\le\pi$,
+\[
+\delta:=\mu_\ST\bigl([a,b]\bigr)=\frac{2}{\pi}\int_a^b\sin^2t\,dt
+=\frac{1}{\pi}\Bigl[(b-a)-\tfrac12\bigl(\sin2b-\sin2a\bigr)\Bigr]>0 .
+\]
+By the Sato--Tate theorem for non-CM elliptic curves over $\Q$ \cite{BLGHT}, $S_{[a,b]}$ has natural
+density $\delta$ in the primes, so $\pi_S(x)\sim\delta\,x/\log x$.
+\end{proposition}
+
+\begin{theorem}[Open phase]\label{thm:open}
+$\beta_c(S_{[a,b]})=1$, and
+\begin{equation}\label{eq:asym}
+\zeta_{S_{[a,b]}}(\beta)=\sum_{p\in S_{[a,b]}}p^{-\beta}=\bigl(\delta+o(1)\bigr)\log\frac{1}{\beta-1}
+\qquad(\beta\to1^+),
+\end{equation}
+so that $\zeta_S(1)=\infty$: the symmetry-broken phase is the \emph{open} half-line
+$(1,\infty)$. If moreover $\pi_S(x)=\delta\pi(x)+O(x/\log^{1+\varepsilon}x)$ for some
+$\varepsilon>0$ --- an effective Sato--Tate error term --- then the $o(1)\log\frac1{\beta-1}$
+sharpens to $O(1)$.
+\end{theorem}
+
+\begin{proof}
+In the notation of Proposition 1.1 of Paper XXIV, $\theta=1$ and $k=1$, so $\beta_c=\theta=1$
+and the critical series is $\asymp\delta\int_2^xdt/(t\log t)=\delta\log\log x\to\infty$. For
+\eqref{eq:asym}, write $E(x)=\pi_S(x)-\delta\pi(x)=o(x/\log x)$ and integrate by parts:
+$\sum_{p\in S}p^{-\beta}=\delta\sum_pp^{-\beta}+\int_2^\infty x^{-\beta}\,dE(x)$, the
+error being $\beta\int x^{-\beta-1}E(x)\,dx=o\bigl(\log\frac1{\beta-1}\bigr)$ from
+$E=o(x/\log x)$, and $O(1)$ when $E\ll x/\log^{1+\varepsilon}x$, since
+$\int x^{-2}\cdot x/\log^{1+\varepsilon}x\,dx<\infty$; finally
+$\delta\sum_pp^{-\beta}=\delta\log\zeta(\beta)+O(1)=\delta\log\frac{1}{\beta-1}+O(1)$. Closedness would require
+convergence at $\beta_c$, hence $k>1$ by Proposition 1.1 of Paper XXIV.
+\end{proof}
+
+\begin{corollary}[No positive-density set has a closed phase]\label{cor:noclosed}
+If $S\subseteq P$ has positive natural density then $k=1$ and the low-temperature phase is
+open. Closed phases require density zero, and specifically a counting function
+$\asymp x/\log^kx$ with $k\ge2$ --- which by Remark 1.3 of Paper XXIV means two
+simultaneous prime conditions. Sato--Tate families, being of positive density, are on the
+opposite side of that divide from the Sophie Germain family of \cite[Thm.~5.5]{Main}.
+\end{corollary}
+
+\begin{example}\label{ex:densities}
+$\delta=0.6090$ for $[\pi/3,2\pi/3]$, $\;0.0288$ for $[0,\pi/6]$, $\;0.0775$ for
+$[2.4,\pi]$, $\;0.5$ for $[0,\pi/2]$. Empirical densities for $y^2=x^3+x+1$ over the
+$6055$ good primes below $6\cdot10^4$: $0.6206$, $0.0276$, $0.0766$ respectively.
+\end{example}
+
+\section{No congruence obstruction}
+
+\begin{lemma}[The residue is the determinant]\label{lem:det}
+For $m\ge1$ and $p\nmid m N_E$, $\det\bar\rho_{E,m}(\Frob_p)=p\bmod m$, the mod-$m$
+cyclotomic character. The angle $\theta_p$ is determined by
+$\Tr\bar\rho_{E,\ell}(\Frob_p)=a_p$. Thus the residue class and the Sato--Tate angle are
+carried by the determinant and the trace of the same representation.
+\end{lemma}
+
+\begin{theorem}[Joint equidistribution]\label{thm:joint}
+Let $E/\Q$ be non-CM. For every $m\ge1$ the pairs $(\theta_p,p\bmod m)$ are equidistributed
+in $[0,\pi]\times(\Z/m)^\times$ for $\mu_\ST\times\mathrm{unif}$. Consequently, for every
+interval $[a,b]$ and every residue class $r$ coprime to $m$,
+\[
+\#\bigl\{p\le x:\theta_p\in[a,b],\ p\equiv r\ (m)\bigr\}\ \sim\ \frac{\delta}{\varphi(m)}\cdot\frac{x}{\log x}.
+\]
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:det} and Serre's open image theorem \cite{Serre} the mod-$m$ image is open, so the
+determinant and trace directions are independent in the limit. Analytically, expanding the
+indicator of $[a,b]\times\{r\}$ in the characters $U_k\otimes\chi$ of
+$SU(2)\times(\Z/m)^\times$ reduces the statement to the non-vanishing and holomorphy of
+$L(s,\Sym^kE\otimes\chi)$ on $\Re s=1$ for all $k\ge0$ and all Dirichlet $\chi$ mod $m$,
+with a pole only for $k=0$, $\chi$ trivial. Automorphy of $\Sym^kE$ for all $k$ is
+Newton--Thorne \cite{NT}; the non-vanishing on $\Re s=1$ of the automorphic $L$-functions and their
+twists is Jacquet--Shalika \cite{JS} and Shahidi \cite{Shahidi}. Apply Wiener--Ikehara.
+\end{proof}
+
+\begin{theorem}[High-temperature uniqueness]\label{thm:unique}
+For every non-CM $E/\Q$ and every $[a,b]$ with $\delta>0$, the system
+$\cA_{\Q,S_{[a,b]}}$ has a unique $\mathrm{KMS}_\beta$ state for $0<\beta\le1$, and its
+$\mathrm{KMS}_\beta$ simplex is $\Prob(G_S)$ for $\beta>1$. In particular $S_{[a,b]}$ carries
+\emph{no} congruence obstruction in the sense of Theorem 2.2(1) of Paper XXIV.
+\end{theorem}
+
+\begin{proof}
+By \cite[Thm.~3.9]{Main} uniqueness at $\beta$ requires
+$\sum_{p\in D_\chi}p^{-\beta}=\infty$ for every nontrivial $\chi\in\widehat{G_S}$. For
+$K=\Q$ such a $\chi$ is supported at finitely many places and its detecting set is the union
+of the classes of $S_{[a,b]}$ outside $\ker\chi$ modulo some $m$; by
+Theorem~\ref{thm:joint} that set has density $\delta(1-1/[\,\cdot\,])>0$ in the primes, so
+its Dirichlet series diverges for $\beta\le1$ by Theorem~\ref{thm:open}. For $\beta>1$ the
+whole of $\zeta_S(\beta)$ converges, so $\Xi_\beta=\widehat{G_S}$.
+\end{proof}
+
+\begin{remark}[Numerical verification]\label{rem:numjoint}
+For $y^2=x^3+x+1$ (non-CM), the $6055$ good primes below $6\cdot10^4$:
+\[
+\begin{array}{lcccc}
+[a,b] & m=3 & m=4 & m=5 & m=8\\\hline
+[\pi/3,2\pi/3] & .500,.500 & .502,.498 & .246,.250,.254,.249 & .253,.248,.248,.250\\
+{[0,\pi/6]} & .431,.569 & .449,.551 & .275,.222,.269,.234 & .228,.251,.222,.299\\
+{[2.4,\pi]} & .478,.522 & .496,.504 & .259,.274,.235,.233 & .246,.265,.250,.239
+\end{array}
+\]
+against uniform values $1/2$ and $1/4$. Every coprime class is occupied at roughly the
+uniform proportion; the fluctuations in the two sparse intervals are consistent with the
+sample sizes ($167$ and $464$ primes). Contrast Remark 2.3 of Paper XXIV, where the twin
+and Sophie Germain families occupy the single class $2\bmod3$ --- a generating class, so no
+obstruction --- and the Landau and
+Friedlander--Iwaniec families the single kernel class $1\bmod4$, which does obstruct.
+\end{remark}
+
+\begin{remark}[Why this family passes the test]\label{rem:whypass}
+The obstructed families of Paper XXIV --- Landau and Friedlander--Iwaniec --- are defined by
+a condition that \emph{involves}
+the residue, $p$ being a value of a polynomial, so the condition and
+the residue are not independent, and the dependence lands in the kernel. (The twin and
+Sophie Germain conditions are also residue-entangled, but land in a generating class and
+escape.) Here the defining condition involves $a_p$, and by
+Lemma~\ref{lem:det} the residue is the determinant while $a_p$ is the trace of the same
+Galois representation. Open image is exactly the statement that these two coordinates are
+independent. The distinction is structural, not a matter of the density being larger.
+\end{remark}
+
+\section{The symmetric power expansion}
+
+\begin{proposition}[Chebyshev coefficients]\label{prop:cheb}
+The functions $U_k(\cos t)=\sin\bigl((k+1)t\bigr)/\sin t$, $k\ge0$, are orthonormal in
+$L^2(\mu_\ST)$ and satisfy $U_k(\cos\theta_p)=\Tr\Sym^k(U_p)$ where
+$U_p=p^{-1/2}\rho_E(\Frob_p)$. Writing
+$\mathbf 1_{[a,b]}=\sum_{k\ge0}c_kU_k$ in $L^2(\mu_\ST)$,
+\[
+c_0=\delta,\qquad
+c_k=\frac{2}{\pi}\int_a^b\sin\bigl((k+1)t\bigr)\sin t\,dt
+=\frac1\pi\Bigl[\frac{\sin kt}{k}-\frac{\sin(k+2)t}{k+2}\Bigr]_a^b\quad(k\ge1).
+\]
+\end{proposition}
+
+\begin{theorem}[The expansion]\label{thm:expansion}
+For $\Re s>1$,
+\begin{equation}\label{eq:expansion}
+\zeta_{S_{[a,b]}}(s)=\delta\,\log\frac{1}{s-1}+\sum_{k\ge1}c_k\log L\bigl(s,\Sym^kE\bigr)+O(1),
+\end{equation}
+the series over $k$ summed by truncation as in Remark~\ref{rem:smoothing}, and every term
+with $k\ge1$ is $O(1)$ as $s\to1^+$, since $\Sym^kE$ is automorphic
+(Newton--Thorne \cite{NT}) and $L(1,\Sym^kE)\ne0$ (Shahidi \cite{Shahidi}). Hence the pole, the critical exponent
+$\beta_c=1$ and the divergence at $\beta=1$ all come from the $k=0$ term, the Riemann zeta
+function; the symmetric powers of higher order determine the constant and the fine structure
+of $\Xi_\beta$ but not the transition.
+\end{theorem}
+
+\begin{proof}
+$\log L(s,\Sym^kE)=\sum_p\Tr\Sym^k(U_p)p^{-s}+O(1)$ for $\Re s>1/2$, the prime-power terms
+converging by Deligne's bound. Substitute the expansion of the indicator and use
+$\log\zeta(s)=\log\frac{1}{s-1}+O(1)$ for the $k=0$ term.
+\end{proof}
+
+\begin{remark}[The smoothing is not vacuous]\label{rem:smoothing}
+$\mathbf 1_{[a,b]}$ is not continuous, so the Chebyshev series converges in $L^2(\mu_\ST)$
+but not uniformly, and the interchange of $\sum_k$ with $\sum_p$ in \eqref{eq:expansion} is
+not justified term by term. The standard remedy is to bracket the indicator between
+Beurling--Selberg majorants and minorants of bounded degree, which introduces an error
+$O(1/K)$ from truncating at $k\le K$ and is then optimized against the error term in the
+Sato--Tate count. We note that the truncation must also absorb the $k$-dependence of the
+individual $O(1)$'s: both the prime-power tails ($|\mathrm{tr}\,\Sym^k|\le k+1$) and the
+size of $\log L(s,\Sym^kE)$ near $s=1$ grow with $k$ through the analytic conductor, so the
+constants are not uniform and the series over $k$ converges only through the bracketing, not
+term by term. The formula is correct; the proof of the interchange is the usual one and
+is not automatic.
+\end{remark}
+
+\begin{example}[Coefficients]\label{ex:coeffs}
+For $[a,b]=[\pi/3,2\pi/3]$: $c_0=0.608998$, $c_1=0$, $c_2=-0.413497$, $c_3=0$,
+$c_4=0.137832$, $c_5=0$, $c_6=0.068916$. The odd coefficients vanish by the symmetry of the
+interval about $\pi/2$; $\Sym^2E$ carries the leading correction, which is the familiar
+statement that the second moment of $a_p$ is the first place a symmetric interval is
+sensitive to the curve.
+\end{example}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Question} & \text{Answer} & \text{Reference}\\\hline
+\beta_c(S_{[a,b]}) & 1 & \text{Thm.~1.2}\\
+\text{phase at }\beta=1 & \textbf{OPEN }(1,\infty) & \text{Thm.~1.2}\\
+\zeta_S(\beta),\ \beta\to1^+ & \delta\log\frac{1}{\beta-1}+O(1) & \text{Thm.~1.2}\\
+\text{positive density}\Rightarrow\text{closed?} & \textbf{never} & \text{Cor.~1.3}\\
+\text{joint equidistribution} & \textbf{holds, unconditionally} & \text{Thm.~2.2}\\
+\text{congruence obstruction} & \textbf{none} & \text{Thm.~2.3, Rem.~2.4}\\
+\text{unique }\mathrm{KMS}_\beta\text{ for }\beta\le1 & \textbf{yes} & \text{Thm.~2.3}\\
+\Sym^k\ \text{controls }\beta_c & \textbf{no; only the constant} & \text{Thm.~3.2}\\
+\text{term-by-term interchange} & \text{needs smoothing} & \text{Rem.~3.3}
+\end{array}
+\]
+
+No no-go theorem is warranted here, and that is itself the finding. The Sato--Tate
+intervals pass the congruence test of Paper XXIV by \emph{equidistribution} --- the clean
+mechanism --- where the twin and Sophie Germain families pass it, by that paper's revised
+Theorem 2.2(2), through the opposite extreme of confinement to a generating class. The
+reason here is structural: the defining condition is a
+constraint on the \emph{trace} of the Galois representation, while the residue class is its
+\emph{determinant}, and Serre's open image theorem \cite{Serre} is precisely the independence of the two.
+The obstructed families of Paper XXIV --- Landau and Friedlander--Iwaniec --- fail because
+their defining conditions are congruence conditions in disguise, landing in the kernel.
+
+The price is that the phase is open. Positive density forces $k=1$ and hence divergence at the
+critical point, so these systems cannot exhibit the closed low-temperature phase that
+\cite[Thm.~5.5]{Main} found for the Sophie Germain family. By Corollary~\ref{cor:noclosed} the
+two desiderata --- a closed phase and an unobstructed high-temperature phase --- are in
+tension: the first needs density zero with two prime conditions, the second is easiest for
+sets defined by trace conditions, which have positive density. By the revised Theorem 2.2(2) of Paper XXIV the twin, Sophie Germain and Chen families all
+combine a closed phase with the absence of obstruction, Chen unconditionally on the
+divergence side; those remain the only such families we know.
+
+Two questions. Can one intersect a Sato--Tate interval with a sparse condition to obtain
+$k=2$ while keeping joint equidistribution, for instance
+$\{p:\theta_p\in[a,b],\ p+2\in P_2\}$ --- the Chen condition contributing the extra logarithm
+and the trace condition remaining independent of it? And second, the anomalous sets of
+Theorem 5.3 of Paper VI were built by letting $[a,b]$ shrink with $p$; by
+Theorem~\ref{thm:open} any \emph{fixed} interval gives $\beta_c=1$ with an open phase, so the
+whole of the phase-structure interest in Sato--Tate families lies in shrinking intervals,
+which is where Paper VI placed it.
+
+\begin{thebibliography}{9}
+\bibitem{BLGHT} T. Barnet-Lamb, D. Geraghty, M. Harris, R. Taylor, \emph{A family of Calabi--Yau varieties and potential automorphy II}, Publ. RIMS 47 (2011), 29--98.
+\bibitem{NT} J. Newton, J. A. Thorne, \emph{Symmetric power functoriality for holomorphic modular forms}, Publ. Math. IHES 134 (2021), 1--116.
+\bibitem{Serre} J.-P. Serre, \emph{Propri\'et\'es galoisiennes des points d'ordre fini des courbes elliptiques}, Invent. Math. 15 (1972), 259--331.
+\bibitem{JS} H. Jacquet, J. A. Shalika, \emph{A non-vanishing theorem for zeta functions of $GL_n$}, Invent. Math. 38 (1976/77), 1--16.
+\bibitem{Shahidi} F. Shahidi, \emph{On certain $L$-functions}, Amer. J. Math. 103 (1981), 297--355.
+\bibitem{Main} R. Chen, \emph{KMS state uniqueness and phase transitions in localized Bost--Connes systems}, preprint, 2026, \newline\url{https://doi.org/10.5281/zenodo.22152101}.
+\end{thebibliography}
+
+\end{document}
