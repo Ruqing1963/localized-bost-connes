@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the foundational paper as below. This is an unrefereed preprint; see README for caveats."
+title: "KMS state uniqueness and phase transitions in localized Bost-Connes systems: from Chebotarev density to the Hardy-Littlewood conjecture"
+type: article
+authors:
+  - family-names: Chen
+    given-names: Ruqing
+    email: ruqing@hotmail.com
+    affiliation: "GUT Geoservice Inc., Montreal, Canada"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # add before depositing
+year: 2026
+doi: "10.5281/zenodo.22152101"
+abstract: >-
+  A classification of the KMS states of the S-local Bost-Connes system over an
+  arbitrary number field, for every set S of finite primes and every inverse
+  temperature, in terms of an obstruction group defined by a Dirichlet series
+  condition on Frobenius classes. Uniqueness is a Chebotarev-type equidistribution
+  criterion; divergence of the partition function does not suffice.
+keywords:
+  - Bost-Connes system
+  - KMS states
+  - phase transitions
+  - Chebotarev density theorem
+  - class field theory
+  - operator algebras
+  - Kakutani dichotomy
+license: CC-BY-4.0
+repository-code: "https://github.com/Ruqing1963/localized-bost-connes"
