@@ -1,0 +1,353 @@
+% generated from papers/IX-rigidity/paper_IX_rigidity.tex -- edit the paper, then rerun assemble.py
+\chapter[Amenability and the failure of superrigidity]{Localized Bost--Connes factors are amenable:\\ the failure of $W^*$-superrigidity,\\ and what survives at the $C^*$-level}\label{ch:IX}
+\chapterorigin{This chapter is Paper IX of the series (\texttt{papers/IX-rigidity/}).}
+\begin{summary}
+We settle the rigidity question for the type $\mathrm{III}$ factors of the localized
+Bost--Connes systems, and the answer is negative in the strongest available sense.
+
+The groupoid $\cG_S=I_S\ltimes\widetilde\Omega_S$ has abelian, hence amenable, acting group
+$I_S=\bigoplus_{\pp\in S}\Z$, so $M_{K,S,\beta}$ is an injective factor. By the classification of
+injective factors (Connes, Krieger, Haagerup) its isomorphism class is determined by its flow
+of weights alone --- by nothing beyond the single number $\lambda$ in type
+$\mathrm{III}_\lambda$, by nothing at all in type $\mathrm{III}_1$. The group
+$\Sigma_\beta=\mathrm{pr}_\R(\Xi^{\mathrm{ext}}_\beta)$ of [Ch.~\ref{ch:I}] bounds that flow, lying
+in its point spectrum, and determines it whenever the spectrum is pure point; whatever
+arithmetic the factor retains is therefore in the flow of weights, and in the cases decided
+in [Ch.~\ref{ch:I}] there is none.
+
+Consequently \emph{class field $W^*$-superrigidity is false, maximally}. For $S=P_K$ and
+$0<\beta\le1$ every number field gives type $\mathrm{III}_1$ [Ch.~\ref{ch:I}, Thm.~3.2], hence
+\[
+M_{\Q,P_\Q,1}\ \cong\ M_{\Q,P_\Q,1/2}\ \cong\ M_{K,P_K,\beta}\ \cong\ R_\infty
+\]
+for every number field $K$ and every $\beta\in(0,1]$: the factor remembers neither $K$, nor
+$S$, nor $\beta$. Popa's deformation/rigidity machinery cannot be applied, and not for
+technical reasons: $s$-malleable deformations produce rigidity through a spectral gap, which
+requires the acting group to be non-amenable, and $I_S$ is abelian. Cartan uniqueness holds,
+but as a consequence of Connes--Feldman--Weiss rather than of Popa, and only up to conjugacy
+by an automorphism --- not up to unitary conjugacy --- while orbit equivalence rigidity fails
+outright, all amenable relations of a given type being orbit equivalent by Krieger.
+
+What survives is at the $C^*$-level and in inclusions. The obstruction group $\Xi_\beta$ is
+an invariant of the $C^*$-dynamical system $(\cA_{K,S},\sigma)$ through its
+$\mathrm{KMS}_\beta$ simplex, and is destroyed by taking the weak closure in a single
+extremal state; this is the operator-algebraic form of the measure-class principle of
+Chapter~\ref{ch:III}. And the symmetry-breaking inclusion
+$\Msym^{G}\subset\Msym$ of Chapter~\ref{ch:II} has index $|\Xi_\beta|$, so the \emph{pair} recovers the
+order of the obstruction group even though neither algebra alone recovers anything.
+\end{summary}
+
+\section{Amenability, and what it costs}
+
+Throughout, $K$ is a number field, $S$ an infinite set of finite primes, $\beta>0$ with
+$\zeta_{K,S}(\beta)=\infty$, $\varphi$ an extremal $\mathrm{KMS}_\beta$ state and
+\[
+M_{K,S,\beta}=\pi_\varphi\bigl(\cA_{K,S}\bigr)''=W^*\bigl(\cG_S,\nu\bigr),
+\qquad \cG_S=I_S\ltimes\widetilde\Omega_S,\quad I_S=\bigoplus_{\pp\in S}\Z .
+\]
+
+\begin{lemma}[Amenability]\label{IX:lem:amenable}
+$\cG_S$ is a second countable étale groupoid with abelian, hence amenable, acting group;
+therefore $\cG_S$ is amenable, $C^*_r(\cG_S)=C^*(\cG_S)$, and $M_{K,S,\beta}$ is an injective
+von Neumann algebra. It is a factor of type $\mathrm{III}$ by [Ch.~\ref{ch:Main}, Prop.~6.1].
+\end{lemma}
+
+\begin{proof}
+$I_S$ is a countable abelian group, hence amenable, and a transformation groupoid by an
+amenable group acting on a locally compact space is amenable; amenability of the groupoid
+gives injectivity of the associated von Neumann algebra, equivalently the orbit relation
+of $I_S$ on $(\widetilde\Omega_S,\nu)$ is amenable and its von Neumann algebra
+\cite{FM} is injective \cite{CFW}.
+\end{proof}
+
+\begin{theorem}[The complete $W^*$-invariant]\label{IX:thm:complete}
+$M_{K,S,\beta}$ is an injective factor of type $\mathrm{III}$, so its isomorphism class is
+determined by its flow of weights, and by nothing else:
+\begin{itemize}
+\item if the type is $\mathrm{III}_1$, then $M\cong R_\infty$, the unique injective factor of
+type $\mathrm{III}_1$ \cite{Haagerup};
+\item if the type is $\mathrm{III}_\lambda$, $0<\lambda<1$, then $M\cong R_\lambda$, the Powers
+factor \cite{Connes76};
+\item if the type is $\mathrm{III}_0$, then $M$ is the Krieger factor of its flow of weights,
+which is a complete invariant \cite{Krieger}.
+\end{itemize}
+The group $\Sigma_\beta=\mathrm{pr}_\R(\Xi^{\mathrm{ext}}_\beta)$ of [Ch.~\ref{ch:I}, Def.~1.1]
+constrains the flow of weights: $\Sigma_\beta$ is contained in the point spectrum $T(M)$ of
+the flow [Ch.~\ref{ch:I}, Rem.~2.3], so $\Sigma_\beta\ne\{0\}$ excludes $\mathrm{III}_1$,
+$\Sigma_\beta$ dense forces $\mathrm{III}_0$, and $\Sigma_\beta=c\Z$ forces
+$\mathrm{III}_{e^{-2\pi k/c}}$ for some $k\ge1$ or $\mathrm{III}_0$ [Ch.~\ref{ch:I}, Prop.~2.2].
+If the flow of weights has pure point spectrum, $\Sigma_\beta$ determines it and hence the
+factor; whether it always does is open. In the two cases decided in [Ch.~\ref{ch:I}], namely
+$S=P_K$ with $0<\beta\le1$ (type $\mathrm{III}_1$, [Ch.~\ref{ch:I}, Thm.~3.2]) and the band set
+of [Ch.~\ref{ch:I}, Thm.~4.2] (type $\mathrm{III}_{e^{-1}}$), the factor is $R_\infty$ and
+$R_{e^{-1}}$ respectively.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{IX:lem:amenable} and the cited classification theorems: Connes classified the
+injective factors of type $\mathrm{III}_\lambda$, $\lambda\ne1$, the $\mathrm{III}_0$ case
+being reduced to Krieger's theorem on the flow of weights, and Haagerup settled
+$\mathrm{III}_1$. The constraints are [Ch.~\ref{ch:I}, Prop.~2.2 and Rem.~2.3]; the two
+decided cases are [Ch.~\ref{ch:I}, Thm.~3.2, Thm.~4.2].
+\end{proof}
+
+\begin{remark}[What the factor can still remember]\label{IX:rem:remember}
+The one place where arithmetic could survive the weak closure is the flow of weights in
+type $\mathrm{III}_0$, or the number $\lambda$ in type $\mathrm{III}_\lambda$. Both are
+functions of the essential-value data of the Radon--Nikodym cocycle $\Ns\aaa^{-\beta}$, hence
+of the sequence of norms together with the measure class of $\pi_\beta$; by
+[Ch.~\ref{ch:Main}, Prop.~6.1] the Connes invariant satisfies $S(M)\subseteq\overline{\Gamma_\beta}\cup\{0\}$
+with $\Gamma_\beta$ the group generated by the $\Ns\pp^{-\beta}$. What the factor remembers
+is therefore at most an ergodic flow built from the norm data and the measure class; two
+systems with the same flow of weights are isomorphic whatever their norms, fields and
+temperatures, so none of these is reconstructible from the factor.
+\end{remark}
+
+\section{$W^*$-superrigidity fails maximally}
+
+\begin{theorem}[No reconstruction]\label{IX:thm:fails}
+Let $K_1,K_2$ be any number fields and $\beta_1,\beta_2\in(0,1]$. Then
+\[
+M_{K_1,P_{K_1},\beta_1}\ \cong\ M_{K_2,P_{K_2},\beta_2}\ \cong\ R_\infty .
+\]
+In particular the isomorphism class of the factor determines neither the number field $K$,
+nor the prime set $S$, nor the inverse temperature $\beta$, nor the norms $\{\Ns\pp\}$, nor
+the symmetry group $G_S$, nor the obstruction group $\Xi_\beta$.
+\end{theorem}
+
+\begin{proof}
+By [Ch.~\ref{ch:I}, Thm.~3.2] the type is $\mathrm{III}_1$ for $S=P_K$ and $0<\beta\le1$, for
+every number field $K$; by Theorem~\ref{IX:thm:complete} the factor is then the unique injective
+$\mathrm{III}_1$ factor.
+\end{proof}
+
+\begin{example}[Explicit collapses]\label{IX:ex:collapse}
+\[
+\begin{array}{lllll}
+K & S & \beta & \text{type} & M\\\hline
+\Q & P_\Q & 1 & \mathrm{III}_1 & R_\infty\\
+\Q & P_\Q & 1/2 & \mathrm{III}_1 & R_\infty\\
+\Q(i) & P_K & 1 & \mathrm{III}_1 & R_\infty\\
+\Q(2^{1/3}) & P_K & 0.9 & \mathrm{III}_1 & R_\infty\\
+\Q & \text{band set of [Ch.~\ref{ch:I}, Thm.~4.2]} & 1 & \mathrm{III}_{e^{-1}} & R_{e^{-1}}
+\end{array}
+\]
+The first four are isomorphic von Neumann algebras although their arithmetic input differs in
+every respect. The fifth is distinguishable from them, but only through the single number
+$e^{-1}$, and it has the \emph{same} factor as every other system of type
+$\mathrm{III}_{e^{-1}}$ --- for instance the system of any $K$ and $S$ whose norms are all
+powers of a single $\lambda_0$ with $\lambda_0^{-\beta}=e^{-1}$, when it is of type
+$\mathrm{III}_{e^{-1}}$ rather than $\mathrm{III}_0$ [Ch.~\ref{ch:Main}, Prop.~6.1].
+\end{example}
+
+\begin{corollary}[The point spectrum is not an invariant]\label{IX:cor:pointspec}
+The set $\{\Ns\pp^{-\beta}:\pp\in S\}$ is not a $W^*$-invariant. Only the closed subgroup
+$\overline{\Gamma_\beta}$ enters Connes' invariant $S(M)$, by [Ch.~\ref{ch:Main}, Prop.~6.1], and
+$S(M)$ determines only the type. In particular no reconstruction of the prime norms, and
+hence no norm-preserving bijection $S_1\cong S_2$, can be extracted from an isomorphism of
+factors.
+\end{corollary}
+
+\begin{proof}
+The four systems of Example~\ref{IX:ex:collapse} with $S=P_K$ have pairwise different norm
+sets and the same factor. In general $S(M)=\bigcap_{\psi}\mathrm{Sp}(\Delta_\psi)$ is a closed
+subset of $[0,\infty)$ determined by the type, and $S(M)\subseteq\overline{\Gamma_\beta}\cup\{0\}$
+[Ch.~\ref{ch:Main}, Prop.~6.1]; norm sets generating the same closed subgroup $\overline{\Gamma_\beta}$
+are indistinguishable by $S(M)$, and by Theorem~\ref{IX:thm:complete} the factor carries only
+the flow of weights.
+\end{proof}
+
+\section{Why Popa's machinery does not apply}
+
+\begin{proposition}[No spectral gap]\label{IX:prop:nogap}
+Let $(\alpha_t)_{t\in\R}$ be the $s$-malleable Bernoulli deformation associated with the
+product measure $\pi_\beta=\bigotimes_\pp\mu_{t_\pp}$ on $V=\Z_{\ge0}^S$. The deformation
+exists, but the conclusion of Popa's spectral gap argument is unavailable: that argument
+derives rigidity from the failure of the acting group to have almost invariant vectors, and
+$I_S$ is abelian, hence amenable, hence has almost invariant vectors in every
+representation. No subgroup of $I_S$ has property $(\mathrm T)$ or a spectral gap.
+\end{proposition}
+
+\begin{proof}
+An abelian group is amenable and the regular representation of an infinite amenable group has
+almost invariant vectors; Popa's deformation/rigidity arguments \cite{Popa} require the
+opposite, a rigid subalgebra or a spectral gap for the deformation.
+\end{proof}
+
+\begin{remark}[This is not a gap in the exposition]\label{IX:rem:notgap}
+Deformation/rigidity theory exists to produce rigidity where amenability fails. Applied to an
+amenable algebra it can only recover what Connes' classification already gives, which by
+Theorem~\ref{IX:thm:complete} is the type. The absence of a Popa-type theorem here is therefore
+structural, and the correct reading of Theorem~\ref{IX:thm:fails} is not that the rigidity proof
+is missing but that the rigidity statement is false.
+\end{remark}
+
+\section{Cartan subalgebras and orbit equivalence}
+
+\begin{theorem}[Cartan uniqueness, correctly attributed]\label{IX:thm:cartan}
+$A=L^\infty(Y_S,\nu)\subset M_{K,S,\beta}$ is a Cartan subalgebra, and any two Cartan
+subalgebras of $M_{K,S,\beta}$ are conjugate by an \emph{automorphism} of $M$. This is a
+consequence of Connes--Feldman--Weiss, not of Popa intertwining, and it does \emph{not} give
+unitary conjugacy: since $\Out(M)$ is nontrivial for the injective factors, conjugacy by an
+automorphism is strictly weaker.
+\end{theorem}
+
+\begin{proof}
+$A$ is maximal abelian with normalizer generating $M$, by the groupoid picture, the groupoid
+being principal on a conull set [Ch.~\ref{ch:Main}, Prop.~2.8]. A Cartan subalgebra $B\subset M$ gives
+by Feldman--Moore \cite{FM} an ergodic non-singular relation $\cR_B$ and a $2$-cocycle with
+$(M,B)\cong(W^*(\cR_B,\sigma_B),L^\infty)$; $\cR_B$ is amenable because $M$ is injective, hence
+hyperfinite by Connes--Feldman--Weiss \cite{CFW}, and for hyperfinite relations the
+$2$-cocycle is a coboundary \cite{FM}. Two Cartan subalgebras $B_1,B_2$ thus give two ergodic
+hyperfinite relations whose associated factors coincide, hence with the same flow of weights;
+by Krieger's theorem \cite{Krieger} they are orbit equivalent, so the Cartan pairs $(M,B_1)$
+and $(M,B_2)$ are isomorphic, i.e.\ conjugate by an automorphism of $M$. Unique Cartan
+decomposition up to unitary conjugacy is a rigidity phenomenon of non-amenable factors
+\cite{Houdayer}, and does not hold here.
+\end{proof}
+
+\begin{corollary}[Orbit equivalence rigidity fails]\label{IX:cor:oe}
+An isomorphism $M_{K_1,S_1,\beta_1}\cong M_{K_2,S_2,\beta_2}$ does induce an isomorphism of
+the underlying orbit equivalence relations, by Theorem~\ref{IX:thm:cartan} and Feldman--Moore.
+But this carries no information: by Krieger's theorem all amenable ergodic non-singular
+relations of a given type are already orbit equivalent, so the induced isomorphism exists
+whether or not the arithmetic inputs are related.
+\end{corollary}
+
+\begin{remark}[The Radon--Nikodym cocycle]\label{IX:rem:rn}
+The cocycle $D(v+a,g;v,g)=\Ns\aaa^{-\beta}$ is preserved modulo coboundaries by any orbit
+equivalence, and its essential range is the ratio set. But the ratio set is
+$S(M)\cap(0,\infty)$, which by Theorem~\ref{IX:thm:complete} is the type. The cocycle therefore
+transmits exactly the information already counted, and no more; in particular it does not
+transmit the point spectrum, by Corollary~\ref{IX:cor:pointspec}.
+\end{remark}
+
+\section{What survives}
+
+\begin{theorem}[$\Xi_\beta$ is a $C^*$-invariant, not a $W^*$-invariant]\label{IX:thm:Cstar}
+The obstruction group $\Xi_\beta(K,S)$ is determined by the $C^*$-dynamical system
+$(\cA_{K,S},\sigma)$, through its $\mathrm{KMS}_\beta$ simplex
+$\Prob(G_S/\Xi_\beta^\perp)$ [Ch.~\ref{ch:Main}, Thm.~3.6]. It is \emph{not} determined by
+$M_{K,S,\beta}$, by Theorem~\ref{IX:thm:fails}. The passage from the $C^*$-algebra with its
+flow to the weak closure in a single extremal state destroys it.
+\end{theorem}
+
+\begin{proof}
+The first statement is the classification theorem; the second is Theorem~\ref{IX:thm:fails},
+since two systems with $\Xi_{\beta_1}\ne\Xi_{\beta_2}$ can have isomorphic factors.
+\end{proof}
+
+\begin{remark}[Consistency with the measure-class principle]\label{IX:rem:measureclass}
+Theorem~\ref{IX:thm:Cstar} is the operator-algebraic form of the principle of Chapter~\ref{ch:III} of the
+series, where $\Xi_\beta$ is identified as an invariant of the measure class of $\pi_\beta$,
+all the $\beta$-dependence sitting there. Taking the weak closure in a single extremal state retains
+the measure class only through its Krieger invariant, that is through the type. The present
+theorem is therefore not a new phenomenon but the same one, seen at the level of von Neumann
+algebras rather than of cohomology.
+\end{remark}
+
+\begin{theorem}[The inclusion remembers the order]\label{IX:thm:inclusion}
+Let $\Xi_\beta$ be finite, let $\Msym=\pi_{\phisym}(\cA_{K,S})''=\bigoplus_{\varepsilon}M_\varepsilon$
+be the algebra of the symmetric state, the sum over the $|\Xi_\beta|$ extremal
+$\mathrm{KMS}_\beta$ states, and let $\Msym^{G}\subset\Msym$ be the fixed-point algebra of the
+action of $G=G_S/\Xi_\beta^\perp$, which permutes the summands simply transitively and
+identifies $\Msym^G$ with any one $M_\varepsilon$ embedded diagonally. Then
+\[
+\bigl[\Msym:\Msym^{G}\bigr]_0=\bigl|\Xi_\beta\bigr| ,
+\]
+the minimal index, so the isomorphism class of the \emph{pair} determines $|\Xi_\beta|$,
+even though by Theorem~\ref{IX:thm:fails} neither $M_\varepsilon$ nor $\Msym$ need determine
+anything. Equivalently, $\log[\Msym:\Msym^G]_0=\log|\Xi_\beta|$ equals the relative entropy
+of an extremal phase against the symmetric one.
+\end{theorem}
+
+\begin{proof}
+The action of $G_S$ on the $\mathrm{KMS}_\beta$ simplex factors through $G$ and permutes the
+extreme points simply transitively [Ch.~\ref{ch:Main}, Thm.~3.6(3)], hence the summands of $\Msym$,
+whose GNS representations are pairwise disjoint; so $\Msym^G$ is the diagonal copy
+$D\otimes1\subseteq D\otimes\ell^\infty(G)$ with $D=M_\varepsilon$, whose minimal index is
+$|G|$, realized by the averaging expectation. The relative entropy of one extremal state
+against the uniform mixture of $|G|$ mutually singular states is $\log|G|$. These are the
+computations of Chapter~\ref{ch:II} (its Theorem 5.8 and Corollary 5.11), reproduced
+here for completeness.
+\end{proof}
+
+\begin{remark}[Where to look for rigidity]\label{IX:rem:whererigidity}
+Theorem~\ref{IX:thm:inclusion} indicates the level at which rigidity questions are not
+vacuous: not the single factor, which is $R_\infty$, $R_\lambda$ or a Krieger factor, but
+structured objects --- the $C^*$-algebra with its flow, the inclusion $\Msym^G\subset\Msym$,
+the Cartan pair together with the $G_S$-action. Each of these carries strictly more than the factor, and the
+first carries $\Xi_\beta$ in full.
+\end{remark}
+
+\section{Automorphisms, and the fundamental group}
+
+\begin{proposition}[Both invariants are degenerate]\label{IX:prop:degenerate}
+\begin{enumerate}
+\item The fundamental group $\cF(M)$ is not defined for type $\mathrm{III}$ factors, being an
+invariant of $\mathrm{II}_1$ factors; the analogous statement, that $M\otimes B(H)\cong M$,
+holds trivially for every properly infinite factor.
+\item $\Out(M_{K,S,\beta})$ is that of the injective factor determined by
+Theorem~\ref{IX:thm:complete} --- of $R_\infty$ or $R_\lambda$ --- and so is the same for all
+systems of the same type, carrying no arithmetic information.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) is the definition. (2) is Theorem~\ref{IX:thm:complete}: isomorphic algebras have isomorphic
+outer automorphism groups.
+\end{proof}
+
+\begin{remark}[On the proposed embedding $G_S/\Xi_\beta^\perp\hookrightarrow\Out(M)$]\label{IX:rem:out}
+The group $G_S$ acts on the $\mathrm{KMS}_\beta$ simplex, permuting the extremal states
+simply transitively through $G_S/\Xi_\beta^\perp$ [Ch.~\ref{ch:Main}, Thm.~3.6(3)]. It therefore acts
+on $\Msym$, and gives isomorphisms between the different summands $M_\varepsilon$; but those
+summands are mutually isomorphic by Theorem~\ref{IX:thm:complete}, so the resulting
+automorphisms of $M_\varepsilon$ are not canonically defined and depend on the chosen
+identifications. We do not claim an embedding $G_S/\Xi_\beta^\perp\hookrightarrow\Out(M_\varepsilon)$
+and we do not see how to obtain one; what is canonical is the action on the pair, which is
+the content of Theorem~\ref{IX:thm:inclusion}.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Statement} & \text{Status} & \text{Reference}\\\hline
+M_{K,S,\beta}\ \text{is injective} & \text{true} & \text{Lem.~1.1}\\
+\text{complete }W^*\text{-invariant}=\text{flow of weights} & \text{true; }\Sigma_\beta\text{ bounds it} & \text{Thm.~1.2}\\
+\text{class field }W^*\text{-superrigidity} & \textbf{false, maximally} & \text{Thm.~2.1}\\
+\text{reconstruction of }\beta & \text{false} & \text{Thm.~2.1}\\
+\text{reconstruction of }\{\Ns\pp\} & \text{false} & \text{Cor.~2.3}\\
+\text{reconstruction of }G_S,\ \Xi_\beta & \text{false} & \text{Thm.~2.1}\\
+s\text{-malleable deformation gives rigidity} & \text{false: no spectral gap} & \text{Prop.~3.1}\\
+\text{Cartan unique up to unitary conjugacy} & \text{false} & \text{Thm.~4.1}\\
+\text{Cartan unique up to automorphism} & \text{true, by CFW} & \text{Thm.~4.1}\\
+\text{OE rigidity} & \text{false, by Krieger} & \text{Cor.~4.2}\\
+\Xi_\beta\ \text{a }C^*\text{-invariant} & \textbf{true} & \text{Thm.~5.1}\\
+{[\Msym:\Msym^G]_0}=|\Xi_\beta| & \textbf{true} & \text{Thm.~5.3}\\
+\cF(M),\ \Out(M)\ \text{carry arithmetic} & \text{false} & \text{Prop.~6.1}
+\end{array}
+\]
+
+The picture is uniform with the rest of this project. In Chapter~\ref{ch:III} the
+arithmetic was shown to be an invariant of a measure class, invisible to $K$-theory, to groupoid homology
+and to dynamical entropy, all of which discard the Radon--Nikodym derivative. Passing to the
+von Neumann algebra discards it too, retaining only its Krieger invariant; and since the
+groupoid is amenable, Connes' classification then leaves nothing at all. The failure recorded
+here is not a failure of technique. It is the same measure-class principle, applied one level
+further out.
+
+Three questions. First, is there a non-amenable enlargement of the system to which
+deformation/rigidity does apply? Chapter~\ref{ch:V} shows that a free non-abelian
+semigroup empties the high-temperature region, and Chapter~\ref{ch:XXVII} that non-abelian symmetry
+can be obtained with the abelian group $I_S$ acting through a non-abelian cocycle --- but
+the groupoid is then still amenable, the factor still injective, and nothing here changes;
+an Ore semigroup that is non-amenable but retains nested range projections would be the
+object to look for, and we do not know whether one exists. Second, how much does the Cartan pair together with the
+$G_S$-action remember? Theorem~\ref{IX:thm:inclusion} recovers $|\Xi_\beta|$ from the inclusion;
+whether the triple $(M,A,G_S)$ recovers $\Xi_\beta$ itself, or even $S$, is open. Third, at
+the $C^*$-level the classification of [Ch.~\ref{ch:Main}] is complete, but we have not asked whether
+$\cA_{K,S}$ itself, without its flow, remembers anything; by Chapter~\ref{ch:II} its $K$-theory does
+not, and the question of $C^*$-isomorphism is untouched.
+

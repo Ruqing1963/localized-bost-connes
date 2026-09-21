@@ -1,0 +1,489 @@
+% generated from papers/VII-galois-groupoid/paper_VII_galois_groupoid.tex -- edit the paper, then rerun assemble.py
+\chapter[The Galois-twisted groupoid]{The Galois-twisted arithmetic groupoid:\\ its KMS classification, and why the Tannakian obstruction\\ does not compute it}\label{ch:VII}
+\chapterorigin{This chapter is Paper VII of the series (\texttt{papers/VII-galois-groupoid/}).}
+\begin{summary}
+We construct the Galois-twisted arithmetic groupoid $\cG_{G,S}$ over a compact group $G$ and
+classify the $\mathrm{KMS}_\beta$ simplex of its $C^*$-algebra completely. The answer is
+\[
+\mathrm{KMS}_\beta\bigl(\cA_{G,S}\bigr)\ \cong_{\mathrm{affine}}\ \Prob\bigl(E_\beta\backslash G\bigr),
+\]
+where $E_\beta\le G$ is the essential-value subgroup of the Frobenius cocycle, computed by
+the abelian Kakutani criterion inside the closed abelian subgroup
+$A=\overline{\Frob(I_S)}$. The right translation action of $G$ is transitive on the extreme
+points with stabilizer $E_\beta$.
+
+This is \emph{not} $\Prob(G/N_\beta)$, with $N_\beta$ the Tannakian subgroup of Chapter~\ref{ch:VI}
+of the series, and the discrepancy is not a technicality. The category
+$\cT_\beta=\{\rho:\Xi_\beta(\rho,S)<\infty\}$ determines only the \emph{normal closure} of
+$E_\beta$, because $\Rep(G/N)$ sees normal subgroups only, whereas the ergodic decomposition
+of a skew product by a non-normal subgroup is a coset space that is not a group. For
+$G=S_3$ with $E_\beta$ a transposition subgroup, $\Prob(E_\beta\backslash G)$ is a $2$-simplex
+while $\Prob(G/N_\beta)$ is a point: three extremal $\mathrm{KMS}_\beta$ states where the
+Tannakian formulation predicts uniqueness. \textbf{The obstruction group $\Xi_\beta$ does not
+determine the KMS simplex once $G$ is non-abelian.}
+
+Three natural guesses are corrected. The matrix zero-one law
+``$F_\rho F_\rho^*=c_\rho I$'' is false: the cocycle equation conjugates $F_\rho F_\rho^*$, so
+ergodicity forces its \emph{spectrum} to be almost everywhere constant and nothing more; for
+$G=S_3$, $\rho$ the two-dimensional irreducible and $\lambda=\frac12(\delta_e+\delta_{(12)})$
+one gets eigenvalues $\{0,1\}$. The matrix Fourier transform $F_\rho$ does not vanish when
+the Frobenius series $\Xi_\beta(\rho,S)$ diverges; it vanishes exactly when $\rho$ has no
+$E_\beta$-fixed vector, and this is the refinement of the obstruction data that sees
+$E_\beta$. And the ``matrix corner'' route, twisting the coefficient algebra by
+$\mathrm{Ad}\,\rho(\Frob_\pp)$, adds nothing: KMS states are tracial on the coefficient
+algebra, so inner twists are invisible to them.
+
+Finally we record why the model cannot be genuinely non-abelian: $I_S$ is abelian and
+$a\mapsto\Frob_a$ is a homomorphism, so its image is always an abelian subgroup of $G$, the
+whole cocycle analysis takes place inside $A$, and $G$ contributes only the coset space. A
+genuinely non-abelian theory needs a non-abelian acting semigroup, which by Chapter~\ref{ch:V} of the
+series costs the high-temperature region where the phase structure lives.
+\end{summary}
+
+\section{The Galois-twisted groupoid}
+
+Let $K$ be a number field, $S$ a set of finite primes, $X=\overline{\N}^{\,S}$ with
+$\overline\N=\N\cup\{\infty\}$, compact metrizable and totally disconnected, and
+$V=\N^S\subset X$ the set of valuation vectors, carrying the forced product measure
+$\pi_\beta=\bigotimes_{\pp\in S}\mu_{t_\pp}$, $t_\pp=\Ns\pp^{-\beta}$, $\mu_t(k)=(1-t)t^k$
+[Ch.~\ref{ch:Main}, Lem.~2.10]; $\pi_\beta$ charges no hyperplane $\{v_\pp=\infty\}$. Let $\cR_S$ be the
+tail equivalence relation on $V$, which is ergodic for $\pi_\beta$ by the Kolmogorov
+zero-one law [Ch.~\ref{ch:Main}, Lem.~3.1]. The semigroup $J_S=\N^{(S)}$ acts on $X$ by
+$v\mapsto v+a$, with $\infty+a_\pp=\infty$, and $I_S=\Z^{(S)}$ on the dilation
+$\widetilde X=\varinjlim(X,+a)$, a locally compact totally disconnected space.
+
+\begin{definition}\label{VII:def:groupoid}
+Let $G$ be a compact second countable group with Haar measure $m_G$, and let
+$\pp\mapsto\Frob_\pp\in G$ be given for $\pp\in S$. Put $\Frob_a=\prod_\pp\Frob_\pp^{a_\pp}$
+for $a\in I_S=\bigoplus_{\pp\in S}\Z$, let
+\[
+\Omega_S=X\times G,\qquad a\cdot(v,g)=\bigl(v+a,\ \Frob_a^{-1}g\bigr),
+\]
+let $\widetilde\Omega_S=\widetilde X\times G$ be the dilation, and set
+\[
+\cG_{G,S}=I_S\ltimes\widetilde\Omega_S,\qquad
+\cA_{G,S}=\mathbf 1_{\Omega_S}\,C^*\bigl(\cG_{G,S}\bigr)\,\mathbf 1_{\Omega_S}=C(\Omega_S)\rtimes J_S ,
+\]
+the unital full corner of the groupoid algebra $C_0(\widetilde\Omega_S)\rtimes I_S$, exactly
+as $\cA_{K,S}=C(Y_S)\rtimes J_S$ sits in the dilated groupoid algebra in [Ch.~\ref{ch:Main}, \S2]; the
+dynamics is $\sigma_t(\mu_\aaa)=\Ns\aaa^{it}\mu_\aaa$, $\sigma_t|_{C(\Omega_S)}=\id$. All
+measures below are concentrated on $V\times G$, and we write $(v,g)$ for its points.
+\end{definition}
+
+\begin{lemma}[Basic structure]\label{VII:lem:basic}
+\begin{enumerate}
+\item $a\mapsto\Frob_a$ is a homomorphism $I_S\to G$, so
+$A:=\overline{\Frob(I_S)}$ is a closed \emph{abelian} subgroup of $G$, whatever $G$ is.
+\item Right translation $R_h(v,g)=(v,gh)$ commutes with the $I_S$-action, so $G$ acts on
+$\cA_{G,S}$ by $\sigma$-commuting automorphisms and permutes the $\mathrm{KMS}_\beta$ states.
+\item $\cG_{G,S}$ is second countable, étale and amenable, so $C^*_r=C^*$ \cite{RenaultGroupoid}.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) $I_S$ is abelian and $\Frob$ is a homomorphism from it, so the image is an abelian
+subgroup, and the closure of an abelian subgroup is abelian. (2) Left and right translations
+of $G$ commute. (3) $I_S$ is abelian, hence amenable, acting on a locally compact space by homeomorphisms,
+and the corner of a full crossed product by an amenable group is the corner of the reduced
+one.
+\end{proof}
+
+\begin{remark}[The model cannot be genuinely non-abelian]\label{VII:rem:abelian}
+Lemma~\ref{VII:lem:basic}(1) is the fundamental limitation of this construction, and it is worth
+stating before any of the analysis. The Frobenius data enter only through the homomorphism
+$\Frob:I_S\to G$, whose image is abelian because $I_S$ is. Every cocycle computation below
+therefore takes place inside $A$, and the non-abelian group $G$ contributes nothing but the
+homogeneous space $A\backslash G$ on which it acts. This is not an artefact of our
+normalization: any construction in which an abelian semigroup of ideals acts through
+Frobenius elements has the same feature. Genuine non-commutativity would require a
+non-abelian acting semigroup; Chapter~\ref{ch:V} shows what that costs: partitioning
+range projections empty the high-temperature region.
+\end{remark}
+
+\section{Disintegration and the matrix Fourier transform}
+
+\begin{proposition}[KMS states are scaling measures]\label{VII:prop:kmsmeasure}
+The map $\varphi\mapsto\nu=\varphi|_{C_0(\widetilde\Omega_S)}$ is an affine bijection from
+$\mathrm{KMS}_\beta(\cA_{G,S})$ onto the set of Borel probability measures $\nu$ on
+$\Omega_S$ with
+\begin{equation}\label{VII:eq:scaling}
+\nu\bigl(a\cdot E\bigr)=\Ns\aaa^{-\beta}\,\nu(E)\qquad(a\in J_S),
+\end{equation}
+and every such $\nu$ has $V$-marginal $\pi_\beta$. Disintegrating, $\nu=\pi_\beta\otimes\rho_v$
+with $(\rho_v)$ a measurable family in $\Prob(G)$, and \eqref{VII:eq:scaling} is equivalent to
+\begin{equation}\label{VII:eq:equivariance}
+\rho_{v+e_\pp}=\bigl(\Frob_\pp^{-1}\bigr)_*\rho_v\qquad\pi_\beta\text{-a.e., for every }\pp\in S.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+As in [Ch.~\ref{ch:Main}, Prop.~2.8]: the canonical expectation onto $C(\Omega_S)$ is
+faithful, the KMS condition on $\mu_\aaa f\mu_\aaa^*$ gives \eqref{VII:eq:scaling}, and
+conversely each scaling measure reconstructs a KMS state. The $V$-marginal is forced by
+[Ch.~\ref{ch:Main}, Lem.~2.10], whose argument uses only the scaling of the valuation coordinates,
+the $G$-direction being measure preserving for the translation.
+Splitting \eqref{VII:eq:scaling} into its $V$- and $G$-components gives \eqref{VII:eq:equivariance}.
+\end{proof}
+
+\begin{definition}[Matrix Fourier transform]\label{VII:def:F}
+For $\rho\in\Irr(G)$ of dimension $d_\rho$ set
+\[
+F_\rho(v)=\int_G\rho(g)\,d\rho_v(g)\ \in\ M_{d_\rho}(\C),
+\]
+a contraction, $\|F_\rho(v)\|\le1$, since $\rho_v$ is a probability measure and $\rho$ is
+unitary.
+\end{definition}
+
+\begin{lemma}[Matrix cohomological equation]\label{VII:lem:coho}
+Equation \eqref{VII:eq:equivariance} holds if and only if for every $\rho\in\Irr(G)$
+\begin{equation}\label{VII:eq:coho}
+F_\rho(v+e_\pp)=\rho(\Frob_\pp)^{-1}\,F_\rho(v)\qquad\pi_\beta\text{-a.e., for every }\pp\in S .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If \eqref{VII:eq:equivariance} holds then
+\[
+F_\rho(v+e_\pp)=\int_G\rho(g)\,d\bigl((\Frob_\pp^{-1})_*\rho_v\bigr)(g)
+=\int_G\rho\bigl(\Frob_\pp^{-1}h\bigr)\,d\rho_v(h)
+=\rho(\Frob_\pp)^{-1}F_\rho(v).
+\]
+Conversely, the matrix coefficients of the $\rho\in\Irr(G)$ span a dense subalgebra of $C(G)$
+by Peter--Weyl, so \eqref{VII:eq:coho} for all $\rho$ determines \eqref{VII:eq:equivariance}.
+\end{proof}
+
+\begin{remark}[The inverse is not cosmetic]\label{VII:rem:inverse}
+With the action of Definition~\ref{VII:def:groupoid} the transform satisfies \eqref{VII:eq:coho} with
+$\rho(\Frob_\pp)^{-1}$, not $\rho(\Frob_\pp)$. Writing the equation with
+$\rho(\Frob_\pp)$ corresponds to the opposite convention $a\cdot(v,g)=(v+a,\Frob_ag)$ and
+changes $E_\beta$ into its image under inversion, which for the subgroup $E_\beta$ is
+harmless; but in intermediate steps, in particular in the martingale of
+Proposition~\ref{VII:prop:gauge}, the two conventions do not agree and mixing them produces a
+wrong gauge.
+\end{remark}
+
+\section{What the zero-one law says, and what it does not}
+
+\begin{proposition}[Spectral zero-one law]\label{VII:prop:zeroone}
+Put $P_\rho(v)=F_\rho(v)F_\rho(v)^*$, positive semidefinite with $\|P_\rho\|\le1$. Then
+\eqref{VII:eq:coho} gives
+\begin{equation}\label{VII:eq:conj}
+P_\rho(v+e_\pp)=\rho(\Frob_\pp)^{-1}P_\rho(v)\,\rho(\Frob_\pp),
+\end{equation}
+so the \emph{eigenvalues} of $P_\rho(v)$, with multiplicity, are $\cR_S$-invariant and hence
+$\pi_\beta$-almost everywhere constant. In particular $\Tr P_\rho(v)$ and $\det P_\rho(v)$
+are a.e.\ constant.
+\end{proposition}
+
+\begin{proof}
+\eqref{VII:eq:conj} is immediate from \eqref{VII:eq:coho} and unitarity. Conjugation preserves the
+spectrum, so each elementary symmetric function of the eigenvalues is invariant under the
+generators of $\cR_S$, hence a.e.\ constant by ergodicity [Ch.~\ref{ch:Main}, Lem.~3.1].
+\end{proof}
+
+\begin{proposition}[$P_\rho$ need not be scalar]\label{VII:prop:notscalar}
+The statement $P_\rho(v)=c_\rho I_{d_\rho}$ a.e.\ is strictly stronger than
+Proposition~\ref{VII:prop:zeroone} and is false. Take $G=S_3$, $\rho$ the two-dimensional
+irreducible, $\Frob_\pp=e$ for every $\pp\in S$, and
+$\rho_v\equiv\lambda:=\tfrac12(\delta_e+\delta_{(12)})$, which satisfies
+\eqref{VII:eq:equivariance} trivially. Then
+\[
+F_\rho=\tfrac12\bigl(I+\rho((12))\bigr),\qquad
+P_\rho=\tfrac12\bigl(I+\rho((12))\bigr),
+\]
+a rank-one projection with eigenvalues $\{0,1\}$, not a multiple of $I_2$.
+\end{proposition}
+
+\begin{proof}
+$\rho((12))$ is a reflection, so $\rho((12))^*=\rho((12))$ and $\rho((12))^2=I$; hence
+$F_\rho^*=F_\rho$ and $F_\rho^2=\tfrac14(I+2\rho((12))+I)=F_\rho$, so $P_\rho=F_\rho F_\rho^*=F_\rho^2=F_\rho$
+is a projection, of trace $\tfrac12\Tr(I+\rho((12)))=\tfrac12(2+0)=1$, hence rank one.
+\end{proof}
+
+\begin{remark}[Numerical check]\label{VII:rem:numscalar}
+In the standard two-dimensional realization $\rho((12))=\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}$,
+one computes $F_\rho=\begin{psmallmatrix}1/2&1/2\\1/2&1/2\end{psmallmatrix}$ and eigenvalues
+of $P_\rho$ equal to $\{0,1\}$; conjugating by $\rho((12))$ returns the same spectrum, as
+\eqref{VII:eq:conj} requires.
+\end{remark}
+
+\begin{proposition}[What the transform sees]\label{VII:prop:gauge}
+Let $\rho\in\Irr(G)$ and $U_\pp=\rho(\Frob_\pp)$. The $U_\pp$ commute, lying in $\rho(A)$
+with $A=\overline{\Frob(I_S)}$ abelian, so there is a unitary $W$ with
+$WU_\pp W^*=\mathrm{diag}(\chi_1(\Frob_\pp),\dots,\chi_{d_\rho}(\Frob_\pp))$ for all $\pp$,
+where $\chi_1,\dots,\chi_{d_\rho}\in\widehat A$ are the characters of $A$ occurring in
+$\rho|_A$. Let $\Xi_\beta(A)\le\widehat A$ be as in Definition~\ref{VII:def:E} below.
+\begin{enumerate}
+\item Every measurable solution $F:V\to M_{d_\rho}(\C)$ of \eqref{VII:eq:coho} has the form
+$WF(v)=D(v)\,C$ with $C$ a constant matrix whose $r$-th row vanishes unless
+$\chi_r\in\Xi_\beta(A)$, and $D(v)=\mathrm{diag}(g_1(v),\dots,g_{d_\rho}(v))$, $g_r$ a fixed
+unimodular solution of $g_r(v+e_\pp)=\chi_r(\Frob_\pp)^{-1}g_r(v)$ when $\chi_r\in\Xi_\beta(A)$
+and $g_r\equiv1$ otherwise.
+\item \eqref{VII:eq:coho} has a unitary solution $W_\rho:V\to U(d_\rho)$, unique up to right
+multiplication by a constant unitary, if and only if every $\chi_r$ lies in $\Xi_\beta(A)$,
+i.e.\ $\Xi_\beta(\rho,S)<\infty$, i.e.\ $\rho|_{E_\beta}=1$.
+\item \eqref{VII:eq:coho} has a nonzero solution if and only if some $\chi_r$ lies in
+$\Xi_\beta(A)$, i.e.\ $\rho$ has a nonzero $E_\beta$-fixed vector. In particular
+$\Xi_\beta(\rho,S)=\infty$ does \emph{not} force $F_\rho\equiv0$: for $G=S_3$,
+$\Frob_\pp=(12)$ for all $\pp$, $\zeta_{K,S}(\beta)=\infty$ and $\rho$ the two-dimensional
+irreducible, $\Xi_\beta(\rho,S)=4\log\zeta_{K,S}(\beta)+O(1)=\infty$, while the constant
+family $\rho_v\equiv\frac12(\delta_e+\delta_{(12)})$ is equivariant with
+$F_\rho\equiv\frac12(I+\rho((12)))\ne0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Put $H=WF$; then \eqref{VII:eq:coho} reads $H_{rs}(v+e_\pp)=\chi_r(\Frob_\pp)^{-1}H_{rs}(v)$ for
+each entry. If $\chi_r\notin\Xi_\beta(A)$, every solution of this scalar equation vanishes
+a.e.: by [Ch.~\ref{ch:Main}, Lem.~3.1] $|H_{rs}|$ is a.e.\ constant, and if the constant were
+positive, [Ch.~\ref{ch:Main}, Prop.~3.3], whose proof uses only $|\chi_r(\Frob_\pp)|=1$, would make
+$\sum_\pp\Ns\pp^{-\beta}|1-\chi_r(\Frob_\pp)|^2$ converge. If $\chi_r\in\Xi_\beta(A)$,
+[Ch.~\ref{ch:Main}, Prop.~3.4] supplies a unimodular solution $g_r$, and $H_{rs}/g_r$ is
+$\cR_S$-invariant, hence a.e.\ constant. This is (1). For (2), a unitary solution needs all
+rows of $C$ nonzero, hence all $\chi_r\in\Xi_\beta(A)$; conversely $W^*D(v)$ is then a
+unitary solution, and two unitary solutions differ by an invariant, hence constant, unitary.
+The equivalence with $\Xi_\beta(\rho,S)<\infty$ is $\|I-U_\pp\|_{\HS}^2=\sum_r|1-\chi_r(\Frob_\pp)|^2$,
+and with $\rho|_{E_\beta}=1$ is Pontryagin duality, $\Xi_\beta(A)=E_\beta^\perp$ since
+$\widehat A$ is discrete. (3) is read off from (1) in the same way; the $E_\beta$-fixed
+vectors of $\rho$ are the sum of the eigenspaces of those $\chi_r$ that are trivial on
+$E_\beta$. In the example, $\rho((12))$ is a reflection, so the two characters of
+$A=\{e,(12)\}$ occurring in $\rho|_A$ are the trivial one and the sign, and the
+displayed family satisfies $\rho_{v+e_\pp}=((12))_*\rho_v=\rho_v$.
+\end{proof}
+
+\begin{remark}[The refinement that sees $E_\beta$]\label{VII:rem:fixed}
+The Dirichlet series $\Xi_\beta(\rho,S)$ records whether $\rho$ is trivial on $E_\beta$.
+The vanishing or not of the matrix Fourier transform records whether $\rho^{E_\beta}\ne0$;
+and the a.e.\ constant rank of $P_\rho=F_\rho F_\rho^*$ from Proposition~\ref{VII:prop:zeroone},
+for the extremal equivariant families of Theorem~\ref{VII:thm:main} below, is
+$\dim\rho^{E_\beta}$: for such a family $\rho_v$ is Haar measure on a coset $y(v)E_\beta h$,
+and $F_\rho(v)=\rho(y(v))\,P^{E_\beta}\rho(h)$ with $P^{E_\beta}$ the projection onto
+$\rho^{E_\beta}$. The function $\rho\mapsto\dim\rho^{E_\beta}$ on $\Irr(G)$ is the multiplicity function
+of the permutation representation $\mathrm{Ind}_{E_\beta}^G\mathbf 1$ on $L^2(E_\beta\backslash G)$
+\cite{Mackey}: it determines $|E_\beta\backslash G|=\sum_\rho d_\rho\dim\rho^{E_\beta}$, the
+number of extremal $\mathrm{KMS}_\beta$ states, and the decomposition of that permutation
+representation, which distinguishes $E_\beta$ from its normal closure --- in
+Example~\ref{VII:ex:S3} it is $\mathbf 1\oplus\rho_2$ rather than $\mathbf 1$. It does not in
+general determine $E_\beta$ up to conjugacy, since non-conjugate subgroups can have the
+same permutation character; but it sees the simplex, which the Frobenius series does not.
+\end{remark}
+
+\section{The KMS classification}
+
+\begin{definition}\label{VII:def:E}
+Let $A=\overline{\Frob(I_S)}$, abelian by Lemma~\ref{VII:lem:basic}(1), and let
+\[
+\Xi_\beta(A):=\Bigl\{\chi\in\widehat A:\ \sum_{\pp\in S}\Ns\pp^{-\beta}\bigl|1-\chi(\Frob_\pp)\bigr|^2<\infty\Bigr\},
+\qquad
+E_\beta:=\Xi_\beta(A)^\perp\le A ,
+\]
+the essential-value subgroup of the Frobenius cocycle $c(v+a,v)=\Frob_a$ in the sense of
+Schmidt \cite{Schmidt}; for the compact target $A$ the essential values of $c$ are exactly
+the annihilator of the coboundary characters, which is how $E_\beta$ enters below.
+\end{definition}
+
+\begin{theorem}[Classification]\label{VII:thm:main}
+The map $\varphi\mapsto\nu$ of Proposition~\ref{VII:prop:kmsmeasure} induces an affine
+isomorphism
+\begin{equation}\label{VII:eq:main}
+\mathrm{KMS}_\beta\bigl(\cA_{G,S}\bigr)\ \cong\ \Prob\bigl(E_\beta\backslash G\bigr),
+\end{equation}
+and the right translation action of $G$ is transitive on the extreme points, with the
+stabilizer of the base point equal to $E_\beta$. In particular the $\mathrm{KMS}_\beta$
+state is unique if and only if $E_\beta=G$, which for $G$ non-abelian forces $G$ itself to be
+abelian; so for non-abelian $G$ the simplex is never a point.
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{VII:prop:kmsmeasure} we must describe the equivariant families $(\rho_v)$.
+The $I_S$-action on $\Omega_S$ is the skew product of $\cR_S$ with the constant $G$-valued
+cocycle $c(v+a,v)=\Frob_a$, whose values lie in $A$. Extreme equivariant families correspond
+to ergodic components of that skew product \cite{FM}.
+
+Decompose $G$ into the cosets $Ag$; the $I_S$-action preserves each, acting on
+$Ag\cong A$ by translation by $\Frob_a^{-1}$. An equivariant family disintegrates over
+$A\backslash G$ into equivariant families on the cosets, so the extremal ones are
+supported on a single coset $Ag$ and are extremal there. Within one coset the problem is
+that of [Ch.~\ref{ch:Main}, Thm.~3.6] with $A$ in place of $G_S$ and $\Frob_\pp^{-1}$ in place of
+$\sigma_\pp$: the Fourier coefficients $\hat\rho_v(\chi)$, $\chi\in\widehat A$, satisfy the
+scalar cohomological equation with the unimodular constants $\chi(\Frob_\pp)^{\mp1}$, so
+by [Ch.~\ref{ch:Main}, Lem.~3.1, Props.~3.3, 3.4] they vanish unless $\chi\in\Xi_\beta(A)$, and the
+extremal families are the Haar measures on the cosets of $E_\beta=\Xi_\beta(A)^\perp$ in
+$A$ moving by $\Frob_\pp^{-1}$. Transported to $Ag$, these are the Haar measures on the
+subsets $aE_\beta g=E_\beta\,ag$, $a\in A$. Hence the extremal equivariant families are
+indexed by the right cosets $E_\beta h$, $h\in G$, and the simplex of equivariant families
+is $\Prob(E_\beta\backslash G)$, giving \eqref{VII:eq:main}.
+
+Right translation by $h\in G$ carries the component of $E_\beta g$ to that of $E_\beta gh$,
+so the action is transitive, with stabilizer of $E_\beta e$ equal to $E_\beta$. Uniqueness
+means $|E_\beta\backslash G|=1$, i.e.\ $E_\beta=G$; but $E_\beta\le A$ is abelian.
+\end{proof}
+
+\begin{corollary}[Abelian case]\label{VII:cor:abelian}
+If $G$ is abelian and $\Frob(I_S)$ is dense, then $A=G$, $E_\beta=\Xi_\beta^\perp$ and
+\eqref{VII:eq:main} is $\Prob(G/\Xi_\beta^\perp)$, recovering [Ch.~\ref{ch:Main}, Thm.~3.6].
+\end{corollary}
+
+\section{The Tannakian obstruction does not compute the simplex}
+
+\begin{theorem}[Discrepancy]\label{VII:thm:discrepancy}
+Let $\Xi_\beta(\rho,S)=\sum_{\pp\in S}\Ns\pp^{-\beta}\|I-\rho(\Frob_\pp)\|_{\HS}^2$, let
+$\cT_\beta(S)=\{\rho:\Xi_\beta(\rho,S)<\infty\}$, and let $N_\beta=\bigcap_{\rho\in\cT_\beta}\ker\rho$
+be the Tannakian subgroup of Chapter~\ref{ch:VI}, for which $\cT_\beta(S)=\Rep(G/N_\beta)$. Then
+\[
+\cT_\beta(S)=\bigl\{\rho:\rho|_{E_\beta}=1\bigr\},
+\qquad
+N_\beta=\text{the normal closure of }E_\beta\text{ in }G .
+\]
+Consequently $\Prob(E_\beta\backslash G)$ and $\Prob(G/N_\beta)$ agree if and only if
+$E_\beta$ is normal in $G$, and in general
+\[
+\bigl|E_\beta\backslash G\bigr|\ \ge\ \bigl|G/N_\beta\bigr| ,
+\]
+with strict inequality whenever $E_\beta$ is not normal. \textbf{The obstruction group
+$\Xi_\beta$ therefore does not determine the $\mathrm{KMS}_\beta$ simplex when $G$ is
+non-abelian.}
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{VII:prop:gauge}(2), $\Xi_\beta(\rho,S)<\infty$ iff $\rho|_{E_\beta}=1$, for
+irreducible $\rho$ and hence for all $\rho$ by additivity of $\Xi_\beta$ over direct sums.
+A representation is
+trivial on $E_\beta$ iff it is trivial on the normal closure $\langle\langle E_\beta\rangle\rangle$,
+since $\ker\rho$ is normal; hence $\cT_\beta=\Rep(G/\langle\langle E_\beta\rangle\rangle)$ and
+$N_\beta=\langle\langle E_\beta\rangle\rangle$. Since $E_\beta\subseteq N_\beta$, the natural
+surjection $E_\beta\backslash G\to N_\beta\backslash G=G/N_\beta$ gives the inequality, and it
+is a bijection iff $E_\beta=N_\beta$, i.e.\ iff $E_\beta$ is normal.
+\end{proof}
+
+\begin{example}[Three states where the Tannakian prediction is one]\label{VII:ex:S3}
+Let $G=S_3$, $\Frob_\pp=(12)$ for every $\pp\in S$, and $\beta$ with
+$\zeta_{K,S}(\beta)=\infty$. Then $A=E_\beta=\{e,(12)\}$: indeed the nontrivial character
+$\chi$ of $A$ has $\chi(\Frob_\pp)=-1$ for all $\pp$, so
+$\sum\Ns\pp^{-\beta}|1-\chi(\Frob_\pp)|^2=4\zeta_{K,S}(\beta)=\infty$ and
+$\Xi_\beta(A)=\{1\}$.
+\begin{itemize}
+\item By Theorem~\ref{VII:thm:main} the simplex is $\Prob(E_\beta\backslash S_3)$, a
+$2$-simplex: \textbf{three} extremal $\mathrm{KMS}_\beta$ states, permuted transitively by
+$S_3$ with stabilizer of order $2$.
+\item By Theorem~\ref{VII:thm:discrepancy}, $\cT_\beta$ consists of the representations trivial
+on $(12)$. The sign character has $\mathrm{sgn}((12))=-1$ and the two-dimensional
+irreducible restricts to $E_\beta$ with eigenvalues $\pm1$; both are nontrivial. So
+$\cT_\beta=\{\mathbf 1\}$, $N_\beta=S_3$, and $\Prob(G/N_\beta)$ is a \textbf{point}.
+\end{itemize}
+Three against one. The Tannakian formulation predicts uniqueness where the system has
+spontaneous symmetry breaking with a three-element phase space.
+\end{example}
+
+\begin{remark}[Why the two disagree]\label{VII:rem:why}
+Tannaka--Krein reconstructs a group from a representation category, and a representation
+category can only see \emph{normal} subgroups, being determined by kernels. The ergodic
+decomposition of a skew product by a subgroup $E$ is the coset space $E\backslash G$, which
+for non-normal $E$ is a homogeneous space carrying no group structure. In the abelian case
+every subgroup is normal and the distinction is invisible, which is why the $GL_1$ theory
+gave no warning. The correct reading of the Tannakian theorem of Chapter~\ref{ch:VI} is therefore
+that $\cT_\beta$ computes the largest \emph{quotient group} through which the obstruction
+factors;
+that quotient is a coarsening of the true invariant, which is the pair $(G,E_\beta)$ up to
+conjugacy, equivalently the transitive $G$-space $E_\beta\backslash G$.
+\end{remark}
+
+\begin{corollary}[What is and is not an invariant]\label{VII:cor:invariant}
+The $\mathrm{KMS}_\beta$ simplex of $\cA_{G,S}$, together with its $G$-action, determines
+$E_\beta$ up to conjugacy. The Dirichlet obstruction data
+$\{\Xi_\beta(\rho,S)\}_{\rho\in\Irr(G)}$ determine only $N_\beta$. Hence two systems with
+non-conjugate $E_\beta$ having the same normal closure have identical obstruction data and
+non-isomorphic simplices.
+\end{corollary}
+
+\section{Route B: the matrix corner}
+
+\begin{proposition}[Inner twists are invisible]\label{VII:prop:corner}
+Let $\rho:G\to U(n)$ be any unitary representation, let $(B,\alpha)$ be a unital
+$C^*$-algebra with an action of $J_S$ by injective endomorphisms of the kind in
+[Ch.~\ref{ch:Main}, \S2], and let $\alpha_\rho$ be the twisted action on $B\otimes M_n(\C)$,
+\[
+\alpha_{\rho,\pp}(b\otimes m)=\alpha_\pp(b)\otimes\rho(\Frob_\pp)^{-1}m\,\rho(\Frob_\pp).
+\]
+Give $B_\rho=(B\otimes M_n(\C))\rtimes_{\alpha_\rho}J_S$ the dynamics fixing $B\otimes M_n$
+and scaling $\mu_\aaa$ by $\Ns\aaa^{it}$. Then every $\mathrm{KMS}_\beta$ state of $B_\rho$
+restricts to $B\otimes M_n$ as $\varphi_0\otimes\tfrac1n\Tr$ with $\varphi_0$ the
+restriction of a $\mathrm{KMS}_\beta$ state of $B\rtimes_\alpha J_S$, and
+$\varphi\mapsto\varphi_0$ is an affine bijection
+$\mathrm{KMS}_\beta(B_\rho)\cong\mathrm{KMS}_\beta(B\rtimes_\alpha J_S)$. The twist by
+$\rho$ does not change the simplex.
+\end{proposition}
+
+\begin{proof}
+For $x,y$ in the fixed-point algebra of the dynamics, which contains $B\otimes M_n$, the KMS
+condition gives $\varphi(xy)=\varphi(y\sigma_{i\beta}(x))=\varphi(yx)$; so $\varphi$ is
+tracial on $B\otimes M_n$, hence of the form $\varphi_0\otimes\frac1n\Tr$. A KMS state
+vanishes on $\mu_\aaa x\mu_\bb^*$ for $\aaa\ne\bb$, and on $\mu_\aaa x\mu_\aaa^*$ it
+equals $\Ns\aaa^{-\beta}\varphi(x)$; so $\varphi$ is determined by its restriction, and
+the KMS condition on $B_\rho$ reduces to $\varphi\circ\alpha_{\rho,\pp}=\Ns\pp^{-\beta}\varphi$
+on $B\otimes M_n$. Since $\Tr\bigl(\rho(\Frob_\pp)^{-1}m\rho(\Frob_\pp)\bigr)=\Tr m$, this
+reads $\varphi_0\circ\alpha_\pp=\Ns\pp^{-\beta}\varphi_0$, the KMS condition of the untwisted
+system, and conversely every such $\varphi_0$ gives a KMS state $\varphi_0\otimes\frac1n\Tr$
+of $B_\rho$ by the same computation.
+\end{proof}
+
+\begin{remark}\label{VII:rem:routeB}
+``Route B'' proposed to import the non-abelian representation through a matrix-valued
+coefficient algebra $C(Y_S)\otimes M_n(\C)$ twisted by conjugation with $\rho(\Frob_\pp)$.
+Proposition~\ref{VII:prop:corner} shows that this adds nothing, for a reason more basic than
+the spectral zero-one law: equilibrium states are tracial on the coefficient algebra, and
+a trace does not see inner automorphisms. The representation can only enter through the
+base space, which is Route A. (The twisted algebra is related to $\cA_{G,S}$: the crossed
+product of $\cA_{G,S}$ by the right translation action of $G$ decomposes, by Peter--Weyl
+and the Stone--von Neumann theorem, into blocks indexed by $\Irr(G)$, and the $\rho$-block
+is Morita equivalent to $B_\rho$ with $B=C(X)$. That description is consistent with the
+proposition, and we do not use it.)
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Statement} & \text{Status} & \text{Reference}\\\hline
+\text{groupoid }\cG_{G,S}\text{ well defined, }C^*_r=C^*&\text{true}&\text{Lem.~1.2}\\
+\text{KMS states}\leftrightarrow\text{scaling measures}&\text{true}&\text{Prop.~2.1}\\
+F_\rho(v+e_\pp)=\rho(\Frob_\pp)F_\rho(v)&\text{inverse missing}&\text{Lem.~2.3}\\
+F_\rho F_\rho^*=c_\rho I&\text{false}&\text{Prop.~3.2}\\
+\text{spectrum of }F_\rho F_\rho^*\text{ a.e.\ constant}&\text{true}&\text{Prop.~3.1}\\
+\Xi_\beta(\rho,S)=\infty\Rightarrow F_\rho=0&\text{false}&\text{Prop.~\ref{VII:prop:gauge}(3)}\\
+F_\rho\ne0\iff\rho^{E_\beta}\ne0&\text{true}&\text{Prop.~\ref{VII:prop:gauge}, Rem.~\ref{VII:rem:fixed}}\\
+\text{unitary gauge exists}\iff\Xi_\beta<\infty&\text{true}&\text{Prop.~\ref{VII:prop:gauge}(2)}\\
+\mathrm{KMS}_\beta\cong\Prob(G/N_\beta)&\textbf{false}&\text{Ex.~5.2}\\
+\mathrm{KMS}_\beta\cong\Prob(E_\beta\backslash G)&\textbf{true}&\text{Thm.~4.2}\\
+\Xi_\beta\text{ determines the simplex}&\text{false for non-abelian }G&\text{Cor.~5.4}\\
+\text{Route B adds information}&\text{no: inner twists are invisible}&\text{Prop.~6.1}\\
+\text{the model is genuinely non-abelian}&\text{no}&\text{Rem.~1.3}
+\end{array}
+\]
+
+The construction succeeds and the classification is complete, so the question left open in
+Chapter~\ref{ch:VI} is answered. The answer is not the expected one, in two ways. The simplex
+is a space of probability measures on a homogeneous space rather than on a group, and the
+Dirichlet obstruction data --- which is all that the $L$-functions of Chapter~\ref{ch:VI} can
+see --- determine that homogeneous space only up to replacing $E_\beta$ by its normal
+closure. Any programme that hopes to read a non-abelian phase structure off automorphic
+$L$-functions must therefore contend with Corollary~\ref{VII:cor:invariant}: the $L$-functions
+know $N_\beta$, and $N_\beta$ is not enough.
+
+Three questions. First, Remark~\ref{VII:rem:fixed} identifies a refinement of the
+obstruction data, $\rho\mapsto\dim\rho^{E_\beta}$, read off from the rank of
+$F_\rho F_\rho^*$, which sees the size of the simplex and the permutation character of
+$E_\beta\backslash G$; whether this function of $\rho$ has an expression in $L$-functions,
+as $\Xi_\beta(\rho,S)$ has in Chapter~\ref{ch:VI}, and what further datum pins down $E_\beta$ up to
+conjugacy, we do not know.
+Second, by
+Remark~\ref{VII:rem:abelian} no construction with an abelian acting semigroup can produce a
+non-abelian $E_\beta$; the interesting case $E_\beta$ non-normal already arises with
+$E_\beta$ abelian and $G$ non-abelian, as in Example~\ref{VII:ex:S3}, but a theory in which the
+essential-value group itself is non-abelian would need the acting semigroup to be
+non-abelian, and Chapter~\ref{ch:V} shows that this empties the high-temperature region. Whether some intermediate structure --- an Ore semigroup that is non-abelian but has
+nested rather than partitioning range projections --- exists is open. Third, we have not
+determined which pairs $(G,E_\beta)$ are realizable by an actual arithmetic
+$\pp\mapsto\Frob_\pp$; Example~\ref{VII:ex:S3} uses a constant assignment, and Chebotarev should
+allow much more, along the lines of [Ch.~\ref{ch:I}, Thm.~5.1].
+

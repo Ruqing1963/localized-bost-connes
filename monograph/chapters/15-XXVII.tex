@@ -1,0 +1,616 @@
+% generated from papers/XXVII-nonabelian-groupoids/paper_XXVII_nonabelian_groupoids.tex -- edit the paper, then rerun assemble.py
+\chapter[Non-abelian Bost--Connes groupoids]{Non-abelian Bost--Connes groupoids:\\ two no-go theorems, and a construction that realizes $\Prob(G/N_\beta)$\\ exactly when the Frobenius lifts mix}\label{ch:XXVII}
+\chapterorigin{This chapter is Paper XXVII of the series (\texttt{papers/XXVII-nonabelian-groupoids/}).}
+\begin{summary}
+For a compact group $G$ with Frobenius conjugacy classes $\Frob_\pp$, $\pp\in S$, the Tannakian
+subgroup $N_\beta=\bigcap\{\ker\rho:\Xi_\beta(\rho,S)<\infty\}$ of Chapter~\ref{ch:VI} is the canonical
+non-abelian replacement of the obstruction group, and Chapter~\ref{ch:VII} showed that the obvious
+groupoid model, in which the Frobenius elements act through a homomorphism of the abelian
+ideal group, has $\mathrm{KMS}_\beta$ simplex $\Prob(E_\beta\backslash G)$ with $E_\beta$
+abelian, which is $\Prob(G/N_\beta)$ only when $E_\beta$ is normal. We examine the two routes
+proposed in Chapter~\ref{ch:VI} for closing the gap and settle both.
+
+\emph{Noncommutative coefficient algebras} (Route B) cannot work, for a reason independent of
+the representation: a $\mathrm{KMS}_\beta$ state of $\cB\rtimes J_S$ is tracial on $\cB$, so the
+simplex is the simplex of scaling traces of $\cB$, inner twists are invisible, and for
+$\cB=C(Y_S)\otimes M_n(\C)$ with any inner twist the equilibrium simplex is the abelian one.
+
+\emph{Groupoids with isotropy} $N_\beta$ (the first reading of Route A) cannot work either:
+by Neshveyev's theorem the isotropy contributes traces on $C^*(N_\beta)$, i.e.\ \emph{dual}
+data indexed by $\Irr(N_\beta)$, and the extreme point given by the trivial representation
+is fixed by every symmetry, so the symmetry group never acts transitively on the extreme
+points, as it must for $\Prob(G/N_\beta)$.
+
+\emph{Principal groupoids with a non-abelian Frobenius cocycle} (the second reading of Route
+A) do work, but not canonically. Ordering the primes by norm, the ordered products
+$P_n(x)=\Frob_{\pp_1}^{x_1}\cdots\Frob_{\pp_n}^{x_n}$ define a cocycle $c$ on the tail
+relation with genuinely non-commuting increments, for any choice of lifts of the classes to
+elements. We construct the corresponding \'etale groupoid, prove that the
+$\mathrm{KMS}_\beta$ simplex of its corner algebra is $\Prob(H\backslash G)$ with $H$ the Mackey
+range of $c$, and prove a \emph{non-abelian Kakutani theorem}: $\rho\circ c$ is a coboundary
+if and only if $\Xi_\beta(\rho,S)=\sum_\pp\Ns\pp^{-\beta}\|I-\rho(\Frob_\pp)\|_{\HS}^2<\infty$,
+the proof being a matrix martingale whose $L^2$-growth is governed by
+$\det(I+t(I-U)^*(I-U)/(1-t)^2)$. Consequently $N_\beta$ is the normal closure of $H$, and
+the model realizes $\Prob(G/N_\beta)$ precisely when $H$ is normal. A mixing criterion on the
+products of the means $\E[\rho(\Frob_\pp)^{x_\pp}]$ forces $H=G$; for $G=S_3$ with the
+transposition class at every prime, the constant lift $(12)$ gives three
+$\mathrm{KMS}_\beta$ states while the alternating lift $(12),(13),(12),\dots$ gives one. The
+simplex therefore depends on the lift, the lift-independent content is exactly $N_\beta$,
+and there is no canonical non-abelian Bost--Connes groupoid; but whenever $N_\beta$ has no
+proper subgroup with normal closure $N_\beta$ --- for instance $N_\beta=A_3$, realized by
+$3$-cycle classes on a divergent set and transposition classes on a convergent one --- the
+simplex is $\Prob(G/N_\beta)$ for every lift.
+\end{summary}
+
+\section{The question, and what is already known}
+
+Throughout, $K$ is a number field, $S$ an infinite set of finite primes with
+$\zeta_{K,S}(\beta)=\infty$, i.e.\ $\sum_{\pp\in S}\Ns\pp^{-\beta}=\infty$, listed by
+non-decreasing norm as $\pp_1,\pp_2,\dots$, with $t_i=\Ns\pp_i^{-\beta}\in(0,t_{\max}]$,
+$t_{\max}=2^{-\beta}<1$. We write
+$V=\N^S$ for the space of valuation vectors with the product measure
+$\pi_\beta=\bigotimes_i\mu_{t_i}$, $\mu_t(k)=(1-t)t^k$, forced on every $\mathrm{KMS}_\beta$
+state by [Ch.~\ref{ch:Main}, Lem.~2.10]; $\cR_S$ is the tail equivalence relation on $V$ (finitely
+many coordinates changed), ergodic by the zero--one law [Ch.~\ref{ch:Main}, Lem.~3.1];
+$\cF_{\le n}=\sigma(x_1,\dots,x_n)$ and $\cF_{>n}=\sigma(x_{n+1},x_{n+2},\dots)$.
+
+$G$ is a compact second countable group; for each $i$ a conjugacy class $C_i\subset G$ is
+given (the Frobenius class at $\pp_i$, or a Satake class), and a \emph{lift} is a choice of
+elements $u_i\in C_i$. For a unitary representation $\rho$ of $G$ put
+\begin{equation}\label{XXVII:eq:Xi}
+\Xi_\beta(\rho,S)=\sum_i t_i\,\bigl\|I-\rho(u_i)\bigr\|_{\HS}^2
+=2\sum_it_i\bigl(\dim\rho-\Re\Tr\rho(u_i)\bigr),
+\end{equation}
+which depends only on the classes, and let $\cT_\beta=\{\rho:\Xi_\beta(\rho,S)<\infty\}$ and
+$N_\beta=\bigcap_{\rho\in\cT_\beta}\ker\rho$; $\cT_\beta=\Rep(G/N_\beta)$ is the Tannakian
+theorem of Chapter~\ref{ch:VI}, and $N_\beta$ depends only on the classes.
+
+The abelian theory has three ingredients: a \emph{space} on which the ideal semigroup acts,
+whose $\mathrm{KMS}_\beta$ measures are the equilibrium states; a \emph{symmetry group}
+permuting them; and a \emph{cocycle} whose coboundary question is the Kakutani dichotomy.
+The simplex is $\Prob(G_S/\Xi_\beta^\perp)$ with $G_S$ acting transitively on the extreme
+points [Ch.~\ref{ch:Main}, Thm.~3.6]. The target of a non-abelian theory is a system whose
+$\mathrm{KMS}_\beta$ simplex is $\Prob(G/N_\beta)$ with $G$ acting transitively on the
+extreme points by translation, stabilizer $N_\beta$. The model of Chapter~\ref{ch:VII} --- $I_S$
+acting on $V\times G$ through the homomorphism $a\mapsto\prod u_i^{a_i}$, which requires
+commuting lifts --- gives $\Prob(E_\beta\backslash G)$ with $E_\beta$ contained in the closed
+abelian group generated by the $u_i$, and $N_\beta$ is the normal closure of $E_\beta$.
+Two ways around this were proposed in Chapter~\ref{ch:VI} (its Remark 6.1) and left open in Chapter~\ref{ch:VII}:
+a groupoid built directly, whose unit space carries the tail relation and a $G$-action and
+whose isotropy realizes $N_\beta$; and a noncommutative coefficient algebra carrying
+$\rho$, with the commutative Ore semigroup $J_S$ kept. We take the second first, because
+its failure is the simplest.
+
+\section{Route B: noncommutative coefficient algebras}\label{XXVII:sec:B}
+
+Let $\cB$ be a unital $C^*$-algebra with an action $\alpha$ of $J_S=\N^{(S)}$ by injective
+endomorphisms with hereditary ranges, $\alpha_\aaa(1)$ a projection, so that Laca's dilation
+applies \cite{Laca}: $\cB\rtimes_\alpha J_S$ is the full corner $\mathbf 1_\cB(\widetilde\cB\rtimes I_S)\mathbf 1_\cB$
+of the crossed product of the direct limit $\widetilde\cB=\varinjlim(\cB,\alpha)$ by the
+automorphic extension of $\alpha$ to the group $I_S$; it is generated by $\cB$ and isometries
+$\mu_\aaa$ with $\mu_\aaa b\mu_\aaa^*=\alpha_\aaa(b)$, and the dynamics is
+$\sigma_t(\mu_\aaa)=\Ns\aaa^{it}\mu_\aaa$, $\sigma_t|_\cB=\id$. The gauge action of the
+compact group $\widehat{I_S}$ gives the faithful conditional expectation
+$E:\cB\rtimes_\alpha J_S\to\cB$, the average of the gauge automorphisms; so ``a tractable
+faithful expectation onto the coefficient algebra'' exists for every $\cB$. It does not
+help. Write $T(\cB)$ for the tracial state space of $\cB$, a Choquet simplex, and
+\[
+T_\beta(\cB,\alpha)=\bigl\{\tau\in T(\cB):\ \tau\circ\alpha_\aaa=\Ns\aaa^{-\beta}\tau\ \ (\aaa\in J_S)\bigr\},
+\]
+the \emph{scaling traces}, a closed face of $T(\cB)$.
+
+\begin{theorem}[Route B is abelian]\label{XXVII:thm:B}
+\begin{enumerate}
+\item Every $\mathrm{KMS}_\beta$ state $\varphi$ of $\cB\rtimes_\alpha J_S$ restricts to a
+scaling trace $\tau=\varphi|_\cB\in T_\beta(\cB,\alpha)$.
+\item For every $\tau\in T_\beta(\cB,\alpha)$, $\tau\circ E$ is a $\mathrm{KMS}_\beta$ state
+with restriction $\tau$; so $\tau\mapsto\tau\circ E$ is an affine injection
+$T_\beta(\cB,\alpha)\to\mathrm{KMS}_\beta(\cB\rtimes_\alpha J_S)$.
+\item If the numbers $\log\Ns\pp$, $\pp\in S$, are linearly independent over $\Q$ --- for
+instance $K=\Q$ --- then every $\mathrm{KMS}_\beta$ state is of the form $\tau\circ E$, and
+$\mathrm{KMS}_\beta(\cB\rtimes_\alpha J_S)\cong T_\beta(\cB,\alpha)$ affinely.
+\end{enumerate}
+Consequently: (a) if $\alpha'_\aaa=\mathrm{Ad}(w_\aaa)\circ\alpha_\aaa$ with unitaries
+$w_\aaa\in\cB$ is another action, then $T_\beta(\cB,\alpha')=T_\beta(\cB,\alpha)$; inner twists
+are invisible. (b) For $\cB=C(Y_S)\otimes M_n(\C)$ and any action of the form
+$\alpha_\aaa\otimes\mathrm{Ad}(v_\aaa)$, $v_\aaa\in U(n)$, the scaling traces are
+$\nu\otimes\frac1n\Tr$ with $\nu$ a $\mathrm{KMS}_\beta$ measure of the classical system, so
+$T_\beta=\Prob(G_S/\Xi_\beta^\perp)$ [Ch.~\ref{ch:Main}, Thm.~3.6]: the abelian answer. (c) In every
+case the equilibrium theory of $\cB\rtimes_\alpha J_S$ is that of the affine action of
+$J_S$ on the Choquet simplex $T(\cB)$; the noncommutativity of $\cB$ is quotiented out by
+traciality before any symmetry can act on it.
+\end{theorem}
+
+\begin{proof}
+(1) $\cB$ lies in the fixed-point algebra of $\sigma$, and for $x,y$ there the KMS condition
+gives $\varphi(xy)=\varphi(y\sigma_{i\beta}(x))=\varphi(yx)$; so $\tau$ is tracial. For
+$b\in\cB$, the KMS condition with the entire element $\mu_\aaa$,
+$\sigma_{i\beta}(\mu_\aaa)=\Ns\aaa^{-\beta}\mu_\aaa$, gives
+$\tau(\alpha_\aaa(b))=\varphi(\mu_\aaa b\mu_\aaa^*)=\Ns\aaa^{-\beta}\varphi(b\mu_\aaa^*\mu_\aaa)=\Ns\aaa^{-\beta}\tau(b)$.
+
+(2) Extend $\tau$ to the semifinite trace $\tilde\tau$ on $\widetilde\cB$ determined by
+$\tilde\tau(\alpha_\aaa^{-1}(b))=\Ns\aaa^{\beta}\tau(b)$, consistent by the scaling relation,
+and let $\gamma$ be the automorphic action of $I_S$ on $\widetilde\cB$, so that
+$\tilde\tau\circ\gamma_a=\Ns\aaa^{-\beta}\tilde\tau$ for $a\in I_S$. On the dense span of
+elements $x=a_1u_a$, $y=a_2u_b$ of $\widetilde\cB\rtimes I_S$ ($a_i\in\widetilde\cB$ in the
+domain of $\tilde\tau$, $u_a$ the implementing unitaries),
+\[
+(\tilde\tau\circ E)(xy)=\delta_{a+b,0}\,\tilde\tau\bigl(a_1\gamma_a(a_2)\bigr),\qquad
+(\tilde\tau\circ E)\bigl(y\,\sigma_{i\beta}(x)\bigr)=\delta_{a+b,0}\,\Ns\aaa^{-\beta}\tilde\tau\bigl(a_2\gamma_{-a}(a_1)\bigr),
+\]
+and $\Ns\aaa^{-\beta}\tilde\tau(a_2\gamma_{-a}(a_1))=\Ns\aaa^{-\beta}\Ns\aaa^{\beta}\tilde\tau(\gamma_a(a_2)a_1)=\tilde\tau(a_1\gamma_a(a_2))$,
+using $\tilde\tau\circ\gamma_{a}=\Ns\aaa^{-\beta}\tilde\tau$ read as $\tilde\tau=\Ns\aaa^{\beta}\tilde\tau\circ\gamma_a$
+and then traciality. So $\tilde\tau\circ E$ satisfies the KMS condition on the corner,
+where it is the state $\tau\circ E$. Injectivity of $\tau\mapsto\tau\circ E$ is clear.
+
+(3) A $\mathrm{KMS}_\beta$ state is $\sigma$-invariant. Under the hypothesis, the one-parameter
+group $t\mapsto(\Ns\pp^{it})_\pp$ is dense in $\widehat{I_S}=\prod_\pp\T$ by Kronecker's
+theorem applied to finite subsets of $S$, so a $\sigma$-invariant state is invariant under
+the whole gauge action and hence factors through $E$: $\varphi=\varphi\circ E=\tau\circ E$
+with $\tau=\varphi|_\cB$, which is a scaling trace by (1).
+
+(a) A trace is invariant under inner automorphisms, so $\tau\circ\alpha'_\aaa=\tau\circ\alpha_\aaa$.
+(b) A tracial state of $C(Y_S)\otimes M_n$ is $\nu\otimes\frac1n\Tr$, and
+$\Tr(v_\aaa m v_\aaa^*)=\Tr m$ reduces the scaling condition to $\nu\circ\alpha_\aaa=\Ns\aaa^{-\beta}\nu$.
+(c) is (1)--(3).
+\end{proof}
+
+\begin{remark}
+Without the independence hypothesis in (3), $\sigma$-invariance only forces $\varphi$ to
+factor through the expectation onto the fixed-point algebra of $\sigma$, which also
+contains the elements $\mu_\aaa b\mu_\bb^*$ with $\Ns\aaa=\Ns\bb$, $\aaa\ne\bb$; for the
+classical system these carry nothing because the groupoid is principal on a conull set
+[Ch.~\ref{ch:Main}, Prop.~2.8], and for general $\cB$ there may be additional $\mathrm{KMS}_\beta$
+states, all of them tracial on the fixed-point algebra. None of this reintroduces the
+representation: the matrix Kakutani dichotomy of Chapter~\ref{ch:VI}, valid for commuting lifts,
+would enter Route B through the twist $\mathrm{Ad}\,\rho(u_\pp)$, and (a) says the twist is
+never seen; for non-commuting lifts $\alpha_\pp\otimes\mathrm{Ad}\,\rho(u_\pp)^{-1}$ do not
+even commute, so there is no action to twist. The modular group is not ``broken'' by a
+noncommutative $\cB$: it is the same gauge dynamics, and it forces the equilibrium state
+to forget everything about $\cB$ except its traces. Route B is closed.
+\end{remark}
+
+\section{Route A, first reading: isotropy cannot carry $N_\beta$}\label{XXVII:sec:iso}
+
+Let $\cG$ be a second countable locally compact Hausdorff \'etale groupoid with unit space
+$\Omega$, and $c:\cG\to\R$ a continuous cocycle defining $\sigma_t(f)(\gamma)=e^{itc(\gamma)}f(\gamma)$
+on $C^*(\cG)$ (the Haar system is counting measure on the fibres, as for every \'etale
+groupoid). Neshveyev's theorem \cite[Thm.~1.3]{Nesh13} describes the $\mathrm{KMS}_\beta$
+states: they are the functionals
+\begin{equation}\label{XXVII:eq:nesh}
+\varphi(f)=\int_\Omega\sum_{\gamma\in\cG_x^x}f(\gamma)\,\phi_x(u_\gamma)\,d\mu(x),
+\end{equation}
+where $\mu$ is a quasi-invariant probability measure with Radon--Nikodym cocycle $e^{-\beta c}$
+and $x\mapsto\phi_x$ is a $\mu$-measurable field of tracial states on the group
+$C^*$-algebras $C^*(\cG_x^x)$ of the isotropy groups, vanishing on $u_\gamma$ unless
+$c(\gamma)=0$, and conjugation-equivariant: $\phi_{r(\gamma)}(u_{\gamma h\gamma^{-1}})=\phi_{s(\gamma)}(u_h)$
+for $\mu$-a.e.\ $\gamma$. The extreme points are the pairs with $\mu$ ergodic and $\phi$
+extremal among equivariant fields.
+
+\begin{theorem}[No-go for isotropy]\label{XXVII:thm:isoNoGo}
+Let $(\cG,c)$ be as above, and let a group $G$ act on $\cG$ by automorphisms preserving $c$,
+hence on $\mathrm{KMS}_\beta(C^*(\cG))$ by affine bijections. For an extreme
+$\mathrm{KMS}_\beta$ state with quasi-invariant measure $\mu$ let $\mathcal E_\mu$ be the set
+of extreme $\mathrm{KMS}_\beta$ states with measure $\mu$.
+\begin{enumerate}
+\item The state $\varphi_\mu(f)=\int_\Omega f|_\Omega\,d\mu$ --- the field $\phi_x=$ trivial
+character --- belongs to $\mathcal E_\mu$, and it is fixed by the stabilizer $G_\mu$ of
+$\mu$ in $G$.
+\item If the isotropy groups $\cG_x^x$ are $\mu$-a.e.\ isomorphic to a fixed compact group
+$N\subseteq\ker c$, with the isotropy bundle constant and the conjugation action of $\cG$
+on it trivial, then $\mathcal E_\mu$ is in bijection with $\Irr(N)$, via
+$\rho\mapsto(\mu,\phi_x\equiv\chi_\rho/\dim\rho)$.
+\item Consequently, if $G$ acts transitively on the extreme $\mathrm{KMS}_\beta$ states, then
+$\mathcal E_\mu=\{\varphi_\mu\}$ for every $\mu$, and in the situation of (2) $N=\{1\}$: the
+isotropy is $\mu$-a.e.\ trivial.
+\end{enumerate}
+In particular no groupoid whose $\mathrm{KMS}_\beta$ multiplicity is produced by isotropy
+has a simplex of the form $\Prob(G/N)$ with $G$ acting transitively on the extreme points
+and $N\ne1$.
+\end{theorem}
+
+\begin{proof}
+(1) The trivial character is a tracial state of every $C^*(\cG_x^x)$, vanishes on $u_\gamma$
+for $c(\gamma)\ne0$ as required, and the constant field is conjugation-equivariant; so
+$\varphi_\mu$ is a $\mathrm{KMS}_\beta$ state by \eqref{XXVII:eq:nesh}, and it is extreme because
+$\mu$ is ergodic and the trivial character is an extreme tracial state. An automorphism of
+$(\cG,c)$ transforms a pair $(\mu,\phi)$ into $(\mu\circ g^{-1},\phi\circ g^{-1})$; if it
+fixes $\mu$ it fixes the pair with the trivial field.
+
+(2) Tracial states of $C^*(N)$ are the convex combinations of normalized characters
+$\chi_\rho/\dim\rho$, $\rho\in\Irr(N)$, the extreme ones being the normalized characters.
+With constant bundle and trivial conjugation action, equivariance says the field is
+$\cG$-invariant, hence a.e.\ constant by ergodicity of $\mu$; so the equivariant fields
+are the constant ones, the extreme ones the constant normalized characters.
+
+(3) The map $\varphi\mapsto\mu$ from extreme $\mathrm{KMS}_\beta$ states to ergodic
+quasi-invariant measures is $G$-equivariant, so if $G$ is transitive on the extreme states
+then $G_\mu$ is transitive on the fibre $\mathcal E_\mu$; by (1) it fixes $\varphi_\mu\in\mathcal E_\mu$,
+so $\mathcal E_\mu=\{\varphi_\mu\}$, and by (2) $|\Irr(N)|=1$, i.e.\ $N=1$. For the last
+sentence, the translation action of $G$ on $\Prob(G/N)$ is transitive on the extreme
+points.
+\end{proof}
+
+\begin{remark}
+The theorem says that isotropy is the wrong place to put $N_\beta$: it produces the
+\emph{dual} object $\Irr(N_\beta)$, with the trivial representation as a distinguished,
+symmetry-fixed equilibrium state, whereas symmetry breaking needs a homogeneous space
+with no distinguished point. ``Isotropy $=N_\beta$'' would give a simplex with a canonical
+symmetric state and $|\Irr(N_\beta)|$ extreme points over each ergodic measure, which is
+$\Prob(G/N_\beta)$ neither as a $G$-space nor, in general, as a set. The classical system
+itself illustrates the point: its groupoid is principal on a conull set
+[Ch.~\ref{ch:Main}, Prop.~2.8], and all of its multiplicity comes from the ergodic decomposition
+of the unit space. That is where a non-abelian construction must put it.
+\end{remark}
+
+\section{Route A, second reading: the ordered Frobenius cocycle}\label{XXVII:sec:ordered}
+
+\subsection{The cocycle}
+
+Fix lifts $u_i\in C_i$. For $x\in V$ and $n\ge0$ put
+\begin{equation}\label{XXVII:eq:Pn}
+P_n(x)=u_1^{x_1}u_2^{x_2}\cdots u_n^{x_n}\in G,
+\end{equation}
+an ordered product, and for $(y,x)\in\cR_S$ let $n$ be any index beyond the last coordinate
+in which $x$ and $y$ differ and
+\begin{equation}\label{XXVII:eq:c}
+c(y,x)=P_n(y)\,P_n(x)^{-1}.
+\end{equation}
+This is independent of $n$: $P_{n'}(x)=P_n(x)u_{n+1}^{x_{n+1}}\cdots u_{n'}^{x_{n'}}$ and the
+extra factors agree for $x$ and $y$ and cancel on the right. It is a cocycle,
+$c(z,y)c(y,x)=c(z,x)$, being of the form $P(y)P(x)^{-1}$ on each $\cR_{F_n}$. Its
+increments are
+\begin{equation}\label{XXVII:eq:incr}
+c(x+e_j,x)=P_{j-1}(x)\,u_j\,P_{j-1}(x)^{-1},
+\end{equation}
+the $j$-th lift conjugated by the ordered product of the earlier ones; for commuting lifts
+this is $u_j$ and $c$ is the constant-increment cocycle of Chapter~\ref{ch:VII}, but in general the
+increments at different coordinates do not commute, and \eqref{XXVII:eq:c} is the way to have a
+cocycle nonetheless: the obstruction of Chapter~\ref{ch:VI}, that a cocycle with \emph{constant}
+non-commuting increments cannot exist on a relation generated by commuting shifts, is
+circumvented by letting the increment at $\pp_j$ depend on the coordinates before it.
+
+\subsection{The groupoid and its algebra}
+
+To have a topological model we compactify each coordinate together with its lift. Let
+\[
+X_i=\overline{\{(k,u_i^k):k\in\N\}}\subseteq\overline\N\times G,\qquad X=\prod_{i\ge1}X_i,
+\]
+compact, second countable, with $\N\subset X_i$ open and dense (as $\{k\}\times\{u_i^k\}$) and
+boundary $\partial X_i=\{\infty\}\times\overline{\{u_i^k\}}$. Write $g_i:X_i\to G$ for the
+second projection, continuous, with $g_i(k)=u_i^k$. The shift $k\mapsto k+1$ extends to a
+homeomorphism $s_i$ of $X_i$ onto $X_i\setminus\{0\}$, $(\infty,g)\mapsto(\infty,u_ig)$, and
+$J_S$ acts on $X$ by $x\mapsto x+a$ coordinatewise, injectively, with clopen images. Put
+\[
+P_n(x)=g_1(x_1)\cdots g_n(x_n),\qquad
+c(x+e_j,x)=P_{j-1}(x)u_jP_{j-1}(x)^{-1},
+\]
+continuous on $X$ and extending \eqref{XXVII:eq:Pn}--\eqref{XXVII:eq:incr}. Let $\widetilde X=\varinjlim(X,+a)$
+be the dilation, a locally compact space on which $I_S=\Z^{(S)}$ acts by homeomorphisms, and
+extend $c$ to $\widetilde X$ by the same formulas. Define the action of $I_S$ on
+$\Omega=\widetilde X\times G$ by
+\begin{equation}\label{XXVII:eq:action}
+a\cdot(x,g)=\bigl(x+a,\ c(x+a,x)\,g\bigr),
+\end{equation}
+which is an action because $c$ is a cocycle, and by homeomorphisms because $c$ is
+continuous. Let
+\[
+\cG_c=I_S\ltimes\Omega,\qquad
+\cA_c=\mathbf 1_{X\times G}\,C^*(\cG_c)\,\mathbf 1_{X\times G}=C(X\times G)\rtimes J_S,
+\]
+the transformation groupoid with counting measures as Haar system \cite{Renault}, and
+its unital full corner; the dynamics is $\sigma_t(\mu_\aaa)=\Ns\aaa^{it}\mu_\aaa$, given by the continuous
+cocycle $(a,\omega)\mapsto\log\Ns\aaa$ on $\cG_c$. The group $G$ acts on $\Omega$ by right
+translation $R_h(x,g)=(x,gh)$, commuting with \eqref{XXVII:eq:action}, hence on $\cA_c$ by
+$\sigma$-commuting automorphisms.
+
+\begin{lemma}\label{XXVII:lem:basic}
+$\cG_c$ is second countable, \'etale, Hausdorff and amenable, principal on the conull set
+$V\times G$ (points with all coordinates finite), and $\cA_c$ is nuclear. The
+$\mathrm{KMS}_\beta$ states of $\cA_c$ are in affine bijection with the probability
+measures $\nu$ on $X\times G$ with $\nu(a\cdot E)=\Ns\aaa^{-\beta}\nu(E)$ for $a\in J_S$; every
+such $\nu$ is concentrated on $V\times G$, has $V$-marginal $\pi_\beta$, and disintegrates as
+$\nu=\pi_\beta\otimes\rho_x$ with a measurable family $\rho_x\in\Prob(G)$ satisfying
+\begin{equation}\label{XXVII:eq:equiv}
+\rho_{x+e_j}=\bigl(c(x+e_j,x)\bigr)_*\rho_x\qquad\text{for }\pi_\beta\text{-a.e.\ }x,\ \text{every }j .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$I_S$ is abelian, so $\cG_c$ is amenable and $C^*=C^*_r$; \'etaleness and Hausdorffness are
+those of a transformation groupoid by homeomorphisms. If $a\cdot(x,g)=(x,g)$ then $x+a=x$,
+which forces $a=0$ when all $x_i$ are finite; so the isotropy is trivial on $V\times G$. For
+the KMS states, the argument of [Ch.~\ref{ch:Main}, Prop.~2.8] applies verbatim (or one may invoke
+\eqref{XXVII:eq:nesh}): a $\mathrm{KMS}_\beta$ state is $\nu\circ E$ for a scaling measure $\nu$
+on the unit space of the corner. If $E\subseteq\{x_i=\infty\}$ then $e_i\cdot E=E$ and the
+scaling gives $\nu(E)=t_i\nu(E)$, so $\nu(E)=0$: $\nu$ is concentrated on $V\times G$. The
+$V$-marginal satisfies the scaling relations of the valuation coordinates alone, so it is
+$\pi_\beta$ by [Ch.~\ref{ch:Main}, Lem.~2.10]. Disintegrating and comparing the two sides of the
+scaling identity on sets $B\times C$, using $\pi_\beta(B+e_j)=t_j\pi_\beta(B)$, gives
+\eqref{XXVII:eq:equiv}.
+\end{proof}
+
+\subsection{Classification by the Mackey range}
+
+Recall Zimmer's theory of cocycles into compact groups \cite[Ch.~4 and 9]{Zimmer}, in the
+setting of countable equivalence relations \cite{FM}: for an ergodic countable equivalence
+relation $(V,\pi,\cR)$ and a measurable cocycle
+$c:\cR\to G$ into a compact group, there is a closed subgroup $H\le G$, unique up to
+conjugacy, and a measurable $f:V\to G$ such that $c'(y,x)=f(y)^{-1}c(y,x)f(x)$ takes values in
+$H$ and the skew product relation $\cR\ltimes_{c'}H$ on $V\times H$ is ergodic; $H$ is the
+\emph{Mackey range} (algebraic hull) of $c$, and $c$ is cohomologous to a cocycle into a
+closed subgroup $H'$ iff $H'$ contains a conjugate of $H$.
+
+\begin{theorem}[The simplex of the ordered model]\label{XXVII:thm:simplex}
+Let $H$ be the Mackey range of $c$ on $(V,\pi_\beta,\cR_S)$. Then
+\[
+\mathrm{KMS}_\beta(\cA_c)\ \cong_{\mathrm{affine}}\ \Prob\bigl(H\backslash G\bigr),
+\]
+the extreme points being the families $\rho_x=$ Haar measure on $f(x)Hk$, $k\in G$, and the
+right translation action of $G$ is transitive on the extreme points with stabilizer of the
+point $Hk$ equal to $k^{-1}Hk$.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{XXVII:lem:basic} we classify the equivariant families \eqref{XXVII:eq:equiv}, i.e.\ the
+probability measures $\nu=\pi_\beta\otimes\rho_x$ on $V\times G$ invariant in measure class
+and with the prescribed Radon--Nikodym derivative under the skew product relation
+$\widetilde\cR=\cR_S\ltimes_cG$, $(x,g)\sim(y,c(y,x)g)$; the extreme ones are the ergodic
+ones. The map $\Psi(x,g)=(x,f(x)^{-1}g)$ carries $\widetilde\cR$ to $\cR_S\ltimes_{c'}G$ and
+preserves $\pi_\beta\otimes m_G$. The latter relation preserves each set $V\times Hk$, on which
+it is isomorphic to $\cR_S\ltimes_{c'}H$ via $h\mapsto hk$, ergodic by the definition of the
+Mackey range. Hence the ergodic components of $\widetilde\cR$ are the sets
+$\Psi^{-1}(V\times Hk)=\{(x,g):f(x)^{-1}g\in Hk\}$, $Hk\in H\backslash G$. Within a
+component, Haar on the fibres is the \emph{only} equivariant family: if
+$\rho'_x\in\Prob(H)$ satisfies $\rho'_y=c'(y,x)_*\rho'_x$, then for a nontrivial
+$\sigma\in\Irr(H)$ the Fourier coefficient $B(x)=\bigl(\int_H\sigma(h)^*d\rho'_x(h)\bigr)^*$
+satisfies $B(y)=\sigma(c'(y,x))B(x)$, so $\Phi(x,h)=\Tr\bigl(\sigma(h)^*B(x)\bigr)$ is
+$\cR_S\ltimes_{c'}H$-invariant --- $\Phi(y,c'h)=\Tr(\sigma(h)^*\sigma(c')^*\sigma(c')B(x))=\Phi(x,h)$
+--- hence a.e.\ constant by ergodicity; since $\int_H\sigma(h)\,dh=0$ the constant is $0$,
+and Fourier inversion in $h$ gives $B=0$. All nontrivial coefficients of $\rho'_x$ vanish,
+so $\rho'_x=m_H$ a.e. Thus the ergodic
+equivariant families are the Haar measures on the fibres $f(x)Hk$, and every equivariant
+family is a probability mixture of these, uniquely, since distinct ergodic components carry
+mutually singular measures. Right translation by $h$ maps the component of $Hk$ to that of
+$Hkh$.
+\end{proof}
+
+For commuting lifts $f$ can be taken trivial and $H=E_\beta$, recovering Chapter~\ref{ch:VII}. The
+content of the model is therefore the conjugacy class of $H$. Two questions remain: how
+$H$ is related to $N_\beta$, and how $H$ depends on the lifts.
+
+\subsection{The non-abelian Kakutani theorem}
+
+For a unitary representation $\rho:G\to U(d)$ write $U_i=\rho(u_i)$ and
+\begin{equation}\label{XXVII:eq:mean}
+m_i=\E_{\mu_{t_i}}\bigl[U_i^{x_i}\bigr]=\sum_{k\ge0}(1-t_i)t_i^kU_i^k=(1-t_i)(I-t_iU_i)^{-1},
+\end{equation}
+invertible since $\|t_iU_i\|<1$, with
+\begin{equation}\label{XXVII:eq:minv}
+m_i^{-*}m_i^{-1}=\frac{(I-t_iU_i^*)(I-t_iU_i)}{(1-t_i)^2}=I+\frac{t_i}{(1-t_i)^2}(I-U_i)^*(I-U_i)\ \ge\ I .
+\end{equation}
+If $e^{i\phi_{i,1}},\dots,e^{i\phi_{i,d}}$ are the eigenvalues of $U_i$, then
+\begin{equation}\label{XXVII:eq:det}
+\det\bigl(m_i^{-*}m_i^{-1}\bigr)=\prod_{r=1}^d\Bigl(1+\frac{t_i|1-e^{i\phi_{i,r}}|^2}{(1-t_i)^2}\Bigr),
+\qquad
+\sum_r|1-e^{i\phi_{i,r}}|^2=\|I-U_i\|_{\HS}^2 .
+\end{equation}
+Put $M_{(n,m]}=m_{n+1}m_{n+2}\cdots m_m$ and $M_n=M_{(0,n]}$. A \emph{coboundary} means a
+measurable $F:V\to U(d)$ with $\rho(c(y,x))=F(y)F(x)^{-1}$ for $\pi_\beta$-a.e.\ $(y,x)\in\cR_S$.
+
+\begin{theorem}[Non-abelian Kakutani]\label{XXVII:thm:kakutani}
+For every lift and every unitary representation $\rho$,
+\[
+\rho\circ c\ \text{is a coboundary}\iff\Xi_\beta(\rho,S)<\infty .
+\]
+\end{theorem}
+
+\begin{proof}
+Two structural facts are used throughout. First, for $F:V\to M_d(\C)$ measurable with
+$F(y)=\rho(c(y,x))F(x)$ on $\cR_S$, the function $K_n=P_n^{-1}F$ (with $P_n=\rho(P_n(x))$, we
+suppress $\rho$) is invariant under changes of the first $n$ coordinates: for $y\sim x$
+differing only there, $K_n(y)=P_n(y)^{-1}\rho(c(y,x))F(x)=P_n(y)^{-1}P_n(y)P_n(x)^{-1}F(x)=K_n(x)$;
+so $K_n$ is $\cF_{>n}$-measurable [Ch.~\ref{ch:Main}, Lem.~3.1] and independent of $P_n$, which is
+$\cF_{\le n}$-measurable. Second, $\E[P_n]=M_n$ and $\E[P_m|\cF_{\le n}]=P_nM_{(n,m]}$, by
+independence of the coordinates and the ordering of the product.
+
+$(\Leftarrow)$ Let $\Xi_\beta(\rho,S)<\infty$ and $Z_n=P_nM_n^{-1}$. Then
+$\E[Z_{n+1}|\cF_{\le n}]=P_nm_{n+1}M_{n+1}^{-1}=Z_n$: a matrix-valued martingale. Its
+$L^2$-norm is deterministic, $\E\|Z_n\|_{\HS}^2=\Tr(M_n^{-1}M_n^{-*})=\|M_n^{-1}\|_{\HS}^2$,
+and by \eqref{XXVII:eq:minv}, iterating $m_{i}^{-*}(\,\cdot\,)m_i^{-1}\le\lambda_i(\,\cdot\,)$ with
+$\lambda_i=1+t_i\|I-U_i\|_{\op}^2/(1-t_i)^2$ from the inside out,
+\[
+\|M_n^{-1}\|_{\HS}^2\le d\prod_{i\le n}\lambda_i\le d\,\exp\Bigl(\frac{1}{(1-t_{\max})^2}\sum_it_i\|I-U_i\|_{\HS}^2\Bigr)<\infty ,
+\]
+using $t_i\le t_{\max}<1$. So $Z_n\to Z_\infty=:F$ a.s.\ and in $L^2$. Moreover
+$|\det Z_n|=|\det M_n^{-1}|=\prod_{i\le n}\det(m_i^{-*}m_i^{-1})^{1/2}$ increases to a finite
+limit $\ge1$ by \eqref{XXVII:eq:det} and $\Xi_\beta<\infty$, so $\det F\ne0$ a.s.\ and $F$ is
+invertible. For $y\sim x$ and $n$ large, $Z_n(y)Z_n(x)^{-1}=P_n(y)P_n(x)^{-1}=\rho(c(y,x))$, and
+letting $n\to\infty$ gives $F(y)=\rho(c(y,x))F(x)$. Then $F^*F$ is $\cR_S$-invariant,
+$F(y)^*F(y)=F(x)^*\rho(c)^*\rho(c)F(x)=F(x)^*F(x)$, hence a.e.\ equal to a constant positive
+matrix $Q^2$, and $W=FQ^{-1}$ is unitary with $\rho(c(y,x))=W(y)W(x)^{-1}$.
+
+$(\Rightarrow)$ Let $F$ be a unitary coboundary and $C_n=\E[K_n]$. Then
+$\E[F|\cF_{\le n}]=P_nC_n$, and comparing $\E[F|\cF_{\le n}]=\E[\E[F|\cF_{\le m}]\,|\,\cF_{\le n}]=P_nM_{(n,m]}C_m$
+gives
+\begin{equation}\label{XXVII:eq:consist}
+C_n=M_{(n,m]}\,C_m\qquad(m>n).
+\end{equation}
+Suppose $\Xi_\beta(\rho,S)=\infty$. Then for each $n$, $|\det M_{(n,m]}^{-1}|\to\infty$ as
+$m\to\infty$ by \eqref{XXVII:eq:det}, while $\|C_m\|_{\HS}\le\E\|K_m\|_{\HS}=\sqrt d$; so
+$|\det C_m|=|\det M_{(n,m]}^{-1}|\,|\det C_n|$ bounded forces $\det C_n=0$ for every $n$. But
+$P_nC_n=\E[F|\cF_{\le n}]\to F$ in $L^2$ by martingale convergence, $F$ being measurable with
+respect to $\bigvee_n\cF_{\le n}$, so along a subsequence $\det(P_{n_k}C_{n_k})\to\det F$
+a.e., and $|\det F|=1$; this contradicts $\det C_{n_k}=0$.
+\end{proof}
+
+\begin{corollary}[$N_\beta$ is the normal closure of the Mackey range]\label{XXVII:cor:normalclosure}
+For every lift, with $H$ the Mackey range of $c$,
+\[
+\cT_\beta=\{\rho:\ \rho|_H=1\},\qquad N_\beta=\langle\langle H\rangle\rangle ,
+\]
+the smallest closed normal subgroup containing $H$. Consequently
+$\mathrm{KMS}_\beta(\cA_c)=\Prob(G/N_\beta)$, with $G$ acting on the extreme points as on
+$G/N_\beta$, if and only if $H$ is normal in $G$; in general there is a $G$-equivariant
+surjection $H\backslash G\to G/N_\beta$ of extreme boundaries, a bijection iff $H\trianglelefteq G$.
+\end{corollary}
+
+\begin{proof}
+$\rho\circ c$ is a coboundary iff the Mackey range of $\rho\circ c$ is trivial; and the Mackey
+range of $\rho\circ c$ is $\rho(H)$, since $\rho\circ c'$ takes values in $\rho(H)$ and the
+skew product by $\rho\circ c'$ on $V\times\rho(H)$ is a factor of the ergodic
+$\cR_S\ltimes_{c'}H$. So by Theorem~\ref{XXVII:thm:kakutani}, $\Xi_\beta(\rho,S)<\infty$ iff
+$\rho|_H=1$. The intersection of the kernels of the representations trivial on $H$ is the
+closed normal subgroup generated by $H$, by Peter--Weyl applied to $G/\langle\langle H\rangle\rangle$.
+The rest is Theorem~\ref{XXVII:thm:simplex}.
+\end{proof}
+
+\subsection{When is the Mackey range normal? A mixing criterion}
+
+\begin{theorem}[Mixing forces $H=G$]\label{XXVII:thm:mixing}
+Suppose that for every nontrivial irreducible $\rho$ and every $n$,
+$\|M_{(n,m]}\|_{\op}\to0$ as $m\to\infty$. Then the skew product $\cR_S\ltimes_cG$ is ergodic,
+$H=G$, and $\cA_c$ has a unique $\mathrm{KMS}_\beta$ state.
+\end{theorem}
+
+\begin{proof}
+Let $\Phi\in L^\infty(V\times G)$ be $\widetilde\cR$-invariant and $A_\rho(x)=\int_G\Phi(x,h)\rho(h)^*dh$
+its Fourier coefficients. Invariance gives $A_\rho(y)=A_\rho(x)\rho(c(y,x))^*$, so $B=A_\rho^*$
+satisfies $B(y)=\rho(c(y,x))B(x)$ and is bounded. As in the proof of
+Theorem~\ref{XXVII:thm:kakutani}, $\E[B|\cF_{\le n}]=P_nC_n$ with $C_n=\E[P_n^{-1}B]$ satisfying
+\eqref{XXVII:eq:consist} and $\|C_m\|_{\HS}\le\sqrt d\,\|B\|_\infty$. By hypothesis
+$\|C_n\|\le\|M_{(n,m]}\|_{\op}\sup_m\|C_m\|\to0$, so $C_n=0$ for all $n$, hence $B=0$ by
+martingale convergence: $A_\rho=0$ for every nontrivial irreducible $\rho$. Thus $\Phi(x,g)$
+does not depend on $g$, and then it is $\cR_S$-invariant, hence constant. Ergodicity of the
+skew product means $H=G$, and Theorem~\ref{XXVII:thm:simplex} gives the rest.
+\end{proof}
+
+The hypothesis fails exactly when some nontrivial $\rho$ has a direction that the
+contractions $m_i$ asymptotically leave alone --- an $H$-fixed vector. The criterion is
+easy to check in examples, and it is what separates the lifts.
+
+\begin{theorem}[The simplex depends on the lift]\label{XXVII:thm:lift}
+Let $G=S_3$, and let the class $C_i$ be the class of transpositions for every $i$.
+\begin{enumerate}
+\item For the constant lift $u_i=(12)$, $H=\{e,(12)\}$ and $\cA_c$ has exactly three
+extremal $\mathrm{KMS}_\beta$ states, permuted transitively by $S_3$ with stabilizers of
+order $2$.
+\item For the alternating lift $u_{2k-1}=(12)$, $u_{2k}=(13)$, $H=S_3$ and $\cA_c$ has a
+unique $\mathrm{KMS}_\beta$ state.
+\end{enumerate}
+In both cases $N_\beta=S_3$ and $\Prob(G/N_\beta)$ is a point: the Tannakian prediction is
+right for the second lift and wrong for the first.
+\end{theorem}
+
+\begin{proof}
+(1) The lifts commute, $c$ has constant increments $(12)$, and $H$ is the Mackey range of
+the constant cocycle into the abelian group $A=\{e,(12)\}$, namely the annihilator of the
+characters $\chi$ of $A$ with $\sum_it_i|1-\chi((12))|^2<\infty$; the nontrivial character
+has $|1-\chi((12))|^2=4$ and $\sum t_i=\infty$, so only the trivial character qualifies and
+$H=A$. Theorem~\ref{XXVII:thm:simplex} gives $\Prob(A\backslash S_3)$, three points.
+
+(2) We verify the hypothesis of Theorem~\ref{XXVII:thm:mixing}. For the sign character,
+$m_i=(1-t_i)/(1+t_i)$ and $\prod_{i>n}m_i=0$ since $\sum t_i=\infty$. For the two-dimensional
+irreducible $\rho$, $\rho(u_i)$ is a reflection with fixed line $\ell_i$, $\ell_{2k-1}$ and
+$\ell_{2k}$ making an angle of $60^\circ$; by \eqref{XXVII:eq:mean}, $m_i=Q_i+\lambda_iQ_i^\perp$
+with $Q_i$ the projection onto $\ell_i$ and $\lambda_i=(1-t_i)/(1+t_i)$. For a unit vector $v$
+either $\|Q_i^\perp v\|\ge\frac12$ or $\|Q_{i+1}^\perp v\|\ge\frac12$, the two lines being
+$60^\circ$ apart. In the first case $\|m_iv\|^2\le1-\frac14(1-\lambda_i^2)$. In the second,
+$\|m_iv-v\|\le1-\lambda_i\le2t_i\le\frac14$ once $t_i\le\frac18$, so
+$\|Q_{i+1}^\perp m_iv\|\ge\frac14$ and $\|m_{i+1}m_iv\|^2\le1-\frac1{16}(1-\lambda_{i+1}^2)$.
+As $1-\lambda_i^2\ge t_i$, in both cases
+$\|m_{i+1}m_i\|_{\op}\le1-\frac1{32}\min(t_i,t_{i+1})$, so
+\[
+\|M_{(n,m]}\|_{\op}\le\prod_{k:\,n<2k-1<2k\le m}\Bigl(1-\tfrac1{32}\min(t_{2k-1},t_{2k})\Bigr)\le\exp\Bigl(-\tfrac1{32}\sum_{k}\min(t_{2k-1},t_{2k})\Bigr)\to0,
+\]
+because the $t_i$ are non-increasing, so $\min(t_{2k-1},t_{2k})=t_{2k}\ge t_{2k+1}$ and
+$\sum_kt_{2k}\ge\frac12\sum_{i\ge2}t_i=\infty$. Theorem~\ref{XXVII:thm:mixing} applies.
+
+For $N_\beta$: $\Xi_\beta(\mathrm{sgn},S)=4\sum t_i=\infty$ and
+$\Xi_\beta(\rho,S)=\sum t_i\|I-\rho(u_i)\|_{\HS}^2=4\sum t_i=\infty$, so $\cT_\beta=\{\mathbf 1\}$
+and $N_\beta=S_3$ for either lift, as it must, $N_\beta$ depending only on the classes.
+\end{proof}
+
+\begin{corollary}[No canonical non-abelian model]\label{XXVII:cor:nocanonical}
+The $\mathrm{KMS}_\beta$ simplex of $\cA_c$ is not a function of the Frobenius classes
+$(C_i)_i$: it depends on the lift, through the conjugacy class of the Mackey range $H$. The
+lift-independent invariants of the construction are exactly those of $N_\beta=\langle\langle H\rangle\rangle$,
+i.e.\ the Tannakian data of Chapter~\ref{ch:VI}.
+\end{corollary}
+
+\begin{remark}[Averaging over lifts does not help]
+One may make the model canonical by adjoining the lift to the unit space: replace $G$ by
+$G\times\prod_iG$ with Haar measure, let the $i$-th extra coordinate $k_i$ be a conjugator,
+and use the lifts $k_iu_ik_i^{-1}$ in \eqref{XXVII:eq:c}. The extra coordinates are not moved by
+any arrow, so the ergodic decomposition is fibred over the space of lifts, the KMS
+simplex is the space of probability measures on the bundle of coset spaces
+$H_k\backslash G$ over $k\in\prod G$, and the symmetry $G$ acts within the fibres: the
+extreme points are not a single $G$-orbit. Canonicity is bought at the price of the
+transitivity that defines symmetry breaking.
+\end{remark}
+
+\subsection{When the lift does not matter}
+
+\begin{proposition}[Rigid Tannakian subgroups]\label{XXVII:prop:rigid}
+If $N_\beta$ has no proper closed subgroup whose normal closure in $G$ is $N_\beta$ --- for
+instance if $N_\beta$ is trivial, or of prime order, or more generally if every proper
+closed subgroup of $N_\beta$ is contained in a proper closed $G$-normal subgroup of
+$N_\beta$ --- then $H=N_\beta$ for every lift, and
+$\mathrm{KMS}_\beta(\cA_c)\cong\Prob(G/N_\beta)$ with the transitive $G$-action, for every lift.
+\end{proposition}
+
+\begin{proof}
+By Corollary~\ref{XXVII:cor:normalclosure}, $H\le N_\beta$ and $\langle\langle H\rangle\rangle=N_\beta$;
+the hypothesis leaves only $H=N_\beta$.
+\end{proof}
+
+\begin{example}[A nontrivial $\Prob(G/N_\beta)$ realized for every lift]\label{XXVII:ex:A3}
+Let $G=S_3$ and split $S=S_1\sqcup S_2$ with $\sum_{\pp\in S_1}\Ns\pp^{-\beta}=\infty$ and
+$\sum_{\pp\in S_2}\Ns\pp^{-\beta}<\infty$; assign the class of $3$-cycles to the primes of $S_1$
+and the class of transpositions to those of $S_2$. Then
+$\Xi_\beta(\mathrm{sgn},S)=4\sum_{S_2}\Ns\pp^{-\beta}<\infty$, since the sign is trivial on
+$3$-cycles, while $\Xi_\beta(\rho,S)\ge\sum_{S_1}\Ns\pp^{-\beta}\,\|I-\rho((123))\|_{\HS}^2=6\sum_{S_1}\Ns\pp^{-\beta}=\infty$
+for the two-dimensional $\rho$. So $\cT_\beta=\{\mathbf 1,\mathrm{sgn}\}=\Rep(S_3/A_3)$ and
+$N_\beta=A_3$, of prime order; by Proposition~\ref{XXVII:prop:rigid}, for every lift the ordered
+model has exactly two extremal $\mathrm{KMS}_\beta$ states, exchanged by the transpositions
+of $S_3$ and fixed by $A_3$: the simplex is $\Prob(S_3/A_3)$, a non-abelian symmetry group
+breaking to a normal subgroup, as the Tannakian formalism predicts. Chebotarev's theorem,
+used as in the constructions of [Ch.~\ref{ch:I}, \S5], supplies such splittings from an
+$S_3$-extension of $K$: the primes whose Frobenius class consists of $3$-cycles have density
+$\frac13$, so their Dirichlet sum diverges for $\beta\le1$, and for $S_2$ any set of
+transposition primes with convergent sum will do.
+\end{example}
+
+\section{Verdict}
+
+\[
+\begin{array}{@{}l@{\ \ }l@{\ \ }l@{}}
+\text{Route or statement} & \text{Outcome} & \text{Where}\\\hline
+\text{B: }\cB\rtimes J_S,\ \cB\text{ noncommutative} & \text{no-go: KMS states are traces on }\cB & \ref{XXVII:thm:B}\\
+\text{A: isotropy}=N_\beta & \text{no-go: gives }\Irr(N_\beta)\text{ and a fixed point} & \ref{XXVII:thm:isoNoGo}\\
+\text{A: skew product by }c & \Prob(H\backslash G),\ H\text{ the Mackey range} & \ref{XXVII:thm:simplex}\\
+\rho\circ c\ \text{coboundary}\iff\Xi_\beta(\rho,S)<\infty & \text{true, every lift} & \ref{XXVII:thm:kakutani}\\
+N_\beta=\langle\langle H\rangle\rangle;\ \Prob(G/N_\beta)\iff H\trianglelefteq G & \text{true} & \ref{XXVII:cor:normalclosure}\\
+\text{mixing means}\Rightarrow H=G & \text{true} & \ref{XXVII:thm:mixing}\\
+\text{simplex independent of the lift} & \text{false }(S_3) & \ref{XXVII:thm:lift}\\
+\Prob(G/N_\beta)\ \text{for every lift} & N_\beta\text{ rigid, e.g. }A_3 & \ref{XXVII:prop:rigid},\ \ref{XXVII:ex:A3}
+\end{array}
+\]
+
+The decisive statements are these. There is no non-abelian Bost--Connes system in which
+the representation theory of the coefficient algebra or the isotropy of the groupoid
+produces the symmetry breaking: Theorems \ref{XXVII:thm:B} and \ref{XXVII:thm:isoNoGo} are no-go
+theorems in the strict sense, for every $\cB$ and every $\cG$. There is a non-abelian
+Bost--Connes groupoid, principal, \'etale and amenable, in which the Frobenius classes
+drive the dynamics through a cocycle with non-commuting increments, and its equilibrium
+theory is completely determined: the simplex is $\Prob(H\backslash G)$, the Frobenius
+Dirichlet series decides which representations are coboundaries by the non-abelian
+Kakutani theorem, and $N_\beta$ is the normal closure of $H$. What the Frobenius classes do
+not determine is $H$ itself. Symmetry breaking to $G/N_\beta$ is realized by this groupoid
+exactly when the lifts mix enough to make $H$ normal, always when $N_\beta$ is rigid, and,
+when the lifts are chosen to commute as in Chapter~\ref{ch:VII}, exactly when the abelian
+essential-value group $E_\beta$ happens to be normal. A canonical
+non-abelian system, one whose equilibrium states depend on the Frobenius classes alone,
+does not exist within this framework; the canonical object is $N_\beta$, and the passage
+from $N_\beta$ to a simplex requires a choice that the arithmetic does not make.
+
