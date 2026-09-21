@@ -1,0 +1,266 @@
+% generated from papers/XX-twin-curves/paper_XX_twin_curves.tex -- edit the paper, then rerun assemble.py
+\chapter[The limits of abelian reconstruction]{The limits of abelian reconstruction:\\ twin curves exist, genus one suffices,\\ and the obstruction is a torsor coordinate}\label{ch:XX}
+\chapterorigin{This chapter is Paper XX of the series (\texttt{papers/XX-twin-curves/}).}
+\begin{summary}
+Chapter~\ref{ch:XIX} asked whether there are non-isomorphic curves over $\F_q$ with the
+same zeta function \emph{and} isomorphic Jacobian groups, which would locate the resolution
+limit of the abelian Bost--Connes systems. The answer is yes, the construction is far simpler
+than the genus-two machinery proposed, and the reason is complex multiplication.
+
+For an ordinary elliptic curve $E/\F_q$ with $\End(E)=\cO$, Deuring's theory gives
+$E(\F_{q^n})\cong\cO/(\phi^n-1)$ as an $\cO$-module for every $n$, an isomorphism depending
+only on $\cO$; and $\Pic(\cO)$ acts simply transitively on the set of curves in the isogeny
+class with that endomorphism ring, of which there are exactly $h(\cO)$. Hence whenever
+$h(\cO)>1$ one obtains $h(\cO)$ curves with distinct $j$-invariants sharing \emph{every}
+Galois-module invariant at every level. Genus one already suffices; Howe's and Lauter's
+genus-two constructions are not needed. Enumerating all curves over $\F_p$ for $11\le p\le29$ we
+find $69$ isogeny classes containing several $j$-invariants with a common group structure,
+and the counts match the class numbers: $h(-88)=h(-100)=h(-48)=h(-32)=h(-60)=2$ against two
+$j$-invariants in each case.
+
+This is stronger than the question asked. Twin curves agree not only in $Z_C$ and in
+$\Jac(\F_q)$, but in the whole tower $\{E(\F_{q^n})\}_n$ with its trace maps --- which matters
+because Tier 2 of Chapter~\ref{ch:XIX} recovers more than the abstract group: the compactified Picard
+group with its translation structure, through the deep stratum, and with it the map
+$P\mapsto[P]\in\Pic(C)$ on all closed points. We prove that this map does not separate twins
+either --- under the module identification the class of a degree-$n$ point is multiplication
+by $(\phi^n-1)/(\phi-1)$, again $\cO$-determined --- and confirm it numerically: for two
+supersingular classes at $p=11,17$ and for each group structure at $p=13$, the degree-two
+point-to-Picard multiset profiles coincide across distinct $j$-invariants.
+
+We also correct the proposed explanation of the barrier. The Weil pairing is not out of
+abelian reach for the reason given: over $\F_q$ the Galois group acting on $\Jac[n]$ is
+$\Gal(\bar\F_q/\F_q)=\hZ$, which is abelian, so ``the pairing cannot be encoded in an
+abelianized Galois group'' is not the obstruction. The obstruction is a torsor coordinate:
+$\Pic(\cO)$ acts simply transitively on the twins and acts \emph{trivially} on every module
+invariant, so what is missing is the position in a $\Pic(\cO)$-torsor, and no invariant of
+the modules can see it.
+\end{summary}
+
+
+\section{Twin curves, and why genus one suffices}
+
+The framework is that of [Ch.~\ref{ch:Main}] transported to function fields as in Chapters~\ref{ch:XVII}--\ref{ch:XIX}
+of the series; Chapters~\ref{ch:II}, \ref{ch:IX}, \ref{ch:X}, \ref{ch:XIV} and \ref{ch:XVI}--XIX, referred to by numeral, are unpublished
+companions, and every fact used from them is restated or verified in place.
+
+\begin{theorem}[Existence of twins]\label{XX:thm:twins}
+Let $E/\F_q$ be an ordinary elliptic curve with Frobenius $\phi$ and $\End(E)=\cO$, an order
+in $\Q(\phi)$ with $\Z[\phi]\subseteq\cO\subseteq\cO_{\max}$. Then:
+\begin{enumerate}
+\item $E(\F_{q^n})\cong\cO/(\phi^n-1)$ as an $\cO$-module, for every $n\ge1$, and this
+depends only on $\cO$ and $\phi$, not on $E$;
+\item $\Pic(\cO)$ acts simply transitively on the set of $\F_q$-isomorphism classes of
+curves in the isogeny class with endomorphism ring $\cO$ --- equivalently, since the
+quadratic twist has trace $-t\ne t$ for ordinary $E$, on their $j$-invariants; there are
+exactly $h(\cO)$ of them.
+\end{enumerate}
+Consequently, whenever $h(\cO)>1$ there exist $C_1\not\cong C_2$ over $\F_q$ with
+$Z_{C_1}=Z_{C_2}$, with $\Jac(C_1)(\F_q)\cong\Jac(C_2)(\F_q)$, and indeed with
+$C_1(\F_{q^n})$ and $C_2(\F_{q^n})$ isomorphic as $\cO$-modules for every $n$.
+\end{theorem}
+
+\begin{proof}
+(1) is Deuring's theory \cite{Deuring} in the module-theoretic form proved by Lenstra
+\cite{Lenstra}: for ordinary $E$ with $\End(E)=\cO$ one has
+$E(\F_{q^n})=\ker(\phi^n-1)\cong\cO/(\phi^n-1)$ as $\cO$-modules. (2) is the theory of
+complex multiplication in characteristic $p$, in Waterhouse's kernel-ideal form
+\cite{Waterhouse}: the set of curves with a given ordinary endomorphism ring is a principal
+homogeneous space under the class group. Distinct classes give distinct $j$-invariants, these
+being the roots of the Hilbert class polynomial of $\cO$ reduced mod $p$.
+\end{proof}
+
+\begin{remark}[The proposal over-engineers]\label{XX:rem:overengineer}
+The construction requested --- genus-two hyperelliptic curves with equal Igusa invariants
+data, following Howe \cite{HowePP} and Lauter \cite{Lauter} --- is unnecessary. Genus one produces twins as soon as
+$h(\cO)>1$, which is the generic situation, and produces them with a stronger property than
+asked for: agreement of the entire Galois-module tower, not merely of $Z_C$ and
+$\Jac(\F_q)$.
+\end{remark}
+
+\begin{example}[Enumeration]\label{XX:ex:enum}
+Enumerating all $y^2=x^3+ax+b$ over $\F_p$ for $11\le p\le29$ and grouping by (trace, group
+structure) yields $69$ classes containing more than one $j$-invariant. Samples, with the
+class number of the relevant order:
+\[
+\begin{array}{lllll}
+p & t & \Jac(\F_p) & j\text{-invariants} & h(\cO)\\\hline
+23 & -2 & \Z/26 & 1,\ 17 & h(-88)=2\\
+13 & 2 & \Z/12 & 4,\ 6 & h(-48)=2\\
+17 & -6 & \Z/24 & 1,\ 6 & h(-32)=2\\
+19 & -4 & \Z/24 & 9,\ 17 & h(-60)=2\\
+29 & -4 & \Z/34 & 3,\ 7,\ 17 & h(-100)=2\ \text{(two orders)}\\
+23 & -6 & \Z/30 & 14,\ 18,\ 20,\ 22 & h(-56)=4
+\end{array}
+\]
+The count of $j$-invariants at a fixed group structure equals $h(\cO)$ for the corresponding
+endomorphism ring, as Theorem~\ref{XX:thm:twins}(2) requires.
+\end{example}
+
+\section{Indistinguishability at both tiers}
+
+\begin{theorem}[Twins are invisible to the abelian system]\label{XX:thm:invisible}
+Let $C_1,C_2$ be twins in the sense of Theorem~\ref{XX:thm:twins}, with a common endomorphism
+ring $\cO$. Then their Bost--Connes systems agree at both tiers of Theorem 4.1 of Chapter~\ref{ch:XIX}:
+\begin{enumerate}
+\item \emph{Tier 1.} The partition functions coincide, $Z_{C_1}=Z_{C_2}$.
+\item \emph{Tier 2.} $\Jac(C_1)(\F_q)\cong\Jac(C_2)(\F_q)$; more, the whole tower
+$\{C_i(\F_{q^n})\}_n$ with its norm maps is isomorphic, so every invariant of the
+Galois-module data agrees; and more still, the full Tier-2 datum --- the compactified Picard
+group together with the degree-labelled multiset of point classes $\{[P]:\deg P=n\}$ ---
+corresponds under the module identification, for every $n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Both follow from Theorem~\ref{XX:thm:twins}(1): the tower and its maps are
+$\{\cO/(\phi^n-1)\}$ with the natural maps, depending only on $(\cO,\phi)$. For the last
+clause of (2): a closed point of degree $n$ is a Frobenius orbit
+$\{Q,\phi Q,\dots,\phi^{n-1}Q\}$ of a point $Q\in C(\F_{q^n})$ of exact degree $n$, and,
+choosing the rational base point, its class in $\Pic^0=E(\F_q)$ is
+$Q\oplus\phi Q\oplus\cdots\oplus\phi^{n-1}Q=\nu_n\cdot Q$ with
+$\nu_n=(\phi^n-1)/(\phi-1)\in\cO$, computed in the $\cO$-module $\cO/(\phi^n-1)$, with
+$E(\F_q)=\ker(\phi-1)=\nu_n\cdot\cO/(\phi^n-1)$. The degree-$n$ multiset of point classes is
+therefore the image multiset of $\nu_n$ on the exact-degree-$n$ elements of
+$\cO/(\phi^n-1)$ --- a formula in $(\cO,\phi)$ alone. Since the Tier-2 datum recovered in
+Theorem 3.1 of Chapter~\ref{ch:XIX} is exactly the compactified Picard group with these degree-labelled
+translations, the twins' data are isomorphic as marked groups.
+\end{proof}
+
+\begin{remark}[Tier 2 recovers more than the abstract group]\label{XX:rem:tier2more}
+It is worth being careful here, because the question as posed assumed Tier 2 sees only
+$\Jac(\F_q)$. It sees more. By Theorem 2.1 of Chapter~\ref{ch:XIX}, $G_S/\overline{U_S}\cong\widehat{\Pic(C)}$,
+and the deep-stratum translation structure recovered in the proof of Theorem 3.1 of Paper
+XIX --- the generator $P\in J_S$ acting on the Picard torsor by $\sigma_P$ --- gives the map
+\[
+P\ \longmapsto\ [P]\in\Pic(C)
+\]
+on all closed points, together with their degrees. That is
+substantially finer than the group $\Jac(\F_q)$, and it is what has to be checked. By
+Theorem~\ref{XX:thm:invisible}(2) it is also $\cO$-determined, so twins are not separated by it
+either.
+\end{remark}
+
+\begin{remark}[Numerical check of the point-to-Picard map]\label{XX:rem:numcheck}
+For an elliptic curve with base point $O$, a closed point of degree two is a Galois orbit
+$\{Q,\phi Q\}$ in $E(\F_{q^2})$ and its class in $\Pic^0=E(\F_q)$ is $\mathrm{Tr}(Q)=Q\oplus\phi Q$.
+The last clause of Theorem~\ref{XX:thm:invisible}(2) predicts equal profiles across twins; we
+confirm it by direct computation, for the ordinary twins of Example~\ref{XX:ex:enum} at $p=13$
+and also for two supersingular same-zeta-same-group classes (outside the ordinary hypothesis
+of Theorem~\ref{XX:thm:twins}, so not covered by the proof):
+\[
+\begin{array}{llll}
+p & t & j & \text{degree-two profile}\\\hline
+11 & 0 & 0 & (6^6,5^6)\\
+11 & 0 & 1 & (6^6,5^6)\\
+17 & 0 & 0 & (9^9,8^9)\\
+17 & 0 & 8 & (9^9,8^9)\\
+13 & 2 & 4,\ 6 & (8^6,7^6)\\
+13 & 2 & 0,\ 11 & (8^9,6^3)
+\end{array}
+\]
+The profiles agree within each twin pair. At $p=13$ the four curves of trace $2$ split into
+two profiles, but that split tracks the group structure --- $\Z/12$ for $j=4,6$ and
+$\Z/2\times\Z/6$ for $j=0,11$ --- and not the $j$-invariant, so it is Tier 2 information
+already accounted for.
+\end{remark}
+
+\section{The obstruction is a torsor coordinate, not a pairing}
+
+\begin{remark}[The proposed explanation is not correct]\label{XX:rem:pairing}
+The barrier was attributed to the Weil pairing being ``a non-linear skew-symmetric pairing
+that cannot be encoded in the abelianized Galois group $\Idl_K/\overline{K^\times}$''. This
+reasoning does not work. Over a finite field the Galois group acting on $\Jac(C)[n]$ is
+$\Gal(\bar\F_q/\F_q)=\hZ$, which is \emph{abelian}; the Weil pairing is
+$\Gal$-equivariant for that action and is not inaccessible on grounds of non-commutativity.
+The Tate module with its Frobenius action is precisely the kind of datum an abelian theory
+can carry --- indeed $Z_C$ is its characteristic polynomial.
+\end{remark}
+
+\begin{theorem}[The correct obstruction]\label{XX:thm:torsor}
+Let $\mathcal E(\cO)$ be the set of curves in a fixed ordinary isogeny class with
+$\End=\cO$. Then $\Pic(\cO)$ acts simply transitively on $\mathcal E(\cO)$, and acts
+\emph{trivially} on every invariant of the Galois-module tower $\{E(\F_{q^n})\}_n$, these being
+$\cO/(\phi^n-1)$ independently of the curve. Consequently the missing datum separating twins
+is the position of the curve in a $\Pic(\cO)$-torsor, and no invariant constructed from the
+modules --- including the Weil pairing, which is likewise $\cO$-determined --- can detect it.
+\end{theorem}
+
+\begin{proof}
+Simple transitivity is Theorem~\ref{XX:thm:twins}(2). Triviality on module invariants is
+Theorem~\ref{XX:thm:twins}(1). A function on $\mathcal E(\cO)$ factoring through the module data
+is therefore constant, whereas $j$ is injective on $\mathcal E(\cO)$.
+\end{proof}
+
+\begin{remark}[What would be needed]\label{XX:rem:needed}
+By Theorem~\ref{XX:thm:torsor} the separation of twins is equivalent to locating a point in a
+$\Pic(\cO)$-torsor, and the classical object that does this is the $j$-invariant, i.e.\ the
+Hilbert class field of $\cO$ and its Galois action. That is still abelian class field theory
+--- but for the \emph{CM field} $\Q(\phi)$, not for the function field $K=\F_q(C)$. The two
+abelian theories are different, and the Bost--Connes system of $C$ carries the second, not the
+first. This is a sharper diagnosis than ``the barrier is non-abelian'', and it suggests
+where a refinement would have to come from: a system built over the CM order rather than over
+the curve.
+\end{remark}
+
+\section{The resolution boundary}
+
+\begin{theorem}[Master statement]\label{XX:thm:master}
+For the localized Bost--Connes system of a curve over $\F_q$:
+\begin{itemize}
+\item the partition function determines exactly the isogeny class of $\Jac(C)$
+(Theorem 4.1 of Chapter~\ref{ch:XVIII});
+\item the Cartan pair determines, through the deep stratum, the compactified Picard group
+with the degree-labelled point classes $P\mapsto[P]\in\Pic(C)$,
+hence $\Jac(C)(\F_q)$ and the rational effective cone, strictly refining the previous line
+(Theorem 3.1 of Chapter~\ref{ch:XIX});
+\item neither determines the curve: by Theorems~\ref{XX:thm:twins} and \ref{XX:thm:invisible},
+whenever $h(\cO)>1$ there are $h(\cO)$ curves agreeing in all of the above and differing in
+$j$.
+\end{itemize}
+The resolution boundary of the abelian theory is therefore the $\cO$-module tower
+$\{E(\F_{q^n})\}$, and the residual ambiguity is a $\Pic(\cO)$-torsor of size $h(\cO)$.
+\end{theorem}
+
+\section{Retrospective}
+
+\[
+\begin{array}{lll}
+\text{Question} & \text{Answer} & \text{Reference}\\\hline
+\text{do twins exist?} & \textbf{yes, abundantly} & \text{Thm.~1.1, Ex.~1.3}\\
+\text{is genus two needed?} & \textbf{no: genus one suffices} & \text{Rem.~1.2}\\
+\text{are twins Tier-1 indistinguishable?} & \text{yes} & \text{Thm.~2.1}\\
+\text{Tier 2 sees only }\Jac(\F_q)? & \textbf{no: also }P\mapsto[P] & \text{Rem.~2.2}\\
+\text{are twins Tier-2 indistinguishable?} & \text{yes, proved and checked} & \text{Thm.~2.1, Rem.~2.3}\\
+\text{is the Weil pairing the obstruction?} & \textbf{no; }\Gal(\F_q)\text{ is abelian} & \text{Rem.~3.1}\\
+\text{what is the obstruction?} & \textbf{a }\Pic(\cO)\text{-torsor coordinate} & \text{Thm.~3.2}\\
+\text{resolution boundary} & \{E(\F_{q^n})\}\ \text{as }\cO\text{-modules} & \text{Thm.~4.1}
+\end{array}
+\]
+
+The twenty papers have converged on a single principle, and this one states its sharpest
+form. The arithmetic that a Bost--Connes system carries is the arithmetic of its equilibrium
+states, and that arithmetic is exactly the Galois-module data of the base: the isogeny class
+at the thermodynamic level, the Picard group at the level of the Cartan pair. What lies
+beyond is not a deeper analytic invariant but a torsor, and a torsor has no invariants at
+all --- its points are distinguished only by a coordinate that must be supplied from outside.
+
+That is the honest form of the negative results accumulated here. The $K$-theory did not fail
+for lack of computation (Remark 4.5 of Chapter~\ref{ch:II}); the von Neumann algebra did not fail for
+lack of rigidity technique (Theorem 2.1 of Chapter~\ref{ch:IX}); the quantum transport inequalities did not
+fail for lack of a better Dirichlet form (Theorem 4.1 of Chapter~\ref{ch:XVI}). In each case the invariant
+was blind to something that is not an invariant: a measure class, a tail event, and now a
+torsor coordinate. The one place where the pattern broke was
+Theorem 4.1 of Chapter~\ref{ch:XVII}, where commensurability of the log-norms let the factor retain the
+temperature --- and that too was arithmetic, not technique.
+
+Three questions we would still pursue. Is the analogue of Theorem~\ref{XX:thm:torsor} true in
+higher genus, with $\Pic(\cO)$ replaced by the relevant class group of the CM order, so that
+the resolution boundary is uniformly a torsor? Second, Remark~\ref{XX:rem:needed} suggests
+building a Bost--Connes system over the CM order $\cO$ rather than over $C$, whose symmetry
+group would be $\Pic(\cO)$ acting on the twins; does that system exist and does it separate
+them? Third, the twins of Theorem~\ref{XX:thm:twins} are ordinary; the supersingular case has
+endomorphisms in a quaternion order, which is where Chapter~\ref{ch:X} located the only viable
+non-commutative model, and whether the two occurrences of quaternion orders in this programme
+are related we do not know.
+

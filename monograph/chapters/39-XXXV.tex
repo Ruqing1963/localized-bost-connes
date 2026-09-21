@@ -1,0 +1,123 @@
+% generated from papers/XXXV-twin-regime/paper_XXXV_twin_regime.tex -- edit the paper, then rerun assemble.py
+\chapter[The free twin-prime system is supercritical]{The free twin-prime Bost--Connes system is unconditionally supercritical:\\ resolving the phase dichotomy via exact partial sums}\label{ch:XXXV}
+\chapterorigin{This chapter is Paper XXXV of the series (\texttt{papers/XXXV-twin-regime/}).}
+\begin{summary}
+For the free (Toeplitz--Cuntz) variant of the localized Bost--Connes system of a prime
+set $S$, the partition series is geometric in $L_S(\beta)=\sum_{p\in S}p^{-\beta}$, so the
+phase dichotomy of Chapter~\ref{ch:V} is decided by the fugacity at the classical critical point:
+Regime (S), $\beta_c^{\mathrm{free}}>1$, holds if and only if $L_S(1)>1$. For the twin
+primes this comparison had resisted decision because the natural route --- the Brun
+identity $L_S(1)=\tfrac12B_2+\sum_{p\in S}\tfrac1{p(p+2)}$ --- feeds on the value of
+Brun's constant, and the familiar $B_2\approx1.902160$ is a Hardy--Littlewood
+\emph{extrapolation}, not a theorem. We resolve the dichotomy unconditionally by the
+blunt instrument the problem actually admits: partial sums of a positive series are
+rigorous lower bounds, and a segmented sieve to $1.1\times10^{10}$ ($29{,}889{,}853$ twin
+pairs) gives
+\[
+\sum_{\substack{p\le1.1\times10^{10}\\ p,\,p+2\in\mathcal{P}}}\frac1p\ =\ 1.00195935\ >\ 1 .
+\]
+Hence $L_{S_{\mathrm{twin}}}(1)>1$ and the free twin-prime system is in Regime (S):
+$\beta_c^{\mathrm{free}}>1$, unconditionally, so on the interval
+$(1,\beta_c^{\mathrm{free}})$ the classical system is already in its broken phase while
+the free system admits no equilibrium at all. The Hardy--Littlewood rate predicts
+$1.0017$ at this height, a cross-check, and the conditional value
+$\beta_c^{\mathrm{free}}\approx1.009$ is recorded as an estimate only. Two methodological
+remarks close the paper: occupancy of residue classes does not imply divergence of the
+per-character detecting series (the gap that keeps the Chen uniqueness problem open is
+Chen's theorem in arithmetic progressions), and average correlation supplied by
+Rankin--Selberg poles does not touch the pointwise parity barrier: metaphor is not proof.
+\end{summary}
+
+
+\section{The dichotomy and the identity}\label{XXXV:sec:identity}
+
+Let $S\subseteq\mathcal{P}$ and let $\mathcal T\mathcal C(S)$ be the free variant of Chapter~\ref{ch:V}: the
+generating isometries have \emph{orthogonal} ranges, one for each $p\in S$, so the
+gauge-invariant counting runs over the free monoid on $S$ and the Gibbs series is
+geometric,
+\[
+Z^{\mathrm{free}}_S(\beta)\ =\ \sum_{n\ge0}L_S(\beta)^n,\qquad
+L_S(\beta)=\sum_{p\in S}p^{-\beta}.
+\]
+Thus a free equilibrium exists iff $L_S(\beta)<1$, and Chapter~\ref{ch:V}'s trichotomy at the
+classical critical point $\beta_c(S_{\mathrm{twin}})=1$ (Brun-summable, closed classical
+phase, Chapter~\ref{ch:XXIV}) reads: \emph{Regime (S)} if $L_S(1)>1$, with
+$\beta_c^{\mathrm{free}}$ the unique root of $L_S(\beta)=1$ in $(1,\infty)$;
+\emph{Regime (B)} if $L_S(1)\le1$. The decision is a single comparison with $1$.
+
+For $S=S_{\mathrm{twin}}$ (smaller members $p$ of twin pairs), the elementary identity
+$\frac1{p+2}=\frac1p-\frac2{p(p+2)}$ summed over pairs gives, with Brun's constant
+$B_2=\sum_{p,p+2\in\mathcal{P}}(\frac1p+\frac1{p+2})$ (finite by Brun's sieve \cite{HR}),
+\begin{equation}\label{XXXV:eq:brun}
+L_{S_{\mathrm{twin}}}(1)\ =\ \tfrac12B_2\ +\ \sum_{p\in S_{\mathrm{twin}}}\frac1{p(p+2)},
+\qquad
+\sum_{p\in S_{\mathrm{twin}}}\frac1{p(p+2)}=0.10798\ldots
+\end{equation}
+(the second series converges rapidly and is evaluated by direct summation). The identity
+cannot decide the dichotomy by itself: the familiar value $B_2\approx1.9021605$
+\cite{Nicely} is the computed partial sum \emph{plus a Hardy--Littlewood extrapolation of
+the tail}; unconditionally one only knows the partial sums, $\approx1.83$ at the computed
+heights. Conditionally, \eqref{XXXV:eq:brun} gives $L_S(1)\approx0.9511+0.1080=1.059$; but a
+conditional inequality decides nothing.
+
+\section{Unconditional resolution via segmented sieving}\label{XXXV:sec:sieve}
+
+The problem admits a blunt unconditional instrument: $L_S(1)$ is a series of positive
+terms, so every partial sum is a rigorous lower bound, and the comparison with $1$ only
+requires some partial sum to cross it.
+
+\begin{theorem}\label{XXXV:thm:main}
+$\displaystyle\sum_{p\le1.1\times10^{10},\ p,p+2\in\mathcal{P}}\frac1p=1.00195935\ldots>1$, the sum
+running over $29{,}889{,}853$ twin pairs enumerated by a deterministic segmented sieve of
+Eratosthenes (blocks of $2\times10^8$, base primes to $\sqrt{1.1\times10^{10}}$; script
+and output archived in \emph{code/twin-regime/}). Consequently
+$L_{S_{\mathrm{twin}}}(1)>1$ unconditionally: the free twin-prime system is in Regime
+(S), $\beta_c^{\mathrm{free}}(S_{\mathrm{twin}})>1$, and on
+$(1,\beta_c^{\mathrm{free}})$ the classical localized system is in its closed broken
+phase while the free system admits no KMS state at all.
+\end{theorem}
+
+\begin{proof}
+The enumeration is exact and finite; positivity does the rest. Floating-point error is
+dominated by $3\times10^7$ additions of magnitude $\le\frac13$ in double precision,
+orders below the margin $1.96\times10^{-3}$. As a cross-check, the Hardy--Littlewood
+rate $2C_2/\log^2t$ integrated from the previous checkpoint
+($\sum_{p\le3\times10^8}=0.991422$) predicts $1.0017$ at $1.1\times10^{10}$, consistent.
+\end{proof}
+
+\begin{remark}
+The precise root of $L_S(\beta)=1$ depends on the full tail and is therefore
+tail-conditional; under Hardy--Littlewood it is $\beta_c^{\mathrm{free}}\approx1.009$
+(and $\approx1.211$ for the Chen family). These are estimates, not assertions: the
+theorem above is exactly the part of the phase diagram that a finite computation can own.
+\end{remark}
+
+\section{Methodological remarks: why heuristics do not bypass the sieve}\label{XXXV:sec:method}
+
+\begin{remark}[Occupancy does not imply divergence]\label{XXXV:rem:occupancy}
+High-temperature KMS uniqueness for a family $S$ requires, by [Main, Thm 3.9], the
+divergence of the \emph{per-character} detecting series
+$\sum_{p\in S,\ \chi(p)\ne1}p^{-\beta}$ for every nontrivial Dirichlet $\chi$. For the
+Chen primes, the full series diverges unconditionally for $\beta<1$ (Chen's lower bound
+plus Abel summation), and the occupied classes generate every $(\mathbb Z/M)^\times$
+(Chapter~\ref{ch:XXIV}); but occupancy is a statement about \emph{which} classes carry primes, not
+about \emph{how much} mass each class carries, and upper bounds in progressions cannot
+split a divergent series into per-class divergences ($\infty-\infty$). What is needed,
+and remains the named gap, is Chen's theorem \emph{in arithmetic progressions}: a
+log-power lower bound in every class outside each kernel. Three proposals in this
+project's history have foundered on exactly this step; it is a sieve problem, and it does
+not dissolve under relabeling.
+\end{remark}
+
+\begin{remark}[Metaphor is not proof]\label{XXXV:rem:metaphor}
+Rankin--Selberg poles at $\Re s=1$ encode \emph{average} pair correlation of automorphic
+coefficients; the parity barrier of sieve theory is a statement about the
+\emph{pointwise} indistinguishability of integers with an even versus odd number of prime
+factors under sieve weights. Passing the twin condition through symmetric-power
+$L$-functions, gauge-flow readings of the circle method, or fermionic vacuum imagery
+changes the vocabulary and not the obstruction: no functional-analytic reformulation in
+this series has produced, nor could produce, the missing pointwise lower bound. The
+honest unconditional content available today for the twin primes is
+Theorem~\ref{XXXV:thm:main}; everything sharper is conditional, and is labeled so.
+\end{remark}
+

@@ -1,0 +1,308 @@
+% generated from papers/XXIII-leopoldt/paper_XXIII_leopoldt.tex -- edit the paper, then rerun assemble.py
+\chapter[Leopoldt, the strata, and $\log_p(\Ns\pp)=0$]{Leopoldt and the $p$-local Bost--Connes groupoid:\\ the rank of the isotropy, not its triviality,\\ and why $\log_p(\Ns\pp)$ vanishes}\label{ch:XXIII}
+\chapterorigin{This chapter is Paper XXIII of the series (\texttt{papers/XXIII-leopoldt/}).}
+\begin{summary}
+Chapter~\ref{ch:XXII} identified two genuine points of contact between the localized
+Bost--Connes systems and $p$-adic arithmetic. We develop both and find that each of the three
+theorems proposed on that basis needs correction, in each case to a statement that is true and
+cleaner.
+
+\emph{Leopoldt does not make the intermediate isotropy trivial --- and the isotropy is not
+the group the proposal computed.} By Proposition 2.2 of Chapter~\ref{ch:II}, the isotropy
+at the stratum $Y_T$ is the \emph{divisor image}
+$\mathrm{div}\bigl(\overline{K^\times_{S,+}}\cap\Idl_T\bigr)$, and we identify it exactly:
+$\Iso(Y_T)\cong\ker\bigl(\varphi:L_T\to U_{T^c}/\pi_{T^c}(\overline{\cO^\times_{K,+}})\bigr)$,
+where $L_T$ is the rank-$|T|$ lattice of $T$-supported principal divisors with totally
+positive generator and $\pi_{T^c}$ is the projection of the closed unit group to the
+complementary factors. The group $\overline{\cO^\times_{K,+}}\cap\prod_{\pp\in T}\cO_\pp^\times$
+that the proposal analyzed is the \emph{kernel} of the divisor map --- it contributes the
+identity ideal --- though its rank, $(r-\delta_p(K))-\rank\pi_{T^c}$, is exactly what budgets
+$\rank\pi_{T^c}$. The consequence is stronger than the proposed correction: whenever
+$d_{T^c}=\sum_{\pp\notin T}[K_\pp:\Q_p]=1$ and $r\ge1$, the image of $\pi_{T^c}$ is open ---
+a single coordinate of an infinite-order unit has nonzero logarithm --- so the quotient is
+finite and $\Iso(Y_T)$ has \emph{full rank} $|T|$. Already for a real quadratic field with
+$p$ split the intermediate isotropy is nontrivial, unconditionally. The proposed equivalence
+``Leopoldt $\iff$ trivial isotropy'' is therefore false; Leopoldt enters only as the budget
+$\rank\pi_{T^c}\le r-\delta_p(K)$.
+
+\emph{The proposed $\cL$-invariant is identically zero.} The derivative computation is
+correct: $E_p(\beta)=\prod_{\pp\mid p}(1-\Ns\pp^{-\beta})$ vanishes to order $g=\#\{\pp\mid p\}$
+at $\beta=0$ with
+$\frac{1}{g!}E_p^{(g)}(0)=\prod_{\pp\mid p}\log\Ns\pp=(\log p)^g\prod_\pp f_\pp$. But this is
+the \emph{real} logarithm. Its $p$-adic counterpart vanishes: Iwasawa's branch has
+$\log_p(p)=0$, so $\log_p(\Ns\pp)=f_\pp\log_p(p)=0$ for every $\pp\mid p$ and the proposed
+$\cL_p(K)=\prod_\pp\log_p(\Ns\pp)$ is $0$. It cannot be a Fontaine--Mazur invariant.
+
+\emph{The regulator is a dimension, not a volume.} On a compact group Haar measure never
+degenerates, and $\overline{\cO^\times_{K,+}}$ is infinite, so the quotient has no
+informative volume. What is meaningful is
+\[
+\dim\Bigl(U_p\big/\overline{\cO^\times_{K,+}}\Bigr)=[K:\Q]-\bigl(r-\delta_p(K)\bigr)=r_2+1+\delta_p(K),
+\]
+so that Leopoldt is equivalent to this dimension being exactly $r_2+1$ --- recovering
+Proposition 5.3 of Chapter~\ref{ch:XXII}.
+
+What survives intact is the order of vanishing: $E_p$ vanishes at $\beta=0$ to order exactly
+$g$, and $g$ is the number of exceptional zeros in the Mazur--Tate--Teitelbaum sense. That
+part of the analogy is correct and is the one worth keeping.
+\end{summary}
+
+
+\section{The isotropy of the intermediate strata}
+
+Let $K$ be a number field, $p$ a rational prime, $S=\{\pp\mid p\}$ with $g=\#S$, and
+$U_p=\prod_{\pp\mid p}\cO_\pp^\times$. Write $r=r_1+r_2-1$ for the unit rank, $\delta_p(K)\ge0$
+for the Leopoldt defect, so that $\rank_{\Z_p}\overline{\cO^\times_{K,+}}=r-\delta_p(K)$
+\cite{Washington} --- $\delta_p(K)=0$ is known for abelian $K$ by Baker--Brumer
+\cite{Brumer} --- and
+for $T\subseteq S$ put $d_{T^c}=\sum_{\pp\notin T}[K_\pp:\Q_p]$ and
+$\pi_{T^c}:\overline{\cO^\times_{K,+}}\to\prod_{\pp\notin T}\cO_\pp^\times$ for the
+coordinate projection. The framework is that of [Ch.\begin{proposition}[Kernel and projection ranks]\label{XXIII:prop:rank}
+The group $\overline{\cO^\times_{K,+}}\cap\prod_{\pp\in T}\cO_\pp^\times=\ker\pi_{T^c}$
+satisfies
+\begin{equation}\label{XXIII:eq:rank}
+\rank_{\Z_p}\ker\pi_{T^c}
+=\bigl(r-\delta_p(K)\bigr)-\rank\pi_{T^c}
+\ \ge\ \max\bigl(0,\ r-\delta_p(K)-d_{T^c}\bigr),
+\end{equation}
+with equality if and only if $\pi_{T^c}$ has maximal rank $\min(r-\delta_p,d_{T^c})$.
+Moreover $\rank\pi_{T^c}\ge1$ whenever $r-\delta_p\ge1$ and $T^c\ne\emptyset$: a coordinate
+of an infinite-order unit is an infinite-order element of $\cO_{\pp'}^\times$, its logarithm
+being nonzero since $K\hookrightarrow K_{\pp'}$ is injective. We emphasize that this kernel
+is \emph{not} the isotropy of the stratum: it is the divisor-zero part, mapping to the
+identity ideal.
+\end{proposition}
+
+\begin{proof}
+The $p$-adic logarithm embeds $\overline{\cO^\times_{K,+}}$, up to finite index, as a
+$\Z_p$-lattice of rank $r-\delta_p$ in $\bigoplus_{\pp\mid p}K_\pp$, of total dimension
+$[K:\Q]$; the kernel of the coordinate projection onto
+$\bigoplus_{\pp\notin T}K_\pp$, of dimension $d_{T^c}$, has rank given by rank-nullity,
+which is \eqref{XXIII:eq:rank}.
+\end{proof}
+
+\begin{theorem}[The isotropy, identified; Leopoldt does not give triviality]\label{XXIII:thm:nottrivial}
+Let $T\subsetneq S$ and let $L_T\subseteq\Z^T$ be the finite-index sublattice of exponent
+vectors $a$ with $\prod_{\pp\in T}\pp^{a_\pp}$ principal with totally positive generator
+$\alpha_a$. By Proposition 2.2 of Chapter~\ref{ch:II},
+$\Iso(y)=\mathrm{div}\bigl(\overline{K^\times_{S,+}}\cap\Idl_T\bigr)$ for $y\in Y_T$, and
+this equals, exactly,
+\[
+\Iso(Y_T)\ \cong\ \ker\Bigl(\varphi:L_T\longrightarrow
+\prod_{\pp\notin T}\cO_\pp^\times\Big/\pi_{T^c}\bigl(\overline{\cO^\times_{K,+}}\bigr)\Bigr),
+\qquad \varphi(a)=\alpha_a\big|_{T^c},
+\]
+well defined since a change of generator moves $\alpha_a|_{T^c}$ by
+$\pi_{T^c}(\cO^\times_{K,+})$, and with $\pi_{T^c}(\overline{\cO^\times_{K,+}})$ closed, the
+closed unit group being compact. Consequently:
+\begin{enumerate}
+\item if $\cO^\times_{K,+}$ is finite, $\varphi(a)$ torsion forces $\alpha_a$ to equal a
+root of unity in some completion, hence in $K$, so $a=0$: the isotropy is trivial ---
+Chapter~\ref{ch:II}'s unconditional case;
+\item if $r\ge1$ and $d_{T^c}=1$, the image of $\pi_{T^c}$ is \emph{open} in the
+one-dimensional $\cO_{\pp'}^\times$ (Proposition~\ref{XXIII:prop:rank}, last part: a nonzero
+$\Z_p$-multiple of a nonzero logarithm is open), the quotient is finite, and
+$\Iso(Y_T)$ has \emph{full rank} $|T|$. In particular, for $K$ real quadratic with $p$
+split and $T$ one of the two primes, the isotropy is infinite --- \emph{unconditionally};
+for $K$ totally real of degree $n$ with $p$ split completely and $|T^c|=1$ it has rank
+$n-1$.
+\end{enumerate}
+The proposed equivalence
+\[
+\text{Leopoldt}\iff\Iso(y)=\{1\}\ \text{for all}\ T\subsetneq S
+\]
+is therefore false: triviality tracks the finiteness of the unit group, not Leopoldt, and
+fails under Leopoldt as soon as $r\ge1$ (with a small complementary block).
+\end{theorem}
+
+\begin{proof}
+For $a\in\ker\varphi$ pick $\beta\in\overline{\cO^\times_{K,+}}$ with
+$\pi_{T^c}(\beta)=\alpha_a|_{T^c}$; then $\alpha_a\beta^{-1}\in
+\overline{K^\times_{S,+}}\cap\Idl_T$ has divisor $a$, so $a\in\Iso$. Conversely if
+$\gamma\in\overline{K^\times_{S,+}}\cap\Idl_T$ has divisor $a$, approximate $\gamma$ by
+totally positive $S$-units $\gamma_n$; the divisor map is locally constant, so
+$v(\gamma_n)=a$ eventually, whence $\gamma_n=\alpha_au_n$ with
+$u_n\in\cO^\times_{K,+}$ (times torsion), and $\pi_{T^c}(u_n)\to\alpha_a|_{T^c}^{-1}$; the
+image $\pi_{T^c}(\overline{\cO^\times_{K,+}})$ is compact, hence closed, so
+$\alpha_a|_{T^c}^{-1}$ lies in it and $\varphi(a)=0$. Items (1) and (2) follow as indicated;
+for the rank in (2), $L_T$ has rank $|T|$ and the quotient is finite, so
+$\ker\varphi$ has finite index in $L_T$.
+\end{proof}
+
+\begin{remark}[Numerical table]\label{XXIII:rem:table}
+With $p$ split completely and $|T^c|=1$, so $|T|=g-1=n-1$ and $d_{T^c}=1$, the corrected
+isotropy rank is:
+\[
+\begin{array}{lcccc}
+K & r & |T| & \text{kernel rank \eqref{XXIII:eq:rank}} & \rank\Iso(Y_T)\\\hline
+\Q & 0 & 0 & 0 & 0\\
+\text{imaginary quadratic} & 0 & 1 & 0 & 0\\
+\text{real quadratic} & 1 & 1 & 0 & 1\\
+\text{real cubic} & 2 & 2 & 1 & 2\\
+\text{real quartic} & 3 & 3 & 2 & 3\\
+\text{real quintic} & 4 & 4 & 3 & 4
+\end{array}
+\]
+The last column is Theorem~\ref{XXIII:thm:nottrivial}(2) (full rank $|T|$ as soon as $r\ge1$),
+unconditional; the proposal's values were the kernel column, which is not the isotropy.
+Triviality holds exactly in the first two rows --- the finite-unit-group cases, which are
+precisely those in which Chapter~\ref{ch:II} (its Proposition 2.2 and Remark 2.3) is unconditional.
+\end{remark}
+
+\begin{remark}[Nothing in the classification depends on this]\label{XXIII:rem:nodependence}
+The isotropy on the strata does not enter the main results. Chapter~\ref{ch:II}
+established topological principality of $\cG_S$ \emph{directly} (its Theorem 2.5), the
+strata being nowhere
+dense regardless of their isotropy, which is what Renault's machinery requires. So
+Theorem~\ref{XXIII:thm:nottrivial} corrects a proposed characterization of Leopoldt without
+disturbing anything downstream.
+\end{remark}
+
+\begin{remark}[The residual condition, and where Leopoldt sits]\label{XXIII:rem:relative}
+For $d_{T^c}\ge2$ the finiteness of the quotient in Theorem~\ref{XXIII:thm:nottrivial} requires
+$\pi_{T^c}$ to have \emph{open} image, i.e.\ rank $d_{T^c}$ --- a relative nondegeneracy of
+the regulator matrix restricted to the columns of $T^c$, automatic for $d_{T^c}=1$ but in
+general neither implied by nor implying Leopoldt, which is the single statement that the
+full $r\times r$ $p$-adic regulator is nonzero. Leopoldt enters only as the budget: all
+projection ranks are at most $r-\delta_p(K)$, so a positive defect can only \emph{lower}
+$\rank\pi_{T^c}$ and thereby raise the codimension of the image.
+\end{remark}
+
+\section{The exceptional Euler factor}
+
+\begin{proposition}[Order of vanishing and leading term]\label{XXIII:prop:euler}
+Let $E_p(\beta)=\zeta_{K,p}(\beta)^{-1}=\prod_{\pp\mid p}\bigl(1-\Ns\pp^{-\beta}\bigr)$. Then
+$E_p$ vanishes at $\beta=0$ to order exactly $g=\#\{\pp\mid p\}$, and
+\begin{equation}\label{XXIII:eq:leading}
+\frac{1}{g!}\,\frac{d^g}{d\beta^g}E_p(\beta)\Big|_{\beta=0}
+=\prod_{\pp\mid p}\log\Ns\pp=(\log p)^g\prod_{\pp\mid p}f_\pp ,
+\end{equation}
+$f_\pp$ being the residue degrees.
+\end{proposition}
+
+\begin{proof}
+$1-\Ns\pp^{-\beta}=1-e^{-\beta\log\Ns\pp}=\beta\log\Ns\pp+O(\beta^2)$, and
+$\Ns\pp=p^{f_\pp}$.
+\end{proof}
+
+\begin{theorem}[The proposed $\cL$-invariant vanishes]\label{XXIII:thm:Lzero}
+With Iwasawa's branch of the $p$-adic logarithm, normalized by $\log_p(p)=0$, one has
+\[
+\log_p(\Ns\pp)=\log_p\bigl(p^{f_\pp}\bigr)=f_\pp\log_p(p)=0
+\qquad\text{for every }\pp\mid p ,
+\]
+so $\prod_{\pp\mid p}\log_p(\Ns\pp)=0$. The quantity proposed as
+$\cL_p(K)$ is identically zero and cannot be a Fontaine--Mazur or
+Mazur--Tate--Teitelbaum $\cL$-invariant \cite{MTT,GreenbergSteven}: those are nonzero in
+the proved cases --- for split multiplicative elliptic curves
+$\cL_p=\log_p(q_E)/\mathrm{ord}_p(q_E)\ne0$ --- and conjecturally always.
+\end{theorem}
+
+\begin{remark}[Real versus $p$-adic]\label{XXIII:rem:realvsp}
+The confusion is between two logarithms. Formula \eqref{XXIII:eq:leading} is a computation with the
+\emph{real} logarithm, coming from the archimedean dynamics
+$\sigma_t(\mu_\aaa)=\Ns\aaa^{it}\mu_\aaa$, and it is correct; it evaluates to
+$(\log p)^g\prod f_\pp$, for instance $2.5903$ for $g=2$, $f=(1,1)$, $p=5$, and $4.1689$ for
+$g=3$, $f=(1,1,1)$, $p=5$. The $p$-adic logarithm of the same quantity is $0$, because
+$\Ns\pp$ is a power of $p$ and $\log_p$ is normalized to kill $p$. The two cannot be
+identified, and the vanishing is not an accident: it is the same fact as
+Proposition 2.1 of Chapter~\ref{ch:XXII}, that $\Ns\pp$ is not a $p$-adic unit.
+\end{remark}
+
+\begin{remark}[What is right about the analogy]\label{XXIII:rem:rightpart}
+The order of vanishing is correct and is worth stating on its own. $E_p$ vanishes to order
+$g$ at $\beta=0$, and $g$ is exactly the number of primes above $p$ at which the Euler factor
+of $L_p(s,\chi)$ is removed, hence the number of exceptional zeros in the
+Mazur--Tate--Teitelbaum sense \cite{MTT} for the trivial character. That is a genuine dictionary entry,
+and it is the one supported by Proposition 5.1 of Chapter~\ref{ch:XXII}: the $p$-local partition function
+corresponds to the interpolation factor. The leading coefficient of the archimedean $E_p$ is
+not the $\cL$-invariant of that factor.
+\end{remark}
+
+\section{The regulator is a dimension, not a volume}
+
+\begin{proposition}[The volume statement is not well formed]\label{XXIII:prop:novolume}
+$G_p$ is a compact group, so its Haar measure exists, is unique up to scale and is never
+degenerate; normalizing $m_{G_p}(G_p)=1$ makes any statement about its total mass vacuous.
+Moreover $\overline{\cO^\times_{K,+}}$ is infinite whenever $r>\delta_p(K)$, so the index
+$[U_p:\overline{\cO^\times_{K,+}}]$ is infinite and the naive relative volume is $0$
+independently of $R_p(K)$. No equivalence with $R_p(K)\ne0$ can be extracted from a volume.
+\end{proposition}
+
+\begin{theorem}[The correct statement]\label{XXIII:thm:dimension}
+\[
+\dim\Bigl(U_p\big/\overline{\cO^\times_{K,+}}\Bigr)
+=[K:\Q]-\bigl(r-\delta_p(K)\bigr)
+=r_2+1+\delta_p(K),
+\]
+as $p$-adic analytic groups. Consequently
+\[
+\text{Leopoldt for }K\text{ at }p\iff R_p(K)\ne0\iff \dim\Bigl(U_p\big/\overline{\cO^\times_{K,+}}\Bigr)=r_2+1 .
+\]
+\end{theorem}
+
+\begin{proof}
+$\dim U_p=\sum_{\pp\mid p}[K_\pp:\Q_p]=[K:\Q]=r_1+2r_2$ and
+$\dim\overline{\cO^\times_{K,+}}=r-\delta_p$ with $r=r_1+r_2-1$; subtract. The equivalence is
+the definition of the Leopoldt defect together with the fact that $\delta_p=0$ iff the
+$p$-adic regulator is nonzero.
+\end{proof}
+
+\begin{example}\label{XXIII:ex:dim}
+Under Leopoldt: $\dim=1$ for $\Q$, for real quadratic, for real cubic and for real quartic
+fields; $\dim=2$ for imaginary quadratic and for complex cubic fields. In each case
+$\dim=r_2+1$.
+\end{example}
+
+\begin{corollary}[Agreement with Chapter~\ref{ch:XXII}]\label{XXIII:cor:agree}
+Theorem~\ref{XXIII:thm:dimension} is the computation
+\[
+\rank_{\Z_p}\Gal(M_\infty/K)=r_2+1+\delta_p(K)
+\]
+of Chapter~\ref{ch:XXII} (its Proposition 5.3), transported through class field theory:
+$\Gal(M_\infty/K)$ is the quotient of $U_p$ by the
+closure of the global units, up to a finite group. The intended statement was therefore
+correct in substance and misstated in form, volume for dimension.
+\end{corollary}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Proposal} & \text{Status} & \text{Reference}\\\hline
+\Iso(Y_T)\cong\ker\varphi\ \text{(divisor image)} & \textbf{exact identification} & \text{Thm.~1.2}\\
+\text{full rank }|T|\ \text{for }r\ge1,\ d_{T^c}=1 & \textbf{unconditional} & \text{Thm.~1.2}\\
+\text{Leopoldt}\iff\text{trivial isotropy} & \textbf{false} & \text{Thm.~1.2}\\
+\text{topological principality affected} & \textbf{no} & \text{Rem.~1.4}\\
+\mathrm{ord}_{\beta=0}E_p=g & \text{true} & \text{Prop.~2.1}\\
+\tfrac{1}{g!}E_p^{(g)}(0)=\prod\log\Ns\pp & \text{true, real logarithm} & \text{Prop.~2.1}\\
+\cL_p(K)=\prod\log_p(\Ns\pp) & \textbf{identically }0 & \text{Thm.~2.2}\\
+g=\#\{\text{exceptional zeros}\} & \textbf{true; keep this} & \text{Rem.~2.4}\\
+\mathrm{Vol}_p(U_p/\overline{\cO^\times})\asymp|R_p|_p & \textbf{not well formed} & \text{Prop.~3.1}\\
+\dim=r_2+1+\delta_p & \textbf{true; the right form} & \text{Thm.~3.2}
+\end{array}
+\]
+
+The two bridges identified in Chapter~\ref{ch:XXII} are real, and both survive; what fails is the
+attempt to make each carry a theorem it cannot. On the unit side, Leopoldt controls the
+\emph{rank} of the closed unit group and hence the \emph{dimension} of the symmetry group,
+and that is the whole of its role: it does not trivialize the isotropy of the strata, and the
+strata do not matter for the classification in any case. On the Euler side, the $p$-local
+partition function does correspond to the interpolation factor, and the order of vanishing
+does count the exceptional zeros; but the leading coefficient is an archimedean quantity, and
+its $p$-adic shadow is zero because $\Ns\pp$ is a power of $p$.
+
+That last point is worth isolating, because it recurs. In Proposition 2.1 of Chapter~\ref{ch:XXII} the
+$p$-adic dynamics failed to exist at $\pp\mid p$ because $\Ns\pp\notin\Z_p^\times$; here the
+$\cL$-invariant vanishes for the same reason. Every attempt to run $p$-adic analysis on the
+norms of the primes above $p$ meets the same wall, and it is not a technical one: those norms
+are precisely the elements the $p$-adic theory is built to discard.
+
+Two questions. Is there a version of the isotropy statement that does characterize Leopoldt
+--- one would want a condition on \emph{all} $T$ simultaneously, and since by
+Proposition~\ref{XXIII:prop:rank} every projection rank is budgeted by $r-\delta_p(K)$, some
+aggregate of the image codimensions does see $\delta_p$ and might work. And, given Remark~\ref{XXIII:rem:rightpart}, is the correspondence
+between the order of vanishing of $E_p$ and the exceptional-zero count functorial enough to
+extend to nontrivial characters $\chi$, where the order becomes
+$\#\{\pp\mid p:\chi(\pp)=1\}$ rather than $g$?
+
