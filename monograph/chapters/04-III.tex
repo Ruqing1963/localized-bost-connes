@@ -1,0 +1,564 @@
+% generated from papers/III-invariants/paper_III_invariants.tex -- edit the paper, then rerun assemble.py
+\chapter[Invariants, entropy, and the measure class]{Invariants, entropy, and the measure class}\label{ch:III}
+\renewcommand{\hO}{\widehat{\mathcal{O}}}
+\chapterorigin{This chapter is Paper III of the series (\texttt{papers/III-invariants/}).}
+\begin{summary}
+The obstruction group $\Xi_\beta(K,S)$ of [Ch.~\ref{ch:Main}] is a complete invariant of the phase
+structure of the localized Bost--Connes system. We determine what kind of invariant it is,
+and the answer organizes everything else: \emph{$\Xi_\beta$ is an invariant of a measure
+class, not of a $C^*$-algebra}. It is the kernel of the natural map from $\widehat{G_S}$ to
+the \emph{measurable} first cohomology of the tail equivalence relation taken with respect
+to $\pi_\beta$, and the whole of its dependence on $\beta$ sits in that measure class.
+
+Three consequences follow, and they explain a series of otherwise puzzling vanishings.
+First, at the level of $K$-theory the KMS simplex is exactly the set of states $\omega$ on
+the pointed ordered group $K_0(C(Y_S))=C(Y_S,\Z)$ satisfying the eigenvalue equations
+$\omega\circ\alpha_{\pp*}=\Ns\pp^{-\beta}\omega$; and since the image of
+$K_0(C(Y_S))$ in $K_0(\cA_{K,S})$ is the group of $\alpha_*$-coinvariants, the passage to
+the crossed product annihilates precisely those eigenvectors. Second, every homotopy-invariant construction is blind:
+Connes--Thom gives $K_0(\cB_{K,S})=0$ for the continuous core, so every dual-trace pairing
+on it vanishes identically; the dual flow acts trivially on $K_*(\cB_{K,S})$ because $\R$ is
+connected; and the groupoid homology of $\cG_S$, with or without twists by the modular
+cocycle, carries no $\beta$ at all. Third, no dynamical entropy is available:
+$\alpha_\aaa$ and the transfer operator $\cL_\aaa$ preserve no $\mathrm{KMS}_\beta$ state
+and indeed no invariant probability measure exists, in accordance with the type
+$\mathrm{III}$ classification; Voiculescu's topological entropy of $\alpha_\aaa$ vanishes
+because multiplication by $\aaa$ is an ultrametric contraction; and the modular flow, which
+does preserve every KMS state, has zero CNT entropy because it lies in the compact gauge
+group.
+
+What does see the phase structure is relative. We prove
+$\Ent(\omega_{\varphi_\varepsilon}\|\omega_{\phisym})=|A_\beta|\log2$, exactly $\log2$ per
+threshold crossed and $+\infty$ once infinitely many have been, and show that the entire
+value is carried by the centre, so the type $\mathrm{III}$ factors contribute nothing. The
+resulting staircase coincides with the subfactor index staircase of Chapter~\ref{ch:II}.
+We close by correcting the thermodynamic reading: all $\mathrm{KMS}_\beta$ states at a given
+$\beta$ are equilibrium states on an equal footing, so the condensation of a phase bit is
+not a Landauer erasure.
+
+Along the way we fix two structural boundaries that are easy to misplace. A
+$\mathrm{KMS}_\beta$ state with $\beta\ne0$ is not a trace, so it defines no functional on
+$K_0(\cA_{K,S})$; the $K$-theoretic locus of the KMS states is the eigenvalue problem on
+$K_0(C(Y_S))$ instead. And the de la Harpe--Skandalis determinant is natively defined on
+$\cU_0$, which is the subgroup by which $K_1=\cU/\cU_0$ is the quotient, so it induces no
+invariant on $K_1$.
+\end{summary}
+
+\section{Introduction: which kind of invariant}
+
+We use the notation of [Ch.~\ref{ch:Main}]: $\cA_{K,S}=C(Y_S)\rtimes J_S$ with
+$\sigma_t(\mu_\aaa)=\Ns\aaa^{it}\mu_\aaa$, symmetry group $G_S$, and
+\begin{equation}\label{III:eq:Xi}
+\Xi_\beta(K,S)=\Bigl\{\chi\in\widehat{G_S}:\ \sum_{\pp\in S}\Ns\pp^{-\beta}\bigl|1-\chi(\sigma_\pp)\bigr|^2<\infty\Bigr\},
+\end{equation}
+the $\mathrm{KMS}_\beta$ simplex being $\Prob(G_S/\Xi_\beta^\perp)$. Write
+$\cR_S$ for the tail equivalence relation on $V=\Z_{\ge0}^S$ and $\pi_\beta$ for the forced
+product measure of [Ch.~\ref{ch:Main}, Lem.~2.10], $\alpha_\pp$ for the endomorphism
+$f\mapsto\mu_\pp f\mu_\pp^*$ of $C(Y_S)$, and $\cB_{K,S}=\cA_{K,S}\rtimes_\sigma\R$ for the
+continuous core.
+
+The organizing statement is Theorem~\ref{III:thm:meas}: $\Xi_\beta$ is the kernel of a map into
+a \emph{measurable} cohomology group computed relative to $\pi_\beta$. Since a
+$C^*$-algebra, a groupoid and a homotopy functor all forget a measure class, one should
+expect them to forget $\Xi_\beta$, and \S\S\ref{III:sec:Ktheory}--\ref{III:sec:entropy} confirm this
+in each case. The point of collecting the vanishings is not that they are surprising
+individually --- several are easy --- but that they have a single cause, and that the cause
+identifies where the invariant does live.
+
+\section{$\Xi_\beta$ is measurable first cohomology}\label{III:sec:meas}
+
+Let $\sigma:\Z^{(S)}\to G_S$ be the canonical homomorphism, regarded as a cocycle on
+$\cR_S$ via $\sigma(v+a,v)=\sigma_\aaa$.
+
+\begin{lemma}[Coboundary dictionary]\label{III:lem:dict}
+Let $A$ be a second countable locally compact abelian group, $\Phi:\Z^{(S)}\to A$ a
+homomorphism, $\psi\in\widehat A$, and $c_\pp=\overline{\psi(\Phi(e_\pp))}\in\T$. The
+following are equivalent.
+\begin{enumerate}
+\item $\psi\circ\Phi$ is a coboundary on $(V,\pi_\beta,\cR_S)$: there is measurable
+$g:V\to\T$ with $g(v+e_\pp)=c_\pp g(v)$ a.e., for every $\pp$;
+\item $\sum_\pp\bigl(1-|m_\pp|\bigr)<\infty$, where $m_\pp=(1-t_\pp)/(1-c_\pp t_\pp)$ and
+$t_\pp=\Ns\pp^{-\beta}$;
+\item $\sum_\pp\Ns\pp^{-\beta}\bigl|1-\psi(\Phi(e_\pp))\bigr|^2<\infty$.
+\end{enumerate}
+Moreover, if these hold, then $\psi$ is trivial on the group $E(\Phi)$ of essential values
+of $\Phi$; so $E(\Phi)\subseteq\Lambda^\perp$ with
+$\Lambda=\{\psi:\psi\circ\Phi\ \text{a coboundary}\}$.
+\end{lemma}
+
+\begin{proof}
+$(1)\Leftrightarrow(2)$ is Propositions 3.3 and 3.4 of [Ch.~\ref{ch:Main}]; those proofs use only
+that $c_\pp\in\T$, that the coordinates $v_\pp$ are independent under $\pi_\beta$ with
+$\mu_\pp(k)=(1-t_\pp)t_\pp^k$, and that $|g|=1$. The target group of $\psi$ plays no role.
+$(2)\Leftrightarrow(3)$ is [Ch.~\ref{ch:Main}, Lem.~3.2] together with
+$|1-c_\pp|^2=2(1-\operatorname{Re}c_\pp)$ and $|1-c_\pp|=|1-\overline{c_\pp}|$.
+For the last statement, a coboundary has no essential value other than $1$, and
+$\psi$ maps essential values of $\Phi$ to essential values of $\psi\circ\Phi$
+\cite{Schmidt}; so $\psi(E(\Phi))=\{1\}$.
+\end{proof}
+
+\begin{remark}\label{III:rem:noconverse}
+The converse, that $\psi$ trivial on $E(\Phi)$ makes $\psi\circ\Phi$ a coboundary, holds
+when $\Phi$ is regular in the sense of Schmidt \cite{Schmidt}, i.e.\ cohomologous to a
+cocycle with values in $E(\Phi)$, and then $E(\Phi)=\Lambda^\perp$ by Pontryagin duality.
+For $A=G_S$ compact this is automatic, and Theorem~\ref{III:thm:meas} needs only
+$(1)\Leftrightarrow(3)$. For the cocycle with values in $G_S\times\R$ that governs the
+factor type, regularity is not known, and [Ch.~\ref{ch:I}, Prop.~2.2 and Rem.~2.3] obtains
+from the inclusion $E(\Phi)\subseteq\Lambda^\perp$ an upper bound on the type only.
+\end{remark}
+
+\begin{theorem}[Cohomological description]\label{III:thm:meas}
+For every $\beta>0$,
+\begin{equation}\label{III:eq:coh}
+\Xi_\beta(K,S)\ =\ \ker\Bigl(\widehat{G_S}\ \xrightarrow{\ \chi\mapsto[\chi\circ\sigma]\ }\ H^1_{\mathrm{meas}}\bigl(\cR_S,\pi_\beta;\T\bigr)\Bigr),
+\end{equation}
+measurable $1$-cohomology relative to the measure class of $\pi_\beta$, in the sense of
+Feldman--Moore \cite{FM}.
+\end{theorem}
+
+\begin{proof}
+Apply Lemma~\ref{III:lem:dict} with $A=G_S$, $\Phi=\sigma$: condition (3) is \eqref{III:eq:Xi}, and
+(1) says the class of $\chi\circ\sigma$ vanishes in $H^1_{\mathrm{meas}}$.
+\end{proof}
+
+\begin{corollary}[Where the $\beta$-dependence sits]\label{III:cor:where}
+In \eqref{III:eq:coh} the objects $\widehat{G_S}$, $\cR_S$ and $\sigma$ are $\beta$-independent.
+The entire dependence on $\beta$ is carried by the measure class of $\pi_\beta$, through
+which $H^1_{\mathrm{meas}}$ is computed.
+\end{corollary}
+
+\begin{remark}\label{III:rem:category}
+Corollary~\ref{III:cor:where} is the reason for everything below. $K$-theory is an invariant of
+a $C^*$-algebra; groupoid homology is an invariant of a topological groupoid; dynamical
+entropy is an invariant of a measure-preserving map. None of the three retains a measure
+class that is merely quasi-invariant. The vanishings of
+\S\S\ref{III:sec:Ktheory}--\ref{III:sec:entropy} are therefore not failures of ingenuity but
+category errors, and we record them in that spirit.
+\end{remark}
+
+\section{$K$-theory: the eigenvalue equation}\label{III:sec:Ktheory}
+
+We first correct a statement announced in an earlier draft.
+
+\begin{proposition}[KMS states do not act on $K_0(\cA_{K,S})$]\label{III:prop:notrace}
+Let $\varphi$ be a $\mathrm{KMS}_\beta$ state with $\beta>0$ and $S\ne\emptyset$. Then
+$[p]\mapsto\varphi(p)$ does \emph{not} define a homomorphism $K_0(\cA_{K,S})\to\R$.
+\end{proposition}
+
+\begin{proof}
+A positive functional descends to $K_0$ only if it is constant on Murray--von Neumann
+classes, i.e.\ only if $\varphi(vv^*)=\varphi(v^*v)$ for all $v$, i.e.\ only if $\varphi$ is
+a trace. Take $v=\mu_\pp$: then $v^*v=1$ and $vv^*=\mathbf 1_{\pp Y_S}$, so
+$[1]=[\mathbf 1_{\pp Y_S}]$ in $K_0$, while the KMS condition gives $\varphi(1)=1$ and
+$\varphi(\mathbf 1_{\pp Y_S})=\Ns\pp^{-\beta}<1$.
+\end{proof}
+
+The remedy is to work on the coefficient algebra, where a KMS state restricts to a measure
+and hence to a trace.
+
+\begin{theorem}[The KMS simplex as an eigenvalue problem]\label{III:thm:eigen}
+Let $\alpha_{\pp*}$ be the endomorphism $\mathbf 1_U\mapsto\mathbf 1_{\pp U}$ of the pointed
+ordered group $\bigl(K_0(C(Y_S)),K_0^+,[1]\bigr)=\bigl(C(Y_S,\Z),C(Y_S,\Z)_+,1\bigr)$. Then
+$\varphi\mapsto\omega_\varphi$, $\omega_\varphi[\mathbf 1_U]:=\varphi(\mathbf 1_U)$, is an
+affine bijection
+\[
+\mathrm{KMS}_\beta\bigl(\cA_{K,S}\bigr)\ \xrightarrow{\ \sim\ }\
+\Bigl\{\omega\ \text{a state of }\bigl(C(Y_S,\Z),C(Y_S,\Z)_+,1\bigr):\
+\omega\circ\alpha_{\pp*}=\Ns\pp^{-\beta}\,\omega\ \ \forall\pp\in S\Bigr\}.
+\]
+\end{theorem}
+
+\begin{proof}
+By [Ch.~\ref{ch:Main}, Prop.~2.8] a $\mathrm{KMS}_\beta$ state is $\nu\circ E$ for a unique
+scaling-invariant $\nu$, and $\nu$ is a Borel probability measure on the compact totally
+disconnected space $Y_S$, hence determined by its values on clopen sets; conversely a
+positive normalized finitely additive assignment on the clopen algebra extends to a regular
+Borel measure. Since $C(Y_S)$ is commutative, $\nu$ is a trace and $\nu_*$ is a well-defined
+state of the pointed ordered group. The scaling relation $\nu(\aaa E)=\Ns\aaa^{-\beta}\nu(E)$
+reads on clopen sets as $\omega(\alpha_{\pp*}[\mathbf 1_U])=\Ns\pp^{-\beta}\omega[\mathbf 1_U]$,
+and the relations for $\pp\in S$ generate those for all $\aaa\in J_S$.
+\end{proof}
+
+\begin{corollary}[The crossed product annihilates the datum]\label{III:cor:annih}
+In $K_0(\cA_{K,S})$ one has $\iota_*[\mathbf 1_U]=\iota_*[\mathbf 1_{\pp U}]$ for every
+clopen $U\subseteq Y_S$ and $\pp\in S$, since $\mu_\pp\mathbf 1_U$ is a partial isometry from
+$\mathbf 1_U$ to $\mathbf 1_{\pp U}$. So $\iota_*:C(Y_S,\Z)\to K_0(\cA_{K,S})$ factors
+through the group of coinvariants $C(Y_S,\Z)/\sum_\pp(1-\alpha_{\pp*})C(Y_S,\Z)$, and a
+functional on $C(Y_S,\Z)$ that factors through $K_0(\cA_{K,S})$ satisfies
+$\omega\circ\alpha_{\pp*}=\omega$ for every $\pp$. By Theorem~\ref{III:thm:eigen} the
+$\mathrm{KMS}_\beta$ functionals satisfy instead $\omega\circ\alpha_{\pp*}=\Ns\pp^{-\beta}\omega$
+with $\Ns\pp^{-\beta}\ne1$ for $\beta\ne0$. Hence no nonzero $\mathrm{KMS}_\beta$ functional
+factors through $K_0(\cA_{K,S})$: passing from the coefficient algebra to the crossed
+product is exactly the quotient that kills the eigenvectors of interest. (For a single
+prime the image of $\iota_*$ is the whole cokernel $\coker(1-\alpha_*)=K_0(\cA_{K,S})$ and
+$K_1=0$; for several primes the image is the bottom piece of a filtration of $K_0$ by Koszul
+homology, computed in Chapter~\ref{ch:II}.)
+\end{corollary}
+
+\begin{remark}\label{III:rem:pair}
+Theorem~\ref{III:thm:eigen} is a statement about the \emph{pair} $\bigl(K_0(C(Y_S)),\alpha_*\bigr)$
+together with a real parameter, not about a single abelian group. Every functor that forgets
+$\alpha_*$, or that forces it to act as the identity, loses the arithmetic; and
+$K_0$ of the crossed product does the latter by construction.
+\end{remark}
+
+\section{Homotopy invariants are blind}\label{III:sec:homotopy}
+
+\begin{theorem}[The continuous core]\label{III:thm:core}
+For every $K$, $S$ and $\beta>0$:
+\begin{enumerate}
+\item $K_0(\cB_{K,S})\cong K_1(\cA_{K,S})$ and $K_1(\cB_{K,S})\cong K_0(\cA_{K,S})$;
+\item the dual flow $\hat\sigma$ induces the identity on $K_*(\cB_{K,S})$;
+\item the dual weight $\hat\varphi$ of any $\mathrm{KMS}_\beta$ state, a faithful
+semifinite trace on $\cB_{K,S}$, vanishes on every projection in its domain (in every
+matrix algebra over $\cB_{K,S}$); in particular the induced map $\hat\varphi_*$ on $K_0$ of
+its domain ideal is zero, and the pairing of $\hat\varphi$ with $K_0(\cB_{K,S})$ carries no
+information.
+\end{enumerate}
+Consequently no invariant built from $\bigl(K_*(\cB_{K,S}),\hat\sigma_*,\text{trace pairings}\bigr)$
+distinguishes systems with different $\Xi_\beta$.
+\end{theorem}
+
+\begin{proof}
+(1) is the Connes--Thom isomorphism $K_i(\cA\rtimes_\sigma\R)\cong K_{i+1}(\cA)$ \cite{ConnesThom}.
+
+(2) The map $s\mapsto\hat\sigma_s$ is a point-norm continuous path of $*$-automorphisms with
+$\hat\sigma_0=\id$, hence a homotopy of $*$-homomorphisms $\cB\to\cB$; $K$-theory is homotopy
+invariant, so $\hat\sigma_{s*}=\id$ for every $s$.
+
+(3) The defining property of the dual weight of a $\mathrm{KMS}_\beta$ state is that it is a
+trace scaled by the dual action, $\hat\varphi\circ\hat\sigma_s=e^{-\beta s}\hat\varphi$;
+in particular its domain is $\hat\sigma$-invariant. Let $p$ be a projection in the domain.
+Then $s\mapsto\hat\sigma_s(p)$ is a norm-continuous path of projections in the domain, so
+$\hat\sigma_s(p)=u_spu_s^*$ for a unitary $u_s$ of the unitization, and the trace property
+$\hat\varphi(x^*x)=\hat\varphi(xx^*)$ gives $\hat\varphi(\hat\sigma_s(p))=\hat\varphi(p)$. Hence
+$\hat\varphi(p)=e^{-\beta s}\hat\varphi(p)$ for every $s$, and $\hat\varphi(p)=0$.
+\end{proof}
+
+\begin{remark}[Two mechanisms, one cause]\label{III:rem:twomech}
+Part (3) is proved here without computing $K_0(\cB_{K,S})$, and this is deliberate. By (1),
+$K_0(\cB_{K,S})\cong K_1(\cA_{K,S})$. For $|S|=1$ this is $\ker(1-\alpha_*)$ on $C(Y_S,\Z)$
+by Pimsner's sequence, and it vanishes: a fixed point of $\alpha_*$ is supported in
+$\pp^nY_S$ for every $n$, hence in the nowhere dense set $\partial Y_S=\bigcap_n\pp^nY_S$,
+hence is $0$. For $|S|\ge2$ the group $K_1(\cA_{K,S})$ is built from the odd Koszul homology
+of the commuting family $(1-\alpha_{\pp*})$, and we have not determined it (Chapter~\ref{ch:II}). Were
+it zero, (3) would follow trivially. The argument above shows that (3) holds regardless: the
+scaling $\hat\varphi\circ\hat\sigma_s=e^{-s}\hat\varphi$ and the homotopy triviality of
+$\hat\sigma_*$ are incompatible with a nonzero pairing, whatever the group is. It is the
+\emph{connectedness of $\R$} that kills the pairing, not the vanishing of a $K$-group ---
+the same mechanism as in Remark~\ref{III:rem:connected}.
+\end{remark}
+
+\begin{remark}[Connected versus totally disconnected]\label{III:rem:connected}
+The obstruction in (2) is general: any action of a \emph{connected} group induces the
+trivial action on $K$-theory. The modular flow is an action of $\R$, so the scaling
+structure it carries (namely $\hat\varphi\circ\hat\sigma_s=e^{-s}\hat\varphi$, where the type
+and the flow of weights live) is invisible to $K$-theory in principle. By contrast $G_S$ is
+profinite, hence totally disconnected, and acts nontrivially on $K_0(C(Y_S))=C(Y_S,\Z)$ by
+permuting clopen sets. Arithmetic symmetry, being Galois-theoretic and so profinite, can
+register on $K$-theory; modular dynamics, being a flow, cannot.
+\end{remark}
+
+\begin{proposition}[The determinant does not act on $K_1$]\label{III:prop:dlhs}
+Let $A$ be unital with a trace $\tau$. The de la Harpe--Skandalis determinant \cite{dlHS} is
+a homomorphism $\Delta_\tau:\cU_0(A)\to\R/\tau_*(K_0(A))$ on the connected component of the
+unitary group. Since $K_1(A)=\cU_\infty(A)/\cU_{\infty,0}(A)$, the domain of $\Delta_\tau$ is
+precisely the subgroup by which $K_1$ is the quotient; $\Delta_\tau$ descends to
+$\cU_0/\overline{D\cU_0}$ and does not induce a map $K_1(A)\to\R$.
+\end{proposition}
+
+\begin{proof}
+Definitional: $\Delta_\tau$ vanishes on commutators of $\cU_0$, and a homomorphism defined
+on $\cU_0$ carries no information about $\cU/\cU_0$.
+\end{proof}
+
+\begin{remark}[Parity]\label{III:rem:parity}
+A trace is a cyclic $0$-cocycle and pairs with $K_0$; pairing with $K_1$ requires a cyclic
+$1$-cocycle. On the core the natural candidate is
+$\psi(b_0,b_1)=\hat\varphi(b_0\hat\delta(b_1))$ with $\hat\delta$ the generator of the dual
+flow, but cyclicity needs $\hat\varphi\circ\hat\delta=0$ whereas the defining property of the
+dual weight is $\hat\varphi\circ\hat\sigma_s=e^{-s}\hat\varphi$, i.e.\
+$\hat\varphi\circ\hat\delta=-\hat\varphi\ne0$. The pair $(\hat\varphi,\hat\delta)$ produces a
+\emph{twisted} cyclic $1$-cocycle, consistently with Theorem~\ref{III:thm:meas}.
+\end{remark}
+
+\begin{proposition}[Groupoid homology carries no $\beta$]\label{III:prop:homology}
+$H_*(\cG_S;\Z)\cong H_*\bigl(I_S;C_c(\widetilde Y_S,\Z)\bigr)$ is defined without reference
+to $\beta$, as is any twist by the modular cocycle $c(\aaa\mathfrak b^{-1})=\log\Ns\aaa-\log\Ns\mathfrak b$,
+which does not involve $\beta$. Hence neither can determine $\Xi_\beta$, which varies with
+$\beta$. Twisting the coefficients instead does not help: with $\R_\beta$ denoting $\R$ with
+$I_S$ acting by $\aaa\mapsto\Ns\aaa^{-\beta}$,
+\[
+H^n\bigl(I_S;\R_\beta\bigr)=0\quad\text{for all }n\ge0,
+\]
+while $H^0$ with coefficients in the measures twisted by $e^{-\beta c}$ returns the KMS
+simplex tautologically.
+\end{proposition}
+
+\begin{proof}
+The first statements are immediate: $\beta$ enters only as the exponent in the
+Radon--Nikodym derivative, i.e.\ in the measure class. For the vanishing, pick $\pp\in S$;
+the generator $\pp$ acts on $\R_\beta$ by $\lambda=\Ns\pp^{-\beta}\ne1$, and for $\Z$ acting
+on $\R$ by $\lambda\ne1$ one has $H^0=\ker(\lambda-1)=0$ and $H^1=\R/(\lambda-1)\R=0$; the
+Koszul complex for $I_S=\Z^n$ is then exact, since one of its generators acts by an
+automorphism $\lambda-1$ of the coefficients, and for infinite $S$ the Milnor sequence of
+the increasing union of finite-rank subgroups gives the same vanishing. The last statement is the definition of
+quasi-invariance together with [Ch.~\ref{ch:Main}, Prop.~2.8].
+\end{proof}
+
+\section{Dynamical entropy}\label{III:sec:entropy}
+
+\begin{proposition}[Scaling, not invariance]\label{III:prop:scaling}
+For a $\mathrm{KMS}_\beta$ state $\varphi$, $\aaa\in J_S$ and $x\in\cA_{K,S}$,
+\[
+\varphi\bigl(\alpha_\aaa(x)\bigr)=\Ns\aaa^{-\beta}\varphi(x),
+\qquad
+\varphi\bigl(\cL_\aaa(x)\bigr)=\Ns\aaa^{\beta}\,\varphi\bigl(x\,\mathbf 1_{\aaa Y_S}\bigr),
+\]
+where $\cL_\aaa(x)=\mu_\aaa^*x\mu_\aaa$ is the unital completely positive transfer operator.
+Neither map preserves $\varphi$ for $\aaa\ne(1)$, $\beta>0$.
+\end{proposition}
+
+\begin{proof}
+$\sigma_{i\beta}(\mu_\aaa)=\Ns\aaa^{-\beta}\mu_\aaa$ and
+$\sigma_{i\beta}(\mu_\aaa^*)=\Ns\aaa^{\beta}\mu_\aaa^*$. The KMS condition
+$\varphi(uv)=\varphi(v\sigma_{i\beta}(u))$ with $u=\mu_\aaa$, $v=x\mu_\aaa^*$ gives the
+first, using $\mu_\aaa^*\mu_\aaa=1$; with $u=\mu_\aaa^*$, $v=x\mu_\aaa$ it gives the second.
+For the failure of the second, take $x=\mathbf 1_E$ with $E=Y_S\setminus\aaa Y_S$: the right
+side is $0$ while $\varphi(\mathbf 1_E)=1-\Ns\aaa^{-\beta}>0$.
+\end{proof}
+
+\begin{theorem}[No invariant measure, hence no metric entropy]\label{III:thm:noinv}
+For $S\ne\emptyset$ there is no $I_S$-invariant Borel probability measure on
+$\widetilde Y_S$ other than those concentrated on the finite boundary $\partial Y_S$, and no
+such measure is a $\mathrm{KMS}_\beta$ state for $\beta>0$. Consequently the
+Connes--St\o rmer, CNT and Sauvageot--Thouvenot entropies \cite{CS,CNT,ST}
+$h_\varphi(\alpha_\aaa)$ and $h_\varphi(\cL_\aaa)$ are undefined for every
+$\mathrm{KMS}_\beta$ state.
+\end{theorem}
+
+\begin{proof}
+An invariant $\nu$ satisfies $\nu(\aaa^{-1}Y_S)=\nu(Y_S)$ for all $\aaa\in J_S$, and
+$\widetilde Y_S=\bigcup_\aaa\aaa^{-1}Y_S$, so $\nu(Y_S)=1$; then $\nu(\pp^kY_S)=1$ for all $k$
+and $\nu$ is concentrated on $\bigcap_k\pp^kY_S$; intersecting over $\pp\in S$ concentrates
+$\nu$ on $\partial Y_S=\{[0,g]\}\cong G_S/r(U_S)\cong\Cl^+_S$ [Ch.~\ref{ch:Main}, (2.1)], a finite
+set. A
+$\mathrm{KMS}_\beta$ state has $\varphi(\mathbf 1_{\pp Y_S})=\Ns\pp^{-\beta}<1$ and so is not
+of this form. All three entropy definitions require the state to be invariant under the map
+whose entropy is computed; Proposition~\ref{III:prop:scaling} shows no KMS state is.
+\end{proof}
+
+\begin{remark}[Consistency with type $\mathrm{III}$]\label{III:rem:typeIII}
+Theorem~\ref{III:thm:noinv} restates the type classification. A type $\mathrm{III}$ factor has no
+semifinite trace, the associated relation has no invariant measure in the measure class, and
+Kolmogorov--Sinai theory is unavailable by construction.
+\end{remark}
+
+\begin{theorem}[Topological entropy vanishes]\label{III:thm:ht}
+Let $T_\aaa:Y_S\to Y_S$, $[x,g]\mapsto[\aaa x,\sigma_\aaa g]$, so that
+$\cL_\aaa(f)=\mu_\aaa^*f\mu_\aaa=f\circ T_\aaa$ on $C(Y_S)$. Then $h_{\mathrm{top}}(T_\aaa)=0$.
+On the quotient of $\cA_{K,S}$ in which every $\mu_\pp$ is unitary (the boundary quotient
+of Chapter~\ref{ch:II}) the map $\alpha_\aaa$ becomes the inner automorphism $\mathrm{Ad}\,\mu_\aaa$,
+whose Voiculescu--Brown topological entropy \cite{Voiculescu,Brown} is $0$.
+\end{theorem}
+
+\begin{proof}
+$Y_S$ is the quotient of $\hO_S\times G_S$ by $U_S$, and $T_\aaa$ lifts to
+$\widetilde T_\aaa(x,g)=(\aaa x,\sigma_\aaa g)$. Put
+\[
+d\bigl((x,g),(x',g')\bigr)=\sup_\pp c_\pp\Ns\pp^{-v_\pp(x_\pp-x'_\pp)}+d_G(g,g'),
+\]
+with $c_\pp$ summable and $d_G$ an invariant metric on $G_S$; one has $v_\pp(\aaa(x-x'))=v_\pp(\aaa)+v_\pp(x-x')$ and
+$d_G(\sigma_\aaa g,\sigma_\aaa g')=d_G(g,g')$, so $\widetilde T_\aaa$ is $1$-Lipschitz.
+Hence the Bowen metrics satisfy $d_n=d$, the $(n,\epsilon)$-separated sets are the
+$\epsilon$-separated sets, their cardinality is independent of $n$, and
+$h_{\mathrm{top}}(\widetilde T_\aaa)=0$; a factor of a zero-entropy system has zero entropy.
+For the last statement, $\mathrm{Ad}\,\mu_\aaa$ is inner, and inner automorphisms have
+zero topological entropy \cite{Brown}.
+\end{proof}
+
+\begin{remark}[Why $\log\Ns\aaa$ does not occur]\label{III:rem:nolog}
+The map with entropy $\log\Ns\pp$ is the digit shift $x\mapsto(x-a_0)/\pp$, which is
+$\Ns\pp$-to-one; its definition requires \emph{subtracting} the last digit, i.e.\ the
+additive structure. The multiplicative system has one isometry per prime, with
+range projections $\mathbf 1_{\pp Y_S}$ that are nested rather than orthogonal
+($\mathbf 1_{\pp Y_S}\mathbf 1_{\qq Y_S}=\mathbf 1_{\pp\qq Y_S}\ne0$), hence no Cuntz relation and no
+$\log n$ (Chapter~\ref{ch:II}). The
+unavailability of $\log\Ns\aaa$ is the same phenomenon as the failure of the Cuntz relation
+there.
+\end{remark}
+
+\begin{theorem}[The modular flow has zero entropy]\label{III:thm:cnt}
+Let $\iota:\R\to\widehat{I_S}=\prod_{\pp\in S}\T$, $\iota(t)_\pp=\Ns\pp^{it}$, and let
+$\gamma$ be the gauge action. Then $\sigma_t=\gamma_{\iota(t)}$, so $\{\sigma_t\}$ has
+compact closure in $\Aut(\cA_{K,S})$; and an automorphism with relatively compact orbit
+closure has zero CNT entropy. Hence $h_\varphi(\sigma_t)=0$ for every $\mathrm{KMS}_\beta$
+state and every $t$, extremal or symmetric alike.
+\end{theorem}
+
+\begin{proof}
+$\iota$ is a continuous homomorphism and both $\sigma_t$ and $\gamma_{\iota(t)}$ fix
+$C(Y_S)$ pointwise and send $\mu_\pp\mapsto\Ns\pp^{it}\mu_\pp$; the gauge action of the
+compact group $\widehat{I_S}$ is continuous for the pointwise norm topology, so its image is
+compact. For the entropy, fix a finite-dimensional channel $\gamma$ and $\epsilon>0$; by
+relative compactness every $\sigma_{kt}\circ\gamma$ is within $\epsilon$ of one of finitely
+many $\theta_j\circ\gamma$, $j\le m(\epsilon)$. Since $H_\varphi$ is symmetric, unchanged by
+repetition, subadditive, bounded by $\log\dim$ on a single channel, and continuous with a
+modulus independent of the number of arguments,
+\[
+H_\varphi\bigl(\gamma,\sigma_t\gamma,\dots,\sigma_{(n-1)t}\gamma\bigr)\le m(\epsilon)\log\dim+n\,\delta(\epsilon),
+\]
+so $\limsup_n\frac1nH_\varphi\le\delta(\epsilon)\to0$. Every KMS state is $\sigma$-invariant,
+so the hypothesis holds. The properties of $H_\varphi$ used here are those established in
+\cite{CNT}; see also \cite{OP} for the vanishing of $\mathrm{CNT}$ entropy on automorphisms
+lying in a compact group.
+\end{proof}
+
+\begin{remark}\label{III:rem:rotation}
+This is the noncommutative form of the fact that rotations have zero entropy. Here the
+angle is $(\log\Ns\pp)_{\pp\in S}$; over $\Q$ these are $\Q$-linearly independent and
+Kronecker's theorem makes $\iota(\R)$ dense in $\widehat{I_S}$, and in general $\iota(\R)$
+is dense in the annihilator of $\{\aaa\in I_S:\Ns\aaa=1\}$. The modular flow is an
+irrational winding on an infinite torus, dense hence ergodic on gauge orbits, compact hence
+entropy-free. Neither property detects
+$\Xi_\beta$, which by Corollary~\ref{III:cor:where} is not an invariant of an automorphism.
+\end{remark}
+
+\section{Relative entropy and the information staircase}\label{III:sec:relent}
+
+Fix $\beta$ with $\Xi_\beta$ finite and write $G=\widehat{\Xi_\beta}$, $A_\beta$ for the set
+of thresholds already crossed in the cascade systems of [Ch.~\ref{ch:Main}, Prop.~4.16], so that
+$\Xi_\beta\cong(\Z/2\Z)^{A_\beta}$ and $|G|=2^{|A_\beta|}$.
+
+\begin{theorem}[The staircase]\label{III:thm:staircase}
+Let $\varphi_\varepsilon$, $\varepsilon\in G$, be the extremal $\mathrm{KMS}_\beta$ states
+and $\phisym$ the symmetric one. Then
+\begin{equation}\label{III:eq:staircase}
+\Ent\bigl(\omega_{\varphi_\varepsilon}\,\big\|\,\omega_{\phisym}\bigr)=\log|G|=|A_\beta|\log2 ,
+\end{equation}
+computed in $\Msym=\pi_{\phisym}(\cA_{K,S})''=\bigoplus_{\varepsilon}M_\varepsilon$, and the
+whole value is carried by the centre: each type $\mathrm{III}$ summand contributes zero. For
+$\varepsilon\ne\varepsilon'$, $\Ent(\omega_{\varphi_\varepsilon}\|\omega_{\varphi_{\varepsilon'}})=+\infty$.
+When $A_\beta$ is infinite the two states are mutually singular and \eqref{III:eq:staircase} is
+$+\infty$.
+\end{theorem}
+
+\begin{proof}
+By [Ch.~\ref{ch:Main}, Thm.~3.6] the extreme points of the $\mathrm{KMS}_\beta$ simplex are indexed
+by $G$ and their measures are ergodic for the orbit relation and pairwise distinct, hence
+mutually singular; so the GNS representations are pairwise disjoint, $\phisym=|G|^{-1}\sum_\varepsilon\varphi_\varepsilon$
+gives $\pi_{\phisym}=\bigoplus_\varepsilon\pi_{\varphi_\varepsilon}$ and the central
+decomposition $\Msym=\bigoplus_\varepsilon M_\varepsilon$, with central projections
+$z_\varepsilon$ of $\omega_{\phisym}$-value $|G|^{-1}$. For a direct sum with $\omega=\bigoplus\lambda_i\omega_i$ and
+$\psi=\bigoplus\mu_i\psi_i$ one has the additivity formula
+\[
+\Ent(\omega\|\psi)=\sum_i\lambda_i\log\frac{\lambda_i}{\mu_i}+\sum_i\lambda_i\,\Ent(\omega_i\|\psi_i),
+\]
+with the conventions $0\log0=0$ and $\lambda\log(\lambda/0)=+\infty$ for $\lambda>0$; this is
+the relative modular operator of a direct sum decomposing as the direct sum of the relative
+modular operators scaled by $\lambda_i/\mu_i$ \cite{Araki}, \cite{OP}.
+Index the summands by $\eta\in G$. The state $\omega_{\varphi_\varepsilon}$ has
+$\lambda_\eta=1$ for $\eta=\varepsilon$ and $\lambda_\eta=0$ otherwise, while
+$\omega_{\phisym}$ has $\mu_\eta=|G|^{-1}$ for every $\eta$. The single surviving term of
+the first sum is $\log\bigl(1/|G|^{-1}\bigr)=\log|G|$. In the second sum the term
+$\eta=\varepsilon$ vanishes because both states induce the \emph{same} normal state of
+$M_\varepsilon$, and every other term has $\lambda_\eta=0$; so the second sum is identically
+zero, which is the assertion that the relative entropy is purely central. Disjointness gives
+$+\infty$ for $\varepsilon\ne\varepsilon'$. When $A_\beta$ is infinite, $\Xi_\beta^\perp$
+has infinite index in $G_S$, the extremal measure is Haar measure on a coset of
+$\Xi_\beta^\perp$ in each fibre while the symmetric one is Haar measure on $G_S$, so the two
+are mutually singular and the relative entropy is $+\infty$.
+\end{proof}
+
+\begin{corollary}[One bit per threshold]\label{III:cor:bit}
+Each threshold contributes exactly $\log2$ to \eqref{III:eq:staircase}, and the function
+$\beta\mapsto|A_\beta|\log2$ is a pure jump staircase with jumps $\log2$ at the thresholds.
+It coincides with $\log[\Msym:M_\varepsilon]$, the logarithm of the index of the
+symmetry-breaking inclusion $M_\varepsilon\cong\Msym^G\subset\Msym\cong M_\varepsilon\otimes\ell^\infty(G)$,
+which is $|G|$ (Chapter~\ref{ch:II}): the index staircase and the information
+staircase are the same object, both counting $\log$ of the number of phases.
+\end{corollary}
+
+\begin{remark}[The order parameter]\label{III:rem:psi}
+For the single-threshold system of [Ch.~\ref{ch:Main}, Prop.~4.12] the two phases are separated by
+the pointwise invariant $\Psi$, whose almost-everywhere definedness is a Borel--Cantelli
+condition. Under $\phisym$ the observable $\Psi$ takes the values $\pm1$ with probability
+$\tfrac12$ each, so $H_{\phisym}(\Psi)=\log2$, while $H_{\varphi_\pm}(\Psi)=0$: crossing the
+threshold freezes one previously maximally mixed bit. This is \eqref{III:eq:staircase} in its
+elementary form.
+\end{remark}
+
+\begin{proposition}[No preferred phase]\label{III:prop:landauer}
+At fixed $\beta$ the $\mathrm{KMS}_\beta$ states form, by [Ch.~\ref{ch:Main}, Thm.~3.6], the
+simplex $\Prob(G_S/\Xi_\beta^\perp)$, on whose extreme points $G_S$ acts transitively. Every
+extremal state is therefore carried to every other by a symmetry of the dynamical system,
+and $\phisym$ is the barycentre of the $G_S$-orbit of any of them. No quantity attached to
+the pair $(\cA_{K,S},\sigma)$ distinguishes one extremal $\mathrm{KMS}_\beta$ state from
+another, and none singles out $\phisym$ except its symmetry.
+\end{proposition}
+
+\begin{proof}
+The action of $G_S$ on the simplex factors through $G_S/\Xi_\beta^\perp$ and permutes the
+extreme points simply transitively [Ch.~\ref{ch:Main}, Thm.~3.6(3)]; the symmetries commute with
+$\sigma_t$.
+\end{proof}
+
+\begin{remark}[What the bit is]\label{III:rem:landauer}
+Landauer's bound concerns \emph{erasure}: an external agent irreversibly resetting a bit,
+which requires work $k_BT\log2$. Here nothing is erased and no agent acts. Crossing a
+threshold makes an observable well defined almost everywhere, and the system then has two
+equilibrium phases in which it takes a definite value. The bit is not destroyed but
+\emph{transferred}, from the microscopic description to the label of the phase; the $\log2$
+of \eqref{III:eq:staircase} is the information needed to say which phase one is in, not
+information lost. By Proposition~\ref{III:prop:landauer} no phase is energetically preferred,
+so the analogy with Landauer does not survive. (In the Gibbs regime $\zeta_{K,S}(\beta)<\infty$
+one can say more: the extremal states are the normalized Gibbs states of [Ch.~\ref{ch:Main}, Thm.~3.6],
+all with the same partition function, hence literally the same free energy; in the type
+$\mathrm{III}$ regime no free energy is defined, and the symmetry argument is all there is.)
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Candidate invariant} & \text{Sees }\Xi_\beta? & \text{Reason}\\\hline
+K_*(\cA_{K,S}) & \text{no} & \text{Cor.~\ref{III:cor:annih}: coinvariants kill the eigenvectors}\\
+K_*(\cB_{K,S}) & \text{no} & \text{Thm.~\ref{III:thm:core}(1)}\\
+\text{dual trace on }K_0(\cB_{K,S}) & \text{no} & \text{Thm.~\ref{III:thm:core}(3): scaling vs.\ homotopy}\\
+\hat\sigma_*\ \text{on}\ K_*(\cB_{K,S}) & \text{no} & \text{Thm.~\ref{III:thm:core}(2): }\R\ \text{connected}\\
+\Delta_{\hat\varphi}\ \text{on}\ K_1 & \text{not defined} & \text{Prop.~\ref{III:prop:dlhs}: domain is }\cU_0\\
+H_*(\cG_S;\Z)\ \text{and }c\text{-twists} & \text{no} & \text{Prop.~\ref{III:prop:homology}: no }\beta\\
+h_\varphi(\alpha_\aaa),\ h_\varphi(\cL_\aaa) & \text{not defined} & \text{Thm.~\ref{III:thm:noinv}: no invariant measure}\\
+\htop(\alpha_\aaa) & 0 & \text{Thm.~\ref{III:thm:ht}: a contraction}\\
+h_\varphi(\sigma_t) & 0 & \text{Thm.~\ref{III:thm:cnt}: compact gauge subflow}\\
+\bigl(K_0(C(Y_S)),\alpha_*\bigr) & \textbf{yes} & \text{Thm.~\ref{III:thm:eigen}}\\
+H^1_{\mathrm{meas}}(\cR_S,\pi_\beta;\T) & \textbf{yes} & \text{Thm.~\ref{III:thm:meas}}\\
+\Ent(\omega_{\varphi_\varepsilon}\|\omega_{\phisym}) & \textbf{yes} & \text{Thm.~\ref{III:thm:staircase}}
+\end{array}
+\]
+
+The three affirmative entries have a common form: each is built directly from a
+Radon--Nikodym derivative. The eigenvalue equation of Theorem~\ref{III:thm:eigen} is the
+statement that $d(\nu\circ\alpha_\pp)/d\nu=\Ns\pp^{-\beta}$; the cohomology of
+Theorem~\ref{III:thm:meas} is computed with respect to the measure class of $\pi_\beta$, that is,
+modulo the Radon--Nikodym cocycle; and the relative entropy of
+Theorem~\ref{III:thm:staircase} is by definition
+$\int\log\bigl(d\omega/d\psi\bigr)\,d\omega$. Each therefore compares two objects in the
+same measure class, rather than iterating a single map or extracting a homotopy invariant of
+a single algebra. The negative entries are exactly the constructions that discard the
+derivative: a $C^*$-algebra retains no measure, a topological groupoid retains no measure
+class, and a homotopy functor cannot see a scaling. That is the content of Corollary~\ref{III:cor:where}, and it is the reason the
+negative entries are uniform.
+
+Three questions remain. We have not computed $H^1_{\mathrm{meas}}(\cR_S,\pi_\beta;\T)$
+itself, only its kernel; for the tail relation of a product measure this should be
+accessible, and would presumably exhibit $\widehat{G_S}/\Xi_\beta$ inside it. Second,
+Lemma~\ref{III:lem:dict} is stated for $\T$-valued cocycles; the extended group of
+[Ch.~\ref{ch:I}], defined by cocycles valued in $G_S\times\R$, is the corresponding kernel for
+the factor type, and there the inclusion $E(\Phi)\subseteq\Lambda^\perp$ of
+Lemma~\ref{III:lem:dict} yields only an upper bound on the type; whether the kernel determines
+the type --- i.e.\ whether the cocycle is regular, or equivalently whether the flow of weights
+has pure point spectrum --- is open (Remark~\ref{III:rem:noconverse}). Third, the twisted cyclic $1$-cocycle
+of Remark~\ref{III:rem:parity} is the natural home for a pairing with $K_1(\cB_{K,S})$; whether
+the resulting invariant recovers Theorem~\ref{III:thm:eigen} we do not know.
+

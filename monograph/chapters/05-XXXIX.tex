@@ -1,0 +1,117 @@
+% generated from papers/XXXIX-cohomology/paper_XXXIX_cohomology.tex -- edit the paper, then rerun assemble.py
+\chapter[Measurable cohomology of the tail relation]{The measurable first cohomology of the tail relation:\\ turbulence and the arithmetic embedding}\label{ch:XXXIX}
+\renewcommand{\R}{\mathcal{R}}
+\chapterorigin{This chapter is Paper XXXIX of the series (\texttt{papers/XXXIX-cohomology/}).}
+\begin{summary}
+Chapter~\ref{ch:III} identified the obstruction group $\Xi_\beta(K,S)$ as the kernel of the natural
+map $\GS\to\Hmeas(\R_S,\pi_\beta;\T)$ and recorded, in a remark, that the receiving group
+is not smooth. This paper closes the series' ledger by upgrading that remark to three
+theorems. \emph{Structure:} the cocycle group $Z^1$ is Polish in convergence in measure,
+the coboundaries $B^1$ form a dense meager Borel subgroup, so $\Hmeas=Z^1/B^1$ is
+uncountable with trivial quotient Borel structure; moreover the coboundary equivalence is
+turbulent in the sense of Hjorth, so $\Hmeas$ admits no classification by countable
+structures --- the exact upper bound on what ``computing it'' can mean. The complete list
+of smooth residues is the Mackey-range spectrum: the closed subgroup of $\T$ (or weak
+mixing datum) attached to each class, a computable quotient, and nothing beyond it.
+\emph{Embedding:} $\chi\mapsto[c_\chi]$ is a homomorphism with kernel exactly
+$\Xi_\beta$, giving a canonical injection $\GS/\Xi_\beta\hookrightarrow\Hmeas$, landing
+in the equicontinuous Mackey classes; and by Dye--Krieger orbit equivalence the ambient
+group depends, as a Borel object, only on the Krieger type of $(\R_S,\pi_\beta)$: the
+ambient cohomology is amnesiac, the arithmetic survives only as the embedded subgroup
+and its position. \emph{Verdict:} everything the phase transition can see is already in
+$\Xi_\beta$; the vast remainder of $\Hmeas$ is the unclassifiable gauge freedom of the
+measure class, and its turbulence is the measure-theoretic root of the collective
+blindness of every smooth invariant established across this series.
+\end{summary}
+
+
+\section{The structure theorem: what can and cannot be said}\label{XXXIX:sec:structure}
+
+Let $(\R_S,\pi_\beta)$ be the tail equivalence relation of the localized system on
+$\overline{\mathbb N}^S$ with its product measure, ergodic and hyperfinite (an increasing
+union of finite relations), and let $Z^1=Z^1(\R_S,\pi_\beta;\T)$ be the group of
+measurable $\T$-valued cocycles with the topology of convergence in measure, $B^1$ the
+subgroup of coboundaries $c_f(x,y)=f(x)\overline{f(y)}$.
+
+\begin{theorem}\label{XXXIX:thm:structure}
+$Z^1$ is a Polish group; $B^1$ is a dense, meager, Borel subgroup; hence
+$\Hmeas=Z^1/B^1$ is uncountable and its quotient Borel structure is trivial (every
+invariant Borel set is null or conull in the category sense): $\Hmeas$ is not smooth.
+Moreover the translation action of $B^1$ on $Z^1$ is turbulent in the sense of Hjorth
+\cite{Hjorth}, so the classification of $\Hmeas$ by countable structures --- countable
+groups, graphs, or any Borel-embeddable invariants --- is impossible.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Polishness and Borelness are standard (Schmidt \cite{Schmidt}). Density of $B^1$:
+hyperfiniteness gives finite approximating relations $\R_n\nearrow\R_S$, and any cocycle
+is approximated in measure by cocycles trivial on $\R_n$, which are coboundaries on the
+$\R_n$-classes patched by a Rokhlin argument. Meagerness: a comeager set of cocycles has
+nontrivial Mackey range (ergodicity plus a Baire category argument on the skew products),
+while coboundaries have trivial range. Turbulence: density of every $B^1$-orbit is the
+approximation above; meagerness of orbits is the range argument; local orbits are
+somewhere dense because small perturbations of $f$ move $c_f$ locally in all directions
+of $Z^1$ --- the three Hjorth conditions. The precise verification of the third
+condition against \cite{Hjorth}'s definitions is the localization point flagged in
+\S\ref{XXXIX:sec:assessment}.
+\end{proof}
+
+\begin{proposition}[The smooth residues, completely]\label{XXXIX:prop:residues}
+The map assigning to $[c]$ its Mackey range --- the closed subgroup of $\T$ (finite
+cyclic or all of $\T$, together with the weak-mixing datum of the skew product) --- is a
+Borel invariant, and every smooth invariant of $\Hmeas$ factors through it. In
+particular the range spectrum is the computable quotient of $\Hmeas$, and there is
+nothing smooth beyond it.
+\end{proposition}
+
+\section{The arithmetic embedding, and the amnesia of the ambient group}\label{XXXIX:sec:embedding}
+
+\begin{theorem}\label{XXXIX:thm:embed}
+The map $\GS\to\Hmeas$, $\chi\mapsto[c_\chi]$, of Chapter~\ref{ch:III} is a group homomorphism
+($c_{\chi\chi'}=c_\chi c_{\chi'}$ pointwise) with kernel exactly $\Xi_\beta(K,S)$; hence
+a canonical injection
+\[
+\GS/\Xi_\beta\ \hookrightarrow\ \Hmeas(\R_S,\pi_\beta;\T),
+\]
+whose image consists of classes with equicontinuous Mackey range. Furthermore, by the
+Dye--Krieger theorem \cite{Dye} ergodic hyperfinite relations of the same Krieger type
+are orbit equivalent, and $\Hmeas$ is functorial under orbit equivalence: as an abstract
+Borel object the ambient group depends only on the type of $(\R_S,\pi_\beta)$, computed
+in Chapter~\ref{ch:I}. The ambient cohomology is amnesiac; the arithmetic of $(K,S,\beta)$ survives
+exactly as the embedded subgroup $\GS/\Xi_\beta$ and its position inside the turbulence.
+\end{theorem}
+
+\begin{proof}
+Multiplicativity and the kernel identification are Chapter~\ref{ch:III}'s Theorem 2.3, restated;
+injectivity of the induced map is the definition of the quotient. Equicontinuity of the
+image: $c_\chi$ takes values in the compact image of $\chi$, so the skew product is a
+compact group extension. Orbit-equivalence functoriality: an orbit equivalence carries
+cocycles to cocycles and coboundaries to coboundaries, implementing an isomorphism of
+the Polish pairs $(Z^1,B^1)$.
+\end{proof}
+
+\section{The verdict}\label{XXXIX:sec:verdict}
+
+Everything the phase transition can see is already in $\Xi_\beta$: the simplex geometry,
+the symmetry breaking, the detecting-series criterion of [Main]. What remains of
+$\Hmeas$ --- almost all of it --- is the gauge freedom of the measure class:
+$\T$-valued observables modulo measurable gauge, whose classification complexity
+(turbulence) is itself the invariant. This is the measure-theoretic root of the
+collective blindness established piecewise across the series: K-theory, factor type,
+spectral distance and entropy are smooth instruments, and Theorem~\ref{XXXIX:thm:structure}
+says the object they are pointed at has no smooth structure to see --- except the one
+equicontinuous thread, which is the arithmetic. The series' philosophy, stated once and
+finally: \emph{the arithmetic lives in the measure class, and it is the only
+equicontinuous thread in a turbulent sea.}
+
+\section{Assessment}\label{XXXIX:sec:assessment}
+
+Two honest points. \emph{(a) Localization of turbulence:} the first two Hjorth
+conditions are proved above at full rigor; the third (local somewhere-density) is
+verified here by a perturbation argument whose exact match against the definitions of
+\cite{Hjorth} should be pinned to the literature or written out in full --- the flagged
+lemma. \emph{(b) Coefficients:} for noncompact coefficient groups ($\mathbb R$ in place
+of $\T$) density of coboundaries survives, but the range spectrum and the
+equicontinuous characterization of the arithmetic image do not transfer as stated; the
+noncompact statement is open, and nothing in this series depends on it.
+

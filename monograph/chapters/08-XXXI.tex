@@ -1,0 +1,154 @@
+% generated from papers/XXXI-rayclass/paper_XXXI_rayclass.tex -- edit the paper, then rerun assemble.py
+\chapter[The ray-class repair for affine systems]{The ray-class repair for affine systems:\\ the class group as the index of definable scalings}\label{ch:XXXI}
+\renewcommand{\Ns}{N}
+\chapterorigin{This chapter is Paper XXXI of the series (\texttt{papers/XXXI-rayclass/}).}
+\begin{summary}
+Chapter~\ref{ch:XXX} computed the K-theory of the affine boundary quotient at a principal prime and
+located the class group ``at the entrance'': for non-principal $\pp$ the affine monoid of
+Chapter~\ref{ch:II} (its \S6) is not well defined over $\OK$. This paper performs the repair and
+proves that the obstruction is itself the invariant. Let $h=\ord([\pp]\in\Cl_K)$ and
+$\pp^h=(\pi)$. The globally definable scalings form exactly the subsemigroup
+$h\N$ of the local valuation semigroup: a scaling of depth $j$ exists over $\OK$ if and
+only if $h\mid j$ (Theorem 1.2). The minimal repaired system is therefore the $h$-step
+system $C(\Op)\rtimes(\OK\rtimes_\pi\N)$, well defined for every $\pp$, reducing to Paper
+XXX when $h=1$; its boundary quotient has dilated form
+$C_0(K_\pp)\rtimes(\mathcal O_{K,\{\pp\}}\rtimes_\pi\Z)$, and the entire exterior-tower
+Pimsner--Voiculescu computation of Chapter~\ref{ch:XXX} applies verbatim with $(\pi,q^h)$ in place of
+$(\pi,q)$, $q=\Ns\pp$. Consequences: the class of the unit generates a torsion summand of
+\emph{exact} order $q^h-1=\Ns\pp^{\,h}-1$ --- the order of $\pp$ in the class group
+survives in $K_0$ as the exact torsion order of $[1]$, and the published divisibility
+statement of Chapter~\ref{ch:II} must read $(\Ns\pp^{h}-1)[1]=0$ in the repaired system; the
+intermediate layers contribute $\Z/|q^h\pm1-\Tr\pi|'$ for quadratic fields, computed
+explicitly in $\Q(\sqrt{-5})$ at the non-principal prime above $3$ ($K_0\supseteq
+\Z\oplus\Z/8$ with $[1]$ of order $8$, $K_1\supseteq\Z\oplus\Z/2$). What the K-groups
+alone retain is the composite $q^h$; separating $q$ from $h$, the Galois descent from the
+Hilbert class field (where capitulation principalizes $\pp$ and $\mathrm{Gal}\cong\Cl_K$
+acts), and the several-prime case are recorded as the remaining problems.
+\end{summary}
+
+
+\section{The bottleneck, and the scaling-index theorem}\label{XXXI:sec:index}
+
+Fix a prime $\pp$ of $K$, $q=\Ns\pp$, and let $h$ be the order of $[\pp]$ in the class
+group $\Cl_K$, so that $\pp^h=(\pi)$ is principal and no smaller positive power is. The
+affine monoid of Chapter~\ref{ch:II} (its \S6) acts by $x\mapsto\gamma x+b$ with $b\in\OK$ and
+$\gamma$ a chosen uniformizing multiplier; the composition law requires $\gamma\OK\subseteq
+\OK$ with $\gamma$ supported at $\pp$, i.e.\ $\gamma\in\OK$ with $(\gamma)=\pp^{\,j}$ for
+some $j\ge1$.
+
+\begin{lemma}\label{XXXI:lem:exist}
+An element $\gamma\in\OK$ with $(\gamma)=\pp^{\,j}$ exists if and only if $h\mid j$.
+\end{lemma}
+
+\begin{proof}
+$(\gamma)=\pp^{\,j}$ says $[\pp]^{\,j}$ is trivial in $\Cl_K$, which is $h\mid j$;
+conversely $\pi^{j/h}$ works.
+\end{proof}
+
+\begin{theorem}[The class group is the index of definable scalings]\label{XXXI:thm:index}
+The set of depths $j$ for which the affine system of Chapter~\ref{ch:II}'s \S6 admits a well-defined
+scaling of depth $j$ over $\OK$ is exactly $h\N$. The minimal well-defined affine system
+at $\pp$ is therefore the $h$-step system
+\[
+\Aaff_{K,\{\pp\}}:=C(\Op)\rtimes\bigl(\OK\rtimes_\pi\N\bigr),\qquad(\pi)=\pp^{h},
+\]
+with boundary quotient defined by the Cuntz relation over the $q^h$ translates
+$\sum_{a\in\OK/\pp^{h}}\mu_a\mu_a^*=1$; it reduces to the system of Chapter~\ref{ch:XXX} when $h=1$.
+Any choice of local uniformizer at intermediate depths $0<j<h$ carries the translation
+module $\OK$ to a fractional module in the ideal class $[\pp]^{-j}\ne1$ and leaves the
+category of $\OK$-affine systems.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{XXXI:lem:exist} gives the depths. For the last statement, a local uniformizer
+$\varpi\in K_\pp$ of depth $j$ maps the dense image of a fractional ideal $\mathfrak a$ to
+that of an ideal in the class $[\pp]^{\,j}[\mathfrak a]$ up to prime-to-$\pp$ global
+rescalings, which act by homeomorphisms of $K_\pp$; the marked class is an invariant of
+the pair (translation module, ambient $K_\pp$) modulo such rescalings, and it changes
+unless $h\mid j$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{XXXI:thm:index} upgrades the observation of Chapter~\ref{ch:XXX} --- ``the class group is at
+the entrance'' --- to a structure theorem: the entrance fee is exactly $h$. Route B of the
+repair, passing to the Hilbert class field $H$ where the extended ideal $\pp\mathcal O_H$
+is principal by the principal ideal theorem \cite[VI.7]{Neukirch} and
+$\mathrm{Gal}(H/K)\cong\Cl_K$ acts, defines a one-step system upstairs whose Galois
+descent should remember the group $\Cl_K$ itself rather than only $h$; its K-theory is
+Problem (ii) of \S\ref{XXXI:sec:verdict}.
+\end{remark}
+
+\section{K-theory of the repaired boundary}\label{XXXI:sec:ktheory}
+
+\begin{theorem}\label{XXXI:thm:ktheory}
+Let $n=[K:\Q]$ and $\Ns_{K/\Q}\pi=\pm q^{h}$. The dilated form of the repaired boundary is
+\[
+\partial\Aaff_{K,\{\pp\}}\otimes\K\ \cong\
+C_0(K_\pp)\rtimes\bigl(\mathcal O_{K,\{\pp\}}\rtimes_\pi\Z\bigr),
+\]
+where $\mathcal O_{K,\{\pp\}}=\bigcup_m\pi^{-m}\OK$ is the ring of $\{\pp\}$-integers,
+dense in $K_\pp$; and the exterior-tower computation of Chapter~\ref{ch:XXX} applies verbatim with
+$q^h$ in place of $q$: with $M_r=\varinjlim(\Lambda^r\OK,\,t_r)$,
+$t_r=\pm(\Lambda^{n-r}\pi)^\vee$, $\alpha_*=q^{-h}\Lambda^r\pi$, and
+$T_r=\operatorname{coker}(1-\alpha_*|M_r)$, one has, when $\Ns\pi=+q^h$ and
+$\pi^A\ne q^h$ for all proper archimedean subsets $A$,
+\[
+K_0\cong\Z\oplus\bigoplus_{r\,\mathrm{even}}T_r,\qquad
+K_1\cong\Z\oplus\bigoplus_{r\,\mathrm{odd}}T_r,\qquad
+T_0=\Z/(q^{h}-1)\ \text{generated by }[1],
+\]
+(the two $\Z$'s replaced by a single $\Z/2$ in parity $n$ when $\Ns\pi=-q^h$), the orders
+of the middle layers being the regularized $|\det(q^h\cdot1-\Lambda^r\pi)|$ as in Paper
+XXX. In particular:
+\begin{enumerate}
+\item \emph{The order of $\pp$ in the class group survives in $K_0$}: the class $[1]$ has
+exact order $\Ns\pp^{\,h}-1$. The divisibility statement of Chapter~\ref{ch:II}'s \S6 must
+accordingly read $(\Ns\pp^{h}-1)[1]=0$ for non-principal $\pp$, and it is attained.
+\item For $K$ quadratic, $K_1(\partial\Aaff)\supseteq\Z/\bigl|q^h\pm1-\Tr\pi\bigr|'$
+(prime-to-$q$ part), the sign that of $\Ns\pi$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The dilation, the tower, the two calibrations and the Pimsner--Voiculescu \cite{PV} assembly are
+those of Chapter~\ref{ch:XXX}, restated there in full; the only inputs were a global generator of the
+scaling ideal and its norm, here $\pi$ and $\Ns(\pp^h)=q^h$. The exactness of the order of
+$[1]$ is the $r=0$ layer: $1-\alpha_*=1-q^{-h}$ on $\Z[1/q]$ has cokernel $\Z/(q^h-1)$
+generated by the class of $1_{\Op}$.
+\end{proof}
+
+\begin{example}[$\Q(\sqrt{-5})$ at the non-principal prime above $3$]\label{XXXI:ex:sqrt5}
+$K=\Q(\sqrt{-5})$, $\Cl_K\cong\Z/2$, $\pp_3=(3,1+\sqrt{-5})$ non-principal, $h=2$,
+$q=3$, and $\pp_3^{\,2}=(\pi)$ with $\pi=2-\sqrt{-5}$, $\Ns\pi=9=q^h$, $\Tr\pi=4$. Then:
+$[1]$ has exact order $q^h-1=8$, so $K_0\supseteq\Z\oplus\Z/8$ with $[1]$ generating the
+torsion; and the middle layer gives
+$\Ns(q^h-\pi)=\Ns(7+\sqrt{-5})=54=2\cdot27$, of prime-to-$3$ part $2$, so
+$K_1\supseteq\Z\oplus\Z/2$, consistently with
+$|q^h+1-\Tr\pi|=|9+1-4|=6$ of prime-to-$3$ part $2$. Had $\pp_3$ been principal the
+order of $[1]$ would have been $q-1=2$: the K-theory separates the two situations.
+\end{example}
+
+\begin{remark}[Unit-orbit sensitivity persists]\label{XXXI:rem:units}
+As in Chapter~\ref{ch:XXX}, replacing $\pi$ by $u\pi$ for a unit $u$ of norm $1$ changes the middle
+layers; for imaginary quadratic fields the unit group is finite and the ambiguity is a
+root of unity, so the repaired invariant is canonical there up to finitely many choices
+--- a small unexpected bonus of the imaginary quadratic case.
+\end{remark}
+
+\section{The arithmetic verdict, and what remains}\label{XXXI:sec:verdict}
+
+The class group enters the K-theory as \emph{torsion, not rank}: the free ranks of
+Theorem~\ref{XXXI:thm:ktheory} are those of Chapter~\ref{ch:XXX}, unchanged, while the order of the
+distinguished class $[1]$ is promoted from $q-1$ to $q^{h}-1$. Three problems remain.
+\emph{(i) Separating $q$ from $h$:} the abstract K-groups see only the composite $q^h$;
+the candidate for separating the pair is the dual coaction (the gauge circle of the
+repaired system has minimal period $h$ times that of a principal prime of the same norm),
+not the K-groups alone. \emph{(ii) Galois descent from the Hilbert class field:}
+capitulation principalizes $\pp$ upstairs with $\mathrm{Gal}(H/K)\cong\Cl_K$; the
+equivariant K-theory of the descended system should remember $\Cl_K$ itself, and its
+computation --- a genuine descent spectral sequence, not an iterated
+Pimsner--Voiculescu --- is open. \emph{(iii) Several primes:} for $|S|\ge2$ the definable
+scalings form the kernel of $\Z^S\to\Cl_K$, $e\mapsto\prod\pp^{e_\pp}$, a finite-index
+subgroup whose index divides $|\Cl_K|$ and whose K-theoretic footprint, layer by layer, is
+the natural continuation of this paper.
+

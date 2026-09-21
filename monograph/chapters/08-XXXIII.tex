@@ -1,0 +1,161 @@
+% generated from papers/XXXIII-coupling/paper_XXXIII_coupling.tex -- edit the paper, then rerun assemble.py
+\chapter[The adaptive coupling upper bound]{The adaptive coupling upper bound for the Wasserstein separation:\\ microscopic flips against the macroscopic symmetry cost}\label{ch:XXXIII}
+\renewcommand{\Prob}{\mathrm{Prob}}
+\chapterorigin{This chapter is Paper XXXIII of the series (\texttt{papers/XXXIII-coupling/}).}
+\begin{summary}
+In the setting of Chapter~\ref{ch:XXIX} --- extreme broken-phase KMS states $\varphi_\pm$ separated
+by the order parameter $\Psi=\chi(g)\prod_j\varepsilon_j(x_j)$, Lip-norm with weights
+$w_0$ (group direction) and $w_j$, geometric coordinates with parameters $t_j$ --- the
+only known upper bound on $W_1(\varphi_+,\varphi_-)$ was the trivial $w_0$, paid by
+flipping the group coordinate everywhere. We construct an $x$-adaptive coupling and prove
+the closed-form nontrivial bound: for every enumeration $(j_k)$ of $J$, with
+$\tau_j=\tfrac{2t_j}{1+t_j}$ and $m_j=\tfrac{1-t_j}{1+t_j}$,
+\[
+W_1(\varphi_+,\varphi_-)\ \le\
+w_0\,\Pi_\infty(\beta)\ +\ \sum_{k\ge1}w_{j_k}\,\tau_{j_k}\prod_{l<k}m_{j_l},
+\]
+the expected cost of the first available cheap flip in an independent scan; it is
+strictly below $w_0$ as soon as some $w_j<w_0$, is minimized by enumerating in increasing
+$w_j$ (a three-line exchange lemma), and pinches against the squeeze lower bound
+$w_0\Pi_\infty$ as $\beta\to\infty$, with explicit gap
+$O(\sum_jw_jt_j)$. The construction rests on an exact identity: the odd-conditioned
+geometric law is the unit shift of the even-conditioned one, so the parity channel at
+coordinate $j$ transports at cost exactly $w_j$ per unit mass, with capacity $\tau_j$;
+the residual mass $m_j$ is matched exactly by the group flip and is, after
+renormalization, the extreme pair of the subsystem without coordinate $j$ --- whence the
+recursion. On the toy model of Chapter~\ref{ch:XXIX}'s numerical experiment the bound evaluates to
+$5/12\approx0.4167$ against the certified window $[0.2254,\,0.2288]$: consistent,
+decisively below $w_0=1$, and honestly a factor $\approx1.8$ from optimal near
+criticality, where the true plan shades amplitudes continuously rather than flipping the
+first available coordinate --- the remaining gap is recorded.
+\end{summary}
+
+
+\section{Setting, cost, and the two exact identities}\label{XXXIII:sec:setting}
+
+We keep the notation of Chapter~\ref{ch:XXIX}: $X=G\times\prod_{j\in J}\overline\N$,
+$\nu_{\mathrm{sym}}=\mathrm{Haar}\otimes\bigotimes_j\mu_{t_j}$ with $\mu_t(k)=(1-t)t^k$,
+$\varepsilon_j=(-1)^{x_j}$, $m_j=\E[\varepsilon_j]=\frac{1-t_j}{1+t_j}$,
+$\Psi=\chi(g)\prod_j\varepsilon_j$, $\nu_\pm=2\cdot\mathbf1_{\{\Psi=\pm1\}}
+\nu_{\mathrm{sym}}$, and the Lip-norm $L$ with weights $(w_0,(w_j))$. By Kantorovich
+duality \cite{Villani}, $W_1(\varphi_+,\varphi_-)=\inf_\gamma\int d_L\,d\gamma$ over couplings
+$\gamma\in\Gamma(\nu_+,\nu_-)$, where $d_L(z,z')=\sup\{|f(z)-f(z')|:L(f)\le1\}$. We use
+only two evaluations, both immediate from the pointwise constraint: a group flip costs at
+most $w_0$, $d_L\bigl((g,x),(g\sigma,x)\bigr)\le w_0$, and a unit step in coordinate $j$
+costs at most $w_j$.
+
+\begin{lemma}[The shift identity]\label{XXXIII:lem:shift}
+Let $\mu=\mu_t$ and let $\mu^{\mathrm e},\mu^{\mathrm o}$ be its restrictions to even and
+odd integers, of masses $p_{\mathrm e}=\frac1{1+t}$, $p_{\mathrm o}=\frac t{1+t}$. Then
+the normalized laws satisfy, exactly,
+\[
+\frac{\mu^{\mathrm o}}{p_{\mathrm o}}=(\,\cdot+1\,)_*\,\frac{\mu^{\mathrm e}}{p_{\mathrm e}}:
+\qquad
+\frac{(1-t)t^{2k+1}}{p_{\mathrm o}}=(1-t^2)\,t^{2k}
+=\frac{(1-t)t^{2k}}{p_{\mathrm e}}\quad(k\ge0).
+\]
+Consequently the sub-measure $\theta:=t\,\mu^{\mathrm e}$ has mass $p_{\mathrm o}$ and
+$(\cdot+1)_*\theta=\mu^{\mathrm o}$: a parity-swapping transport inside one coordinate
+moves every unit of mass by exactly one step.
+\end{lemma}
+
+\begin{proof}
+Both displayed computations are one line; $(\cdot+1)_*\theta(2k+1)=t\mu^{\mathrm
+e}(2k)=(1-t)t^{2k+1}=\mu^{\mathrm o}(2k+1)$.
+\end{proof}
+
+\begin{lemma}[Residual identity]\label{XXXIII:lem:residual}
+Fix $j\in J$ and condition on $(g,x_{\ne j})$. Write $s=\chi(g)\prod_{i\ne
+j}\varepsilon_i\in\{\pm1\}$, so that $\nu_+$ (resp.\ $\nu_-$) puts $x_j$ in parity $s$
+(resp.\ $-s$). Couple, on each fibre, the maximal common mass $p_{\mathrm o}$ by the
+shift of Lemma~\ref{XXXIII:lem:shift} (direction $+1$ on $s=+1$ fibres, $-1$ on $s=-1$ fibres;
+no boundary issue, odd values being $\ge1$). Then the residual measures are
+\[
+\nu_+^{\mathrm{res}}=m_j\cdot\Bigl[2\cdot\mathbf1_{\{s=+1\}}\,
+\bigl(\mathrm{Haar}\otimes\mu_{\ne j}\bigr)\Bigr]\otimes\frac{\mu^{\mathrm e}_{t_j}}
+{p_{\mathrm e}},
+\qquad
+\nu_-^{\mathrm{res}}=m_j\cdot\Bigl[2\cdot\mathbf1_{\{s=-1\}}\cdots\Bigr]\otimes
+\frac{\mu^{\mathrm e}_{t_j}}{p_{\mathrm e}},
+\]
+of total mass $m_j$ each; and $m_j^{-1}(\nu_+^{\mathrm{res}},\nu_-^{\mathrm{res}})$ is
+exactly the extreme pair of the subsystem on $G\times\overline\N^{\,J\setminus\{j\}}$
+(order parameter $s$), tensored with a common spectator law in the $j$-th coordinate.
+\end{lemma}
+
+\begin{proof}
+On a fibre with $s=+1$, $\nu_+$ carries $x_j\sim\mu^{\mathrm e}$ of mass $p_{\mathrm e}$
+and the shifted sub-measure is $\theta=t\mu^{\mathrm e}$, so the leftover is
+$(1-t)\mu^{\mathrm e}$, of mass $(1-t)p_{\mathrm e}=m_j$ and normalized law
+$\mu^{\mathrm e}/p_{\mathrm e}$; on $s=-1$ fibres $\nu_+$ is exhausted and $\nu_-$
+retains the same leftover. Reassembling over fibres gives the display; the identification
+with the subsystem pair is the equality $\Psi=s$ on the residual support
+($\varepsilon_j\equiv+1$ there).
+\end{proof}
+
+\section{The adaptive coupling and the bound}\label{XXXIII:sec:bound}
+
+\begin{theorem}[Adaptive coupling upper bound]\label{XXXIII:thm:upper}
+For every enumeration $(j_1,j_2,\dots)$ of $J$,
+\[
+W_1(\varphi_+,\varphi_-)\ \le\
+w_0\,\Pi_\infty(\beta)\ +\ \sum_{k\ge1}w_{j_k}\,\tau_{j_k}\prod_{l<k}m_{j_l},
+\qquad \tau_j:=1-m_j=\frac{2t_j}{1+t_j},
+\]
+the right side being the expected cost $\E[w_{J^*}]$ of an independent scan that at step
+$k$ flips coordinate $j_k$ with probability $\tau_{j_k}$ (cost $w_{j_k}$) and, if no
+coordinate ever flips (probability $\Pi_\infty$), pays the group flip $w_0$. The bound is
+strictly smaller than $w_0$ whenever some $w_j<w_0$, and
+\[
+0\ \le\ \Bigl(w_0\Pi_\infty+\sum_kw_{j_k}\tau_{j_k}\prod_{l<k}m_{j_l}\Bigr)-w_0\Pi_\infty
+\ \le\ 2\sum_jw_jt_j\ \xrightarrow[\ \beta\to\infty\ ]{}\ 0 :
+\]
+the upper bound pinches against the squeeze lower bound $w_0\Pi_\infty$ of Chapter~\ref{ch:XXIX} in
+the deep-freeze limit.
+\end{theorem}
+
+\begin{proof}
+Apply Lemma~\ref{XXXIII:lem:residual} at $j_1$: a coupling moving mass $1-m_{j_1}=\tau_{j_1}$ by
+one $j_1$-step (cost $\le w_{j_1}$ each, Lemma~\ref{XXXIII:lem:shift}) and leaving a residual
+pair of mass $m_{j_1}$ which is $m_{j_1}$ times the extreme pair of the subsystem without
+$j_1$ (the spectator coordinate is coupled by the identity, at zero cost). Iterate on
+$j_2,j_3,\dots$; after exhausting $J$ the residual pair, of mass $\Pi_\infty$, is
+supported on $\{s'=+1\}\times$ vs $\{s'=-1\}\times$ with $s'=\chi(g)$, and the group flip
+$T(g,x)=(g\sigma,x)$ transports it exactly, at cost $\le w_0$ per unit. Summing costs
+gives the display; each partial sum plus the residual masses telescopes to $1$, whence
+the scan interpretation. Strictness: replacing the final $w_0$-payment on the $k$-th
+channel's mass by the channel itself saves $(w_0-w_{j_k})\tau_{j_k}\prod_{l<k}m_{j_l}>0$.
+The gap estimate: $\tau_j\le2t_j$ and $\prod_{l<k}m_{j_l}\le1$.
+\end{proof}
+
+\begin{proposition}[Optimal enumeration]\label{XXXIII:prop:order}
+The bound of Theorem~\ref{XXXIII:thm:upper} is minimized by enumerating $J$ in increasing order
+of $w_j$.
+\end{proposition}
+
+\begin{proof}
+Swapping adjacent $j,j'$ changes the bound by
+$w_j\tau_j+m_j w_{j'}\tau_{j'}-w_{j'}\tau_{j'}-m_{j'}w_j\tau_j
+=\tau_j\tau_{j'}(w_j-w_{j'})$, independently of the remainder; so any enumeration with an
+adjacent inversion is improved by sorting.
+\end{proof}
+
+\begin{remark}[Against the numerical verdict, and the remaining gap]\label{XXXIII:rem:numerics}
+On the toy model of Chapter~\ref{ch:XXIX}'s experiment ($w_0=1$, $w_j=(j+1)^{-1}$,
+$t_j=p_j^{-1}$, $N=3$): sorted enumeration $(w=\tfrac14,\tfrac13,\tfrac12)$ gives
+$\tfrac1{12}+\tfrac23\bigl[\tfrac16+\tfrac12(\tfrac1{12}+\tfrac23)\bigr]
+=\tfrac5{12}\approx0.4167$, against the certified window $[0.2254,\,0.2288]$ of the SOCP
+computation: consistent, and decisively below the trivial $w_0=1$. The physical reading
+is the one the construction embodies: near the transition the thermal activity
+$\tau_j=\frac{2t_j}{1+t_j}$ of each prime opens a microscopic channel --- an arithmetic
+fluctuation of cost $w_j$ --- that substitutes for the macroscopic symmetry flip of cost
+$w_0$; in the deep freeze all channels close ($\tau_j\to0$) and the group flip recovers
+its monopoly, which is why the bound pinches there. The factor $\approx1.8$ separating
+the bound from the numerical optimum near criticality is honest and structural: the scan
+plan flips the \emph{first} available coordinate deterministically, while the SOCP
+optimizer shades amplitudes continuously across coordinates; closing the gap requires
+randomized multi-coordinate plans (fractional channel usage), and their optimization over
+the channel simplex is the remaining problem, now bracketed on both sides by closed
+forms.
+\end{remark}
+

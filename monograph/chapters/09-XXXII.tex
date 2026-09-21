@@ -1,0 +1,171 @@
+% generated from papers/XXXII-descent/paper_XXXII_descent.tex -- edit the paper, then rerun assemble.py
+\chapter[Galois descent for affine boundaries]{Galois descent for affine Bost--Connes boundaries:\\ capitulation, the obstruction cocycle, and the emergence of the class group}\label{ch:XXXII}
+\renewcommand{\Ns}{N}
+\chapterorigin{This chapter is Paper XXXII of the series (\texttt{papers/XXXII-descent/}).}
+\begin{summary}
+Let $\pp$ be a non-principal prime of $K$, $h=\ord([\pp]\in\Cl_K)$, $H$ the Hilbert class
+field, $G=\Gal(H/K)\cong\Cl_K$. By the principal ideal theorem $\pp\OH=(\Pi)$ is
+principal, and $\pp$ splits in $H$ into $g=|\Cl_K|/h$ primes of residue degree $h$, the
+Frobenius being the class $[\pp]$ itself under Artin. We construct the capitulated affine
+system over $H$ on $\prod_{i=1}^g\mathcal O_{\PP_i}$, with unit-extended scaling monoid
+$\OH^\times\Pi^{\N}$ --- the extension is forced: $\sigma(\Pi)=u_\sigma\Pi$ with
+$u_\sigma\in\OH^\times$, so $G$ acts only on the unit-extended system --- and prove the
+descent theorems. First, the obstruction cocycle $c_\pp:\sigma\mapsto\sigma(\Pi)/\Pi$
+represents $\delta([\pp])$ under a canonical injection
+$\delta:\Cl_K\hookrightarrow H^1(G,\OH^\times)$ built from Hilbert~90 and the principal
+ideal theorem: \emph{the full class group is exactly the group of affine descent
+obstructions}, and an invariant generator exists if and only if $\pp$ is principal.
+Second, the three scalings are related by the norm, $\pi=N_{H/K}(\Pi)$ up to $\OK^\times$,
+and Green imprimitivity reduces $\partial\Aaff_{H,\Pi}\rtimes G$ to the inert local model
+crossed by the decomposition group $\langle\Frob_\pp\rangle\cong\Z/h$; by Julg this
+computes the equivariant K-theory. Third, the ladder of unit classes is explicit:
+$\ord[1]=q^{h}-1$ at the bottom ($q=\Ns\pp$; Chapter~\ref{ch:XXXI}) and
+$\ord[1]=q^{|\Cl_K|}-1$ at the top --- the order of the class at the bottom, the class
+\emph{number} at the top, and the group structure itself in the obstruction cocycles. The
+integral equivariant K-groups beyond the reduction, and the Morita question for the
+fixed-point (rather than crossed-product) relation, are recorded as the remaining
+problems.
+\end{summary}
+
+
+\section{The capitulated system and the Galois action}\label{XXXII:sec:top}
+
+Throughout, $\pp$ is a prime of $K$ with $q=\Ns\pp$ and $h=\ord([\pp]\in\Cl_K)$; $H$ is
+the Hilbert class field, $G=\Gal(H/K)\cong\Cl_K$ by Artin, and $\pp\OH=(\Pi)$ by the
+principal ideal theorem \cite[VI.7]{Neukirch}.
+
+\begin{lemma}[Splitting structure]\label{XXXII:lem:split}
+$\pp$ splits in $H$ into $g=|\Cl_K|/h$ distinct primes $\PP_1,\dots,\PP_g$, unramified of
+residue degree $f=h$, and $G$ permutes them transitively with stabilizer of $\PP_1$ the
+cyclic group $C:=\langle\Frob_\pp\rangle\cong\Z/h$. Moreover $\Ns_H(\pp\OH)=q^{|\Cl_K|}$.
+\end{lemma}
+
+\begin{proof}
+$H/K$ is abelian unramified; the Artin map sends $\Frob_\pp$ to $[\pp]$, of order $h$, so
+$f=h$ and $g=[H:K]/f=|\Cl_K|/h$; the norm of the extended ideal is $q^{fg}=q^{|\Cl_K|}$.
+\end{proof}
+
+\begin{proposition}[The top system, and why the units are forced]\label{XXXII:prop:top}
+On $X_H:=\prod_{i=1}^g\mathcal O_{\PP_i}$, with $\OH$ acting densely by translation
+(strong approximation) and the monoid $M_H:=\OH^\times\cdot\Pi^{\N}$ acting by
+multiplication ($v_{\PP_i}(\Pi)=1$ for every $i$), the affine system
+$\Aaff_{H,\Pi}:=C(X_H)\rtimes(\OH\rtimes M_H)$ and its boundary quotient
+$\partial\Aaff_{H,\Pi}$ --- Cuntz relation over the $q^{|\Cl_K|}$ translates
+$\OH/(\Pi)$ --- are well defined, and $G$ acts on them by
+\[
+\beta_\sigma\bigl(f\bigr)=f\circ\sigma^{-1},\qquad
+\beta_\sigma\bigl(u_b\bigr)=u_{\sigma b},\qquad
+\beta_\sigma\bigl(\mu_\gamma\bigr)=\mu_{\sigma\gamma}\quad(\gamma\in M_H),
+\]
+using $\sigma(X_H)=X_H$ (permutation of the factors through the $\PP_i$) and
+$\sigma(M_H)=M_H$. The unit extension is forced: $\sigma(\Pi)=u_\sigma\Pi$ with
+$u_\sigma=\sigma(\Pi)/\Pi\in\OH^\times$ (both sides generate the $G$-invariant ideal
+$\pp\OH$), so on the minimal monoid $\Pi^{\N}$ the Galois action is defined only up to the
+unit twist $u_\sigma$, and no sub-monoid on which $G$ acts omits the units unless the
+twist is a coboundary --- which, by Theorem~\ref{XXXII:thm:obstruction}, happens exactly when
+$\pp$ is principal.
+\end{proposition}
+
+\section{The obstruction cocycle is the class}\label{XXXII:sec:obstruction}
+
+\begin{theorem}[Emergence of the full class group]\label{XXXII:thm:obstruction}
+The map $\sigma\mapsto u_\sigma=\sigma(\Pi)/\Pi$ is a $1$-cocycle whose class
+$[c_\pp]\in H^1(G,\OH^\times)$ is independent of the choice of $\Pi$, and there is a
+canonical injective homomorphism
+\[
+\delta:\ \Cl_K\ \hookrightarrow\ H^1(G,\OH^\times),\qquad
+\delta([\mathfrak a])=[\sigma\mapsto\sigma(\alpha)/\alpha]\ \text{for}\
+\mathfrak a\OH=(\alpha),
+\]
+with $\delta([\pp])=[c_\pp]$. In particular: an invariant generator of $\pp\OH$ exists if
+and only if $\pp$ is principal in $K$; and the group of descent obstructions of the
+affine systems, as $\pp$ ranges over the primes of $K$, is exactly $\delta(\Cl_K)\cong
+\Cl_K$.
+\end{theorem}
+
+\begin{proof}
+Cocycle identity and independence of $\Pi$ are immediate ($\Pi\mapsto v\Pi$ changes
+$c_\pp$ by the coboundary of $v$). For $\delta$: every ideal capitulates
+($\mathfrak a\OH$ principal, the principal ideal theorem \cite[VI.7]{Neukirch}), so
+$\delta$ is defined on all of $\Cl_K$; it is well defined and homomorphic by the same
+coboundary computation, principal ideals of $K$ mapping to coboundaries of elements of
+$K^\times$, which are trivial. Injectivity: if $\sigma(\alpha)/\alpha=\sigma(w)/w$ for
+all $\sigma$ and some $w\in\OH^\times$, then $\alpha/w\in H^{\times G}=K^\times$ and
+$\mathfrak a\OH=(\alpha/w)\OH$ with $\alpha/w\in K^\times$; taking valuations at the
+primes of $K$ (unramifiedness) gives $\mathfrak a=(\alpha/w)$ in $\OK$, so
+$[\mathfrak a]=1$. (Equivalently: $\delta$ is the connecting map of
+$1\to\OH^\times\to H^\times\to P_H\to1$ restricted to extended ideals, injective by
+Hilbert~90.) The last statement holds since prime classes generate $\Cl_K$.
+\end{proof}
+
+\section{Descent: norm, imprimitivity, and the ladder of unit classes}\label{XXXII:sec:descent}
+
+\begin{proposition}[The bottom scaling is the norm of the top scaling]\label{XXXII:prop:norm}
+$\bigl(N_{H/K}(\Pi)\bigr)=\pp^{\,|\Cl_K|}=(\pi)^{|\Cl_K|/h}$, so
+$N_{H/K}(\Pi)=\pi^{\,g}u$ for a unit $u\in\OK^\times$: the Chapter~\ref{ch:XXXI} scaling $\pi$ is,
+up to units and the transitivity index $g$, the norm of the capitulated scaling.
+For $g=1$ (that is, $h=|\Cl_K|$, the class $[\pp]$ generating), $\pi=N_{H/K}(\Pi)u$
+exactly.
+\end{proposition}
+
+\begin{proof}
+$N_{H/K}(\pp\OH)=\pp^{[H:K]}=\pp^{\,hg}=(\pi)^g$; apply $N_{H/K}$ to $\Pi$.
+\end{proof}
+
+\begin{theorem}[Imprimitivity, and the equivariant K-theory reduced]\label{XXXII:thm:imprimitivity}
+By Julg, $K_*^G(\partial\Aaff_{H,\Pi})\cong K_*(\partial\Aaff_{H,\Pi}\rtimes G)$
+\cite{Julg}; and since $X_H\cong\mathrm{Ind}_C^G\,\mathcal O_{\PP_1}$ as a $G$-space
+(Lemma~\ref{XXXII:lem:split}), Green's imprimitivity theorem \cite{Green} gives a strong Morita
+equivalence
+\[
+\partial\Aaff_{H,\Pi}\rtimes G\ \sim_{M}\
+\partial\Aloc_{\PP_1}\rtimes C,
+\]
+where $\partial\Aloc_{\PP_1}$ is the inert local model --- the boundary
+system on $\mathcal O_{\PP_1}$ alone, translations by $\OH$ through its dense image,
+scalings by $\OH^\times\Pi^{\N}$ --- and $C\cong\Z/h$ is the decomposition group,
+acting through the local Frobenius. The computation of the integral
+$K_*(\partial\Aloc_{\PP_1}\rtimes\Z/h)$ is the reduction achieved; it is
+not completed here (Problem (i) of \S\ref{XXXII:sec:remaining}).
+\end{theorem}
+
+\begin{theorem}[The ladder of unit classes]\label{XXXII:thm:ladder}
+In $K_0$ of the respective boundary quotients:
+\[
+\ord[1_{\partial\Aaff_{K,\{\pp\}}}]=q^{h}-1
+\qquad\text{and}\qquad
+\ord[1_{\partial\Aaff_{H,\Pi}}]=q^{|\Cl_K|}-1 .
+\]
+The bottom sees the \emph{order} of the class, the top the class \emph{number}, and the
+group structure of $\Cl_K$ itself lives in the obstruction cocycles of
+Theorem~\ref{XXXII:thm:obstruction}.
+\end{theorem}
+
+\begin{proof}
+The bottom is Chapter~\ref{ch:XXXI}. For the top, the $r=0$ layer of the exterior-tower argument of
+Chapter~\ref{ch:XXX} applies on $X_H$: $C(X_H)=\varinjlim_mC(\OH/(\Pi^m))$ with transitive
+translation action, $|\OH/(\Pi)|=q^{|\Cl_K|}$ by Lemma~\ref{XXXII:lem:split}, so
+$M_0=\Z[1/q]$ with the scaling acting by $q^{-|\Cl_K|}$, and
+$\operatorname{coker}(1-q^{-|\Cl_K|})=\Z/(q^{|\Cl_K|}-1)$ generated by the class of the
+unit; the additional unit scalings act trivially on $M_0$ (they preserve every
+$\Pi$-adic cylinder's measure class and fix the class of $1$), so the order is exact.
+\end{proof}
+
+\section{What remains}\label{XXXII:sec:remaining}
+
+\emph{(i)} The integral computation of
+$K_*(\partial\Aloc_{\PP_1}\rtimes\Z/h)$: the exterior tower of Chapter~\ref{ch:XXX}
+is $\Z/h$-equivariant, and what is needed is the equivariant colimit --- concretely, the
+$R(\Z/h)$-module structure of the layers $M_r(\OH)$ under Frobenius --- not a new idea
+but a genuine computation, already nontrivial for the first inert example
+($K=\Q(\sqrt{-5})$, $H=\Q(i,\sqrt5)$, $\pp_3$ inert in $H/K$, $C=G=\Z/2$).
+\emph{(ii)} The fixed-point question: the Chapter~\ref{ch:XXXI} bottom system is the $C$-fixed-point
+system of the inert local model ($\mathcal O_\pp=\mathcal O_{\PP_1}^{C}$,
+$\OK=\OH^{C}$, $\pi=N(\Pi)u$), and whether fixed-point and crossed-product descents are
+Morita equivalent is governed by the properness of the $C$-action on the boundary
+groupoid --- measure-theoretically the fixed locus is null, topologically it is not, and
+the discrepancy is exactly where the obstruction cocycle $[c_\pp]$ should reappear.
+\emph{(iii)} The unit-extended monoid enlarges the top algebra by the infinite unit group
+$\OH^\times$; its own K-theoretic footprint (a torus of rank the unit rank of $H$) must
+be separated from the class-group data in any complete answer.
+
