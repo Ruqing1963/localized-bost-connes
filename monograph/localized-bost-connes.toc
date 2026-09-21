@@ -1,0 +1,287 @@
+\contentsline {chapter}{\tocchapter {Chapter}{}{Preface}}{xi}{chapter*.1}%
+\contentsline {chapter}{\tocchapter {Chapter}{}{Acknowledgements}}{xiii}{chapter*.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{}{Reading guide}}{xiv}{chapter*.3}%
+\contentsline {section}{\tocsection {}{}{The chapters and the papers}}{xiv}{section*.4}%
+\contentsline {section}{\tocsection {}{}{Dependencies}}{xvi}{section*.5}%
+\contentsline {section}{\tocsection {}{}{Numbering and cross-references}}{xvii}{section*.6}%
+\contentsline {section}{\tocsection {}{}{What has not been harmonised}}{xviii}{section*.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{}{Standing notation}}{xix}{chapter*.8}%
+\contentsline {part}{Part\ 1. \enspace \noindent The classification}{1}{part.1}%
+\contentsline {chapter}{\tocchapter {Chapter}{1}{KMS state uniqueness and phase transitions in localized Bost--Connes systems:\\ from Chebotarev density to the Hardy--Littlewood conjecture}}{2}{chapter.1}%
+\contentsline {section}{\tocsection {}{1}{Introduction}}{2}{section.1.1}%
+\contentsline {subsection}{\tocsubsection {}{}{Main results}}{3}{section*.9}%
+\contentsline {subsection}{\tocsubsection {}{}{Conventions}}{4}{section*.10}%
+\contentsline {section}{\tocsection {}{2}{The $S$-local system over a number field}}{4}{section.1.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{The symmetry group}}{4}{subsection.1.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{The algebra and its dynamics}}{5}{subsection.1.2.2}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{KMS states are measures}}{6}{subsection.1.2.3}%
+\contentsline {subsection}{\tocsubsection {}{2.4}{Coordinates}}{7}{subsection.1.2.4}%
+\contentsline {section}{\tocsection {}{3}{The classification and the Chebotarev criterion}}{8}{section.1.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{The Chebotarev criterion}}{10}{subsection.1.3.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{Failure of the ergodicity hypothesis}}{12}{subsection.1.3.2}%
+\contentsline {section}{\tocsection {}{4}{Algebraic obstructions and the separation of topology and measure}}{12}{section.1.4}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{The unramified class-group obstruction}}{12}{subsection.1.4.1}%
+\contentsline {subsection}{\tocsubsection {}{4.2}{Density is not enough}}{13}{subsection.1.4.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{}{The invariant}}{14}{section*.11}%
+\contentsline {subsubsection}{\tocsubsubsection {}{}{Cascades}}{16}{section*.12}%
+\contentsline {subsection}{\tocsubsection {}{4.3}{The unit group and Leopoldt's conjecture}}{17}{subsection.1.4.3}%
+\contentsline {subsection}{\tocsubsection {}{4.4}{Summary of the comparison}}{18}{subsection.1.4.4}%
+\contentsline {section}{\tocsection {}{5}{Sparse sets: the closed low-temperature phase and Sophie Germain primes}}{18}{section.1.5}%
+\contentsline {subsection}{\tocsubsection {}{5.1}{Sophie Germain primes}}{19}{subsection.1.5.1}%
+\contentsline {subsection}{\tocsubsection {}{5.2}{Restriction of the classical phases}}{22}{subsection.1.5.2}%
+\contentsline {section}{\tocsection {}{6}{Assessment and open problems}}{22}{section.1.6}%
+\contentsline {part}{Part\ 2. \enspace \noindent Structure of the abelian systems}{25}{part.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{2}{Factor type and the spectrum of transitions}}{26}{chapter.2}%
+\contentsline {section}{\tocsection {}{1}{Introduction: one group, two directions}}{26}{section.2.1}%
+\contentsline {section}{\tocsection {}{2}{The type criterion}}{27}{section.2.2}%
+\contentsline {section}{\tocsection {}{3}{The classical systems}}{29}{section.2.3}%
+\contentsline {section}{\tocsection {}{4}{Two incommensurable norms do not suffice}}{30}{section.2.4}%
+\contentsline {section}{\tocsection {}{5}{The spectrum of transitions}}{33}{section.2.5}%
+\contentsline {section}{\tocsection {}{6}{Cantor transition loci, and the unattainable staircase}}{34}{section.2.6}%
+\contentsline {section}{\tocsection {}{7}{Order parameters}}{35}{section.2.7}%
+\contentsline {section}{\tocsection {}{8}{Assessment}}{37}{section.2.8}%
+\contentsline {chapter}{\tocchapter {Chapter}{3}{Ideal structure, boundary quotient, and index}}{38}{chapter.3}%
+\contentsline {section}{\tocsection {}{1}{The single-isometry phenomenon}}{38}{section.3.1}%
+\contentsline {section}{\tocsection {}{2}{Isotropy, topological principality, and the ideal lattice}}{39}{section.3.2}%
+\contentsline {section}{\tocsection {}{3}{The boundary quotient}}{41}{section.3.3}%
+\contentsline {section}{\tocsection {}{4}{$K$-theory of $\mathcal {A}_{K,S}$}}{42}{section.3.4}%
+\contentsline {section}{\tocsection {}{5}{Index theory}}{43}{section.3.5}%
+\contentsline {section}{\tocsection {}{6}{The control experiment: restoring the additive part}}{47}{section.3.6}%
+\contentsline {section}{\tocsection {}{7}{Assessment}}{48}{section.3.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{4}{Invariants, entropy, and the measure class}}{50}{chapter.4}%
+\contentsline {section}{\tocsection {}{1}{Introduction: which kind of invariant}}{50}{section.4.1}%
+\contentsline {section}{\tocsection {}{2}{$\Xi _\beta $ is measurable first cohomology}}{51}{section.4.2}%
+\contentsline {section}{\tocsection {}{3}{$K$-theory: the eigenvalue equation}}{52}{section.4.3}%
+\contentsline {section}{\tocsection {}{4}{Homotopy invariants are blind}}{52}{section.4.4}%
+\contentsline {section}{\tocsection {}{5}{Dynamical entropy}}{54}{section.4.5}%
+\contentsline {section}{\tocsection {}{6}{Relative entropy and the information staircase}}{55}{section.4.6}%
+\contentsline {section}{\tocsection {}{7}{Assessment}}{57}{section.4.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{5}{The measurable first cohomology of the tail relation:\\ turbulence and the arithmetic embedding}}{58}{chapter.5}%
+\contentsline {section}{\tocsection {}{1}{The structure theorem: what can and cannot be said}}{58}{section.5.1}%
+\contentsline {section}{\tocsection {}{2}{The arithmetic embedding, and the amnesia of the ambient group}}{59}{section.5.2}%
+\contentsline {section}{\tocsection {}{3}{The verdict}}{59}{section.5.3}%
+\contentsline {section}{\tocsection {}{4}{Assessment}}{59}{section.5.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{6}{Noncommutative metric geometry}}{60}{chapter.6}%
+\contentsline {section}{\tocsection {}{1}{Introduction: three jumps and one slope}}{60}{section.6.1}%
+\contentsline {section}{\tocsection {}{2}{The base space and the horizontal Dirac operator}}{61}{section.6.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Two structural facts}}{61}{subsection.6.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{The compact model and the moves}}{61}{subsection.6.2.2}%
+\contentsline {section}{\tocsection {}{3}{$C(X)$ is a compact quantum metric space}}{62}{section.6.3}%
+\contentsline {section}{\tocsection {}{4}{The order parameter is not Lipschitz}}{63}{section.6.4}%
+\contentsline {section}{\tocsection {}{5}{The squeeze theorem}}{64}{section.6.5}%
+\contentsline {section}{\tocsection {}{6}{The metric transition is continuous}}{65}{section.6.6}%
+\contentsline {section}{\tocsection {}{7}{Assessment}}{67}{section.6.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{7}{The Wasserstein separation of the broken phases:\\ a finite-dimensional reduction and the quadratic chaos bound}}{68}{chapter.7}%
+\contentsline {section}{\tocsection {}{1}{The setting, and the squeeze re-proved}}{68}{section.7.1}%
+\contentsline {section}{\tocsection {}{2}{The finite-dimensional reduction}}{69}{section.7.2}%
+\contentsline {section}{\tocsection {}{3}{The quadratic chaos bound}}{70}{section.7.3}%
+\contentsline {section}{\tocsection {}{4}{Structure of optimizers, and what remains}}{70}{section.7.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{8}{The adaptive coupling upper bound for the Wasserstein separation:\\ microscopic flips against the macroscopic symmetry cost}}{72}{chapter.8}%
+\contentsline {section}{\tocsection {}{1}{Setting, cost, and the two exact identities}}{72}{section.8.1}%
+\contentsline {section}{\tocsection {}{2}{The adaptive coupling and the bound}}{73}{section.8.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{9}{The microscopic geometry of Wasserstein separation:\\ cone geodesics, the exact single-step barrier, and the failure of fractional transport}}{75}{chapter.9}%
+\contentsline {section}{\tocsection {}{1}{The fractional single-step barrier}}{75}{section.9.1}%
+\contentsline {section}{\tocsection {}{2}{Cone geodesics and the nonlinear discount}}{76}{section.9.2}%
+\contentsline {section}{\tocsection {}{3}{The gap is geometry, not strategy}}{76}{section.9.3}%
+\contentsline {section}{\tocsection {}{4}{Assessment: the discrete $\infty $-Laplacian}}{76}{section.9.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{10}{K-theory of the affine boundary quotient:\\ the return of the norm and the trace}}{77}{chapter.10}%
+\contentsline {section}{\tocsection {}{1}{The setting, and a repair}}{77}{section.10.1}%
+\contentsline {section}{\tocsection {}{2}{The dilated form}}{77}{section.10.2}%
+\contentsline {section}{\tocsection {}{3}{The exterior tower and the iterated Pimsner--Voiculescu computation}}{78}{section.10.3}%
+\contentsline {section}{\tocsection {}{4}{What the affine boundary remembers, and what remains}}{79}{section.10.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{11}{The ray-class repair for affine systems:\\ the class group as the index of definable scalings}}{80}{chapter.11}%
+\contentsline {section}{\tocsection {}{1}{The bottleneck, and the scaling-index theorem}}{80}{section.11.1}%
+\contentsline {section}{\tocsection {}{2}{K-theory of the repaired boundary}}{81}{section.11.2}%
+\contentsline {section}{\tocsection {}{3}{The arithmetic verdict, and what remains}}{82}{section.11.3}%
+\contentsline {chapter}{\tocchapter {Chapter}{12}{Galois descent for affine Bost--Connes boundaries:\\ capitulation, the obstruction cocycle, and the emergence of the class group}}{83}{chapter.12}%
+\contentsline {section}{\tocsection {}{1}{The capitulated system and the Galois action}}{83}{section.12.1}%
+\contentsline {section}{\tocsection {}{2}{The obstruction cocycle is the class}}{84}{section.12.2}%
+\contentsline {section}{\tocsection {}{3}{Descent: norm, imprimitivity, and the ladder of unit classes}}{84}{section.12.3}%
+\contentsline {section}{\tocsection {}{4}{What remains}}{85}{section.12.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{13}{Integral equivariant K-theory of the inert local model:\\ the ray-class entanglement and exact torsion}}{86}{chapter.13}%
+\contentsline {section}{\tocsection {}{1}{The explicit generator and the equivariant exterior tower}}{86}{section.13.1}%
+\contentsline {section}{\tocsection {}{2}{Exact evaluation of the intermediate layers}}{86}{section.13.2}%
+\contentsline {section}{\tocsection {}{3}{The K-theory of the crossed product and the entanglement law}}{87}{section.13.3}%
+\contentsline {section}{\tocsection {}{4}{Assessment}}{87}{section.13.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{14}{The free variant and the free critical exponent}}{88}{chapter.14}%
+\contentsline {section}{\tocsection {}{1}{The free system}}{88}{section.14.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{The naive deformation is inconsistent}}{88}{subsection.14.1.1}%
+\contentsline {subsection}{\tocsubsection {}{1.2}{The Toeplitz--Cuntz system}}{89}{subsection.14.1.2}%
+\contentsline {section}{\tocsection {}{2}{The law of the fields}}{90}{section.14.2}%
+\contentsline {section}{\tocsection {}{3}{Asymptotic, not exact, freeness}}{91}{section.14.3}%
+\contentsline {section}{\tocsection {}{4}{The free critical exponent}}{92}{section.14.4}%
+\contentsline {section}{\tocsection {}{5}{The free deformation annihilates the cascade}}{93}{section.14.5}%
+\contentsline {section}{\tocsection {}{6}{Assessment}}{94}{section.14.6}%
+\contentsline {part}{Part\ 3. \enspace \noindent Towards non-abelian systems}{95}{part.3}%
+\contentsline {chapter}{\tocchapter {Chapter}{15}{Towards non-abelian localized Bost--Connes systems:\\ the matrix Kakutani dichotomy and a Tannakian obstruction}}{96}{chapter.15}%
+\contentsline {section}{\tocsection {}{1}{Which steps of the abelian argument use commutativity}}{96}{section.15.1}%
+\contentsline {section}{\tocsection {}{2}{The matrix Kakutani dichotomy}}{97}{section.15.2}%
+\contentsline {section}{\tocsection {}{3}{The obstruction is a quotient, not a dual subgroup}}{98}{section.15.3}%
+\contentsline {section}{\tocsection {}{4}{$L$-functions, with the correct constants}}{99}{section.15.4}%
+\contentsline {section}{\tocsection {}{5}{$GL_2$: Sato--Tate forbids symmetry breaking, anomalies permit it}}{100}{section.15.5}%
+\contentsline {section}{\tocsection {}{6}{The algebra is not constructed}}{101}{section.15.6}%
+\contentsline {section}{\tocsection {}{7}{Assessment}}{102}{section.15.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{16}{The Galois-twisted arithmetic groupoid:\\ its KMS classification, and why the Tannakian obstruction\\ does not compute it}}{103}{chapter.16}%
+\contentsline {section}{\tocsection {}{1}{The Galois-twisted groupoid}}{103}{section.16.1}%
+\contentsline {section}{\tocsection {}{2}{Disintegration and the matrix Fourier transform}}{104}{section.16.2}%
+\contentsline {section}{\tocsection {}{3}{What the zero-one law says, and what it does not}}{105}{section.16.3}%
+\contentsline {section}{\tocsection {}{4}{The KMS classification}}{106}{section.16.4}%
+\contentsline {section}{\tocsection {}{5}{The Tannakian obstruction does not compute the simplex}}{107}{section.16.5}%
+\contentsline {section}{\tocsection {}{6}{Route B: the matrix corner}}{108}{section.16.6}%
+\contentsline {section}{\tocsection {}{7}{Assessment}}{109}{section.16.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{17}{Non-abelian Bost--Connes groupoids:\\ two no-go theorems, and a construction that realizes $\mathrm {Prob}(G/N_\beta )$\\ exactly when the Frobenius lifts mix}}{110}{chapter.17}%
+\contentsline {section}{\tocsection {}{1}{The question, and what is already known}}{110}{section.17.1}%
+\contentsline {section}{\tocsection {}{2}{Route B: noncommutative coefficient algebras}}{111}{section.17.2}%
+\contentsline {section}{\tocsection {}{3}{Route A, first reading: isotropy cannot carry $N_\beta $}}{112}{section.17.3}%
+\contentsline {section}{\tocsection {}{4}{Route A, second reading: the ordered Frobenius cocycle}}{113}{section.17.4}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{The cocycle}}{113}{subsection.17.4.1}%
+\contentsline {subsection}{\tocsubsection {}{4.2}{The groupoid and its algebra}}{114}{subsection.17.4.2}%
+\contentsline {subsection}{\tocsubsection {}{4.3}{Classification by the Mackey range}}{114}{subsection.17.4.3}%
+\contentsline {subsection}{\tocsubsection {}{4.4}{The non-abelian Kakutani theorem}}{115}{subsection.17.4.4}%
+\contentsline {subsection}{\tocsubsection {}{4.5}{When is the Mackey range normal? A mixing criterion}}{116}{subsection.17.4.5}%
+\contentsline {subsection}{\tocsubsection {}{4.6}{When the lift does not matter}}{117}{subsection.17.4.6}%
+\contentsline {section}{\tocsection {}{5}{Verdict}}{118}{section.17.5}%
+\contentsline {chapter}{\tocchapter {Chapter}{18}{The abelian scaling bottleneck, and the angular Hurwitz system:\\ where noncommutative arithmetic thermodynamics can and cannot live}}{119}{chapter.18}%
+\contentsline {section}{\tocsection {}{1}{The bottleneck theorem}}{119}{section.18.1}%
+\contentsline {section}{\tocsection {}{2}{The complementary half, and where the grail lives}}{120}{section.18.2}%
+\contentsline {section}{\tocsection {}{3}{The angular Hurwitz system}}{120}{section.18.3}%
+\contentsline {chapter}{\tocchapter {Chapter}{19}{The angular transport: tree-level filtrations, predictable matrix martingales,\\ and the two regimes of the angular Hurwitz system}}{122}{chapter.19}%
+\contentsline {section}{\tocsection {}{1}{The tree-level filtration and the exact conditional law}}{122}{section.19.1}%
+\contentsline {section}{\tocsection {}{2}{The predictable matrix martingale}}{123}{section.19.2}%
+\contentsline {section}{\tocsection {}{3}{The corrected role of the spectral gap}}{123}{section.19.3}%
+\contentsline {part}{Part\ 4. \enspace \noindent Rigidity and reconstruction}{125}{part.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{20}{Localized Bost--Connes factors are amenable:\\ the failure of $W^*$-superrigidity,\\ and what survives at the $C^*$-level}}{126}{chapter.20}%
+\contentsline {section}{\tocsection {}{1}{Amenability, and what it costs}}{126}{section.20.1}%
+\contentsline {section}{\tocsection {}{2}{$W^*$-superrigidity fails maximally}}{127}{section.20.2}%
+\contentsline {section}{\tocsection {}{3}{Why Popa's machinery does not apply}}{128}{section.20.3}%
+\contentsline {section}{\tocsection {}{4}{Cartan subalgebras and orbit equivalence}}{128}{section.20.4}%
+\contentsline {section}{\tocsection {}{5}{What survives}}{129}{section.20.5}%
+\contentsline {section}{\tocsection {}{6}{Automorphisms, and the fundamental group}}{130}{section.20.6}%
+\contentsline {section}{\tocsection {}{7}{Assessment}}{130}{section.20.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{21}{Equivariant rigidity of localized Bost--Connes\\ $C^*$-dynamical systems: the fixed-point algebra\\ is the Cartan subalgebra}}{132}{chapter.21}%
+\contentsline {section}{\tocsection {}{1}{The fixed-point algebra}}{132}{section.21.1}%
+\contentsline {section}{\tocsection {}{2}{Reconstruction}}{134}{section.21.2}%
+\contentsline {section}{\tocsection {}{3}{What is not recovered}}{136}{section.21.3}%
+\contentsline {section}{\tocsection {}{4}{The KMS bundle is a weaker invariant}}{136}{section.21.4}%
+\contentsline {section}{\tocsection {}{5}{The Kirchberg boundary: a caution}}{137}{section.21.5}%
+\contentsline {section}{\tocsection {}{6}{Assessment}}{137}{section.21.6}%
+\contentsline {chapter}{\tocchapter {Chapter}{22}{The equal-norm case: norm-separation is not a hypothesis\\ but a characterization, and the gauge-equivariant repair}}{138}{chapter.22}%
+\contentsline {section}{\tocsection {}{1}{Norm-separation is a characterization}}{138}{section.22.1}%
+\contentsline {section}{\tocsection {}{2}{The structure of $\mathcal {A}^\sigma $ in general}}{140}{section.22.2}%
+\contentsline {section}{\tocsection {}{3}{Why the two proposed characterizations are circular}}{140}{section.22.3}%
+\contentsline {section}{\tocsection {}{4}{The gauge-equivariant repair}}{141}{section.22.4}%
+\contentsline {section}{\tocsection {}{5}{Assessment}}{143}{section.22.5}%
+\contentsline {chapter}{\tocchapter {Chapter}{23}{What $\sigma $-equivariance gives for free,\\ and why the range projections cannot give the rest}}{144}{chapter.23}%
+\contentsline {section}{\tocsection {}{1}{Spectral subspaces and what they see}}{144}{section.23.1}%
+\contentsline {section}{\tocsection {}{2}{What $\sigma $-equivariance gives for free}}{145}{section.23.2}%
+\contentsline {section}{\tocsection {}{3}{Mixed isometries exist: Step 2 fails}}{145}{section.23.3}%
+\contentsline {section}{\tocsection {}{4}{The decisive gap: range projections are blind to $G_S$}}{146}{section.23.4}%
+\contentsline {section}{\tocsection {}{5}{Assessment}}{147}{section.23.5}%
+\contentsline {chapter}{\tocchapter {Chapter}{24}{Quantum optimal transport on Bost--Connes systems:\\ the twist is harmful, the generator has a sign error,\\ and the transition is invisible to local inequalities}}{148}{chapter.24}%
+\contentsline {section}{\tocsection {}{1}{The twist}}{148}{section.24.1}%
+\contentsline {section}{\tocsection {}{2}{The untwisted operator, and the reappearance of norm-separation}}{149}{section.24.2}%
+\contentsline {section}{\tocsection {}{3}{The generator: a sign error in the detailed balance}}{150}{section.24.3}%
+\contentsline {section}{\tocsection {}{4}{No critical slowing down}}{151}{section.24.4}%
+\contentsline {section}{\tocsection {}{5}{Assessment}}{152}{section.24.5}%
+\contentsline {part}{Part\ 5. \enspace \noindent Non-commutative semigroups and $GL_2$}{153}{part.5}%
+\contentsline {chapter}{\tocchapter {Chapter}{25}{A non-commutative Ore LCM semigroup\\ with arithmetic thermodynamics:\\ the Hurwitz quaternions}}{154}{chapter.25}%
+\contentsline {section}{\tocsection {}{1}{The algebraic requirements}}{154}{section.25.1}%
+\contentsline {section}{\tocsection {}{2}{The Hurwitz quaternion monoid}}{155}{section.25.2}%
+\contentsline {section}{\tocsection {}{3}{The remaining condition}}{157}{section.25.3}%
+\contentsline {section}{\tocsection {}{4}{Assessment}}{158}{section.25.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{26}{Condition \textup {(C4)} and the nested/partition dichotomy:\\ why Ramanujan bounds cannot decide\\ non-amenability of the Hurwitz groupoid}}{159}{chapter.26}%
+\contentsline {section}{\tocsection {}{1}{What the route requires}}{159}{section.26.1}%
+\contentsline {section}{\tocsection {}{2}{The projections do not partition}}{160}{section.26.2}%
+\contentsline {section}{\tocsection {}{3}{The Markov operator does not contract}}{160}{section.26.3}%
+\contentsline {section}{\tocsection {}{4}{The spectral gap statement is not well posed}}{161}{section.26.4}%
+\contentsline {section}{\tocsection {}{5}{Forcing the partition destroys the system}}{161}{section.26.5}%
+\contentsline {section}{\tocsection {}{6}{The correct reformulation}}{162}{section.26.6}%
+\contentsline {section}{\tocsection {}{7}{Assessment}}{163}{section.26.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{27}{The universal multiplicity--norm mismatch,\\ and the reduction of \textup {(C4)} to the norm-one subgroup}}{164}{chapter.27}%
+\contentsline {section}{\tocsection {}{1}{Local multiplicities}}{164}{section.27.1}%
+\contentsline {section}{\tocsection {}{2}{The boundary quotient is empty, universally}}{165}{section.27.2}%
+\contentsline {section}{\tocsection {}{3}{The cocycle factors through the reduced norm}}{166}{section.27.3}%
+\contentsline {section}{\tocsection {}{4}{All Fourier fibres agree on $G^1$}}{167}{section.27.4}%
+\contentsline {section}{\tocsection {}{5}{Why this does not yet close (C4)}}{168}{section.27.5}%
+\contentsline {section}{\tocsection {}{6}{Assessment}}{169}{section.27.6}%
+\contentsline {chapter}{\tocchapter {Chapter}{28}{Localized $GL_2$ Bost--Connes systems:\\ the equilibrium range and the automorphic obstruction range\\ are disjoint, by exactly one}}{170}{chapter.28}%
+\contentsline {section}{\tocsection {}{1}{The algebra}}{170}{section.28.1}%
+\contentsline {section}{\tocsection {}{2}{The obstruction series and its $L$-function}}{171}{section.28.2}%
+\contentsline {section}{\tocsection {}{3}{The gap is exactly one}}{172}{section.28.3}%
+\contentsline {section}{\tocsection {}{4}{Sparse sets for $\Delta $}}{172}{section.28.4}%
+\contentsline {section}{\tocsection {}{5}{Assessment}}{173}{section.28.5}%
+\contentsline {chapter}{\tocchapter {Chapter}{29}{The Ramanujan bound is the tempered bound:\\ the Hecke operator on the Bruhat--Tits tree, and\\ a no-go theorem for condition (C4)}}{174}{chapter.29}%
+\contentsline {section}{\tocsection {}{1}{Setting and statements}}{174}{section.29.1}%
+\contentsline {section}{\tocsection {}{2}{The Hecke operator}}{176}{section.29.2}%
+\contentsline {section}{\tocsection {}{3}{Local properness and the regular representation}}{176}{section.29.3}%
+\contentsline {section}{\tocsection {}{4}{The spectrum, and what it does not prove}}{177}{section.29.4}%
+\contentsline {section}{\tocsection {}{5}{The no-go theorem}}{178}{section.29.5}%
+\contentsline {section}{\tocsection {}{6}{The search of Chapter\nonbreakingspace \ref {ch:X} is empty}}{178}{section.29.6}%
+\contentsline {section}{\tocsection {}{7}{Verdict}}{179}{section.29.7}%
+\contentsline {part}{Part\ 6. \enspace \noindent Geometric and function-field analogues}{181}{part.6}%
+\contentsline {chapter}{\tocchapter {Chapter}{30}{Localized Bost--Connes systems in arithmetic topology:\\ local class field theory, linking Kakutani dichotomies,\\ and topological phase transitions}}{182}{chapter.30}%
+\contentsline {section}{\tocsection {}{1}{The local dictionary and its homological foundation}}{183}{section.30.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{Local class field theory for knots}}{183}{subsection.30.1.1}%
+\contentsline {subsection}{\tocsubsection {}{1.2}{Half lives, half dies, and the unit group}}{183}{subsection.30.1.2}%
+\contentsline {section}{\tocsection {}{2}{The knot-theoretic Bost--Connes system}}{184}{section.30.2}%
+\contentsline {section}{\tocsection {}{3}{The linking obstruction group}}{185}{section.30.3}%
+\contentsline {section}{\tocsection {}{4}{Ambient homological obstructions}}{187}{section.30.4}%
+\contentsline {section}{\tocsection {}{5}{Volume exponents and closed phases}}{188}{section.30.5}%
+\contentsline {section}{\tocsection {}{6}{Contrastive autopsy: why the meridian fails}}{189}{section.30.6}%
+\contentsline {section}{\tocsection {}{7}{The dictionary, and assessment}}{190}{section.30.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{31}{Localized Bost--Connes systems over global function fields:\\ commensurability forbids type $\mathrm {III}_1$,\\ and the factor recovers the temperature}}{192}{chapter.31}%
+\contentsline {section}{\tocsection {}{1}{The system and its periodic flow}}{192}{section.31.1}%
+\contentsline {section}{\tocsection {}{2}{Rational thermodynamics}}{193}{section.31.2}%
+\contentsline {section}{\tocsection {}{3}{Commensurability forbids type $\mathrm {III}_1$}}{193}{section.31.3}%
+\contentsline {section}{\tocsection {}{4}{The factor recovers the temperature}}{194}{section.31.4}%
+\contentsline {section}{\tocsection {}{5}{The Weil--Chebotarev obstruction}}{194}{section.31.5}%
+\contentsline {section}{\tocsection {}{6}{Unconditional sparse sets and closed phases}}{196}{section.31.6}%
+\contentsline {section}{\tocsection {}{7}{Dictionary and assessment}}{196}{section.31.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{32}{Circle actions on function field Bost--Connes systems:\\ the compact group advantage is illusory,\\ and the Weil zeta function is thermodynamic}}{198}{chapter.32}%
+\contentsline {section}{\tocsection {}{1}{The affine boundary requires a point at infinity}}{198}{section.32.1}%
+\contentsline {section}{\tocsection {}{2}{Withdrawal: the compact group advantage does not exist}}{199}{section.32.2}%
+\contentsline {section}{\tocsection {}{3}{What the equivariant $K$-theory records}}{199}{section.32.3}%
+\contentsline {section}{\tocsection {}{4}{The Weil zeta function is the partition function}}{200}{section.32.4}%
+\contentsline {section}{\tocsection {}{5}{Assessment}}{201}{section.32.5}%
+\contentsline {chapter}{\tocchapter {Chapter}{33}{Isogeny, zeta-equivalence, and the Picard torsor\\ in function field Bost--Connes systems}}{203}{chapter.33}%
+\contentsline {section}{\tocsection {}{1}{The correct filtration}}{203}{section.33.1}%
+\contentsline {section}{\tocsection {}{2}{The Jacobian group as a torsion subgroup}}{204}{section.33.2}%
+\contentsline {section}{\tocsection {}{3}{Disambiguation}}{204}{section.33.3}%
+\contentsline {section}{\tocsection {}{4}{The hierarchy, with the third tier open}}{205}{section.33.4}%
+\contentsline {section}{\tocsection {}{5}{Assessment}}{206}{section.33.5}%
+\contentsline {chapter}{\tocchapter {Chapter}{34}{The limits of abelian reconstruction:\\ twin curves exist, genus one suffices,\\ and the obstruction is a torsor coordinate}}{208}{chapter.34}%
+\contentsline {section}{\tocsection {}{1}{Twin curves, and why genus one suffices}}{208}{section.34.1}%
+\contentsline {section}{\tocsection {}{2}{Indistinguishability at both tiers}}{209}{section.34.2}%
+\contentsline {section}{\tocsection {}{3}{The obstruction is a torsor coordinate, not a pairing}}{210}{section.34.3}%
+\contentsline {section}{\tocsection {}{4}{The resolution boundary}}{211}{section.34.4}%
+\contentsline {section}{\tocsection {}{5}{Retrospective}}{211}{section.34.5}%
+\contentsline {part}{Part\ 7. \enspace \noindent $p$-adic aspects}{213}{part.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{35}{Iwasawa theory and localized Bost--Connes systems:\\ there are no $p$-adic KMS states,\\ and where Leopoldt actually enters}}{214}{chapter.35}%
+\contentsline {section}{\tocsection {}{1}{There are no $p$-adic KMS states}}{214}{section.35.1}%
+\contentsline {section}{\tocsection {}{2}{The dynamics is undefined on $S=\{\mathfrak {p}\mid p\}$}}{215}{section.35.2}%
+\contentsline {section}{\tocsection {}{3}{There is no $p$-adic abscissa of convergence}}{215}{section.35.3}%
+\contentsline {section}{\tocsection {}{4}{The obstruction cannot generate the characteristic ideal}}{216}{section.35.4}%
+\contentsline {section}{\tocsection {}{5}{What is true}}{216}{section.35.5}%
+\contentsline {section}{\tocsection {}{6}{Assessment}}{217}{section.35.6}%
+\contentsline {chapter}{\tocchapter {Chapter}{36}{Leopoldt and the $p$-local Bost--Connes groupoid:\\ the rank of the isotropy, not its triviality,\\ and why $\log _p(N\mathfrak {p})$ vanishes}}{219}{chapter.36}%
+\contentsline {section}{\tocsection {}{1}{The isotropy of the intermediate strata}}{219}{section.36.1}%
+\contentsline {section}{\tocsection {}{2}{The exceptional Euler factor}}{221}{section.36.2}%
+\contentsline {section}{\tocsection {}{3}{The regulator is a dimension, not a volume}}{222}{section.36.3}%
+\contentsline {section}{\tocsection {}{4}{Assessment}}{223}{section.36.4}%
+\contentsline {part}{Part\ 8. \enspace \noindent Families of primes}{224}{part.8}%
+\contentsline {chapter}{\tocchapter {Chapter}{37}{The statistical mechanics of sieve-theoretic primes:\\ the critical spectrum, the log-power dichotomy,\\ and two families that are never unique}}{225}{chapter.37}%
+\contentsline {section}{\tocsection {}{1}{The critical exponent}}{225}{section.37.1}%
+\contentsline {section}{\tocsection {}{2}{Congruence confinement versus obstruction}}{226}{section.37.2}%
+\contentsline {section}{\tocsection {}{3}{The continuous spectrum}}{228}{section.37.3}%
+\contentsline {section}{\tocsection {}{4}{Assessment}}{228}{section.37.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{38}{Sato--Tate families in localized Bost--Connes systems:\\ open phase, no congruence obstruction,\\ and the symmetric power expansion}}{229}{chapter.38}%
+\contentsline {section}{\tocsection {}{1}{The thermodynamic baseline}}{229}{section.38.1}%
+\contentsline {section}{\tocsection {}{2}{No congruence obstruction}}{230}{section.38.2}%
+\contentsline {section}{\tocsection {}{3}{The symmetric power expansion}}{231}{section.38.3}%
+\contentsline {section}{\tocsection {}{4}{Assessment}}{232}{section.38.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{39}{The free twin-prime Bost--Connes system is unconditionally supercritical:\\ resolving the phase dichotomy via exact partial sums}}{234}{chapter.39}%
+\contentsline {section}{\tocsection {}{1}{The dichotomy and the identity}}{234}{section.39.1}%
+\contentsline {section}{\tocsection {}{2}{Unconditional resolution via segmented sieving}}{235}{section.39.2}%
+\contentsline {section}{\tocsection {}{3}{Methodological remarks: why heuristics do not bypass the sieve}}{235}{section.39.3}%
+\contentsline {chapter}{\tocchapter {\chaptername }{40}{Open problems}}{237}{chapter.40}%
+\contentsline {chapter}{\tocchapter {\chaptername }{}{Bibliography}}{240}{chapter*.13}%

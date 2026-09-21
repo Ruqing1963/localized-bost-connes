@@ -1,0 +1,62 @@
+% Localized Bost--Connes systems -- draft monograph assembled from the series.
+% Build:  python3 assemble.py && pdflatex localized-bost-connes (x3)     (or `make monograph` from the root)
+\documentclass[11pt,oneside]{amsbook}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\graphicspath{{../figures/}}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,bookmarks=false]{hyperref}
+
+% ---- theorem environments: the same set, sharing one counter, as in every paper
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% ---- union of the macros of all papers (generated)
+\input{generated/macros}
+
+% ---- chapter front matter
+\newcommand{\chapterorigin}[1]{\begingroup\small\itshape\noindent #1\par\endgroup\medskip}
+\newenvironment{summary}
+  {\begingroup\small\noindent\textsc{Summary.}\ \ignorespaces}
+  {\par\endgroup\medskip\noindent\rule{\textwidth}{0.4pt}\medskip}
+
+\title{Localized Bost--Connes systems}
+\author{Ruqing Chen}
+\address{GUT Geoservice Inc., Rivi\`ere-Beaudette, Qu\'ebec, Canada}
+\email{ruqing@hotmail.com}
+\subjclass[2020]{Primary 46L55, 11R37; Secondary 46L30, 37A55, 11M41, 11N05, 11G20}
+\keywords{Bost--Connes system, KMS states, phase transitions, Chebotarev density,
+class field theory, Kakutani dichotomy, operator algebras}
+\dedicatory{Assembled from the thirty-nine papers of the series, from the reviewed corpus, September 2026.\\
+DOI: \href{https://doi.org/10.5281/zenodo.22883179}{10.5281/zenodo.22883179}\\
+Sources, code and data: \url{https://github.com/Ruqing1963/localized-bost-connes}}
+
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+\input{frontmatter/preface}
+\input{frontmatter/guide}
+\input{frontmatter/notation}
+
+\mainmatter
+\input{generated/chapters}
+
+\backmatter
+\input{frontmatter/open_problems}
+\input{generated/bibliography}
+\end{document}
