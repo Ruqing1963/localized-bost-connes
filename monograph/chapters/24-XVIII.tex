@@ -1,0 +1,269 @@
+% generated from papers/XVIII-equivariant-kirchberg/paper_XVIII_equivariant_kirchberg.tex -- edit the paper, then rerun assemble.py
+\chapter[The compact group advantage is illusory]{Circle actions on function field Bost--Connes systems:\\ the compact group advantage is illusory,\\ and the Weil zeta function is thermodynamic}\label{ch:XVIII}
+\chapterorigin{This chapter is Paper XVIII of the series (\texttt{papers/XVIII-equivariant-kirchberg/}).}
+\begin{summary}
+In \S7 of Chapter~\ref{ch:XVII} we suggested that the periodicity of the modular flow over a function
+field might bring the equivariant Kirchberg classification within reach, compact group actions
+being better understood than flows. We now check that suggestion and withdraw it.
+
+Takai duality converts a $\T$-action on $\cA$ into a $\Z$-action on $\cA\rtimes\T$, and $\Z$
+is discrete and amenable, so the Gabe--Szab\'o equivariant Kirchberg--Phillips theorem would
+indeed apply --- if $\cA\rtimes\T$ were a Kirchberg algebra. For a gauge-type action it is
+the stabilized core: $\cO_n\rtimes\T$ is AF, hence stably finite. The classification theory
+for Kirchberg algebras therefore does not survive the dualization. Nor does Izumi's
+classification of compact group actions apply, that theory requiring the Rokhlin property,
+whereas gauge actions on Cuntz algebras are approximately representable and not Rokhlin. The
+advantage we conjectured does not exist.
+
+A second obstruction is arithmetic rather than operator-algebraic. The affine boundary system
+needs an infinite ring of everywhere-integral elements acting additively, and for a
+projective curve a function regular at every closed point is constant:
+$H^0(C,\cO_C)=\F_q$, finite. The affine construction
+degenerates for $S=\cP_K$, and one must fix a point at infinity, so the classification cannot
+be stated for full point sets as proposed.
+
+Third, the equivariant $K$-theory does not contain the Weil polynomial. The Cuntz relation at
+$P$ gives $\bigl(1-(qt)^{\deg P}\bigr)[1]=0$ in $K_0^\T$, so $[1]$ generates the cyclic
+$R(\T)$-module $\Z[t,t^{-1}]/\bigl(1-(qt)^{d_S}\bigr)$: this records $q^{d_S}$ and nothing
+more, the same information already supplied by the point spectrum
+$\Sp_p(\sigma)=q^{d_S\Z}$ of Proposition 1.1 of Chapter~\ref{ch:XV}. The class group contributes
+$|\Pic^0(C)(\F_q)|=P(1)$, one value of
+the Weil polynomial rather than the polynomial.
+
+What is true is the conclusion, by another route. The partition function of the Toeplitz
+system is
+\[
+\sum_{D\in J_S}\Ns(D)^{-\beta}=\sum_{n\ge0}b_n\,q^{-\beta n}=Z_C\bigl(q^{-\beta}\bigr),
+\qquad b_n=\#\{D\ge0:\deg D=n\},
+\]
+so the \emph{Weil zeta function is the partition function}. Knowing $\beta\mapsto Z_C(q^{-\beta})$
+on $(1,\infty)$ determines the rational function $Z_C$, hence $P(T)$, the Weil numbers
+$\{\alpha_j\}$, the genus, every point count $\#C(\F_{q^n})=q^n+1-\sum_j\alpha_j^n$, and
+$|\Jac(C)(\F_q)|=P(1)$. The complete geometric reconstruction asked for does hold; it is
+thermodynamic, not $K$-theoretic --- which is the principle of Corollary 2.4 of Chapter~\ref{ch:III}
+appearing once more.
+\end{summary}
+
+
+\section{The affine boundary requires a point at infinity}
+
+The framework is that of [Ch.~\ref{ch:Main}], transported to function fields as in Chapter~\ref{ch:XVII} of the
+series, whose notation we keep.\begin{proposition}[Degeneration for $S=\cP_K$]\label{XVIII:prop:infinity}
+Let $C/\F_q$ be a smooth projective geometrically irreducible curve and $K=\F_q(C)$. A
+rational function regular at every closed point of $C$ is constant \cite{Rosen}. Now the
+affine system
+$\cA^{\mathrm{aff}}=C(\widehat{\cO_S})\rtimes(\cO_K\rtimes J_S)$ of Chapter~\ref{ch:II} (its \S6)
+requires an \emph{infinite} additive group of everywhere-integral elements acting densely by
+translations on the profinite completion --- by its Remark 6.1 the $S$-integers themselves
+have poles at $S$ and do not act, which is why the additive part there is $\cO_K$. The
+function-field counterpart of $\cO_K$ at $S=\cP_K$ is $H^0(C,\cO_C)=\F_q$: the additive
+group is finite, its closure is a finite set, and the construction degenerates.
+\end{proposition}
+
+\begin{proof}
+The first statement is that $H^0(C,\cO_C)=\F_q$ for $C$ projective and geometrically
+irreducible.
+\end{proof}
+
+\begin{corollary}[The set-up must be affine]\label{XVIII:cor:affine}
+One must fix a closed point $\infty\in\cP_K$ and take $A=\cO_{\cP_K\setminus\{\infty\}}$, the
+ring of functions regular away from $\infty$, which is a Dedekind domain with
+$\mathrm{Spec}(A)=\cP_K\setminus\{\infty\}$ infinite and dense in
+$\widehat{\cO_S}$ by strong approximation, the omitted place being exactly what the theorem
+requires; for $C=\mathbb P^1$ this is $\F_q[T]$.
+The classification statement therefore cannot be made for full point sets
+$S_i=\cP_{K_i}$: a choice of $\infty$ is part of the data, and the partition function of the
+affine system is $Z_C(T)\bigl(1-T^{\deg\infty}\bigr)$ rather than $Z_C(T)$.
+\end{corollary}
+
+\section{Withdrawal: the compact group advantage does not exist}
+
+\begin{proposition}[Takai duality lands outside the Kirchberg class]\label{XVIII:prop:takai}
+Let $\alpha:\T\curvearrowright\cA$ be the gauge-type action
+$\alpha_\theta(\mu_{(a,P)})=e^{i\theta\deg P}\mu_{(a,P)}$ on the affine boundary. By Takai
+duality \cite{Takai}, $\alpha$
+corresponds to the dual action $\hat\alpha:\Z\curvearrowright\cA\rtimes_\alpha\T$, with
+$(\cA\rtimes\T)\rtimes\Z\cong\cA\otimes\mathcal K$. The group $\Z$ is discrete and amenable,
+so the Gabe--Szab\'o equivariant Kirchberg--Phillips theorem \cite{GabeSzabo} applies to
+$\Z$-actions \emph{on Kirchberg algebras}. However $\cA\rtimes_\alpha\T$ is stably finite,
+and the Kirchberg classification does not apply to the dual system.
+\end{proposition}
+
+\begin{proof}
+The action is saturated --- there are isometries of every weight in $d_S\Z$ --- so
+$\cA\rtimes_\alpha\T$ is Morita equivalent, hence stably isomorphic, to the fixed-point
+algebra $F=\cA^\alpha$. On $F$ the state $\tau=\lambda\circ E$, with $\lambda$ the Haar
+probability of $\widehat{\cO_S}$ and $E:F\to C(\widehat{\cO_S})$ the canonical expectation,
+is a faithful trace: traciality reduces to the self-similarity
+$\lambda(\pi_DU+b)=\Ns(D)^{-1}\lambda(U)$ of Haar measure, the subgroup
+$\pi_D\widehat{\cO_S}$ having index $\Ns(D)$, and this exactly cancels the
+$\Ns(D)$ cosets appearing in $E(vxv^*)$ for a weight-$\deg D$ isometry $v$. A unital
+$C^*$-algebra with a faithful tracial state is stably finite, and stable finiteness passes
+to the stabilization. The model case is classical: already
+$\cO_n\rtimes_\gamma\T\cong\mathcal K\otimes(\text{UHF core})$ is AF.
+\end{proof}
+
+\begin{proposition}[The action is not Rokhlin]\label{XVIII:prop:notrokhlin}
+Izumi's classification of finite and compact group actions on Kirchberg algebras requires the
+Rokhlin property \cite{Izumi}. A Rokhlin action of $\T$ on a unital $\cA$ forces $\cA$ to
+absorb the fixed-point algebra in a strong sense; the restrictions of gauge actions on Cuntz
+and Cuntz--Pimsner algebras to finite cyclic subgroups are instead \emph{approximately
+representable}, the notion dual to Rokhlin \cite{Izumi}, and the circle action itself does
+not have the Rokhlin property. So that route is unavailable as well.
+\end{proposition}
+
+\begin{remark}[Withdrawal of a suggestion]\label{XVIII:rem:withdraw}
+We suggested there that periodicity of $\sigma$ ``may bring Remark 5.1 of Chapter~\ref{ch:XIII} within
+reach'', on the ground that the equivariant classification for compact groups is better
+developed than for $\R$. That is true as a general statement about the literature and false
+as an inference here, for the two reasons above: dualizing a circle action moves the problem
+to a stably finite algebra, and the specific action fails the Rokhlin hypothesis under which
+the compact group theory is available. We withdraw the suggestion. The caution of
+Remark 5.1 of Chapter~\ref{ch:XIII}, that flows on Kirchberg algebras are not classified, stands and
+is not circumvented by compactness.
+\end{remark}
+
+\section{What the equivariant $K$-theory records}
+
+\begin{proposition}[The cyclic module]\label{XVIII:prop:KT}
+In $K_0^\T(\partial\cA^{\mathrm{aff}})$, the Cuntz relation at $P$ --- the sum over the
+$\Ns P=q^{\deg P}$ additive cosets of the range projections, each of weight $t^{\deg P}$ ---
+gives
+\[
+\bigl(1-(qt)^{\deg P}\bigr)\,[1]=0\qquad(P\in S).
+\]
+Since $x=qt$ becomes a unit modulo each relation $1-x^{\deg P}$, the exponents combine by
+B\'ezout: $\gcd_i\bigl(1-x^{n_i}\bigr)=1-x^{\gcd_in_i}$ as ideals of $\Z[t,t^{-1}]$, and the
+class $[1]$ generates the cyclic $R(\T)=\Z[t,t^{-1}]$-module
+\[
+R(\T)\cdot[1]\ \cong\ \Z[t,t^{-1}]\big/\bigl(1-(qt)^{d_S}\bigr),\qquad d_S=\gcd_{P\in S}\deg P .
+\]
+\end{proposition}
+
+\begin{corollary}[No genus]\label{XVIII:cor:nogenus}
+The module of Proposition~\ref{XVIII:prop:KT} records the single quantity $q^{d_S}$, which is
+exactly the content of the point spectrum $\Sp_p(\sigma)=q^{d_S\Z}$ already available from
+$(\cA,\sigma)$ by Proposition 1.1 of Chapter~\ref{ch:XV}. It contains no information about the genus, the
+Weil numbers, or the point counts.
+\end{corollary}
+
+\begin{remark}[What $K$-theory does see]\label{XVIII:rem:whatKsees}
+By Theorem 3.3 of Chapter~\ref{ch:II} the class of the unit in $K_0$ of the boundary records the
+narrow class number; the counterpart of that quantity here is
+$|\Pic^0(C)(\F_q)|=|\Jac(C)(\F_q)|$, of order $P(1)$. So $K$-theory does see
+one value of the Weil polynomial, at $T=1$. It does not see the polynomial: the $2g$
+numbers $\alpha_j$ are not determined by $P(1)$, and no mechanism in the six-term sequence
+produces the higher point counts.
+\end{remark}
+
+\section{The Weil zeta function is the partition function}
+
+\begin{theorem}[$Z_C$ as a thermodynamic quantity]\label{XVIII:thm:partition}
+Let $b_n=\#\{D\in\Div_+(C):\deg D=n\}$. Then, by the definition of the Weil zeta function,
+\[
+Z_C(T)=\sum_{n\ge0}b_nT^n=\frac{P(T)}{(1-T)(1-qT)},\qquad P(T)=\prod_{j=1}^{2g}(1-\alpha_jT),
+\]
+and the partition function of the Toeplitz system $(\cA_{C,\cP_K},\sigma)$ is
+\begin{equation}\label{XVIII:eq:partition}
+\sum_{D\in J_{\cP_K}}\Ns(D)^{-\beta}=\sum_{n\ge0}b_n\,q^{-\beta n}=Z_C\bigl(q^{-\beta}\bigr),
+\qquad\beta>1 .
+\end{equation}
+Equivalently, the $\T$-action on the Fock space $\ell^2(J_S)$ has weight-$n$ multiplicity
+$b_n$, and $Z_C$ is its graded dimension.
+\end{theorem}
+
+\begin{proof}
+$\Ns(D)=q^{\deg D}$ and $J_{\cP_K}=\Div_+(C)$; group the sum by degree. Convergence for
+$\beta>1$ is Corollary 2.2 of Chapter~\ref{ch:XVII}.
+\end{proof}
+
+\begin{theorem}[Complete geometric reconstruction]\label{XVIII:thm:reconstruct}
+The function $\beta\mapsto Z_C(q^{-\beta})$ on $(1,\infty)$ determines the rational function
+$Z_C$, hence:
+\begin{enumerate}
+\item the Weil polynomial $P(T)$ and the Weil numbers $\{\alpha_1,\dots,\alpha_{2g}\}$;
+\item the genus $g=\tfrac12\deg P$;
+\item every point count $\#C(\F_{q^n})=q^n+1-\sum_{j=1}^{2g}\alpha_j^n$;
+\item the order $|\Jac(C)(\F_q)|=P(1)$ of the group of rational points of the Jacobian.
+\end{enumerate}
+Consequently the equivariant $C^*$-dynamical system $(\cA_{C,\cP_K},\T,\sigma)$ is a complete
+invariant of the Weil zeta function of $C$.
+\end{theorem}
+
+\begin{proof}
+A rational function is determined by its values on an interval; $q$ is recovered from the
+point spectrum $\Sp_p(\sigma)=q^{d_S\Z}$ (Proposition 1.1 of Chapter~\ref{ch:XV}, computed for these
+systems in Remark 4.3 of Chapter~\ref{ch:XVII}), with $d_S=1$ for $S=\cP_K$ by F.~K. Schmidt
+(Proposition 1.1 of Chapter~\ref{ch:XVII}), and then
+$P(T)=Z_C(T)(1-T)(1-qT)$. The remaining items are the Weil conjectures for curves.
+\end{proof}
+
+\begin{example}[Numerical illustration]\label{XVIII:ex:elliptic}
+For genus one, $P(T)=1-aT+qT^2$:
+\[
+\begin{array}{lccl}
+(q,a) & b_0,\dots,b_4 & \#C(\F_{q^n}),\ n\le4 & |\Jac(\F_q)|\\\hline
+(4,1) & 1,4,20,84,340 & 4,\ 24,\ 76,\ 240 & 4\\
+(5,-2) & 1,8,48,248,1248 & 8,\ 32,\ 104,\ 640 & 8\\
+(9,4) & 1,6,60,546,4920 & 6,\ 84,\ 774,\ 6720 & 6
+\end{array}
+\]
+The $b_n$ are the multiplicities in the partition function \eqref{XVIII:eq:partition}; the point
+counts and the Jacobian order follow from them.
+\end{example}
+
+\begin{remark}[The principle, again]\label{XVIII:rem:principle}
+Theorem~\ref{XVIII:thm:reconstruct} delivers the conclusion asked for while
+Corollary~\ref{XVIII:cor:nogenus} shows the proposed route cannot. This is the pattern established
+in Corollary 2.4 of Chapter~\ref{ch:III}: the arithmetic of these systems lives in the equilibrium data
+--- the measure class, the KMS simplex, the partition function --- and $K$-theoretic
+invariants, which discard the Radon--Nikodym derivative, are blind to it. Over a function
+field the equilibrium datum happens to be the Weil zeta function itself, which is why the
+reconstruction is so complete; but the mechanism is thermodynamic, and asking $KK_\T$ to
+supply it repeats an error the programme has already diagnosed three times, in
+Remark 4.5 of Chapter~\ref{ch:II}, Proposition 3.1 of Chapter~\ref{ch:III} and Theorem 2.1 of Chapter~\ref{ch:IX}.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Proposal} & \text{Status} & \text{Reference}\\\hline
+\partial\cA^{\mathrm{aff}}\ \text{defined for}\ S=\cP_K & \textbf{no: }\cO_{\cP_K}=\F_q & \text{Prop.~1.1}\\
+\text{a point at infinity must be fixed} & \text{yes} & \text{Cor.~1.2}\\
+\T\text{-actions better behaved than flows} & \textbf{not here} & \text{Prop.~2.1}\\
+\text{Gabe--Szab\'o applies after Takai} & \textbf{no: dual algebra stably finite} & \text{Prop.~2.1}\\
+\text{Izumi's compact group theory applies} & \textbf{no: action not Rokhlin} & \text{Prop.~2.2}\\
+\text{\S7 of Chapter~\ref{ch:XVII} suggestion} & \textbf{withdrawn} & \text{Rem.~2.3}\\
+K_0^\T\ \text{encodes}\ P(T) & \textbf{no: only}\ q^{d_S} & \text{Prop.~3.1, Cor.~3.2}\\
+K\text{-theory sees}\ |\Jac(\F_q)|=P(1) & \text{yes, one value only} & \text{Rem.~3.3}\\
+Z_C\ \text{is the partition function} & \textbf{yes} & \text{Thm.~4.1}\\
+\text{complete geometric reconstruction} & \textbf{yes, thermodynamically} & \text{Thm.~4.2}
+\end{array}
+\]
+
+Two of the three obstructions are specific and one is a retraction of our own suggestion. The
+retraction is worth stating plainly: the observation that compact group actions are better
+classified than flows is correct about the literature and inapplicable here, because the
+standard reduction --- Takai duality to a $\Z$-action --- lands on the stably finite core,
+and the compact group theorems that avoid that reduction require a Rokhlin property that
+gauge actions do not have. Periodicity of the modular flow is a real structural feature of
+the function field case, but it does not buy a classification theorem.
+
+The positive statement is stronger than what was asked for the boundary, and it needs no
+classification theory at all. Over a function field the partition function of the Toeplitz
+system \emph{is} the Weil zeta function, evaluated at $T=q^{-\beta}$; and since $Z_C$ is
+rational, its values on any interval determine everything the Weil conjectures encode. The
+system therefore recovers $g$, all $\#C(\F_{q^n})$, the Weil numbers and $|\Jac(C)(\F_q)|$ ---
+from thermodynamics.
+
+Three questions. Does the affine boundary with a fixed $\infty$ recover $\deg\infty$, so that
+$Z_C$ can be reconstructed from the affine partition function $Z_C(T)(1-T^{\deg\infty})$?
+Second, is there any equivariant invariant, short of the full KMS structure, that sees the
+$b_n$ --- the graded dimension of the Fock module is the natural candidate, but we do not know
+whether it is an invariant of the abstract dynamical system rather than of the chosen
+representation. Third, and this is the one we would pursue: two curves with the same zeta
+function but non-isomorphic Jacobians exist; by Theorem~\ref{XVIII:thm:reconstruct} their systems
+have the same partition function, so does anything in $(\cA,\T,\sigma)$ distinguish them, or
+is zeta-equivalence exactly the equivalence realized here?
+

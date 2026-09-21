@@ -1,0 +1,271 @@
+% generated from papers/XXII-iwasawa/paper_XXII_iwasawa.tex -- edit the paper, then rerun assemble.py
+\chapter[No $p$-adic KMS states]{Iwasawa theory and localized Bost--Connes systems:\\ there are no $p$-adic KMS states,\\ and where Leopoldt actually enters}\label{ch:XXII}
+\chapterorigin{This chapter is Paper XXII of the series (\texttt{papers/XXII-iwasawa/}).}
+\begin{summary}
+We examine the proposal to build a $p$-adic thermodynamics on the localized Bost--Connes
+systems and to read the Iwasawa invariants off it. Four obstructions close it, of which the
+first is fundamental and the others are independent of it.
+
+\emph{There are no $p$-adic KMS states.} The KMS condition is a statement about a
+\emph{state} --- a positive normalized functional --- on a $C^*$-algebra, together with the
+analytic continuation of $\sigma_t$ to a complex strip. Positivity requires an ordered field
+and an involution compatible with it; $\Cp$ is not ordered and carries no $C^*$-theory. There
+is $p$-adic functional analysis, but no positive cone, hence no states, hence no simplex, and
+hence nothing on which a KMS condition could be imposed.
+
+\emph{The proposed dynamics is undefined on the proposed set.} The map $x\mapsto\langle x\rangle$
+projects $\Z_p^\times$ onto $1+p\Z_p$ and requires $x$ to be a $p$-adic unit. For
+$\pp\mid p$ one has $\Ns\pp=p^{f}$ with $v_p(\Ns\pp)=f>0$, so $\langle\Ns\pp\rangle^z$ does
+not exist. The localization $S=\{\pp\mid p\}$ is exactly the set at which the $p$-adic
+dynamics cannot be defined --- which is why $p$-adic $L$-functions remove the Euler factors
+at $p$.
+
+\emph{There is no $p$-adic abscissa of convergence.} For $\qq\nmid p$ the number
+$\langle\Ns\qq\rangle^{-z}$ is a $1$-unit, so its absolute value is $1$ for every $z$;
+a $p$-adic series converges iff its terms tend to $0$, and terms of absolute value $1$ never
+do. Every $p$-adic Dirichlet series over an infinite set of primes diverges, at every weight.
+The convergence--divergence dichotomy that drives the whole archimedean theory therefore has
+no $p$-adic counterpart. This is not a defect of our set-up: it is why $p$-adic
+$L$-functions are constructed from measures and Iwasawa power series rather than from
+Dirichlet series.
+
+\emph{The proposed obstruction cannot generate the characteristic ideal.} The expression
+\[
+\Xi_p(z,\chi)=\sum_{\pp\mid p}\bigl(1-\chi(\Frob_\pp)\langle\Ns\pp\rangle^z\bigr)
+\]
+is a finite sum of $g\le[K:\Q]$ terms, so its $\lambda$-invariant is bounded in terms of $g$
+alone; the Iwasawa
+$\lambda$-invariant is unbounded. A bounded-degree element generates no family of ideals of
+unbounded degree.
+
+What survives is smaller and precise. The $p$-local partition function
+$\prod_{\pp\mid p}(1-\Ns\pp^{-\beta})^{-1}$ is, up to inversion, exactly the Euler factor that
+$L_p(s,\chi)$ removes in its interpolation formula: a genuine dictionary entry, but between
+the partition function and the interpolation factor, not the characteristic ideal. And
+Leopoldt's conjecture does enter this programme --- not through a $p$-adic state space but
+through Proposition 2.2 and Remark 2.3 of Chapter~\ref{ch:II}, where the isotropy of the
+groupoid at the boundary strata
+requires a Leopoldt-type condition for general $K$ and is unconditional when $\cO_K^\times$
+is finite.
+\end{summary}
+
+
+\section{There are no $p$-adic KMS states}
+
+Chapters~\ref{ch:II}, \ref{ch:III}, \ref{ch:IV}, \ref{ch:VIII}, \ref{ch:X} and \ref{ch:XXI}, referred to by numeral, are unpublished
+companions; every fact used from them is restated or verified in place. [Ch.~\ref{ch:Main}] and
+Chapter~\ref{ch:I} [Ch.\begin{proposition}[Positivity is unavailable]\label{XXII:prop:nostates}
+Let $A$ be a Banach algebra over $\Cp$ with an involution. There is no notion of state on
+$A$: a state is a linear functional $\varphi$ with $\varphi(x^*x)\ge0$ and $\varphi(1)=1$, and
+the inequality requires an order on the scalar field. The field $\Cp$ is not orderable: it is
+algebraically closed, so $-1=i^2$ is a square; and already $\Q_p$ is non-orderable, $-1$
+being a sum of at most four squares (the level of $\Q_p$ is $1$, $2$ or $4$ according to
+$p\equiv1\ (4)$, $p\equiv3\ (4)$, $p=2$). Consequently there is no positive cone, no state
+space, no Choquet simplex, and no
+Gelfand--Naimark--Segal construction.
+\end{proposition}
+
+\begin{corollary}[The KMS condition has no $p$-adic form]\label{XXII:cor:noKMS}
+The $\mathrm{KMS}_\beta$ condition presupposes (i) a state $\varphi$ satisfying
+$\varphi(xy)=\varphi(y\,\sigma_{i\beta}(x))$ and (ii) the extension of $t\mapsto\sigma_t$ to
+the strip $0\le\Im t\le\beta$ in $\C$. Neither is
+available over $\Cp$: (i) by Proposition~\ref{XXII:prop:nostates}, and (ii) because $\Cp$ has no
+distinguished strip, the ``imaginary direction'' being an artefact of $\C=\R\oplus i\R$ with
+no $p$-adic analogue. There is therefore no object called a $p$-adic KMS state, and no
+$p$-adic KMS simplex whose dimension could be computed.
+\end{corollary}
+
+\begin{remark}[What can be transported]\label{XXII:rem:transport}
+The Gibbs functional $\varphi_\beta(e_\aaa)=\Ns\aaa^{-\beta}$ does have a $p$-adic avatar,
+but as a \emph{measure} rather than a state: the assignment
+$\aaa\mapsto\langle\Ns\aaa\rangle^{-z}$ extends to a $\Cp$-valued distribution on a compact
+space, and it is exactly such distributions --- the Mazur measure and its relatives --- that
+define $p$-adic $L$-functions. Measures do not form a simplex without positivity, and no
+equilibrium condition selects them. The correct statement of the analogy is therefore
+``Gibbs state $\leftrightarrow$ $p$-adic measure'', with the equilibrium characterization lost
+in transit.
+\end{remark}
+
+\section{The dynamics is undefined on $S=\{\pp\mid p\}$}
+
+\begin{proposition}[$\langle\Ns\pp\rangle$ does not exist]\label{XXII:prop:undefined}
+The projection $\langle\,\cdot\,\rangle:\Z_p^\times\to1+p\Z_p$, $x\mapsto x/\omega(x)$, is
+defined only on $p$-adic units. For $\pp\mid p$ with residue degree $f$ one has
+$\Ns\pp=p^{f}$ and $v_p(\Ns\pp)=f>0$, so $\Ns\pp\notin\Z_p^\times$ and
+$\langle\Ns\pp\rangle^z$ is undefined. Hence the proposed $p$-adic dynamics
+$\sigma^{(p)}_z(\mu_\aaa)=\langle\Ns\aaa\rangle^z\mu_\aaa$ does not exist on
+$J_p=\bigoplus_{\pp\mid p}\N\pp$.
+\end{proposition}
+
+\begin{remark}[The localization is at the wrong set]\label{XXII:rem:wrongset}
+This is not a normalization issue to be repaired by a choice of branch. The set
+$\{\pp\mid p\}$ is precisely the set of places at which $p$-adic interpolation breaks down,
+which is why $L_p(s,\chi)$ is defined with the Euler factors at $p$ \emph{removed}
+\cite{Washington}:
+\[
+L_p(1-n,\chi\omega^{-n})=L(1-n,\chi\omega^{-n})\prod_{\pp\mid p}\bigl(1-\chi\omega^{-n}(\pp)\Ns\pp^{\,n-1}\bigr).
+\]
+A $p$-adic dynamics must be built on the primes $\qq\nmid p$, where $\Ns\qq\in\Z_p^\times$.
+That, however, runs into \S\ref{XXII:sec:noabscissa}.
+\end{remark}
+
+\section{There is no $p$-adic abscissa of convergence}\label{XXII:sec:noabscissa}
+
+\begin{theorem}[$p$-adic Dirichlet series never converge]\label{XXII:thm:noabscissa}
+Let $T$ be an infinite set of primes with $\qq\nmid p$ for all $\qq\in T$, and let
+$z$ range over the domain on which $u^z=\exp_p(z\log_pu)$ is defined for $1$-units $u$ ---
+all of $\Z_p$, and the disc $|z|_p<p^{(p-2)/(p-1)}$ of $\Cp$. Then
+$\langle\Ns\qq\rangle\in1+p\Z_p$, so
+\[
+\bigl|\langle\Ns\qq\rangle^{-z}\bigr|_p=1\qquad\text{for every }\qq\in T\text{ and every such }z,
+\]
+and since a series in a complete non-archimedean field converges if and only if its terms
+tend to $0$, the series $\sum_{\qq\in T}\langle\Ns\qq\rangle^{-z}$ diverges for every $z$.
+The same holds for any weighted series
+$\sum_{\qq\in T}w_\qq\,\langle\Ns\qq\rangle^{-z}$ with $|w_\qq|_p=1$ --- for instance
+$w_\qq=1-\chi(\Frob_\qq)$ for a character $\chi$ with $\chi(\Frob_\qq)\ne1$ of order prime
+to $p$.
+\end{theorem}
+
+\begin{corollary}[No $p$-adic phase transition]\label{XXII:cor:nophase}
+There is no $p$-adic critical exponent, no convergence--divergence dichotomy, and hence no
+$p$-adic Kakutani criterion. The mechanism that produces every phase transition in
+[Ch.~\ref{ch:Main}], [Ch.~\ref{ch:I}] and Chapter~\ref{ch:IV} --- the competition between the decay of
+$\Ns\pp^{-\beta}$ and the abundance of primes --- is archimedean, and it is absent
+$p$-adically because all the terms have absolute value $1$.
+\end{corollary}
+
+\begin{remark}[Why $p$-adic $L$-functions look the way they do]\label{XXII:rem:whymeasures}
+Corollary~\ref{XXII:cor:nophase} is not a peculiarity of Bost--Connes systems. It is the reason
+$p$-adic $L$-functions are never defined by Dirichlet series: Kubota--Leopoldt, Iwasawa
+\cite{Iwasawa} and
+Mazur all construct them from measures on $\Z_p^\times$, or equivalently from power series in
+$\Lambda=\Z_p[[T]]$, precisely because the naive series has no region of convergence. Any
+$p$-adic thermodynamics would have to be built on measures, and would then lack the
+variational characterization that makes the archimedean theory informative.
+\end{remark}
+
+\section{The obstruction cannot generate the characteristic ideal}
+
+\begin{proposition}[The element cannot generate the characteristic ideal]\label{XXII:prop:bounded}
+Suppose, counterfactually to Proposition~\ref{XXII:prop:undefined}, that
+$\Xi_p(z,\chi)=\sum_{i=1}^g(1-\chi_i\,u_i^z)$ were defined, with $u_i$ $1$-units,
+$\chi_i=\chi(\Frob_{\pp_i})$, and $g=\#\{\pp\mid p\}\le[K:\Q]$; under $u_i^z=(1+T)^{c_i}$ it
+becomes an element of $\Lambda\otimes\Z_p[\chi]$. It cannot generate the characteristic
+ideal $\chr_\Lambda(X)=(p^{\mu}P(T))$ of the main conjecture \cite{MazurWiles}, for two
+independent reasons.
+\begin{enumerate}
+\item Already for $K=\Q$, $g=1$: if $\chi(p)\ne1$ has order prime to $p$ then
+$|1-\chi(p)(1+T)^{c}|_p=|1-\chi(p)|_p=1$ on the open unit disc, so the element is a
+\emph{unit} of $\Lambda\otimes\Z_p[\chi]$ and generates the unit ideal --- while
+$\chr_\Lambda(X_\chi)$ is a proper ideal whenever $\lambda_\chi+\mu_\chi>0$, which occurs.
+\item In general the element depends only on the $g$ pairs
+$(\chi(\Frob_{\pp_i}),\langle\Ns\pp_i\rangle)$ --- finitely many $p$-adic parameters
+attached to the decomposition of $p$ in $K$ --- whereas the characteristic ideal encodes the
+Iwasawa module of the full tower, which is not a function of the decomposition data at $p$:
+fields with identical splitting behaviour at $p$ have different $\lambda$-invariants.
+\end{enumerate}
+We note that the tempting quantitative version --- ``a sum of $g$ binomials has
+$\lambda$-invariant bounded in terms of $g$'' --- is itself false: already
+$(1+T)^{c'}-(1+T)^{c}=(1+T)^{c}\bigl((1+T)^{c'-c}-1\bigr)$ has
+$\lambda=p^{v_p(c'-c)}$, unbounded; the failure of the proposal is the wrong
+\emph{dependence}, not a degree count.
+\end{proposition}
+
+\begin{remark}[And $\mu$]\label{XXII:rem:mu}
+The proposed formula $\mu_p(K)=v_p(\mathrm{Res}_{z=0}\zeta_{p,\mathrm{KMS}}(z))$ has no
+content, there being no $\zeta_{p,\mathrm{KMS}}$ by Corollary~\ref{XXII:cor:noKMS}. We note also
+that for abelian $K/\Q$ the Ferrero--Washington theorem \cite{FW} gives $\mu_p(K)=0$, so any
+correct
+formula must return $0$ in that case; a residue at a pole of a nonexistent function does not.
+The genuine residue statement of $p$-adic $L$-theory is Colmez's formula for the residue of
+the $p$-adic zeta function of $K$ at $s=1$ \cite{Colmez}, and what appears there is the
+$p$-adic regulator $R_p(K)$ --- the Leopoldt quantity of \S\ref{XXII:sec:true} --- not $\mu$.
+\end{remark}
+
+\section{What is true}\label{XXII:sec:true}
+
+\begin{proposition}[The partition function is the interpolation factor]\label{XXII:prop:euler}
+For $S=\{\pp\mid p\}$ the partition function of the localized system is the finite product
+\[
+\zeta_{K,p}(\beta)=\prod_{\pp\mid p}\bigl(1-\Ns\pp^{-\beta}\bigr)^{-1},
+\]
+whose inverse, twisted by $\chi$, is exactly the Euler factor removed in the interpolation
+formula for $L_p(s,\chi)$ recalled in Remark~\ref{XXII:rem:wrongset}. This is a precise
+dictionary entry: \emph{$p$-local Bost--Connes partition function $\leftrightarrow$ $p$-adic
+interpolation factor.} It is not a dictionary entry for the characteristic ideal.
+\end{proposition}
+
+\begin{remark}[Finite $S$ has no thermodynamics]\label{XXII:rem:finiteS}
+Consistently with this, $S=\{\pp\mid p\}$ is finite, so $\beta_c=0$ and by
+the finite-generation exclusion of Chapter~\ref{ch:X} (its Remark 1.5) --- a finite generating set gives a finite obstruction sum ---
+$\Xi_\beta=\widehat{G_p}$ for every $\beta>0$ and the chain is constant. The archimedean
+$p$-local system has no phase transition, which is what motivated looking for a $p$-adic one;
+Corollary~\ref{XXII:cor:nophase} says the search cannot succeed in that direction.
+\end{remark}
+
+\begin{proposition}[Where Leopoldt genuinely enters]\label{XXII:prop:leopoldt}
+Let $M_\infty$ be the maximal abelian pro-$p$ extension of $K$ unramified outside $p$. Then
+\[
+\rank_{\Z_p}\Gal(M_\infty/K)=r_2+1+\delta_p(K),
+\]
+with $\delta_p(K)\ge0$ the Leopoldt defect, and Leopoldt's conjecture is $\delta_p(K)=0$,
+equivalently $R_p(K)\ne0$. This quantity does control the localized Bost--Connes system, but
+in the archimedean theory: by Proposition 2.2 and Remark 2.3 of Chapter~\ref{ch:II} the isotropy of $\mathcal G_S$ off
+the boundary strata is computed from the closure $\overline{\cO^\times_{K,+}}$ inside
+$U_S$, and the computation requires a Leopoldt-type condition for general $K$, being
+unconditional when $\cO_K^\times$ is finite, that is for $K=\Q$ and imaginary quadratic $K$.
+\end{proposition}
+
+\begin{remark}\label{XXII:rem:leopoldtplace}
+So the intuition behind the proposal is sound --- Leopoldt does belong to this story --- but
+its place is the isotropy computation of Chapter~\ref{ch:II}, not the dimension of a $p$-adic
+state space. That the topological principality of $\mathcal G_S$ was established there
+\emph{independently} of Leopoldt (its Theorem 2.5), the strata being nowhere dense regardless, is what keeps the
+main classification unconditional.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Proposal} & \text{Status} & \text{Reference}\\\hline
+p\text{-adic KMS states} & \textbf{do not exist: no positivity} & \text{Prop.~1.1, Cor.~1.2}\\
+\sigma^{(p)}_z\ \text{on}\ \{\pp\mid p\} & \textbf{undefined: }\Ns\pp\notin\Z_p^\times & \text{Prop.~2.1}\\
+p\text{-adic Dirichlet series} & \textbf{never converge} & \text{Thm.~3.1}\\
+p\text{-adic }\beta_c,\ \text{phase transition} & \textbf{do not exist} & \text{Cor.~3.2}\\
+(\Xi_p)=\chr_\Lambda(X) & \textbf{false: wrong dependence} & \text{Prop.~4.1}\\
+\mu\ \text{from a residue} & \text{no content} & \text{Rem.~4.2}\\
+\lambda\ \text{as a count of transitions} & \text{no content} & \text{Cor.~3.2}\\
+\rank\Gal(M_\infty/K)=r_2+1+\delta_p & \text{true} & \text{Prop.~5.3}\\[-1pt]
+\text{Leopoldt controls the system} & \textbf{true, but via Chapter~\ref{ch:II}} & \text{Prop.~5.3}\\
+\zeta_{K,p}\leftrightarrow\text{interpolation factor} & \textbf{true} & \text{Prop.~5.1}
+\end{array}
+\]
+
+The proposal fails at a level below its own statements. Everything in the archimedean theory
+--- KMS states, simplices, phase transitions, obstruction groups --- rests on positivity and
+on the convergence--divergence dichotomy of real Dirichlet series, and neither has a $p$-adic
+form. The absence is not a gap in the technology but a fact about $\Cp$: it is not ordered,
+and its units all have absolute value $1$.
+
+That said, the underlying instinct identifies two real connections, and both are worth
+recording in the form they actually take. The $p$-local partition function is the
+interpolation factor of $L_p$, which is a statement about Euler factors and is exact.
+And Leopoldt's conjecture does govern part of this programme, namely the isotropy computation
+of Chapter~\ref{ch:II} (its Proposition 2.2 and Remark 2.3), which is where the units enter --- consistently with
+Chapter~\ref{ch:VIII}, whose inertia model, built on the meridian direction matched to the global
+units, was shown to carry no thermodynamics (its Theorem 6.1 and the moral of its
+Remark 6.3), and with Chapter~\ref{ch:X} (its Remark 1.5), where the finiteness of the unit group
+decided which semigroups are admissible. The units recur; the $p$-adic states do not exist.
+
+Two questions we would consider worth asking instead. Is there a $p$-adic analogue of the
+\emph{measure class} invariant of Corollary 2.4 of Chapter~\ref{ch:III} --- since that, unlike a state,
+is not a positivity notion, and since the whole corpus has found the arithmetic to live
+there? And second, the archimedean $p$-local system is trivial by
+Remark~\ref{XXII:rem:finiteS}; is there an intermediate localization, $S$ infinite but with the
+$p$-adic weights attached as a coefficient system rather than as the dynamics, in which both
+structures coexist? That is the closing suggestion of Chapter~\ref{ch:XXI} (its \S5), itself pointing
+at \S6 of Chapter~\ref{ch:VI}, and for the same
+reason: the arithmetic input belongs in the coefficients, not in the flow.
+

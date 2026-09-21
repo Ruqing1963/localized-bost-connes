@@ -1,0 +1,392 @@
+% generated from papers/XIV-equalnorm/paper_XIV_equalnorm.tex -- edit the paper, then rerun assemble.py
+\chapter[The equal-norm case]{The equal-norm case: norm-separation is not a hypothesis\\ but a characterization, and the gauge-equivariant repair}\label{ch:XIV}
+\chapterorigin{This chapter is Paper XIV of the series (\texttt{papers/XIV-equalnorm/}).}
+\begin{summary}
+Chapter~\ref{ch:XIII} proved $\cA_{K,S}^\sigma=C(Y_S)$ (its Theorem 1.4) under the
+hypothesis that $\Ns:J_S\to\N$ be injective, and asked whether the hypothesis could be
+removed. It cannot, and the reason is that it is not a hypothesis at all.
+
+The diagonal is always the fixed-point algebra of the \emph{compact} gauge action:
+$C(Y_S)=\cA_{K,S}^{\T^S}$, unconditionally. The modular flow is the restriction of the gauge
+action along $\iota(t)_\pp=\Ns\pp^{it}$, so $\cA^\sigma=\cA^{H}$ with
+$H=\overline{\iota(\R)}\le\T^S$, and by Kronecker $H=\T^S$ exactly when the $\log\Ns\pp$ are
+$\Q$-linearly independent. Since $\Z$-independence of the $\log\Ns\pp$ is literally the
+injectivity of $\Ns$ on $J_S$, we obtain
+\[
+\cA_{K,S}^\sigma=C(Y_S)
+\iff \{\log\Ns\pp\}_{\pp\in S}\ \Q\text{-independent}
+\iff S\ \text{norm-separated}.
+\]
+The three conditions are equivalent; there is nothing to remove.
+
+The correct structure in the general case is not the proposed direct sum
+$\bigoplus_n\cA^\sigma_n$, which is not a direct sum --- the pieces are neither orthogonal
+nor ideals, since $e_\aaa e_\bb=e_{\aaa\vee\bb}\ne0$ and the product of a degree-$n$ and a
+degree-$m$ element is again in $\cA^\sigma$. It is a grading. Writing
+$L=\{c\in\Z^{(S)}:\sum_\pp c_\pp\log\Ns\pp=0\}$ for the lattice of multiplicative relations
+among the norms, $\cA^\sigma$ is $L$-graded with degree-zero part $C(Y_S)$ and
+$H=L^\perp$.
+
+Neither of the two proposed intrinsic characterizations of $C(Y_S)$ inside $\cA^\sigma$
+works as stated. Property A recovers $C(Y_S)$ as the fixed points of the gauge action, but
+the gauge action of $\T^S$ is precisely the datum \emph{not} determined by $(\cA,\sigma)$
+when $L\ne0$; the argument is circular. Property B asserts that $C(Y_S)$ is the unique Cartan
+subalgebra, which is what was to be proved.
+
+What does work is a change of hypothesis rather than a removal. If $\Phi$ is equivariant for
+the full gauge actions --- up to an isomorphism of the acting tori, so that no bijection
+$S_1\to S_2$ is presupposed --- then $\Phi(C(Y_{S_1}))=C(Y_{S_2})$ unconditionally, and the
+reconstruction of Chapter~\ref{ch:XIII} (its Theorem 2.5) holds for every number field and every prime
+set: a norm-preserving bijection $S_1\to S_2$, which turns out to induce the torus
+isomorphism after all; the matched valuation fibres, with $G_S$ as a compact space; the
+$\mathrm{KMS}_\beta$ simplices, transition loci and $\beta_c$; and, when the symmetry actions
+are intertwined, the Frobenius classes modulo inertia and the chain $\{\Xi_\beta\}$. For
+$S_i=P_{K_i}$ the norm multisets agree, so $\zeta_{K_1}=\zeta_{K_2}$: the fields are
+arithmetically equivalent. The narrow class number is not among the conclusions; it was not
+recovered in Chapter~\ref{ch:XIII} either.
+
+Finally we record a limitation of Chapter~\ref{ch:XIII} that we had not noticed there: every $K\ne\Q$
+has infinitely many split primes, so $P_K$ is \emph{never} norm-separated. The theorem of
+Chapter~\ref{ch:XIII} therefore covers the classical full prime set only for $K=\Q$.
+\end{summary}
+
+
+\section{Norm-separation is a characterization}
+
+We use the notation of the foundational paper [Ch.~\ref{ch:Main}]: $\cA_{K,S}=C(Y_S)\rtimes J_S$ is
+spanned by the elements $\mu_\aaa f\mu_\bb^*$, and it is the $C^*$-algebra of the \'etale
+groupoid $\cG_S|_{Y_S}$ whose arrows are the pairs $(\aaa\bb^{-1},y)$ with
+$y,\,\aaa\bb^{-1}y\in Y_S$, with diagonal $C(Y_S)$ and with the scaling cocycle
+$c(\aaa\bb^{-1},y)=\log\Ns\aaa-\log\Ns\bb$ implementing the flow. Chapters~\ref{ch:II}, \ref{ch:III} and \ref{ch:XIII} of
+the series, referred to by numeral, are in preparation; every fact used from them is
+re-proved in place. The finer, integer-valued cocycle
+\[
+\widetilde c:\cG_S|_{Y_S}\longrightarrow I_S=\Z^{(S)},\qquad
+\widetilde c(\aaa\bb^{-1},y)=\aaa\bb^{-1},
+\]
+is continuous and locally constant, and composing it with characters defines the
+\emph{gauge action} of the compact group $\T^S=\widehat{I_S}$:
+\[
+\gamma_z(f)(\gamma)=z^{\widetilde c(\gamma)}f(\gamma),\qquad\text{so}\qquad
+\gamma_z\bigl(\mu_\pp\bigr)=z_\pp\mu_\pp,\qquad \gamma_z|_{C(Y_S)}=\id,\qquad z\in\T^S,
+\]
+strongly continuous because $\widetilde c$ is locally constant. Since
+$c=\langle\widetilde c,\log\Ns\rangle$, the modular flow is a restriction of the gauge
+action: $\sigma_t=\gamma_{\iota(t)}$ with $\iota(t)_\pp=\Ns\pp^{it}$ (the identity through
+which Chapter~\ref{ch:III} sees that $\{\sigma_t\}$ has compact closure).
+
+\begin{lemma}[The diagonal is the gauge fixed-point algebra]\label{XIV:lem:gauge}
+$\cA_{K,S}^{\T^S}=C(Y_S)$, for every $K$ and every $S$, with no hypothesis.
+\end{lemma}
+
+\begin{proof}
+$\gamma_z(\mu_\aaa f\mu_\bb^*)=z^{\aaa-\bb}\mu_\aaa f\mu_\bb^*$ in multi-index notation, so a
+spectral subspace argument gives $\cA^{\T^S}=\overline{\spn}\{\mu_\aaa f\mu_\aaa^*\}$, and
+$\mu_\aaa f\mu_\aaa^*=\alpha_\aaa(f)\in C(Y_S)$.
+\end{proof}
+
+\begin{definition}\label{XIV:def:L}
+The \emph{relation lattice} of $S$ is
+\[
+L=L(S):=\Bigl\{c\in\Z^{(S)}:\ \sum_{\pp\in S}c_\pp\log\Ns\pp=0\Bigr\}
+=\Bigl\{c:\ \prod_\pp\Ns\pp^{c_\pp}=1\Bigr\},
+\]
+a subgroup of $\Z^{(S)}$.
+\end{definition}
+
+\begin{theorem}[Equivalence]\label{XIV:thm:equiv}
+The following are equivalent.
+\begin{enumerate}
+\item $\Ns:J_S\to\N$ is injective, i.e.\ $S$ is norm-separated;
+\item $L(S)=0$, i.e.\ $\{\log\Ns\pp\}_{\pp\in S}$ is $\Q$-linearly independent;
+\item $\iota(\R)$ is dense in $\T^S$;
+\item $\cA_{K,S}^\sigma=C(Y_S)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+$(1)\Leftrightarrow(2)$: $\Ns\aaa=\Ns\bb$ with $\aaa,\bb\in J_S$ means
+$\sum(a_\pp-b_\pp)\log\Ns\pp=0$ with $a-b\in\Z^{(S)}$; injectivity says the only such
+relation is $a=b$, i.e.\ $L=0$. A $\Q$-linear relation clears denominators to a $\Z$-linear
+one, so $\Z$-independence and $\Q$-independence agree.
+
+$(2)\Leftrightarrow(3)$: $\overline{\iota(\R)}$ is a closed subgroup of $\T^S$, and its
+annihilator in $\widehat{\T^S}=\Z^{(S)}$ is $\{c:\prod_\pp\Ns\pp^{ic_\pp t}=1\ \forall t\}=L$.
+By Pontryagin duality $\overline{\iota(\R)}=\T^S$ iff $L=0$; this is Kronecker's theorem.
+
+$(3)\Leftrightarrow(4)$: $\cA^\sigma=\cA^{\overline{\iota(\R)}}$, since the fixed-point
+algebra of a one-parameter group equals that of the closure of its image; combine with
+Lemma~\ref{XIV:lem:gauge}. Conversely if $L\ne0$, pick $0\ne c\in L$ and write $c=\aaa-\bb$ with
+$\aaa,\bb\in J_S$ coprime; then $\Ns\aaa=\Ns\bb$ and $\mu_\aaa\mu_\bb^*\in\cA^\sigma$ is not
+in $C(Y_S)$, the two ideals being distinct.
+\end{proof}
+
+\begin{corollary}[Nothing to remove]\label{XIV:cor:nothing}
+The hypothesis of Theorem 1.4 of Chapter~\ref{ch:XIII} is not a sufficient condition that might be
+weakened: it is equivalent to the conclusion. In the unseparated case $\cA^\sigma$ is strictly
+larger than $C(Y_S)$ and non-commutative, and no argument can identify them.
+\end{corollary}
+
+\begin{proposition}[$P_K$ is never separated for $K\ne\Q$]\label{XIV:prop:PK}
+Let $K\ne\Q$. By the Chebotarev density theorem \cite[Ch.~VII, \S13]{Neukirch}, applied to
+the Galois closure of $K$, there are infinitely many rational primes that split completely
+in $K$; the $[K:\Q]\ge2$ primes of $K$ above such a $p$ have residue degree $1$ and hence
+equal norm $p$. So $P_K$ is not norm-separated, and Theorem 1.4 of Chapter~\ref{ch:XIII} applies to
+the full prime set only when $K=\Q$.
+\end{proposition}
+
+\begin{remark}[Numerical illustration]\label{XIV:rem:num}
+The first split prime is $5$ for $\Q(i)$, $7$ for $\Q(\sqrt{-3})$ and $\Q(\sqrt2)$, and $11$
+for $\Q(\sqrt5)$; in each case two primes of norm $p$. This is a limitation of Chapter~\ref{ch:XIII}
+that we had not noticed there: the classical case, $S=P_K$ over a general
+number field, is precisely the case the theorem does not cover.
+\end{remark}
+
+\section{The structure of $\cA^\sigma$ in general}
+
+\begin{proposition}[The proposed stratification is not a direct sum]\label{XIV:prop:notsum}
+Set $\cA_n^\sigma=\overline{\spn}\{\mu_\aaa f\mu_\bb^*:\Ns\aaa=\Ns\bb=n\}$. Then
+$\cA^\sigma\ne\bigoplus_n\cA_n^\sigma$: the summands are not orthogonal, since
+$e_\aaa e_\bb=e_{\mathrm{lcm}(\aaa,\bb)}\ne0$ for $\aaa,\bb$ of different norms, and they are
+not ideals, the product of an element of $\cA_n^\sigma$ with one of $\cA_m^\sigma$ lying in
+$\cA^\sigma$ but in neither.
+\end{proposition}
+
+\begin{proof}
+$e_\aaa=\mu_\aaa\mu_\aaa^*\in\cA^\sigma_{\Ns\aaa}$ and $e_\aaa e_\bb=e_{\mathrm{lcm}}\ne0$;
+for the second, compute
+$(\mu_\aaa f\mu_\bb^*)(\mu_\cc g\mu_\dd^*)$ using $\mu_\bb^*\mu_\cc=\mu_{\cc'}\mu_{\bb'}^*$
+with $\cc'=\cc/\gcd$, $\bb'=\bb/\gcd$, obtaining a term
+$\mu_{\aaa\cc'}(\cdots)\mu_{\dd\bb'}^*$ whose two norms are equal but need not be $n$ or $m$.
+\end{proof}
+
+\begin{theorem}[The correct structure]\label{XIV:thm:structure}
+$\cA^\sigma=\cA^{H}$ with $H=L^\perp\le\T^S$ the annihilator of the relation lattice, and
+$\cA^\sigma$ carries a grading by $L$,
+\[
+\cA^\sigma=\overline{\bigoplus_{c\in L}}\ \cA^\sigma_{(c)},
+\qquad
+\cA^\sigma_{(c)}=\overline{\spn}\bigl\{\mu_\aaa f\mu_\bb^*:\aaa-\bb=c\bigr\},
+\qquad
+\cA^\sigma_{(0)}=C(Y_S),
+\]
+the grading being implemented by the residual gauge action of
+$\T^S/H\cong\widehat L$. In particular $C(Y_S)=(\cA^\sigma)^{\widehat L}$.
+\end{theorem}
+
+\begin{proof}
+$H=\overline{\iota(\R)}$ has annihilator $L$ by the proof of Theorem~\ref{XIV:thm:equiv}, so
+$\T^S/H\cong\widehat L$ and the gauge action descends. The grading is the spectral
+decomposition for that residual action, the degree of $\mu_\aaa f\mu_\bb^*$ being
+$\aaa-\bb\in\Z^{(S)}$, which lies in $L$ precisely on $\cA^\sigma$. Degree zero is
+Lemma~\ref{XIV:lem:gauge}.
+\end{proof}
+
+\begin{example}\label{XIV:ex:Qi}
+Let $K=\Q(i)$ and $S=\{\pp,\bar\pp\}$ the two primes above $5$. Then $L=\Z(1,-1)$,
+$\widehat L\cong\T$, and $\cA^\sigma$ is $\Z$-graded, the piece of degree $k(1,-1)$ being
+spanned by the elements
+\[
+\mu_{\pp}^{m+k}\mu_{\bar\pp}^{\,n}\,f\,\bigl(\mu_{\pp}^{m}\mu_{\bar\pp}^{\,n+k}\bigr)^*,
+\qquad\text{for instance}\qquad \mu_\pp^{k}f\mu_{\bar\pp}^{k\,*},
+\]
+both sides having the same norm $5^{m+n+k}$. The degree-zero part is $C(Y_S)$ and the
+whole is a crossed-product-like algebra over it; it is non-commutative, and no spectral
+argument using $\sigma$ alone can see inside it.
+\end{example}
+
+\section{Why the two proposed characterizations are circular}
+
+\begin{remark}[Property A]\label{XIV:rem:A}
+The proposal is to characterize $C(Y_S)$ as the unique MASA of $\cA^\sigma$ carrying a
+faithful conditional expectation invariant under the gauge symmetries $\T^S$. By
+Lemma~\ref{XIV:lem:gauge} this is correct as a \emph{description} --- $C(Y_S)$ is the range of the
+averaging expectation $E_\gamma$ --- but it is not an intrinsic characterization inside
+$(\cA,\sigma)$, because the $\T^S$-action is exactly the datum that $\sigma$ fails to
+determine when $L\ne0$. By Theorem~\ref{XIV:thm:equiv}(3), $\sigma$ determines only
+$H=L^\perp\subsetneq\T^S$. Invoking $\gamma$ to recover $C(Y_S)$ therefore assumes what is
+missing.
+\end{remark}
+
+\begin{remark}[Property B]\label{XIV:rem:B}
+The proposal is to characterize $C(Y_S)$ as the unique abelian MASA whose normalizer
+generates $\cA_{K,S}$, i.e.\ as the unique Cartan subalgebra. That $C(Y_S)$ is \emph{a}
+Cartan subalgebra is Theorem 2.5 of Chapter~\ref{ch:II} (topological principality; the
+argument is reproduced inside the proof of Theorem~\ref{XIV:thm:uncond} below). That it is the
+\emph{unique} one is precisely the statement needed to apply Renault's theorem \cite{Renault}
+to a merely $\sigma$-equivariant isomorphism,
+which is what Theorem 1.4 of Chapter~\ref{ch:XIII} was designed to supply and what is at issue here.
+Assuming it is circular. We add that uniqueness of Cartan subalgebras is false for general
+$C^*$-algebras and is a hard theorem where it holds, so it cannot be assumed lightly.
+\end{remark}
+
+\begin{remark}[What we do not know]\label{XIV:rem:open}
+We have not found an intrinsic characterization of $C(Y_S)$ inside $(\cA_{K,S},\sigma)$ in the
+unseparated case, and we have not found an obstruction either. The natural attempt --- to
+exhibit a $\sigma$-commuting automorphism moving $C(Y_S)$, which would settle it negatively
+--- fails for a reason worth recording. In a Cuntz algebra the quasi-free rotation
+$\mu_i\mapsto\sum_ju_{ji}\mu_j$ is an automorphism because $\mu_i^*\mu_j=\delta_{ij}$; here
+the isometries commute and satisfy $\mu_\pp^*\mu_\qq=\mu_\qq\mu_\pp^*$ for coprime
+$\pp,\qq$, so, for $|\alpha|^2+|\beta|^2=1$ with $\alpha\beta\ne0$,
+$(\alpha\mu_\pp+\beta\mu_\qq)^*(\alpha\mu_\pp+\beta\mu_\qq)=1+\bar\alpha\beta\,\mu_\qq\mu_\pp^*+\alpha\bar\beta\,\mu_\pp\mu_\qq^*\ne1$
+and the rotated element is not an isometry. The Nica--Toeplitz relations are rigid enough to
+block the obvious counterexample, which is a reason to think the question may have a positive
+answer; we have not found it.
+\end{remark}
+
+\section{The gauge-equivariant repair}
+
+\begin{definition}\label{XIV:def:gaugeequiv}
+Call $\Phi:\cA_{K_1,S_1}\to\cA_{K_2,S_2}$ \emph{gauge-equivariant} if there is a topological
+group isomorphism $\theta:\T^{S_1}\to\T^{S_2}$ with
+$\Phi\circ\gamma^1_z=\gamma^2_{\theta(z)}\circ\Phi$ for all $z$. No bijection $S_1\to S_2$ is
+presupposed, and none is encoded in $\theta$ by itself: the automorphisms of $\T^{S}$ are
+dual to the automorphisms of the free abelian group $\Z^{(S)}$, most of which permute no
+coordinates. Theorem~\ref{XIV:thm:uncond} produces a bijection, and shows that $\theta$ was
+induced by one after all.
+\end{definition}
+
+\begin{theorem}[Unconditional reconstruction]\label{XIV:thm:uncond}
+Let $K_1,K_2$ be arbitrary number fields and $S_1,S_2$ arbitrary infinite prime sets, and
+let $\Phi:\cA_{K_1,S_1}\to\cA_{K_2,S_2}$ be a gauge-equivariant and $\sigma$-equivariant
+isomorphism. Then $\Phi\bigl(C(Y_{S_1})\bigr)=C(Y_{S_2})$, and:
+\begin{enumerate}
+\item $\Phi$ is induced by an isomorphism $\theta_*$ of the underlying \'etale groupoids
+which intertwines the scaling cocycles, $c_2\circ\theta_*=c_1$, and the integer-valued
+gauge cocycles, $\widehat\theta\circ\widetilde c_2\circ\theta_*=\widetilde c_1$, where
+$\widehat\theta:\Z^{(S_2)}\to\Z^{(S_1)}$ is the isomorphism dual to $\theta$;
+\item $\theta_*$ induces a norm-preserving monoid isomorphism $\pi:J_{S_1}\to J_{S_2}$,
+hence a norm-preserving bijection $S_1\to S_2$; moreover
+$\widehat\theta(\delta_{\pi(\pp)})=\delta_\pp$, so $\theta$ is, a posteriori, the
+isomorphism induced by the bijection $\pi$ of the coordinate circles;
+\item the valuation fibres of $Y_{S_1}$ are carried homeomorphically onto those of
+$Y_{S_2}$, compatibly with $\pi$; in particular the fibre over $0$, the compact space
+$G_{S_1}$, is carried homeomorphically onto $G_{S_2}$;
+\item the $\mathrm{KMS}_\beta$ simplices are affinely isomorphic for every $\beta$, so the
+compact spaces $G_{S_i}/\Xi_\beta^\perp$ are homeomorphic, the orders $|\Xi_\beta|$ agree
+when finite, the transition loci agree, and $\beta_c(S_1)=\beta_c(S_2)$;
+\item if moreover $\Phi$ intertwines the symmetry actions along an isomorphism
+$\iota:G_{S_1}\to G_{S_2}$, then the Frobenius classes are matched modulo inertia,
+$\iota(\sigma_\pp)\in\sigma_{\pi(\pp)}\,r(\cO_{\pi(\pp)}^\times)$, and $\hat\iota^{-1}$
+carries $\Xi_\beta(K_2,S_2)$ onto $\Xi_\beta(K_1,S_1)$ for every $\beta>0$.
+\end{enumerate}
+These are the conclusions of Theorem 2.5 of Chapter~\ref{ch:XIII}, with no norm-separation required
+anywhere; what is conditional in (5) is conditional there too.
+\end{theorem}
+
+\begin{proof}
+\emph{The Cartan pair.} By Lemma~\ref{XIV:lem:gauge}, $C(Y_{S_i})=\cA_i^{\T^{S_i}}$, and
+gauge-equivariance, with $\theta$ surjective, gives
+$\Phi(\cA_1^{\T^{S_1}})=\cA_2^{\T^{S_2}}$, i.e.\ $\Phi(C(Y_{S_1}))=C(Y_{S_2})$. Each pair
+$\bigl(C(Y_S)\subset\cA_{K,S}\bigr)$ is Cartan with trivial Weyl twist: the groupoid
+$\cG_S|_{Y_S}$ is \'etale, Hausdorff, second countable and amenable, and it is
+topologically principal because the isotropy is trivial at every point with all valuations
+finite ($\aaa\bb^{-1}y=y$ forces $\aaa=\bb$ at such a point) and those points are dense ---
+this reproduces Theorem 2.5(1) of Chapter~\ref{ch:II}. Renault's theorem \cite{Renault}
+therefore provides an isomorphism $\theta_*:\cG_{S_1}|_{Y_{S_1}}\to\cG_{S_2}|_{Y_{S_2}}$ of
+\'etale groupoids inducing $\Phi$.
+
+\emph{Both cocycles are intertwined.} For $f$ supported on an open bisection $B$, $\Phi(f)$
+is supported on $\theta_*(B)$ (up to the $\T$-valued normalization of the trivialized
+twist, which cancels below), and $\gamma^2_w$ multiplies it there by $w^{\widetilde
+c_2}$. Comparing $\Phi(\gamma^1_z f)=\gamma^2_{\theta(z)}\Phi(f)$ pointwise gives
+$z^{\widetilde c_1(\gamma)}=\theta(z)^{\widetilde c_2(\theta_*\gamma)}$ for all
+$z\in\T^{S_1}$, i.e.\ $\widetilde c_1=\widehat\theta\circ\widetilde c_2\circ\theta_*$;
+comparing $\Phi(\sigma^1_t f)=\sigma^2_t\Phi(f)$ gives $c_2\circ\theta_*=c_1$.
+
+\emph{The semigroup, without norm-separation.} A full bisection of $\cG_S|_{Y_S}$ on which
+$\widetilde c$ is constant contains, for each $y\in Y_S$, exactly one arrow $(g,y)$ with
+$g=\aaa\bb^{-1}$ independent of $y$, $\aaa,\bb\in J_S$ coprime; that arrow exists only for
+$y\in\bb Y_S$, and fullness forces $\bb Y_S=Y_S$, i.e.\ $\bb=1$. So these bisections are
+exactly the $B_\aaa=\{(\aaa,y):y\in Y_S\}$, with $B_\aaa B_\bb=B_{\aaa\bb}$. This is
+Lemma 2.1 of Chapter~\ref{ch:XIII} run with $\widetilde c$ in place of the scaling cocycle: there the
+value of $c$ had to determine the element $g$, which is exactly norm-separation; the value
+of $\widetilde c$ \emph{is} $g$, and no hypothesis is needed. Since $\widehat\theta$ is
+injective, $\widetilde c_2\circ\theta_*$ is constant on a bisection iff $\widetilde c_1$
+is, so $\theta_*$ maps the $B_\aaa$ to the $B_{\pi(\aaa)}$ for a monoid isomorphism
+$\pi:J_{S_1}\to J_{S_2}$, which carries the free generators of the free abelian monoid
+$J_{S_1}$ to those of $J_{S_2}$: a bijection $S_1\to S_2$. It preserves norms because
+$\log\Ns\pi(\aaa)=c_2(B_{\pi(\aaa)})=c_1(B_\aaa)=\log\Ns\aaa$. Evaluating the intertwining
+of $\widetilde c$ on $B_\pp$ gives
+$\delta_\pp=\widetilde c_1(B_\pp)=\widehat\theta\bigl(\widetilde
+c_2(B_{\pi(\pp)})\bigr)=\widehat\theta(\delta_{\pi(\pp)})$: $\widehat\theta$ maps standard
+generators to standard generators, so $\theta$ is induced by $\pi$.
+
+\emph{Fibres, simplices, symmetries.} $\theta_*$ maps $B_\aaa$ to $B_{\pi(\aaa)}$, hence
+the range $\aaa Y_{S_1}$ to $\pi(\aaa)Y_{S_2}$, hence the valuation fibres to the
+valuation fibres, and the fibre over $0$, which is $G_S$, homeomorphically onto its
+counterpart. An isomorphism of $C^*$-dynamical systems carries $\mathrm{KMS}_\beta$ states
+to $\mathrm{KMS}_\beta$ states; by [Ch.~\ref{ch:Main}, Thm.~3.6] the simplices are
+$\operatorname{Prob}(G_S/\Xi_\beta^\perp)$, an affine isomorphism of Bauer simplices is a
+homeomorphism of the extreme boundaries, and the transition locus is the set of $\beta$ at
+which the simplex changes. Finally (5) is part (6) of Theorem 2.5 of Chapter~\ref{ch:XIII}: its proof
+uses only the matched bisections and the torsor structure of the fibres, and nowhere uses
+norm-separation, which entered that paper only through its Theorem 1.4 --- replaced here by
+gauge-equivariance and Lemma~\ref{XIV:lem:gauge} --- and its Lemma 2.1 --- replaced by the
+$\widetilde c$ argument above; its Remark 2.6 records that these are the only two entry
+points.
+\end{proof}
+
+\begin{corollary}[Dedekind zeta]\label{XIV:cor:zeta}
+If $S_i=P_{K_i}$ and $\Phi$ is gauge- and $\sigma$-equivariant, then the norm multisets
+$\{\Ns\pp\}_{\pp\in P_{K_1}}$ and $\{\Ns\qq\}_{\qq\in P_{K_2}}$ agree with multiplicities,
+hence
+\[
+\zeta_{K_1}(s)=\prod_{\pp}\bigl(1-\Ns\pp^{-s}\bigr)^{-1}=\zeta_{K_2}(s),
+\]
+so $K_1$ and $K_2$ are arithmetically equivalent. The narrow class numbers are \emph{not}
+among the conclusions: $h^+_S$ is recovered by no argument of Chapter~\ref{ch:XIII} (its Remark 3.2),
+and nothing here adds one.
+\end{corollary}
+
+\begin{remark}[Is the hypothesis reasonable?]\label{XIV:rem:reasonable}
+Gauge-equivariance is a genuine strengthening and should be declared as such. It is however
+natural: the gauge action is part of the standard data of a semigroup crossed product, it is
+what makes $C(Y_S)$ the coefficient algebra, and any isomorphism arising from an isomorphism
+of the underlying dynamical systems $(Y_{S_1},J_{S_1})\to(Y_{S_2},J_{S_2})$ is automatically
+gauge-equivariant. What Theorem~\ref{XIV:thm:uncond} does not do is deduce the conclusion from
+$\sigma$-equivariance alone, and by Corollary~\ref{XIV:cor:nothing} no argument through
+$\cA^\sigma$ ever will.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Statement} & \text{Status} & \text{Reference}\\\hline
+C(Y_S)=\cA^{\T^S}\ \text{unconditionally} & \text{true} & \text{Lem.~1.1}\\
+\text{norm-separated}\iff\cA^\sigma=C(Y_S) & \textbf{equivalent, not sufficient} & \text{Thm.~1.3}\\
+\text{the hypothesis can be removed} & \textbf{false} & \text{Cor.~1.4}\\
+P_K\ \text{norm-separated for}\ K\ne\Q & \textbf{never} & \text{Prop.~1.5}\\
+\cA^\sigma=\bigoplus_n\cA^\sigma_n & \textbf{false: not a direct sum} & \text{Prop.~2.1}\\
+\cA^\sigma\ \text{is}\ L\text{-graded},\ \cA^\sigma_{(0)}=C(Y_S) & \text{true} & \text{Thm.~2.2}\\
+\text{Property A characterizes}\ C(Y_S) & \text{circular: uses}\ \gamma & \text{Rem.~3.1}\\
+\text{Property B characterizes}\ C(Y_S) & \text{circular: assumes uniqueness} & \text{Rem.~3.2}\\
+\text{intrinsic recovery from}\ (\cA,\sigma) & \textbf{open} & \text{Rem.~3.3}\\
+\text{gauge-equivariant reconstruction} & \textbf{true, all}\ K,S & \text{Thm.~4.2}\\
+\theta\ \text{induced by a bijection}\ S_1\to S_2 & \text{true a posteriori, not a priori} & \text{Thm.~4.2(2)}\\
+\text{Frobenius classes, }\{\Xi_\beta\}\ \text{matched} & \text{if symmetries intertwined} & \text{Thm.~4.2(5)}\\
+\zeta_{K_1}=\zeta_{K_2}\ (S_i=P_{K_i}) & \text{true, gauge-equivariantly} & \text{Cor.~4.3}\\
+h^+_{K_1}=h^+_{K_2} & \textbf{not claimed} & \text{Cor.~4.3}\\
+\end{array}
+\]
+
+The question was well posed and its answer is a change of shape. Norm-separation cannot be
+removed from Theorem 1.4 of Chapter~\ref{ch:XIII}, because Theorem~\ref{XIV:thm:equiv} shows it is that
+theorem's conclusion in disguise; what can be done is to replace $\sigma$-equivariance by
+gauge-equivariance, whereupon the reconstruction holds with the exact strength of Paper
+XIII's Theorem 2.5 for every number field and every prime set, including the classical case
+$S=P_K$ that Proposition~\ref{XIV:prop:PK} shows was previously excluded --- with what was
+conditional there (the Frobenius classes, when the symmetry actions are not known to be
+intertwined) still conditional, and the narrow class number still not recovered.
+
+Two questions remain, and the first is the sharp form of the original one. Is $C(Y_S)$
+intrinsically characterized inside $(\cA_{K,S},\sigma)$ when $L\ne0$? Remark~\ref{XIV:rem:open}
+shows the obvious counterexample is blocked by the Nica--Toeplitz relations, so we suspect
+the answer is yes and that the mechanism is the rigidity of commuting isometries rather than
+any spectral argument. Second: the $L$-graded algebra $\cA^\sigma$ of
+Theorem~\ref{XIV:thm:structure} is a new object in this programme, being the first non-commutative
+fixed-point algebra to appear; whether its own structure --- for instance whether it is
+simple, or its ideal lattice --- encodes the relation lattice $L$, and hence the pattern of
+coincidences among the norms, we have not examined.
+

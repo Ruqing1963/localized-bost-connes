@@ -1,0 +1,259 @@
+% generated from papers/XIX-isogeny/paper_XIX_isogeny.tex -- edit the paper, then rerun assemble.py
+\chapter[Isogeny and the Picard torsor]{Isogeny, zeta-equivalence, and the Picard torsor\\ in function field Bost--Connes systems}\label{ch:XIX}
+\chapterorigin{This chapter is Paper XIX of the series (\texttt{papers/XIX-isogeny/}).}
+\begin{summary}
+Chapter~\ref{ch:XVIII} showed that the partition function of the function field
+Bost--Connes system is the Weil zeta function, and asked whether the system can distinguish
+two curves with the same zeta function but non-isomorphic Jacobian groups. The answer is yes,
+and we locate precisely which layer of the system does it.
+
+The proposed exact sequence $1\to\Jac(C)(\F_q)\to G_{\cP_K}\to\hZ\to1$ is not the right one:
+$\Jac(C)(\F_q)=\Pic^0(C)$ is a \emph{quotient} of the compact part
+$\Idl^0_K/K^\times$, not a subgroup of $G_{\cP_K}$, and the correct picture is a two-step
+filtration with the much larger $\prod_P\cO_P^\times/\overline{\F_q^\times}$ at the bottom.
+What is true, and is what the disambiguation needs, is the identity
+\[
+G_{\cP_K}\big/\overline{U_S}\ \cong\ \widehat{\Pic(C)}\ \cong\ \hZ\times\Jac(C)(\F_q),
+\qquad U_S=\prod_P\cO_P^\times,
+\]
+coming from $\Idl_K/(K^\times U)=\Div(C)/\Prin(C)=\Pic(C)$ together with F.~K. Schmidt's
+theorem that $C$ has a divisor of degree $1$. Since $\hZ$ is torsion free,
+\[
+\Jac(C)(\F_q)=\bigl(G_{\cP_K}/\overline{U_S}\bigr)_{\tors},
+\]
+so the Jacobian group is recovered from the \emph{pair} $(G_{\cP_K},U_S)$ --- data the
+groupoid supplies but the partition function does not.
+
+Hence the disambiguation theorem holds, at the Cartan-pair level: a gauge-equivariant
+isomorphism of systems forces $\Jac(C_1)(\F_q)\cong\Jac(C_2)(\F_q)$, while the partition
+function forces only $Z_{C_1}=Z_{C_2}$, that is, isogeny. The separation is not vacuous. By
+brute-force enumeration over $\F_p$ for $p\le23$ we exhibit many isogeny classes containing
+several group structures; for $p=13$ and trace $-2$ there are three,
+$\Z/16$, $\Z/2\times\Z/8$ and $\Z/4\times\Z/4$, all with the same zeta function.
+
+Two cautions. Over a function field $S=\cP_K$ is massively \emph{not} norm-separated ---
+$\Ns(D)=q^{\deg D}$ identifies all divisors of equal degree --- so Theorem 2.5 of Chapter~\ref{ch:XIII}
+does not apply at all and the gauge-equivariant hypothesis of Theorem 4.2 of Chapter~\ref{ch:XIV} is
+not a convenience but a necessity. And the proposed third tier, recovery of $C$ itself by
+Torelli, does not follow from anything here: what the system supplies is abelian class field
+theory data, and the abelianized Galois group is known not to determine a global field in the
+number field case. We record it as open, not proved.
+\end{summary}
+
+
+\section{The correct filtration}
+
+Let $C/\F_q$ be smooth projective geometrically irreducible, $K=\F_q(C)$, $S=\cP_K$ the set
+of closed points. The framework is that of [Ch.Function fields have no archimedean places, so
+$\Idl_S=\Idl_K$, $K^\times_S=K^\times$ and
+\[
+G_{\cP_K}=\Idl_K/\overline{K^\times},\qquad U_S=\prod_{P}\cO_P^\times .
+\]
+
+\begin{proposition}[Two-step filtration]\label{XIX:prop:filtration}
+There are exact sequences of topological groups
+\begin{align}
+1&\longrightarrow \prod_P\cO_P^\times\big/\overline{\F_q^\times}\longrightarrow \Idl^0_K/K^\times\longrightarrow\Pic^0(C)(\F_q)\longrightarrow1,\label{XIX:eq:seq1}\\
+1&\longrightarrow \Idl^0_K/K^\times\longrightarrow G_{\cP_K}\xrightarrow{\ \deg\ }\hZ\longrightarrow1,\label{XIX:eq:seq2}
+\end{align}
+where $\Idl^0_K$ denotes the degree-zero ideles. The group $\Idl^0_K/K^\times$ is compact.
+\end{proposition}
+
+\begin{proof}
+Standard class field theory for function fields: \eqref{XIX:eq:seq2} is the degree map, whose
+image after profinite completion is $\hZ$; \eqref{XIX:eq:seq1} is the quotient of the degree-zero
+idele class group by the unit ideles, whose cokernel is the degree-zero divisor class group.
+\end{proof}
+
+\begin{remark}[The proposed sequence]\label{XIX:rem:proposedseq}
+The sequence $1\to\Jac(C)(\F_q)\to G_{\cP_K}\to\hZ\to1$ is not correct. By
+\eqref{XIX:eq:seq1}, $\Jac(C)(\F_q)=\Pic^0(C)$ is a \emph{quotient} of the compact part, not a
+subgroup, and the kernel in \eqref{XIX:eq:seq2} is $\Idl^0_K/K^\times$, an extension of
+$\Pic^0(C)$ by the enormous group $\prod_P\cO_P^\times/\overline{\F_q^\times}$. The Jacobian
+group is a subquotient of $G_{\cP_K}$, and exhibiting it requires naming $U_S$.
+\end{remark}
+
+\section{The Jacobian group as a torsion subgroup}
+
+\begin{theorem}[Recovery from the pair]\label{XIX:thm:torsion}
+With $U_S=\prod_P\cO_P^\times\le G_{\cP_K}$,
+\begin{equation}\label{XIX:eq:picard}
+G_{\cP_K}\big/\overline{U_S}\ \cong\ \widehat{\Pic(C)}\ \cong\ \hZ\times\Jac(C)(\F_q),
+\end{equation}
+and consequently
+\[
+\Jac(C)(\F_q)\ \cong\ \Bigl(G_{\cP_K}\big/\overline{U_S}\Bigr)_{\tors}.
+\]
+\end{theorem}
+
+\begin{proof}
+$\Idl_K/(K^\times U_S)$ is by definition $\Div(C)/\Prin(C)=\Pic(C)$, and passing to profinite
+completions gives the first isomorphism in \eqref{XIX:eq:picard}. By F.~K. Schmidt's theorem
+\cite{Rosen} $C$
+has a divisor of degree $1$, so the degree map $\Pic(C)\to\Z$ splits and
+$\Pic(C)\cong\Z\oplus\Pic^0(C)$ with $\Pic^0(C)=\Jac(C)(\F_q)$ finite; completing gives
+$\hZ\times\Jac(C)(\F_q)$. Finally $\hZ$ is torsion free, so the torsion subgroup of the
+product is the finite factor.
+\end{proof}
+
+\begin{corollary}[What each layer sees]\label{XIX:cor:layers}
+The partition function determines $Z_C(T)$ (Theorem 4.1 of Chapter~\ref{ch:XVIII}), hence
+$|\Jac(C)(\F_q)|=P(1)$ but only its order. The pair $(G_{\cP_K},U_S)$ determines
+$\Jac(C)(\F_q)$ as an abstract finite abelian group, by Theorem~\ref{XIX:thm:torsion}.
+\end{corollary}
+
+\section{Disambiguation}
+
+\begin{theorem}[Isogeny disambiguation]\label{XIX:thm:disambig}
+Let $C_1,C_2$ be curves over $\F_q$ with $Z_{C_1}=Z_{C_2}$ but
+$\Jac(C_1)(\F_q)\not\cong\Jac(C_2)(\F_q)$. Then:
+\begin{enumerate}
+\item the two systems have the \emph{same} partition function, so no invariant built from
+the KMS temperature dependence alone distinguishes them;
+\item nevertheless the systems are not isomorphic \emph{gauge-equivariantly}: there is no
+isomorphism $\cA_{C_1,\cP_{K_1}}\to\cA_{C_2,\cP_{K_2}}$ intertwining the full gauge actions
+in the sense of Chapter~\ref{ch:XIV} (its Definition 4.1) --- the actions of the duals of the grading
+groups, of which the circle action of Chapter~\ref{ch:XVIII} and the flow $\sigma$ are quotients.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) is Theorem 4.1 of Chapter~\ref{ch:XVIII}. For (2), suppose $\Phi$ is such an isomorphism. The
+argument of Theorem 4.2 of Chapter~\ref{ch:XIV} --- the integer-valued gauge cocycle and its bisections
+--- uses only the \'etale groupoid picture and the freeness of the grading monoid, and
+applies verbatim over a function field; it gives $\Phi(C(Y_{S_1}))=C(Y_{S_2})$ together
+with a monoid isomorphism $\theta:J_{S_1}\to J_{S_2}$, i.e.\ a $\theta$-equivariant
+homeomorphism $h:Y_{S_1}\to Y_{S_2}$ of the semigroup dynamical systems. Now consider the
+\emph{deep stratum}
+\[
+Y_\infty:=\bigcap_{0\ne D\in J_S}D\cdot Y_S=\{[x,g]:x=0\}\ \cong\ G_{\cP_K}\big/\overline{U_S},
+\]
+canonically defined from the dynamics, on which $D\in J_S$ acts by the translation
+$[0,g]\mapsto[0,\sigma_Dg]$: the deep stratum is a torsor over the compactified Picard group
+$G_{\cP_K}/\overline{U_S}\cong\widehat{\Pic(C)}$ of Theorem~\ref{XIX:thm:torsion}, and the
+translations $\{\sigma_D\}$ run through the effective classes, which generate $\Pic(C)$ and
+are dense in the completion. The closure of the translation monoid in
+$\mathrm{Homeo}(Y_\infty)$ is therefore a compact group acting simply transitively --- a
+closed subsemigroup of a compact group is a subgroup --- and it is isomorphic, as a
+topological group, to $G_{\cP_K}/\overline{U_S}$. Since $h$ maps $Y_{\infty,1}$ onto
+$Y_{\infty,2}$ intertwining the translation monoids, it intertwines their closures, giving
+a topological group isomorphism
+$G_{\cP_{K_1}}/\overline{U_{S_1}}\cong G_{\cP_{K_2}}/\overline{U_{S_2}}$. Taking torsion
+subgroups, Theorem~\ref{XIX:thm:torsion} forces $\Jac(C_1)(\F_q)\cong\Jac(C_2)(\F_q)$, contrary
+to hypothesis. (Note that the homeomorphism type of $Y_\infty$ alone would see nothing: all
+these spaces are Cantor sets, and indeed $|\Jac|$ is already matched by (1); it is the
+translation structure that carries the group.)
+\end{proof}
+
+\begin{remark}[Gauge-equivariance is necessary here]\label{XIX:rem:necessary}
+Over a function field $\Ns(D)=q^{\deg D}$, so $\Ns$ identifies all divisors of the same
+degree and $S=\cP_K$ is as far from norm-separated as possible: the relation lattice
+$L(S)$ of Chapter~\ref{ch:XIV} (its Definition 1.2) has infinite rank. Consequently
+Theorem 1.4 of Chapter~\ref{ch:XIII}, which identifies $C(Y_S)$ with $\cA^\sigma$ under
+norm-separation, is unavailable, and
+$\cA^\sigma$ is a large non-commutative algebra --- as is the fixed-point algebra of the
+circle action, which coincides with it. Theorem~\ref{XIX:thm:disambig} therefore rests on
+Theorem 4.2 of Chapter~\ref{ch:XIV} and its \emph{full} gauge-equivariant hypothesis; equivariance for
+the circle action alone is the same as $\sigma$-equivariance and does not feed that theorem.
+In this setting the hypothesis is not a
+technical convenience but the only route available.
+\end{remark}
+
+\begin{example}[Explicit isogeny classes with several group structures]\label{XIX:ex:explicit}
+Enumerating all $y^2=x^3+ax+b$ over $\F_p$ and grouping by trace $t$ --- equal $t$ being
+equivalent to equal zeta function, hence to isogeny \cite{Tate} --- gives, for instance:
+\[
+\begin{array}{lll}
+p & t & \text{group structures of }E(\F_p)\\\hline
+11 & 0 & \Z/12,\ \Z/2\times\Z/6\\
+13 & -2 & \Z/16,\ \Z/2\times\Z/8,\ \Z/4\times\Z/4\\
+13 & 5 & \Z/9,\ \Z/3\times\Z/3\\
+17 & 2 & \Z/16,\ \Z/2\times\Z/8,\ \Z/4\times\Z/4\\
+19 & -7 & \Z/27,\ \Z/3\times\Z/9\\
+23 & -8 & \Z/32,\ \Z/2\times\Z/16
+\end{array}
+\]
+Each row is a single isogeny class, so a single partition function, containing curves whose
+systems are pairwise non-isomorphic by Theorem~\ref{XIX:thm:disambig}. The phenomenon is
+abundant, not exceptional: it occurred for most traces at every prime $11\le p\le23$ examined.
+\end{example}
+
+\section{The hierarchy, with the third tier open}
+
+\begin{theorem}[Two tiers]\label{XIX:thm:tiers}
+For the function field system $(\cA_{C,\cP_K},\T,\sigma)$:
+\begin{itemize}
+\item \textbf{Tier 1, thermodynamic.} The partition function recovers $Z_C(T)$, hence the
+Weil polynomial, the genus, all point counts $\#C(\F_{q^n})$, and $|\Jac(C)(\F_q)|$. Two
+systems have the same partition function iff the curves are zeta-equivalent, that is iff
+their Jacobians are isogenous over $\F_q$ \cite{Tate}.
+\item \textbf{Tier 2, Cartan pair.} A gauge-equivariant isomorphism recovers the diagonal
+with its semigroup action, hence the deep stratum with its translation structure, hence the
+compactified Picard group and $\Jac(C)(\F_q)$ as an abstract group, strictly refining Tier 1
+by Example~\ref{XIX:ex:explicit}.
+\end{itemize}
+\end{theorem}
+
+\begin{remark}[The third tier is not established]\label{XIX:rem:tier3}
+The proposal's third tier --- recovery of $C$ itself, ``the Torelli geometric isomorphism'' ---
+does not follow from what is proved here, and we do not believe it follows from abelian data
+at all. What the system supplies is the abelianized Galois group with its Frobenius classes:
+class field theory data. In the number field case the abelianized absolute Galois group is
+known not to determine the field --- Onabe, and Angelakis--Stevenhagen \cite{AS}, exhibit infinitely
+many imaginary quadratic fields sharing the same $\Gal(K^{ab}/K)$ --- so no purely abelian
+invariant can give a Torelli statement. Our data is richer than the bare group, carrying the
+Frobenius classes indexed by $S$ together with their degrees; whether that suffices is
+exactly the question addressed in the literature on characterizing global fields by their
+$L$-series, which we have not been able to consult here. We state Tier 3 as open and make no
+claim.
+\end{remark}
+
+\begin{remark}[What Tier 2 does and does not give]\label{XIX:rem:tier2limits}
+Theorem~\ref{XIX:thm:torsion} recovers $\Jac(C)(\F_q)$ as an abstract finite abelian group. It
+does not recover the principal polarization, which is what Torelli's theorem requires (for
+the arithmetic of pairings and polarizations over finite fields see \cite{HoweWeil}), nor
+the Galois module structure of the $\ell$-adic Tate module beyond its characteristic
+polynomial. So even a complete solution at Tier 2 would leave a gap before Tier 3, and the
+gap is exactly the polarization.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Statement} & \text{Status} & \text{Reference}\\\hline
+1\to\Jac(\F_q)\to G_{\cP_K}\to\hZ\to1 & \textbf{false: wrong kernel} & \text{Rem.~1.2}\\
+\text{two-step filtration} & \text{true} & \text{Prop.~1.1}\\
+G_{\cP_K}/\overline{U_S}\cong\hZ\times\Jac(\F_q) & \textbf{true} & \text{Thm.~2.1}\\
+\Jac(\F_q)=\bigl(G_{\cP_K}/\overline{U_S}\bigr)_{\tors} & \textbf{true} & \text{Thm.~2.1}\\
+\text{partition function}\iff\text{isogeny} & \text{true} & \text{Thm.~4.1}\\
+\text{system distinguishes isogenous curves} & \textbf{yes, at the Cartan pair} & \text{Thm.~3.1}\\
+S=\cP_K\ \text{norm-separated} & \text{no; }L(S)\ \text{of infinite rank} & \text{Rem.~3.2}\\
+\text{gauge-equivariance needed} & \text{yes, necessarily} & \text{Rem.~3.2}\\
+\text{Tier 3: }C_1\cong C_2 & \textbf{open; not from abelian data} & \text{Rem.~4.2}
+\end{array}
+\]
+
+The question left open in \S5 of Chapter~\ref{ch:XVIII} is answered: zeta-equivalence is
+\emph{not} the equivalence realized by these systems. The partition function sees exactly the
+isogeny class, and the Cartan pair sees strictly more, namely the isomorphism class of
+$\Jac(C)(\F_q)$ as a group. The mechanism is the identity
+$\Idl_K/(K^\times U)=\Pic(C)$, which is class field theory rather than operator algebra; the
+operator-algebraic content is only that a gauge-equivariant isomorphism recovers the
+diagonal with its semigroup action, which is Theorem 4.2 of Chapter~\ref{ch:XIV} --- the passage from
+there to the Picard group is the translation structure of the deep stratum.
+
+We are left with a clean picture of the layers and an honest gap at the top. Thermodynamics
+gives the isogeny class; the Cartan pair gives the Jacobian group; and the curve itself is
+out of reach of both, because the polarization is nowhere in the data and because abelian
+class field theory is known to be insufficient for reconstructing global fields.
+
+Three questions. Does the pair $(G_S,U_S)$ with the Frobenius classes determine more than
+$\Jac(C)(\F_q)$ --- for instance the full group $\Pic(C)$ with its effective cone, which is
+closer to geometry? Second, Theorem~\ref{XIX:thm:torsion} used F.~K. Schmidt to split the degree
+map; is the splitting canonical enough that the isomorphism $\Jac(C)(\F_q)\cong(\cdot)_\tors$
+is functorial, or does the choice of degree-one divisor matter for the disambiguation?
+Third, and this is the natural next target, is there a curve pair with the same zeta
+\emph{and} the same $\Jac(\F_q)$ but non-isomorphic curves --- for which Tier 2 would also
+fail, and the question of Tier 3 would become sharp rather than speculative?
+

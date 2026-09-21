@@ -1,0 +1,332 @@
+% generated from papers/X-semigroup-search/paper_X_hurwitz_quaternions.tex -- edit the paper, then rerun assemble.py
+\chapter[A non-commutative Ore LCM semigroup: the Hurwitz quaternions]{A non-commutative Ore LCM semigroup\\ with arithmetic thermodynamics:\\ the Hurwitz quaternions}\label{ch:X}
+\renewcommand{\Nrd}{\operatorname{Nrd}}
+\chapterorigin{This chapter is Paper X of the series (\texttt{papers/X-semigroup-search/}).}
+\begin{summary}
+The localized Bost--Connes programme is blocked in three directions. A commutative index
+semigroup makes the groupoid amenable, and Connes' classification of injective factors then
+erases the arithmetic entirely (Chapter~\ref{ch:IX}). Additive structure makes the range
+projections partition, so the Cuntz relation forces $\beta=1$ and destroys the
+high-temperature phase structure (Chapter~\ref{ch:II}). A free non-commutative monoid has orthogonal
+ranges, whence $\sum_\pp\Ns\pp^{-\beta}\le1$ and no equilibrium state exists above the critical
+point at all (Chapter~\ref{ch:V}).
+
+We isolate the algebraic conditions that avoid all three, and exhibit a monoid satisfying
+them. Two observations shape the requirements. First, the condition that the range
+projections be nested rather than partitioning is not an extra hypothesis: a right Ore
+semigroup has common right multiples, so in a right LCM semigroup $e_ae_b=e_{a\vee b}\ne0$
+always, and no Cuntz relation can hold. This also re-diagnoses the free monoid, whose real
+defect is the failure of the Ore condition rather than non-commutativity. Second, every
+multiplicative norm factors through the abelianization, so the available arithmetic is that
+of $P^{\mathrm{ab}}$ --- which rules out any finitely generated candidate, the obstruction
+series then being a finite sum.
+
+The multiplicative monoid $\cH\setminus\{0\}$ of the Hurwitz quaternions satisfies every
+requirement. It is non-commutative and cancellative; right Ore, since
+$a(\bar ab)=b\Nrd(a)$; right LCM, since $\cH$ is a noncommutative principal ideal domain; its
+unit group has order $24$, so the partition function converges somewhere, in contrast with
+$M_n(\Z)\cap GL_n^+(\Q)$ whose unit group $GL_n(\Z)$ is infinite; the reduced norm is
+multiplicative and takes every prime as a value, giving infinitely many multiplicatively
+independent norms; the growth is polynomial of degree two; and
+\[
+\zeta_P(\beta)=24\sum_{n\ge1}\sigma_{\mathrm{odd}}(n)\,n^{-\beta}
+=24\,\zeta(\beta)\bigl(1-2^{1-\beta}\bigr)\zeta(\beta-1),
+\]
+a Solomon-type zeta function with a pole at $\beta=2$: the critical exponent is finite and
+positive. The group of fractions $\HH(\Q)^\times$ is non-amenable.
+
+We close by delimiting what remains. Non-amenability of the group of fractions is necessary
+but not sufficient for escaping Chapter~\ref{ch:IX}: what matters there is amenability of the
+\emph{measured} groupoid, and boundary actions of non-amenable groups are routinely amenable,
+$L^\infty(\partial\F_n)\rtimes\F_n$ being injective. We state this as a fourth condition
+(C4) and leave it open; in our view it is the question on which a genuinely non-commutative
+Bost--Connes theory now turns.
+Condition (C4) is settled, in the negative, in Chapter~\ref{ch:XXVIII}: the orbit
+relation is hyperfinite for every admissible monoid, so the search closed there.
+\end{summary}
+
+
+\section{The algebraic requirements}
+
+\begin{definition}[The target]\label{X:def:target}
+We seek a monoid $P$ with:
+\begin{enumerate}
+\item[(C1)] $P$ non-commutative, cancellative, right Ore, $aP\cap bP\ne\emptyset$ for all
+$a,b$ --- so that a group of right fractions $G=PP^{-1}$ exists --- and right LCM, meaning
+$aP\cap bP$ is empty or equal to $cP$ for some $c$ \cite{Nica,LacaRaeburn};
+\item[(C2)] in the Toeplitz representation $v_a^*v_a=1$, $e_a=v_av_a^*$, the range
+projections nested, $e_ae_b=e_{a\vee b}$, with no finite family satisfying
+$\sum_ie_{a_i}=1$;
+\item[(C3)] a multiplicative $N:P\to\R_{>0}$ for which
+$\zeta_P(\beta)=\sum_{a\in P}N(a)^{-\beta}$ has a finite abscissa of convergence
+$\beta_c\in(0,\infty)$.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[(C2) follows from (C1)]\label{X:prop:C2}
+Let $P$ satisfy (C1). Then $a\vee b$ exists for all $a,b\in P$, the projections satisfy
+$e_ae_b=e_{a\vee b}\ne0$, and no relation $\sum_ie_{a_i}=1$ with orthogonal $e_{a_i}$ and at
+least two nonzero terms can hold. In particular the Toeplitz algebra of $P$ admits no Cuntz
+relation.
+\end{proposition}
+
+\begin{proof}
+The Ore condition gives $aP\cap bP\ne\emptyset$ for all $a,b$; the LCM condition then gives
+$aP\cap bP=(a\vee b)P$. In the Nica--Toeplitz representation on $\ell^2(P)$ the projection
+$e_a$ has range $\overline{\mathrm{span}}\{\delta_x:x\in aP\}$, so $e_ae_b$ is the projection
+onto $aP\cap bP=(a\vee b)P$, namely $e_{a\vee b}\ne0$. Orthogonality would require
+$aP\cap bP=\emptyset$, contradicting Ore.
+\end{proof}
+
+\begin{remark}[Re-diagnosis of the free monoid]\label{X:rem:free}
+Proposition~\ref{X:prop:C2} shows that (C2) costs nothing once (C1) is imposed, and identifies
+what actually goes wrong in the free variant of Chapter~\ref{ch:V}. A free monoid is right LCM in the
+quasi-lattice sense \cite{Nica} but is \emph{not} Ore: two distinct generators have no common right multiple. That
+failure is what makes the ranges orthogonal, and orthogonality is what forces
+$\sum_\pp\Ns\pp^{-\beta}\le1$ and empties the high-temperature region. The obstruction is the
+failure of the Ore condition, not non-commutativity as such.
+\end{remark}
+
+\begin{proposition}[Norms factor through the abelianization]\label{X:prop:ab}
+Any multiplicative homomorphism $N:P\to(\R_{>0},\times)$ factors through the abelianization
+$P^{\mathrm{ab}}$. Hence the norms available to (C3) are exactly the elements of
+$\operatorname{Hom}(P^{\mathrm{ab}},\R_{>0})$.
+\end{proposition}
+
+\begin{proof}
+$\R_{>0}$ is abelian, so $N$ annihilates all commutators.
+\end{proof}
+
+\begin{remark}[What (C1)--(C3) already exclude]\label{X:rem:selection}
+Two consequences narrow the search sharply, and we record them because they explain why the
+candidate of \S\ref{X:sec:hurwitz} is arithmetic rather than combinatorial. If $P$ is finitely
+generated then the obstruction series of [Ch.~\ref{ch:Main}, (1.1)], which runs over generators, is a
+finite sum, convergent for every $\beta$; so $\Xi_\beta$ is constant in $\beta$ and no phase
+transition occurs. And if the unit group $P^\times$ is infinite then, $N$ being $1$ on units,
+$\zeta_P(\beta)\ge|P^\times|=\infty$ for every $\beta$ and (C3) fails. A candidate must
+therefore be infinitely generated with finite unit group, and by
+Proposition~\ref{X:prop:ab} its abelianization must carry infinitely many multiplicatively
+independent norm values --- the analogue of the $\Q$-linear independence of the $\log\Ns\pp$
+used throughout [Ch.~\ref{ch:I}].
+\end{remark}
+
+\section{The Hurwitz quaternion monoid}\label{X:sec:hurwitz}
+
+Let $\HH(\Q)$ be the rational quaternion algebra, $\bar a$ the conjugate,
+$\Nrd(a)=a\bar a\in\Z_{\ge0}$ the reduced norm, and
+\[
+\cH=\Z\Bigl\langle 1,\ i,\ j,\ \tfrac{1+i+j+k}{2}\Bigr\rangle
+\]
+the Hurwitz order \cite{Hurwitz,Reiner}. Put $P:=\cH\setminus\{0\}$ under multiplication.
+
+\begin{theorem}[$P$ satisfies \textup{(C1)--(C3)}]\label{X:thm:hurwitz}
+\begin{enumerate}
+\item $P$ is non-commutative and cancellative, being a subsemigroup of the multiplicative
+group of a division algebra.
+\item $P$ is right Ore: for $a,b\in P$,
+\[
+a\,(\bar ab)=(a\bar a)\,b=\Nrd(a)\,b=b\,\Nrd(a),
+\]
+since $\Nrd(a)$ is a central integer; so $aP\cap bP\ne\emptyset$.
+\item $P$ is right LCM: $\cH$ is Euclidean for $\Nrd$, hence a noncommutative principal ideal
+domain, so every right ideal is principal and $a\cH\cap b\cH=c\cH$.
+\item $P^\times$ is the group of $24$ Hurwitz units, in particular finite.
+\item $\Nrd$ is multiplicative with $\Nrd|_{P^\times}=1$; its values on irreducibles are
+exactly the rational primes, whose logarithms are $\Q$-linearly independent.
+\item Writing $a_n=\#\{a\in P:\Nrd(a)=n\}=24\,\sigma_{\mathrm{odd}}(n)$,
+\begin{equation}\label{X:eq:zeta}
+\zeta_P(\beta)=24\sum_{n\ge1}\sigma_{\mathrm{odd}}(n)\,n^{-\beta}
+=24\,\zeta(\beta)\bigl(1-2^{1-\beta}\bigr)\,\zeta(\beta-1),
+\end{equation}
+convergent for $\beta>2$ and divergent as $\beta\downarrow2$; the critical exponent is
+$\beta_c=2$.
+\item The growth is polynomial of degree two: $\#\{a\in P:\Nrd(a)\le x\}\sim Cx^2$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) is immediate. (2) is the displayed identity, $\Nrd(a)$ lying in the centre $\Q$ of
+$\HH(\Q)$ and in $\Z$ for $a\in\cH$. (3) is the classical fact that $\cH$ is left and right
+Euclidean for the reduced norm \cite{Hurwitz}, whence a principal ideal domain on both
+sides; an intersection of right ideals is a right ideal, hence principal, and nonzero by (2). (4) is the classical
+count of Hurwitz units, namely $\pm1,\pm i,\pm j,\pm k$ and the sixteen
+$\tfrac12(\pm1\pm i\pm j\pm k)$. (5): multiplicativity is $\Nrd(ab)=\Nrd(a)\Nrd(b)$; an
+element is irreducible exactly when its reduced norm is prime, and every prime occurs; the
+$\Q$-linear independence of $\{\log p\}$ is unique factorization in $\Z$.
+
+For (6), the count $a_n=24\sigma_{\mathrm{odd}}(n)$ is the Hurwitz--Jacobi formula
+\cite{Hurwitz}. Its
+Dirichlet series is
+\[
+\sum_{n\ge1}\sigma_{\mathrm{odd}}(n)n^{-s}
+=\sum_{d\ \mathrm{odd}}\sum_{m\ge1}d\,(dm)^{-s}
+=\Bigl(\sum_{d\ \mathrm{odd}}d^{1-s}\Bigr)\zeta(s)
+=\bigl(1-2^{1-s}\bigr)\zeta(s-1)\,\zeta(s),
+\]
+whose only pole in $\Re s>1$ is that of $\zeta(s-1)$ at $s=2$. (7) follows by Abel summation
+from $\sum_{n\le x}\sigma_{\mathrm{odd}}(n)\asymp x^2$.
+\end{proof}
+
+\begin{remark}[Numerical verification]\label{X:rem:num}
+The counts $a_n$ were obtained by exhaustive enumeration of $\cH$ over both the integral and
+the half-integral coordinate classes, and agree with $24\sigma_{\mathrm{odd}}(n)$ for every
+$n\le15$:
+\[
+24,\,24,\,96,\,24,\,144,\,96,\,192,\,24,\,312,\,144,\,288,\,96,\,336,\,192,\,576 .
+\]
+Identity \eqref{X:eq:zeta} was checked against partial sums to $n=20000$, agreeing to eight
+decimal places at $\beta=4$ and $\beta=6$. The pole at $\beta=2$ is visible in
+\[
+\zeta_P(2.20)=112.96,\quad \zeta_P(2.10)=211.44,\quad \zeta_P(2.05)=408.72,\quad \zeta_P(2.02)=1000.83 .
+\]
+The ratio $\#\{\Nrd\le x\}/x^2$ took the values $9.868$, $9.880$, $9.872$ at
+$x=200,500,1000$, confirming (7).
+\end{remark}
+
+\begin{remark}[The Toeplitz relations]\label{X:rem:relations}
+The associated algebra is the Nica--Toeplitz algebra $\cT(P)$ \cite{Nica,LacaRaeburn},
+generated by isometries $v_a$, $a\in P$, subject to
+\[
+v_av_b=v_{ab},\qquad v_a^*v_a=1,\qquad (v_av_a^*)(v_bv_b^*)=v_{a\vee b}v_{a\vee b}^*,
+\]
+the third by Proposition~\ref{X:prop:C2}, together with unitarity of $v_u$ for the $24$ units.
+The dynamics is $\sigma_t(v_a)=\Nrd(a)^{it}v_a$. This is well defined and is a one-parameter
+group of $*$-automorphisms preserving all three relations: multiplicativity of $\Nrd$ gives
+$\sigma_t(v_av_b)=\sigma_t(v_{ab})$; and since $\Nrd(u)=1$ for each of the $24$ units,
+\[
+\sigma_t(v_u)=v_u\qquad\bigl(u\in P^\times,\ t\in\R\bigr),
+\]
+so $\sigma_t$ fixes the unitaries $v_u$ pointwise. In particular $\sigma_t$ is constant on
+each principal right ideal, $a$ and $au$ having equal reduced norm, which is what makes the
+dynamics descend to the projections $e_a$ indexed by $P/P^\times$. By
+Proposition~\ref{X:prop:C2} no Cuntz relation constrains $\beta$: the
+high-temperature region $\beta<2$ is not excluded on those grounds, in contrast with both the
+affine systems of Chapter~\ref{ch:II} and the free variant of Chapter~\ref{ch:V}. The ring $C^*$-algebra of
+\cite{CL} is the algebra of the affine kind, with the additive structure that forces the
+Cuntz relation, and is not the object here.
+\end{remark}
+
+\begin{proposition}[The group of fractions is non-amenable]\label{X:prop:nonamen}
+$G=PP^{-1}=\HH(\Q)^\times$ is non-amenable.
+\end{proposition}
+
+\begin{proof}
+Every element of $\HH(\Q)^\times$ is $ab^{-1}$ with $a\in\cH$ and $b\in\Z\setminus\{0\}$, so
+$G=\HH(\Q)^\times$. Conjugation $x\mapsto axa^{-1}$ on the pure quaternions embeds
+$\HH(\Q)^\times/\Q^\times$ into $SO(3)$. The quaternions of reduced norm $5$ with odd
+positive real part and even imaginary parts are $1\pm2i$, $1\pm2j$, $1\pm2k$, and by
+Lubotzky--Phillips--Sarnak \cite[\S3]{LPS} the elements $1+2i$, $1+2j$, $1+2k$ generate a
+free group of rank three modulo the centre --- their images in $SO(3)$ are the rotations by
+$\arccos(-\frac35)$ about the three coordinate axes. So $\HH(\Q)^\times$ contains a free
+subgroup of rank two and is not amenable.
+\end{proof}
+
+\begin{remark}[Multiplicity at each prime]\label{X:rem:mult}
+Unlike the classical setting, where each rational prime contributes a single generator, here
+each odd prime $p$ carries $p+1$ distinct principal right ideals of reduced norm $p$, since
+$a_p/|P^\times|=24(1+p)/24=p+1$ by Theorem~\ref{X:thm:hurwitz}(6).
+
+This count is geometric. For $p$ odd the algebra is split, $\HH\otimes\Q_p\cong M_2(\Q_p)$,
+and the $p+1$ ideals are the $p+1$ neighbours of a vertex in the Bruhat--Tits tree of
+$SL_2(\Q_p)$, a $(p+1)$-regular tree, indexed by $\mathbb P^1(\F_p)$. At $p=2$, where $\HH$
+is ramified, the count collapses to a single ideal --- consistent with the factor
+$(1-2^{1-\beta})$ in \eqref{X:eq:zeta}, and verified numerically alongside
+$p+1$ for $p=3,5,7,11,13,17,19,23$.
+
+Two consequences. The Kakutani analysis of [Ch.~\ref{ch:Main}, \S3] was carried out with the
+generators indexed by primes, one per norm value; whether the multiplicity $p+1$ alters it we have not examined, and
+it is the first thing to check before transporting the classification. And the tree picture
+suggests the shape a replacement would take: the obstruction series would be indexed not by
+primes but by edges, so the criterion should become a statement about a random walk on the
+product of the local trees rather than about a Dirichlet series in $\Ns\pp^{-\beta}$. We
+record this as an interface, not a result.
+\end{remark}
+
+\begin{remark}[Ramanujan graphs]\label{X:rem:ramanujan}
+The same $(p+1)$-regular trees, quotiented by congruence subgroups of the unit group of an
+order in $\HH$, are the source of the Lubotzky--Phillips--Sarnak Ramanujan graphs
+\cite{LPS}. We have
+not used this and make no claim about a connection; we note only that the arithmetic input
+here --- the Hurwitz order and its ideals of prime norm --- is the same input, and that any
+spectral estimate needed for (C4) would plausibly meet it.
+\end{remark}
+
+\section{The remaining condition}
+
+\begin{remark}[What decided the collapse in Chapter~\ref{ch:IX}]\label{X:rem:omitted}
+Conditions (C1)--(C3) are necessary but not sufficient, and they do not address the property
+that governed Chapter~\ref{ch:IX}. There the factor was erased not because the index semigroup was
+commutative as such, but because the \emph{measured} groupoid $(G\ltimes\Omega,\nu)$ was
+amenable, so that Connes' classification of injective factors left only the type.
+Proposition~\ref{X:prop:nonamen} supplies non-amenability of $G$, which is necessary; it is far
+from sufficient. Boundary actions of non-amenable groups are routinely amenable in Zimmer's
+sense: the action of a free group $\F_n$ on its Gromov boundary with any quasi-invariant
+measure is amenable, so $L^\infty(\partial\F_n)\rtimes\F_n$ is an injective factor. If the
+$\mathrm{KMS}_\beta$ measures of the Hurwitz system concentrate on a boundary of that kind,
+the measured groupoid is amenable, the factor is injective, and Connes' classification
+applies verbatim as in Chapter~\ref{ch:IX}, collapsing the factor to $R_\infty$, $R_\lambda$ or a
+Krieger factor.
+\end{remark}
+
+\begin{definition}[The fourth condition]\label{X:def:C4}
+\begin{enumerate}
+\item[(C4)] For $\beta$ in the symmetry-breaking regime the measured groupoid
+$(G\ltimes\Omega,\nu_\beta)$ is non-amenable; equivalently, by Anantharaman-Delaroche and
+Renault \cite{ADR}, $\pi_\varphi(\cT(P))''$ is not injective.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[Status, and how it might go]\label{X:rem:status}
+We have not decided (C4), and we regard it as the substance of the problem rather than a
+technical residue. Two considerations pull in opposite directions. For: the space $\Omega$ of
+a Toeplitz algebra is not a boundary. The nested projections of Proposition~\ref{X:prop:C2}
+mean precisely that $\Omega$ retains an interior, which is the geometric content of the
+absence of a Cuntz relation, so the analogy with $\partial\F_n$ is not immediate. Against:
+for $\beta$ below the critical exponent the $\mathrm{KMS}_\beta$ measures do concentrate away
+from that interior, which is where the boundary analogy would bite.
+\end{remark}
+
+\section{Assessment}
+
+\[
+\begin{array}{lll}
+\text{Condition} & \text{Status for }P=\cH\setminus\{0\} & \text{Reference}\\\hline
+\text{non-commutative, cancellative} & \text{yes} & \text{Thm.~2.1(1)}\\
+\text{right Ore} & \text{yes: }a(\bar ab)=b\Nrd(a) & \text{Thm.~2.1(2)}\\
+\text{right LCM} & \text{yes: }\cH\ \text{a noncommutative PID} & \text{Thm.~2.1(3)}\\
+\text{(C2) nested, no Cuntz relation} & \text{automatic from (C1)} & \text{Prop.~1.2}\\
+|P^\times|<\infty & \text{yes},\ =24 & \text{Thm.~2.1(4)}\\
+\text{infinitely many independent norms} & \text{yes: all primes} & \text{Thm.~2.1(5)}\\
+\text{(C3) finite }\beta_c & \text{yes},\ \beta_c=2 & \text{Thm.~2.1(6)}\\
+\text{sub-exponential growth} & \text{yes: degree }2 & \text{Thm.~2.1(7)}\\
+G\ \text{non-amenable} & \text{yes} & \text{Prop.~2.4}\\
+\text{(C4) measured groupoid non-amenable} & \textbf{open} & \text{Def.~3.2}
+\end{array}
+\]
+
+The Hurwitz order supplies a non-commutative, right Ore, right LCM monoid with a genuinely
+arithmetic multiplicative norm, a Solomon-type partition function with a finite critical
+exponent, polynomial growth, and a non-amenable group of fractions. Every algebraic obstacle
+that closed the earlier routes is absent: there is no Cuntz relation to force $\beta=1$, no
+orthogonality to empty the high-temperature region, and the index semigroup is not
+commutative.
+
+Three questions remain, in order of importance. First (C4), on which everything turns. Second,
+the multiplicity of Remark~\ref{X:rem:mult}: the $p+1$ right ideals of norm $p$ have no
+counterpart in [Ch.~\ref{ch:Main}], and the Kakutani criterion must be re-derived before the
+classification can be transported. Third, if (C4) holds, whether the resulting obstruction
+group is genuinely non-abelian, or whether the mechanism of Chapter~\ref{ch:VII} --- that the image of
+a commutative index set in the symmetry group is abelian --- reappears in some form despite
+the non-commutativity of $P$; Chapter~\ref{ch:XXVII} shows that non-abelian symmetry breaking to a
+normal subgroup can already be produced with the commutative $J_S$ through a non-abelian
+cocycle, at the price of a dependence on the lifts of the Frobenius classes, so what a
+non-commutative $P$ would have to add is canonicity.
+
+We do not claim novelty for the Hurwitz order as an object of study; Bost--Connes and
+Hecke-algebra constructions attached to orders in quaternion algebras have been considered,
+and \eqref{X:eq:zeta} is a classical Solomon-type zeta function. What is claimed is the
+selection: that the requirements of \S1 admit this model, with the properties computed in
+\S\ref{X:sec:hurwitz}. Whether the $\mathrm{KMS}$ classification of $\cT(\cH\setminus\{0\})$ is
+already known we have not been able to verify, and it should be checked before any priority
+claim is made.
+
