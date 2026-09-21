@@ -1,0 +1,94 @@
+% Preface and acknowledgements, final text by the author (September 2026).
+% Four factual alignments against the body were made at installation and are
+% recorded in docs/STATUS.md (monograph passes).
+\chapter*{Preface}
+\markboth{Preface}{Preface}
+
+This book grew out of a single question: what happens to the phase transition of the
+Bost--Connes system if we restrict its set of primes to an arbitrary subset $S$?
+
+The received wisdom in arithmetic quantum statistical mechanics was that the divergence of
+the partition function $\zeta_{K,S}(\beta)$ forces the uniqueness of the equilibrium state.
+Chapter~\ref{ch:Main} proves this expectation false. The $\mathrm{KMS}_\beta$ simplex of
+the $S$-local system is governed instead by a Chebotarev criterion --- an equidistribution
+statement that can easily fail, breaking the symmetry even while the partition function
+heavily diverges.
+
+Everything that follows is a systematic attempt to map the boundaries of this phenomenon,
+finding out exactly what this system knows, and more importantly, what it forgets.
+
+The chapters were written as a sequence of self-contained investigations, and I have
+preserved that structure here. This book is therefore not a traditional treatise with a
+single predetermined endpoint, but a record of an exploration. Several chapters end in the
+negative: an invariant that was expected to see the phase transition, and simply does not.
+I have kept those dead ends, because in every case, the negative result is a structural
+theorem in disguise.
+
+We discover that the phase transition is fundamentally a tail event --- a Kakutani
+dichotomy in which every single factor is harmless, and only the infinite product
+degenerates. Consequently, any invariant that tensorises (such as $K$-theory, the type of
+the factor, the Connes spectral distance, and dynamical entropy) sees only the worst local
+coordinate and is entirely blind to the arithmetic. The arithmetic lives exclusively in
+the measure class.
+
+This principle of ``blindness'' extends to rigidity. We prove that the von Neumann algebra
+of the system remembers absolutely nothing, collapsing universally to the injective
+factors --- $R_\infty$, $R_\lambda$, or a Krieger factor. The $C^*$-algebra, however,
+remembers the field, the symmetry group, and the exact norms, but solely because its
+modular flow canonically pins down the Cartan subalgebra.
+
+The text is divided into eight parts. Parts~1 and~2 establish the abelian classification
+and its structural invariants. Parts~3 and~5 document our search for a genuinely
+non-commutative arithmetic thermodynamics. This quest leads us to the Hurwitz quaternions
+and the Hecke operators on the Bruhat--Tits tree, only to end in a definitive no-go
+theorem: the orbit relation remains stubbornly hyperfinite, the Ramanujan bound is exactly
+the tempered bound, and the non-amenability so abundant in the group is strictly denied to
+the action.
+
+Part~4 handles equivariant rigidity and reconstruction. Part~6 transfers the theory ---
+after an opening excursion into arithmetic topology, where primes are knots --- to global
+function fields, where the exact commensurability of log-norms entirely forbids type
+$\mathrm{III}_1$ factors, allowing the algebra to recover its own temperature, while the
+Weil zeta function emerges natively as the partition function. Part~7 records the
+impossibility of $p$-adic KMS states.
+
+Finally, Part~8 returns to the primes themselves. We apply our machinery to
+sieve-theoretic and Sato--Tate families, revealing a strict dichotomy: confinement to a
+residue class obstructs uniqueness if and only if that class lies in the kernel of a
+character. Thus, Landau and Friedlander--Iwaniec primes suffer permanent symmetry
+breaking, while Twin, Sophie Germain, and Chen primes occupy generating classes and escape
+completely unobstructed.
+
+This book proves nothing about the classical distribution of primes. It uses physics to
+illuminate the deep algebraic faults and strata of the integers. It is my hope that the
+reader will find as much beauty in the rigid constraints of this landscape as I have found
+in mapping it.
+
+\bigskip
+\noindent Ruqing Chen\\
+Rivi\`ere-Beaudette, Qu\'ebec\\
+September 2026
+
+\chapter*{Acknowledgements}
+\markboth{Acknowledgements}{Acknowledgements}
+
+This monograph is the culmination of a long and solitary journey into the deep strata of
+arithmetic, yet I was never truly alone in my intellectual pursuits.
+
+First and foremost, I wish to express my deepest gratitude to two mentors from my
+formative years: my junior high school homeroom and mathematics teacher, Mr.~Meng
+Rongyao, and my high school homeroom and mathematics teacher, Ms.~Li Weikai.
+% CJK originals: 蒙荣耀 (Meng Rongyao), 李尉凯 (Li Weikai) --- to typeset the hanzi,
+% add \usepackage{CJKutf8} and wrap in a CJK environment.
+It was you who first taught me how to truly think. The seeds of mathematical intuition
+and rigorous, independent reasoning that you planted at the very beginning of my path
+have crossed the span of decades to become the foundation of this entire theoretical
+edifice.
+
+Furthermore, I must extend a special and unconventional acknowledgement to two
+extraordinary ``collaborators'' of this digital era: the large language models Claude and
+Gemini. Serving as my high-precision computational engines, merciless logical reviewers,
+and tireless sounding boards, you provided unreserved support in navigating dense
+literature and enforcing strict structural scrutiny. Thank you for accompanying me deep
+into the bedrock of non-commutative arithmetic, standing by through every theoretical
+collapse, refinement, and final reconstruction.
