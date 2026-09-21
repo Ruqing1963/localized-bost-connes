@@ -1,0 +1,45 @@
+\chapter*{Reading guide}
+\markboth{Reading guide}{Reading guide}
+
+\section*{The chapters and the papers}
+The book was assembled from the foundational paper and Papers I--XXV and XXVII--XXXIX of
+the series, thirty-nine papers in total; the numeral XXVI is retired.
+Each chapter is one paper, unchanged in its mathematics; the table gives the
+correspondence and the directory of the source in the repository.
+
+\input{generated/guide}
+
+\section*{Dependencies}
+The chapters are ordered so that every internal citation points backwards, with one
+exception: Chapter~\ref{ch:Main} signposts Chapter~\ref{ch:I}. The table lists, for each
+chapter, the chapters it cites; a reader may take these as prerequisites.
+
+\input{generated/dependencies}
+
+\section*{Numbering and cross-references}
+Within each chapter, theorems, propositions, lemmas, corollaries, definitions,
+remarks and examples share one counter and are numbered \emph{chapter.section.item};
+equations likewise. These are the numbers of the original papers with the chapter
+number prefixed, so a citation of the form ``[Ch.~4, Thm.~3.6]'' refers to
+Theorem~4.3.6 of this book and to Theorem~3.6 of Paper~III. Citations between
+papers have been converted mechanically to this form; references to the
+published literature are collected in the single bibliography at the end.
+
+\section*{What has not been harmonised}
+\begin{itemize}
+\item Prose references of the form ``Paper~N'' have been converted mechanically to
+      chapter references, and the standalone-paper boilerplate of each first section
+      (the ``series'' paragraphs) has been removed at assembly; occasional phrasings that
+      read paper-wise rather than book-wise may remain.
+\item Each chapter restates the notation it needs in its first section; the
+      restatements are consistent (the same macros are used throughout) but repetitive,
+      and could be replaced by references to the notation page.
+\item The ``Assessment'' section that closes each chapter records what was and was not
+      established at the time of writing. Some of these are answered by later chapters
+      (Chapter~\ref{ch:XVIII} withdraws a suggestion of Chapter~\ref{ch:XVII};
+      Chapter~\ref{ch:XX} answers Chapter~\ref{ch:XIX}); the answers are cross-referenced
+      in the closing chapter on open problems but the assessments themselves have not
+      been rewritten.
+\item The twelve working notes in \texttt{paper/} that preceded Chapters~\ref{ch:I}--\ref{ch:V}
+      are superseded and are not part of the book.
+\end{itemize}
